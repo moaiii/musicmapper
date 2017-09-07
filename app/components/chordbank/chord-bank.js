@@ -5,7 +5,6 @@ import store from '../../store';
 import {clearAllNotes} from '../../actions/chordbank-actions';
 import {clearSelection} from '../../actions/keyboard-actions';
 import {deleteAllSelected} from '../../actions/fretboard-actions';
-import {generateMidiChord} from '../../midi/generator';
 import _ from 'lodash';
 
 const MIDI_GENERATOR_URL = "http://localhost:5000/generator/";
