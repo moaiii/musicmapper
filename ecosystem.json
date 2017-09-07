@@ -1,0 +1,54 @@
+{
+
+  "apps" : [
+    {
+      "name"        : "ambie-hub",
+      "error_file"  : "/logs/ambie-hub/error.log",
+      "out_file"    : "/logs/ambie-hub/out.log",
+      "log_file"    : "/logs/ambie-hub/combined.outerr.log",
+      "script"      : "server.js",
+      "cwd"         : "./",
+      "autorestart" : true,
+      "env_development": {
+        "NODE_ENV"  : "development"
+      },
+      "env_production" : {
+        "NODE_ENV"  : "production"
+      },
+      "env_staging" : {
+        "NODE_ENV"  : "staging"
+      }
+    }
+
+  ],
+
+
+  "deploy" : {
+
+    "staging" : {
+      "user" : "admin",
+      "host" : "dep-staging.ambie.fm",
+      "ref"  : "origin/staging",
+      "repo" : "git@github.com:emergemediagroup/ambie-hub.git",
+      "path" : "/data_1/ambie-hub",
+      "post-deploy" : "cd /data_1/ambie-hub/current && . ~/.nvm/nvm.sh && nvm use && npm install && pm2 startOrRestart ecosystem.json --env staging",
+      "env"  : {
+        "NODE_ENV" : "staging",
+        "DEBUG":"ambie-hub"
+      }
+    },
+    "production" : {
+      "user" : "admin",
+      "host" : "dep-production.ambie.fm",
+      "ref"  : "origin/master",
+      "repo" : "git@github.com:emergemediagroup/ambie-hub.git",
+      "path" : "/data_1/ambie-hub",
+      "post-deploy" : "cd /data_1/ambie-hub/current && . ~/.nvm/nvm.sh && nvm use && npm install && pm2 startOrRestart ecosystem.json --env production",
+      "env"  : {
+        "NODE_ENV" : "production"
+      }
+    }
+
+  }
+
+}

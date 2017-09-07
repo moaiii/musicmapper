@@ -1,0 +1,24 @@
+/**
+ *  VARIABLES
+ */
+$color-white: #ecf0f1;
+$color-black: #111;
+$color-grey: #7f8c8d;
+$color-primary: #2ecc71;
+$color-secondary: #f1c40f;
+
+$color-green: #449d44;
+$color-red: #d9534f;
+
+// Viewport dimensions
+$desktop: 1200px;
+$tablet: 768px;
+$mobile: 425px;
+
+/**
+ *  IMPORTS
+ */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
+@import '../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
+@import './partials/components';
+

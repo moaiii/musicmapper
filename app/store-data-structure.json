@@ -1,0 +1,59 @@
+//global state object
+
+{
+  "tuning": ["e", "a", "d", "g", "b", "e"],
+
+  "current": {
+    "name": "selector-A",
+    "selected": true,
+    "tuning": ["e", "a", "d", "g", "b", "e"],
+    "notes": ["a", "g#", "c", "d#"],
+    "chord_sets": [
+      {
+        "name": "a-major",
+        "notes": ["a", "b", "c#", "d", "e", "f#", "g"]
+      },
+      {
+        "name": "a-major",
+        "notes": ["a", "b", "c#", "d", "e", "f#", "g"]
+      }
+    ]
+  },
+
+  "selectors": [
+
+    {
+      "name": "selector-A",
+      "selected": true,
+      "tuning": ["e", "a", "d", "g", "b", "e"],
+      "notes": ["a", "g#", "c", "d#"],
+      "chord_sets": [
+        {
+          "name": "a-major",
+          "notes": ["a", "b", "c#", "d", "e", "f#", "g"]
+        },
+        {
+          "name": "a-major",
+          "notes": ["a", "b", "c#", "d", "e", "f#", "g"]
+        }
+      ]
+    },
+              // etc . . . . . . . . . .
+    {
+      "name": "selector-B",
+      "selected": false,
+      "tuning": ["e", "a", "d", "g", "b", "e"],
+      "notes": ["a", "g#", "c", "d#"],
+      "chord_sets": [
+        {
+          "name": "a-major",
+          "notes": ["a", "b", "c#", "d", "e", "f#", "g"]
+        },
+        {
+          "name": "a-major",
+          "notes": ["a", "b", "c#", "d", "e", "f#", "g"]
+        }
+      ]
+    }
+  ]
+}
