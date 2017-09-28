@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-import ReactSVG from 'react-svg'
+import FaFacebook from 'react-icons/lib/fa/facebook';
+import FaTwitter from 'react-icons/lib/fa/twitter';
+import FaLinkedin from 'react-icons/lib/fa/linkedin';
 
 
 class Share extends Component {
@@ -9,51 +11,85 @@ class Share extends Component {
     super();
   }
 
-  _handleClick(type) {
-    let url = "";
+  _onShareItem = function(event) {
+    event.preventDefault();
+    let network = event.currentTarget.getAttribute('data-network'); 
+    let description = "Map your fretboard to your keyboard and download midi" 
+    let href;
 
-    switch(type) {
-      case "twitter":
-        url = "https://twitter.com/moaimsc";
+
+    switch (network) {
+      case 'facebook':
+        href = 'https://www.facebook.com/sharer/sharer.php?u=' + 
+        location.href;
         break;
-      case "linkedin":
-        url = "https://soundcloud.com/moai_music";
+      
+      case 'linkedin':
+        href = 'https://www.linkedin.com/shareArticle?mini=true&url=' +
+        location.href +
+        '&title=' + description +
+        '&summary=%20&source=';
         break;
-      case "facebook":
-        url = "https://www.facebook.com/itsmoai";
+      
+      case 'twitter':
+        href = 'https://twitter.com/intent/tweet?text=' +
+        description +
+        '&url=' + location.href;
+        break;
+      
+      case 'gplus':
+        href = 'https://plus.google.com/share?url=' + 
+        location.href;
         break;
       default:
-        url = "https://www.facebook.com/itsmoai";
+        console.log('no network');
     }
 
-    let win = window.open(url, '_blank');
-    win.focus();
-  }
-
-  _clap() {}
+    window.open(
+      href,
+      '',
+      'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=253,width=600'
+    );
+  };
 
   render() {
+
+    let iconStyle = { 
+      width: 30, 
+      height: 30, 
+      display: 'inline-block' 
+    };
+
     return (
       <div className="share">
         <div className="share__container">
           <p>Share: </p>
-          <div className="icon__container" onClick={this._handleClick.bind(this, "facebook")}>
-            <ReactSVG
-              path="./svg/facebook-logo.svg"
+          <div className="icon__container" 
+               onClick={this._onShareItem.bind(this)}
+               data-network="facebook" 
+               href="/">
+            <FaFacebook
               className="icon"
-              style={{ width: 30, height: 30, display: 'inline-block' }}/>
+              data-network="facebook" 
+              style={iconStyle}/>
           </div>
-          <div className="icon__container" onClick={this._handleClick.bind(this, "linkedin")}>
-            <ReactSVG
-              path="./svg/linkedin-logo.svg"
+          <div className="icon__container" 
+               onClick={this._onShareItem.bind(this)}
+               data-network="linkedin" 
+               href="/">
+            <FaLinkedin
               className="icon"
-              style={{ width: 30, height: 30, display: 'inline-block' }}/>
+              data-network="linkedin" 
+              style={iconStyle}/>
           </div>
-          <div className="icon__container" onClick={this._handleClick.bind(this, "twitter")}>
-            <ReactSVG
-              path="./svg/twitter-logo.svg"
+          <div className="icon__container" 
+               onClick={this._onShareItem.bind(this)}
+               data-network="twitter" 
+               href="/">
+            <FaTwitter
+              data-network="twitter"
               className="icon"
-              style={{ width: 30, height: 30, display: 'inline-block' }}/>
+              style={iconStyle}/>
           </div>
         </div>
       </div>

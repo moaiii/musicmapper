@@ -10,14 +10,12 @@ export function changeTuning(name) {
 export function calculateFretboardNotes() {
   return {
     type: types.FRETBOARD_CALCULATE_NOTES,
-    payload: {}
   }
 }
 
 export function toggleAudio() {
   return {
     type: types.FRETBOARD_TOGGLE_AUDIO,
-    payload: {}
   }
 }
 
@@ -44,6 +42,5 @@ export function addSelected(string_index, fret_index) {
 export function deleteAllSelected() {
   return {
     type: types.FRETBOARD_DELETE_ALL_SELECTED,
-    payload: {}
   }
 }

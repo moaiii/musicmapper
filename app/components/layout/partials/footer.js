@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-import ReactSVG from 'react-svg'
+import FaYoutube from 'react-icons/lib/fa/youtube';
+import FaFacebook from 'react-icons/lib/fa/facebook';
+import FaTwitter from 'react-icons/lib/fa/twitter';
+import FaInstagram from 'react-icons/lib/fa/instagram';
+import FaSoundcloud from 'react-icons/lib/fa/soundcloud';
 
 
 class Footer extends Component {
@@ -39,46 +43,47 @@ class Footer extends Component {
   }
 
   render() {
+
+    let iconStyle = { 
+      width: 15, 
+      height: 15, 
+      display: 'inline-block' 
+    };
+
     return (
       <div className="footer">
         <div className="contact__container">
-          <p>Contact: </p>
-          <div className="icon__container" onClick={this._handleClick.bind(this, "twitter")}>
-            <ReactSVG
-              social={"twitter"}
-              path="./svg/twitter-logo.svg"
+          <div className="icon__container" 
+               onClick={this._handleClick.bind(this, "twitter")}>
+            <FaTwitter
               className="icon"
-              style={{ width: 20, height: 20, display: 'inline-block' }}/>
+              style={iconStyle}/>
           </div>
-          <div className="icon__container" onClick={this._handleClick.bind(this, "soundcloud")}>
-            <ReactSVG
-              social={"soundcloud"}
-              path="./svg/soundcloud-logo.svg"
+          <div className="icon__container" 
+               onClick={this._handleClick.bind(this, "soundcloud")}>
+            <FaSoundcloud
               className="icon"
-              style={{ width: 20, height: 20, display: 'inline-block' }}/>
+              style={iconStyle}/>
           </div>
-          <div className="icon__container" onClick={this._handleClick.bind(this, "youtube")}>
-            <ReactSVG
-              social={"youtube"}
-              path="./svg/youtube-logo.svg"
+          <div className="icon__container" 
+               onClick={this._handleClick.bind(this, "youtube")}>
+            <FaYoutube
               className="icon"
-              style={{ width: 20, height: 20, display: 'inline-block' }}
+              style={iconStyle}
             />
           </div>
-          <div className="icon__container" onClick={this._handleClick.bind(this, "instagram")}>
-            <ReactSVG
-              social={"instagram"}
-              path="./svg/instagram-logo.svg"
+          <div className="icon__container" 
+               onClick={this._handleClick.bind(this, "instagram")}>
+            <FaInstagram
               className="icon"
-              style={{ width: 20, height: 20, display: 'inline-block' }}
+              style={iconStyle}
             />
           </div>
-          <div className="icon__container" onClick={this._handleClick.bind(this, "facebook")}>
-            <ReactSVG
-              social={"facebook"}
-              path="./svg/facebook-logo.svg"
+          <div className="icon__container" 
+               onClick={this._handleClick.bind(this, "facebook")}>
+            <FaFacebook
               className="icon"
-              style={{ width: 20, height: 20, display: 'inline-block' }}
+              style={iconStyle}
             />
           </div>
         </div>

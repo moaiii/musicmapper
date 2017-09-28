@@ -3,20 +3,36 @@ import tunings from '../data/tunings';
 import Utility from '../utility/utility';
 var _ = require('lodash');
 
+
+// @flow
+type State = {
+  tuning: array,
+  fretboardNotes: array,
+  audioEnabled: boolean
+};
+
+type Action = { 
+  type: 'FRETBOARD_CHANGE_TUNING', payload: string } |
+  {type: 'FRETBOARD_CALCULATE_NOTES'} | 
+  {type: 'FRETBOARD_TOGGLE_AUDIO'} | 
+  {type: 'FRETBOARD_DELETE_SELECTED', payload: {
+    string_index: number,
+    fret_index: number
+  }} | 
+  {type: 'FRETBOARD_ADD_SELECTED', payload: {
+    string_index: number,
+    fret_index: number
+  }} |
+  {type: 'FRETBOARD_DELETE_ALL_SELECTED'};
+
 const initalState = {
   tuning: [],
   fretboardNotes: [],
   audioEnabled: false
 };
 
-const fretboardReducer = (state = initalState, action) => {
+const fretboardReducer = (state: State = initalState, action: Action): State => {
   switch (action.type) {
-
-    case types.FRETBOARD_CHANGE_ROOT_NOTE:
-      return Object.assign({}, state, {
-        thing: action.payload
-      });
-      break;
 
     case types.FRETBOARD_CHANGE_TUNING:
 

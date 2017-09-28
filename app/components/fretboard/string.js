@@ -1,44 +1,42 @@
 import React, {Component} from 'react';
 import Fret from './fret';
+import PropTypes from 'prop-types';
 
 
 class String extends Component {
 
   constructor() {
     super();
-    this.state = {};
   }
-
-  /**
-   * Initialise
-   */
-  componentDidMount() {}
-
+  
   render() {
-    let frets = [];
+    let fretElements = [];
 
     if(this.props.notes !== undefined) {
-      frets = this.props.notes.map((note, index) =>
+      fretElements = this.props.notes.map((note, index) =>
         <Fret
-          className="string__fret"
           key={'F-' + this.props.id + '-' + index}
-          // selected={note.selected}
-          // note={note.note}
-          guide={this.props.guide}
           isRoot={index === 0}
-          index={{
-              string_index: this.props.string_index,
-              fret_index: index
-            }}
+          number={index}
+          handleClick={() => 
+              this.props.handleClick(this.props.stringNumber, index)}
+          note={note}
         />);
     }
 
     return (
-      <div className="string">
-        {frets}
+      <div className='fretboard__string'>
+        {fretElements}
       </div>
     );
   }
+}
+
+String.propTypes = {
+  notes: PropTypes.arrayOf(PropTypes.object),
+  id: PropTypes.number,
+  guide: PropTypes.bool,
+  string_index: PropTypes.number
 }
 
 

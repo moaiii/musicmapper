@@ -1,8 +1,10 @@
-import scales from '../data/scales';
+import scales_data from '../data/scales';
 
-export default get_possible_scales = (noteArray) => {
+export function get_possible_scales(name) {
 
-  let scales_list = scales;
+  let scales_list = scales_data;
 
-  return possible_scales;
+  debugger;
+
+  return scales_list;
 }

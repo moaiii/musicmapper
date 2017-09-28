@@ -1,4 +1,4 @@
-export default scales = [
+let scales_data = [
   {
     "root":"C",
     "mode":"Major",
@@ -2040,3 +2040,5 @@ export default scales = [
     "notes":["B", "C#", "D", "F#", "G"]
   }
 ]
+
+export default scales_data;

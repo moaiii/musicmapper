@@ -10,6 +10,12 @@ body {
   margin: 0;
 }
 
+.app {
+  margin: 0;
+  padding: 0;
+  filter: blur(0.4px) saturate(1.1);
+}
+
 .app__root {
   background-color: white;
   position: relative;
@@ -29,6 +35,7 @@ body {
   position: relative;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1.5rem;
 
   div {
     display: flex;
@@ -52,27 +59,32 @@ body {
 .nav__container {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .nav__item {
   display: inline-block;
+  cursor: pointer;
 }
 
 .footer {
-  border-top: 1px solid $color-white;
+  background-color: $color-black;
   display: flex;
-  height: 60px;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
   justify-content: space-evenly;
   position: relative;
   width: 100%;
   padding: 15px;
-  margin: 50px 0;
+  margin: 50px 0 0 0;
   box-sizing: border-box;
 }
 
 .contact__container {
-  display: inline-block;
+  display: flex;
+  width: 40%;
+  justify-content: space-evenly;
 
   div {
     cursor: pointer;
@@ -80,6 +92,10 @@ body {
     margin: 0.4rem;
     position: relative;
     top: 1px;
+
+    svg {
+      fill: $color-white;
+    }
   }
 
   p {
@@ -89,6 +105,11 @@ body {
 
 .copyright__container {
   display: inline-block;
+
+  p {
+    font-size: 0.7rem;
+    color: $color-grey;
+  }
 }
 
 .share {
@@ -99,7 +120,10 @@ body {
 
 
 .share__container {
-  display: block;
+  display: flex;
+  height: 200px;
+  flex-direction: column;
+  justify-content: space-between;
 
   div {
     cursor: pointer;
@@ -118,17 +142,29 @@ body {
 .icon__container {
   cursor: pointer;
   z-index: 2;
+
+  div {
+    z-index: -1;
+  }
+
+  svg {
+    z-index: -1;
+  }
 }
 
 .icon__container--audio-control {
   position: relative;
   top: 12px;
   margin: 0 0 0 0.5rem;
-}
 
-.icon__container--clap {
-  border: 1px solid $color-grey;
-  border-radius: 35px;
+  div {
+    div {
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
 }
 
 .icon {
@@ -136,6 +172,16 @@ body {
 
   &:hover {
     fill: $color-primary;
+  }
+
+  .share {
+    color: $color-black;
+  }
+
+  .volume {
+    &:hover {
+      fill: $color-white;
+    }
   }
 }
 
@@ -166,11 +212,12 @@ body {
   flex-direction: column;
   padding: 2rem;
   align-items: center;
-  transform: translateY(-100%);
-  transition: all 0.2s ease-out;
+  transform: translateY(0);
+  transition: all 0.1s ease;
+  opacity: 0;
 
   &.isVisible {
-    transform: translateY(0);
+    opacity: 1;
   }
 
   p {
@@ -192,11 +239,13 @@ body {
   left: 0;
   right: 0;
   bottom: 100%;
-  background-color: black;
+  background-color: $color-black;
   z-index: 5;
-  opacity: 0.8;
+  opacity: 0;
+  transition: opacity 0.1s ease;
 
   &.isVisible {
+    opacity: 0.8;
     bottom: 0;
   }
 }
@@ -239,6 +288,15 @@ body {
 .fretboard {
   display: flex;
   flex-direction: column-reverse;
+  padding: 1rem;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: border 0.25s ease;
+  
+    &:hover {
+      transition: border 0.25s ease;
+      border: 1px solid $color-grey;
+    }
 }
 
 .fretboard__container {
@@ -250,6 +308,8 @@ body {
 .fretboard__header {
   display: flex;
   justify-content: space-between;
+  background-color: aquamarine;
+  padding: 0 2rem;
 }
 
 .header__tuning {
@@ -267,8 +327,10 @@ body {
   top: 5px;
 }
 
-.fretboard__strings {
-
+.fretboard__string {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .tuning__title {
@@ -285,13 +347,8 @@ body {
   display: flex;
 }
 
-.strings__fret {
-  width: 1rem;
-  height: 1rem;
-  border: 1px solid black;
-}
-
-.fret {
+.string__fret {
+  border: 1px solid $color-black;
   width: calc(100%/23);
   height: 2.5rem;
   opacity: 0.7;
@@ -443,6 +500,12 @@ body {
   height: 250px;
   padding: 0 1rem;
   width: 45%;
+  transition: border 0.25s ease;
+
+  &:hover {
+    transition: border 0.25s ease;
+    border: 1px solid $color-grey;
+  }
 }
 
 .chords__container {
@@ -456,6 +519,12 @@ body {
   width: 45%;
   overflow-x: hidden;
   overflow-y: scroll;
+  transition: border 0.25s ease;
+
+  &:hover {
+    transition: border 0.25s ease;
+    border: 1px solid $color-grey;
+  }
 }
 
 .chords__match-toggle {
@@ -572,6 +641,8 @@ body {
   height: 200px;
   position: relative;
   width: 60px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 
   &:hover {
     cursor: pointer;
@@ -650,4 +721,83 @@ body {
 .chordselectors__container {
   width:100%;
   display: flex;
+}
+
+.register, 
+.login {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0;
+
+  &.isVisible {
+    z-index: 10;
+    opacity: 1;
+  }
+}
+
+.register__container,
+.login__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: $color-white;
+  z-index: 10;
+  width: 50%;
+  height: 50%;
+  transform: translate3d(50%, 50%, 0);
+}
+
+.register__title,
+.login__title {
+  font-weight: 400;
+  width: 100%;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.register__form,
+.login__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.form-group {
+  width: 50%;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    width: 100%;
+    height: 2rem;
+  }
+}
+
+.app__auth {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0;
+
+  &.isVisible {
+    z-index: 10;
+    opacity: 1;
+  }
 }

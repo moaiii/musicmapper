@@ -4,19 +4,30 @@ import React, {Component} from 'react';
 import ReactSVG from 'react-svg'
 import {toggleAudio} from '../../actions/fretboard-actions';
 import Slider from 'react-rangeslider';
+import FaVolumeOff from 'react-icons/lib/fa/volume-off';
+import FaVolumeUp from 'react-icons/lib/fa/volume-up';
 
 
-class AudioController extends Component {
+//@flow 
+type Props = {
+  audioEnabled: boolean
+};
+
+type State = {
+  volume: number,
+  isMuted: boolean
+};
+
+class AudioController extends Component<Props, State> {
 
   constructor() {
     super();
 
     this.state = {
-      volume: 0.5
+      volume: 0.5,
+      isMuted: true
     };
   };
-
-  componentDidMount() {};
 
   _handleClick() {
     store.dispatch(toggleAudio());
@@ -24,7 +35,7 @@ class AudioController extends Component {
 
   /**
    * Update volume
-   * @param {Number} volume between 0 - 100
+   * @param {Number} sliderValue between 0 - 100
    * * */
   _updateSlider = (sliderValue) => {
     this.setState({
@@ -35,6 +46,7 @@ class AudioController extends Component {
   /**
    * Intermediate function on mouse up on slider
    * to release volume update to the player api
+   * @private
    * * */
   _updateVolume = () => {
     if(this.state.volume === 0) {
@@ -49,7 +61,7 @@ class AudioController extends Component {
    * On mouse down (start) check if it was currently muted
    * If so, un-mute
    * @private
-   */
+   * * */
   _checkWasMuted = () => {
     if(this.state.isMuted) {
       this.setState({
@@ -64,7 +76,7 @@ class AudioController extends Component {
    * Intermediate function to set volume to zero
    * Stores previous volume level to allow toggle functionality
    * @private
-   */
+   * * */
   _handleMute = () => {
     if(!this.state.isMuted) {
       this.state.previousVolume = this.state.volume;
@@ -92,11 +104,10 @@ class AudioController extends Component {
         </p>
 
         <div className="icon__container icon__container--audio-control"
-             onClick={this._handleClick.bind(this, "facebook")}>
-          <ReactSVG
-            path={this.props.audioEnabled ? "./svg/volume-on.svg" : "./svg/volume-off.svg"}
-            className="icon"
-            style={{ width: 30, height: 30, display: 'inline-block' }}/>
+             onClick={this._handleClick.bind(this)}>
+             {this.props.audioEnabled ? 
+                <FaVolumeUp className="icon volume"/> :
+                <FaVolumeOff className="icon volume"/>}
         </div>
 
         <div className="slider">

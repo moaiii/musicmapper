@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import store from '../../store';
 import tunings from '../../data/tunings';
 import Modal from '../layout/partials/modal';
+import {TuningChangeText} from '../../data/modal-text';
 import {deleteAllSelected, changeTuning, calculateFretboardNotes} from "../../actions/fretboard-actions"
 import {clearAllNotes} from '../../actions/chordbank-actions';
 import {clearSelection} from '../../actions/keyboard-actions';
@@ -37,7 +38,7 @@ class Tuning extends Component {
 
   }
 
-  _showConfirmationModal(e) {
+  _showConfirmationModal(e: SyntheticEvent<>) {
     this.setState({
       showConfirmationModal: true,
       newTuning: e.value
@@ -50,36 +51,34 @@ class Tuning extends Component {
         showConfirmationModal: false
     }, () => {
       self.changeTuning();
-    })
+    });
   }
 
   _onRejectHandler() {
     this.setState({ showConfirmationModal: false })
   }
 
-  /**
-   * Render component
-   * @returns {XML}
-   */
   render() {
 
     let all_tunings = tunings.map(tuning => tuning.name);
 
+    let tunings_dropdown = 
+      <Dropdown options = {all_tunings}
+        onChange = {this._showConfirmationModal.bind(this)}
+        value = {this.state.newTuning}
+        placeholder = "Select a tuning" />
+
+    let tunings_modal = 
+      <Modal 
+        {...TuningChangeText}
+        isVisible = {this.state.showConfirmationModal}
+        onReject = {this._onRejectHandler}
+        onConfirm = {this._onConfirmHandler} />
+        
     return (
       <div className="tuning-selector">
-        <Dropdown options={all_tunings}
-                  onChange={this._showConfirmationModal.bind(this)}
-                  value={this.state.newTuning}
-                  placeholder="Select a tuning" />
-
-        <Modal
-          isVisible={this.state.showConfirmationModal}
-          title={"Change tuning"}
-          message={`Confrim change of tuning to ${this.state.newTuning}?
-            This will overwrite any previous chord data.`}
-          onConfirm={this._onConfirmHandler}
-          onReject={this._onRejectHandler}
-        />
+        {tunings_dropdown}
+        {tunings_modal}
       </div>
     );
   }

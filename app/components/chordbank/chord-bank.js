@@ -5,9 +5,8 @@ import store from '../../store';
 import {clearAllNotes} from '../../actions/chordbank-actions';
 import {clearSelection} from '../../actions/keyboard-actions';
 import {deleteAllSelected} from '../../actions/fretboard-actions';
+import {generateMidi} from '../../api/midi-api';
 import _ from 'lodash';
-
-const MIDI_GENERATOR_URL = "http://localhost:5000/generator/";
 
 
 class ChordBank extends Component {
@@ -16,43 +15,41 @@ class ChordBank extends Component {
     super();
 
     this.state = {
-      selectors: []
+      downloadLink: ""
     };
   };
 
+  
   componentDidMount() {};
+
 
   _clearNotes() {
     store.dispatch(clearAllNotes());
     store.dispatch(clearSelection());
     store.dispatch(deleteAllSelected());
-  }
+  };
+
 
   _downloadChord() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log(this.responseText);
-      }
-    };
+    generateMidi({
+      notes: this.props.notes, 
+      diff: this.props.differenceNotes, 
+      chordName: this.props.selectedChord
+    
+    }).then((response) => {
 
-    var regex_sharp = new RegExp(/[#]/, 'g');
-    let octave = 4;
+      this.setState({
+        downloadLink: JSON.parse(response.data.body)["download-link"]
 
-    let note_params = _.concat(this.props.notes, this.props.differenceNotes)
-      .map((note) => `${note}${octave}`)
-      .join(`_`)
-      .replace(regex_sharp, `$`)
-      .toLowerCase();
+      }, () => {
+        window.open(this.state.downloadLink);
+      });
 
-    let chord_name = this.props.selectedChord.length > 0 ? this.props.selectedChord : "misc";
-
-    let url = `${MIDI_GENERATOR_URL}${chord_name}/${note_params}`;
-    console.log("url: ", url);
-
-    xhttp.open("GET", url, true);
-    xhttp.send();
+    }).catch((error) => {
+      console.log('Error in chord bank: ', error);
+    });
   };
+
 
   render() {
     return(
@@ -104,7 +101,7 @@ class ChordBank extends Component {
       </div>
     )
   }
-}
+};
 
 const mapStoreToProps = (store) => {
   return {
