@@ -24,7 +24,7 @@ class AudioController extends Component<Props, State> {
     super();
 
     this.state = {
-      volume: 0.5,
+      volume: 1,
       isMuted: true
     };
   };
@@ -100,7 +100,7 @@ class AudioController extends Component<Props, State> {
     return(
       <div className="audio-controller">
         <p className="audio-controller__status">
-          {this.props.audioEnabled ? "Tuning note On" : "Tuning note Off"}
+          {this.props.audioEnabled ? "Note On" : "Note Off"}
         </p>
 
         <div className="icon__container icon__container--audio-control"

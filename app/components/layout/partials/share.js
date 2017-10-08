@@ -9,7 +9,7 @@ class Share extends Component {
 
   constructor() {
     super();
-  }
+  };
 
   _onShareItem = function(event) {
     event.preventDefault();
@@ -55,8 +55,8 @@ class Share extends Component {
   render() {
 
     let iconStyle = { 
-      width: 30, 
-      height: 30, 
+      width: 15, 
+      height: 15, 
       display: 'inline-block' 
     };
 

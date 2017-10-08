@@ -11,6 +11,7 @@ export function generateMidi(input) {
     axios.post(DEV_GENERATE_MIDI_URL, {
       notes: all_notes,
       name: input.chordName,
+      midi_type: input.midiType,
       timeStamp: input.timeStamp
       
     }).then(response => {

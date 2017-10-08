@@ -6,6 +6,7 @@ import {HowToUseText} from '../../../data/modal-text';
 import FaQuestion from 'react-icons/lib/fa/question';
 import Register from '../../../auth/register';
 import Login from '../../../auth/login';
+import Share from './share';
 
 class Header extends Component {
 
@@ -86,13 +87,11 @@ class Header extends Component {
           <ul className="nav__container">
             <li className="nav__item how-to-use" 
                 onClick={this._showHowToUse.bind(this)}>
-                <FaQuestion />
               How to use
+              <FaQuestion />
             </li>
-            <li className="nav__item"
-                style={temp_hide}
-                onClick={this._showLogin.bind(this)}>
-              Login
+            <li className="nav__item share">
+                <Share />
             </li>
             <li className="nav__item"
                 style={temp_hide}

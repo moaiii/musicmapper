@@ -18,6 +18,7 @@ class String extends Component {
           key={'F-' + this.props.id + '-' + index}
           isRoot={index === 0}
           number={index}
+          guide={this.props.guide}
           handleClick={() => 
               this.props.handleClick(this.props.stringNumber, index)}
           note={note}
@@ -36,7 +37,8 @@ String.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.object),
   id: PropTypes.number,
   guide: PropTypes.bool,
-  string_index: PropTypes.number
+  string_index: PropTypes.number,
+  guide: PropTypes.bool
 }
 
 

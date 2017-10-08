@@ -53,12 +53,13 @@ class PossibleChords extends Component {
         <p className="chord-match__name">
           {chord.name}
         </p>
-        {chord.notes.map((note, i) =>
-          <p key={`pcn-${index}-${i}`}
-             className="chord-match__note">
-            {note}
-          </p>
-        )}
+        <div className="chord-match__notes">
+          {chord.notes.map((note, i) =>
+            <p key={`pcn-${index}-${i}`}>
+              {note}
+            </p>
+          )}
+        </div>
       </div>
     );
 
@@ -69,12 +70,13 @@ class PossibleChords extends Component {
         <p className="chord-match__name">
           {chord.name}
         </p>
-        {chord.notes.map((note, i) =>
-          <p key={`ecn-${index}-${i}`}
-             className="chord-match__note">
-            {note}
-          </p>
-        )}
+        <div className="chord-match__notes">
+          {chord.notes.map((note, i) =>
+            <p key={`ecn-${index}-${i}`}>
+              {note}
+            </p>
+          )}
+        </div>
       </div>
     );
 

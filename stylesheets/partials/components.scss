@@ -14,6 +14,7 @@ body {
   margin: 0;
   padding: 0;
   filter: blur(0.4px) saturate(1.1);
+  min-height: 100vh;
 }
 
 .app__root {
@@ -35,7 +36,6 @@ body {
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
 
   div {
     display: flex;
@@ -53,18 +53,19 @@ body {
 }
 
 .header__nav {
-  width: 30%;
+  width: 50%;
 }
 
 .nav__container {
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
 
 .nav__item {
-  display: inline-block;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .footer {
@@ -74,11 +75,12 @@ body {
   align-items: center;
   height: 150px;
   justify-content: space-evenly;
-  position: relative;
+  position: fixed;
   width: 100%;
   padding: 15px;
   margin: 50px 0 0 0;
   box-sizing: border-box;
+  bottom: 0;
 }
 
 .contact__container {
@@ -113,16 +115,14 @@ body {
 }
 
 .share {
-  position: fixed;
-  left: calc(50% - 550px - 2rem);
-  top: 30%;
+  display: inline-flex;
 }
 
 
 .share__container {
   display: flex;
-  height: 200px;
-  flex-direction: column;
+  // height: 200px;
+  flex-direction: row;
   justify-content: space-between;
 
   div {
@@ -286,21 +286,24 @@ body {
 }
 
 .fretboard {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column-reverse;
   padding: 1rem;
   border-radius: 3px;
   border: 1px solid transparent;
   transition: border 0.25s ease;
+  width: 100%;
+  margin: 0 auto;
   
     &:hover {
       transition: border 0.25s ease;
-      border: 1px solid $color-grey;
+      // border: 1px solid $color-grey;
     }
 }
 
 .fretboard__container {
-  width: 90%;
+  width: 100%;
   display: block;
   margin: 0 auto;
 }
@@ -350,7 +353,8 @@ body {
 .string__fret {
   border: 1px solid $color-black;
   width: calc(100%/23);
-  height: 2.5rem;
+  height: 1.7rem;
+  position: relative;
   opacity: 0.7;
   max-height: 100%;
   background-color: $color-white;
@@ -360,11 +364,7 @@ body {
   justify-content: center;
   align-items: center;
   align-content: center;
-
-  p {
-    color: $color-black;
-    font-size: 0.8rem;
-  }
+  font-weight: 100;
   
   &:hover {
     cursor: pointer;
@@ -374,12 +374,7 @@ body {
 
   &.root {
     background-color: white;
-    box-sizing: border-box;
-    border: 1px solid $color-black;
-
-    p {
-      font-size: 1rem;
-    }
+    font-weight: 600;
   }
 
   &.selected {
@@ -391,6 +386,28 @@ body {
       font-weight: 700;
     }
   }
+
+  &.guide {
+    border: none;
+    background: transparent;
+    opacity: 0.4;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.fret__name {
+  color: $color-black;
+  font-size: 0.7rem;
+}
+
+.fret__number {
+  display: none;
+  color: $color-black;
+  font-size: 0.8rem;
+  position: absolute;
 }
 
 .fret--guide {
@@ -482,6 +499,7 @@ body {
 
 .chordbank__data {
   display: block;
+  height: 90px;
 
   &:nth-of-type(1) {
     border-bottom: 1px solid $color-white;
@@ -493,18 +511,13 @@ body {
 }
 
 .chordbank {
-  border: 1px solid $color-white;
-  border-radius: 4px;
   box-sizing: border-box;
   display: inline-block;
-  height: 250px;
-  padding: 0 1rem;
-  width: 45%;
+  height: 100%;
+  width: 100%;
   transition: border 0.25s ease;
 
   &:hover {
-    transition: border 0.25s ease;
-    border: 1px solid $color-grey;
   }
 }
 
@@ -512,18 +525,14 @@ body {
   border-radius: 4px;
   box-sizing: border-box;
   display: inline-block;
-  padding: 0 1rem;
   position: relative;
-  height: 250px;
-  border: 1px solid $color-white;
-  width: 45%;
+  height: 100%;
+  width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
   transition: border 0.25s ease;
 
   &:hover {
-    transition: border 0.25s ease;
-    border: 1px solid $color-grey;
   }
 }
 
@@ -533,7 +542,7 @@ body {
 
   h4 {
     display: inline-block;
-    margin-right: 1rem;
+    padding-left: 1rem;
   }
 }
 
@@ -543,35 +552,47 @@ body {
   position: relative;
   overflow-y: scroll;
   width: 100%;
+  height: 300px;
 }
 
 .chordbank__header {
   display:inline-block;
   margin-right: 1rem;
   min-width: 130px;
+  margin-bottom: 0;
 }
 
 .chordbank__active-notes {
-  display: inline-block;
-  margin-right: 0.5rem;
+  padding: 0 0 0 1rem;
+
+  p {
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
 }
 
 .chordbank__selected-chord {
-  display: inline-block;
+  padding: 0 0 0 1rem;
+  display: block;
 }
 
 .button-bar {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
 }
 
 .chordbank__button {
-  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  width: 150px;
   padding: 0 0.5rem;
-  border: 1px solid $color-grey;
-  background-color: $color-white;
+  border: 1px solid #7f8c8d;
+  background-color: #ecf0f1;
   border-radius: 4px;
   font-size: 0.7rem;
+  margin-top: 0.5rem;
   -webkit-transition: background-color 0.1s;
   -moz-transition: background-color 0.1s;
   -ms-transition: background-color 0.1s;
@@ -580,27 +601,43 @@ body {
   
   &:hover {
     cursor: pointer;
-    background-color: $color-grey;
+    background-color: $color-black;
     color: $color-white;
+  }
+
+  p {
+    text-transform: uppercase;
+  }
+
+  svg {
+    vertical-align: middle;
+    margin: 0 0.5rem;
+    width: 18px;
+    height: 30px;
   }
 }
 
 .chord-match {
-  padding: 0.2rem;
+  box-sizing: border-box;
+  height: 35px;
+  padding: 0 1rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
-  left: 1rem;
-  width: 80%;
-  border-bottom: 1px solid lightgrey;
+  // border-bottom: 1px solid lightgrey;
+  opacity: 0.8;
   
   &:hover {
     cursor: pointer;
+    opacity: 1;
   }
 }
 
 .chord-match--selected {
   background-color: $color-white;
+  border: 1px solid lightgrey;
+  opacity: 1;
 
   p {
     font-weight: bolder;
@@ -608,14 +645,18 @@ body {
 }
 
 .chord-match__name {
+  font-size: 0.9rem;
   display: inline-block;
   margin-right: 1rem;
-  min-width: 130px;
 }
 
-.chord-match__note {
+.chord-match__notes {
   display: inline-block;
-  margin-right: 0.2rem;
+
+  p {
+    display: inline-block;
+    font-size: 0.8rem;
+  }
 }
 
 
@@ -625,24 +666,26 @@ body {
 
 .keyboard {
   display: flex;
-  margin: 0 2rem;
   justify-content: center;
   position: relative;
+  width: 300px;
 }
 
 .keyboard__container {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .keyboard__key {
   background-color: white;
   border: 1px solid #111;
   display: inline-block;
-  height: 200px;
+  height: 130px;
   position: relative;
-  width: 60px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  width: 35px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 
   &:hover {
     cursor: pointer;
@@ -672,31 +715,33 @@ body {
 
 .sharp {
   background-color: $color-black;
-  //height: 100px;
-  //position: absolute;
+  position: absolute;
   top: 0px;
   z-index: 2;
+  height: 75px;
+  left: 40px;
+  width: 32px;
 
   p {
     color: $color-white !important;
     text-align: center;
   }
 
-  //&:nth-of-type(1) {
-  //  left: 296px;
-  //}
-  //
-  //&:nth-of-type(2) {
-  //  left: 239px;
-  //}
-  //
-  //&:nth-of-type(3) {
-  //  left: 239px;
-  //}
-  //
-  //&:nth-of-type(4) {
-  //  left: 239px;
-  //}
+  &.D {
+   left: 78px;
+  }
+
+  &.F {
+   left: 150px;
+  }
+  
+  &.G {
+   left: 188px;
+  }
+  
+  &.A {
+   left: 226px;
+  }
 }
 
 .laptop-check__container {
@@ -705,6 +750,7 @@ body {
   justify-content: center;
 
   p {
+    font-weight: 100;
     margin-right: 1rem;
   }
 }
@@ -800,4 +846,26 @@ body {
     z-index: 10;
     opacity: 1;
   }
+}
+
+.container__all {
+  display: flex;
+  justify-content: space-around;
+}
+
+.container__left {
+  width: 20%;
+  padding-left: 1rem;
+  box-sizing: border-box;
+}
+
+.container__center {
+  width: 60%;
+}
+
+.container__right {
+  height: 400px;
+  width: 20%;
+  padding-right: 1rem;
+  box-sizing: border-box;
 }

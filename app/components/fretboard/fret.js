@@ -7,7 +7,7 @@ import {deleteSelected, addSelected} from '../../actions/fretboard-actions';
 import {playTone} from '../../synth/play-sound';
 
 
-class Fret extends Component<Props, State> {
+class Fret extends Component {
 
   constructor() {
     super();
@@ -15,10 +15,10 @@ class Fret extends Component<Props, State> {
 
   render() {
     return (
-      <div className={`string__fret ${this.props.note.selected ? 'selected' : ''}`}
+      <div className={`string__fret ${this.props.note.selected ? 'selected' : ''} ${this.props.isRoot ? 'root' : ''} ${this.props.guide ? 'guide' : ''}`}
            onClick={this.props.handleClick}>
         <p className="fret__name">
-          {this.props.note.note}
+          {this.props.guide ? this.props.number : this.props.note.note}
         </p>
       </div>
     );

@@ -21,3 +21,19 @@ export const HowToUseText = {
   rejectText: "What?",
   hideRejectButton: true
 };
+
+export const ProgressDownloadingText = {
+  title: "Downloading",
+  message: "Please wait while we generate and download your midi files. This may take a moment.",
+  confirmText: "OK",
+  rejectText: "What?",
+  hideRejectButton: true
+};
+
+export const ErrorDownloadingText = {
+  title: "Oops",
+  message: "There was an error downloading your midi files. Please try again but If the error persists contact me at christopher.melville@me.com.",
+  confirmText: "OK",
+  rejectText: "",
+  hideRejectButton: true
+};

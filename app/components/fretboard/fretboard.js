@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import String from './string';
 import store from '../../store';
 import Tuning from '../fretboard/tuning';
+var _ = require('lodash');
 
 
 class Fretboard extends Component {
@@ -20,6 +21,26 @@ class Fretboard extends Component {
         store.dispatch(deleteSelected(a, b));
         store.dispatch(deleteNote(this.props.fretboardNotes[a][b].note));
       } else {
+
+        // Delete any currently selected notes on that string and replace with new
+        // so that only one fret can be selected per string
+
+        let selectedFretIndex = null;
+        let selectedFretNote = null;
+        
+        this.props.fretboardNotes[a]
+          .forEach((fret, index) => {
+            if(fret.selected === true) {
+              selectedFretIndex = index;
+              selectedFretNote = fret.note;
+            }
+          });
+        
+        if(selectedFretIndex !== null && selectedFretNote !== null) {
+          store.dispatch(deleteSelected(a, selectedFretIndex));
+          store.dispatch(deleteNote(selectedFretNote));
+        }
+
         store.dispatch(addSelected(a, b));
         store.dispatch(addNote(this.props.fretboardNotes[a][b].note));
       }
@@ -28,68 +49,44 @@ class Fretboard extends Component {
 
       this.props.fretboardNotes[a][b];
     };
-
-    //find a note on that string already
-    // yes - delete it 
-    //     - add your new one
-
-    // chord bank raw
-    //     - duplicates
   };
 
   render() {
+    
+    let numberGuide =  
+      <String
+        key={'Guide'}
+        guide={true}
+        openNote={"~"}
+        notes={_.fill(Array(22), {note: "", selected: false, octave: 0})}
+        stringNumber={7}
+        handleClick={null}
+      />
 
     let strings = this.props.fretboardNotes
       .map((notes, index) => 
         <String
           key={'S-' + index}
           openNote={notes[0].note}
+          guide={false}
           notes={notes}
           stringNumber={index}
           handleClick={this._handleClick}
         />);
 
     return (
-      <div className="fretboard__container">
-        <div className="fretboard__header">
-          <div className="header__tuning">
-            <h4 className="tuning__title">Tuning</h4>
-            <Tuning/>
-            {this.props.tuningSelection
-              .map((note: string, index: number) =>
-                <h4 key={`tuning-note-${index}`} 
-                    className="tuning__note">
-                    {note}
-                </h4>
-            )}
-          </div>
-        </div>
-
         <div className="fretboard">
+          {numberGuide}
           {strings}
         </div>
-      </div>
     );
   }
 }
 
 const mapStoreToProps = (store) => {
   return {
-    tuningSelection: store.fretboardState.tuning,
     fretboardNotes: store.fretboardState.fretboardNotes
   };
 };
 
 export default connect(mapStoreToProps)(Fretboard);
-
-
-// let numberGuide =
-//   <String
-//     key={"guide-string"}
-//     guide={true}
-//     className='fretboard__guide-string'
-//   />
-
-// <div className="header__audio-control">
-// <AudioController/>
-// </div>

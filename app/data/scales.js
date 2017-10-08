@@ -841,6 +841,126 @@ let scales_data = [
   },
   {
     "root":"C",
+    "mode":"Aeolian",
+    "notes":["C", "D", "D#", "F", "G", "G#", "A#"]
+  },
+  {
+    "root":"C#",
+    "mode":"Aeolian",
+    "notes":["C#", "D#", "E", "F#", "G#", "A", "B"]
+  },
+  {
+    "root":"D",
+    "mode":"Aeolian",
+    "notes":["D", "E", "F", "G", "A", "A#", "C"]
+  },
+  {
+    "root":"D#",
+    "mode":"Aeolian",
+    "notes":["D#", "F", "F#", "G#", "A#", "B", "C#"]
+  },
+  {
+    "root":"E",
+    "mode":"Aeolian",
+    "notes":["E", "F#", "G", "A", "B", "C", "D"]
+  },
+  {
+    "root":"F",
+    "mode":"Aeolian",
+    "notes":["F", "G", "G#", "A#", "C", "C#", "D#"]
+  },
+  {
+    "root":"F#",
+    "mode":"Aeolian",
+    "notes":["F#", "G#", "A", "B", "C#", "D", "E"]
+  },
+  {
+    "root":"G",
+    "mode":"Aeolian",
+    "notes":["G", "A", "A#", "C", "D", "D#", "F"]
+  },
+  {
+    "root":"G#",
+    "mode":"Aeolian",
+    "notes":["G#", "A#", "B", "C#", "D#", "E", "F#"]
+  },
+  {
+    "root":"A",
+    "mode":"Aeolian",
+    "notes":["A", "B", "C", "D", "E", "F", "G"]
+  },
+  {
+    "root":"A#",
+    "mode":"Aeolian",
+    "notes":["A#", "C", "C#", "D#", "F", "F#", "G#"]
+  },
+  {
+    "root":"B",
+    "mode":"Aeolian",
+    "notes":["B", "C#", "D", "E", "F#", "G", "A"]
+  },
+  {
+    "root":"C",
+    "mode":"Ionian",
+    "notes":["C", "D", "E", "F", "G", "A", "B"]
+  },
+  {
+    "root":"C#",
+    "mode":"Ionian",
+    "notes":["C#", "D#", "F", "F#", "G#", "A#", "C"]
+  },
+  {
+    "root":"D",
+    "mode":"Ionian",
+    "notes":["D", "E", "F#", "G", "A", "B", "C#"]
+  },
+  {
+    "root":"D#",
+    "mode":"Ionian",
+    "notes":["D#", "F", "G", "G#", "A#", "C", "D"]
+  },
+  {
+    "root":"E",
+    "mode":"Ionian",
+    "notes":["E", "F#", "G#", "A", "B", "C#", "D#"]
+  },
+  {
+    "root":"F",
+    "mode":"Ionian",
+    "notes":["F", "G", "A", "A#", "C", "D", "E"]
+  },
+  {
+    "root":"F#",
+    "mode":"Ionian",
+    "notes":["F#", "G#", "A#", "B", "C#", "D#", "F"]
+  },
+  {
+    "root":"G",
+    "mode":"Ionian",
+    "notes":["G", "A", "B", "C", "D", "E", "F#"]
+  },
+  {
+    "root":"G#",
+    "mode":"Ionian",
+    "notes":["G#", "A#", "C", "C#", "D#", "F", "G"]
+  },
+  {
+    "root":"A",
+    "mode":"Ionian",
+    "notes":["A", "B", "C#", "D", "E", "F#", "G#"]
+  },
+  {
+    "root":"A#",
+    "mode":"Ionian",
+    "notes":["A#", "C", "D", "D#", "F", "G", "A"]
+  },
+  {
+    "root":"B",
+    "mode":"Ionian",
+    "notes":["B", "C#", "D#", "E", "F#", "G#", "A#"]
+  },
+  {
+    "root":"C",
     "mode":"Lydian",
     "notes":["C", "D", "E", "F#", "G", "A", "B"]
   },

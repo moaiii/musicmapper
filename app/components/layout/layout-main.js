@@ -2,6 +2,7 @@ import store from '../../store';
 import {changeTuning, calculateFretboardNotes} from '../../actions/fretboard-actions';
 import Footer from './partials/footer';
 import Fretboard from '../fretboard/fretboard';
+import TuningBar from '../fretboard/tuning-bar';
 import Header from './partials/header';
 import Keyboard from '../keyboard/keyboard';
 import React, {Component} from 'react';
@@ -57,15 +58,21 @@ class LayoutMain extends Component<State> {
       <div className="app">
         <div className="app__container">
           <Header />
-          <Share />
-          <Fretboard />
-          <div className="chordbank__container">
-            <ChordBank />
-            <PossibleChords />
-          </div>
-          <div className="keyboard__container--layoutmain">
-            <LaptopCheck />
-            <Keyboard />
+          <TuningBar />
+          <div className="container__all">
+            <div className="container__left">
+              <ChordBank />
+            </div>
+            <div className="container__center">
+              <Fretboard />
+              <div className="keyboard__container">
+                <LaptopCheck />
+                <Keyboard />
+              </div>
+            </div>
+            <div className="container__right">
+              <PossibleChords />
+            </div>
           </div>
         </div>
         <Footer />

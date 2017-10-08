@@ -8,6 +8,7 @@ const initalState = {
   activeNotes: [],
   possibleChords: [],
   exactChords: [],
+  selectedChord: "",
   isShowingExactChordMatches: false,
 };
 
@@ -65,10 +66,6 @@ const chordbankReducer = (state = initalState, action) => {
 
         let chord_matches = get_possible_chords(state.activeNotes);
 
-        if(state.selectedChord.length !== 0) {
-          let scale_matches = get_possible_scales(state.selectedChord);
-        }
-
         return Object.assign({}, state, {
           possibleChords: chord_matches.possible_chords,
           exactChords: chord_matches.exact_chords
@@ -76,7 +73,7 @@ const chordbankReducer = (state = initalState, action) => {
 
       } else {
         return state;
-      }
+      };
 
       break;
 
@@ -94,7 +91,7 @@ const chordbankReducer = (state = initalState, action) => {
 
       } else {
         return state;
-      }
+      };
 
       break;
 
@@ -121,17 +118,10 @@ const chordbankReducer = (state = initalState, action) => {
 
     case types.CHORDBANK_SELECTED_CHORD_NAME:
 
-      // let newChordSelectorCopy = state.chordSelectors.map((selector) => {
-      //   if(selector['selected']) {
-      //     selector['selected'] = action.payload
-      //   }
-      // });
-      //
-      // console.log('newChordSelectorCopy', newChordSelectorCopy);
+      let scale_matches = get_possible_scales(action.payload);
 
       return Object.assign({}, state, {
-        selectedChord: action.payload,
-        // chordSelectors: newChordSelectorCopy
+        selectedChord: action.payload
       });
 
     default:

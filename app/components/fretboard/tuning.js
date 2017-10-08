@@ -16,7 +16,7 @@ class Tuning extends Component {
 
     this.state = {
       showConfirmationModal: false,
-      newTuning: null,
+      newTuning: 'STANDARD',
       oldTuning: 'STANDARD'
     };
 
