@@ -8,7 +8,7 @@ import String from './string';
 import store from '../../store';
 import Tuning from '../fretboard/tuning';
 var _ = require('lodash');
-
+import {playTone} from '../../synth/play-sound';
 
 class Fretboard extends Component {
 
@@ -21,28 +21,36 @@ class Fretboard extends Component {
         store.dispatch(deleteSelected(a, b));
         store.dispatch(deleteNote(this.props.fretboardNotes[a][b].note));
       } else {
-
+        
         // Delete any currently selected notes on that string and replace with new
         // so that only one fret can be selected per string
-
+        
         let selectedFretIndex = null;
         let selectedFretNote = null;
         
         this.props.fretboardNotes[a]
-          .forEach((fret, index) => {
-            if(fret.selected === true) {
-              selectedFretIndex = index;
-              selectedFretNote = fret.note;
-            }
-          });
+        .forEach((fret, index) => {
+          if(fret.selected === true) {
+            selectedFretIndex = index;
+            selectedFretNote = fret.note;
+          }
+        });
         
         if(selectedFretIndex !== null && selectedFretNote !== null) {
           store.dispatch(deleteSelected(a, selectedFretIndex));
           store.dispatch(deleteNote(selectedFretNote));
-        }
-
+        };
+        
+        // add note
         store.dispatch(addSelected(a, b));
         store.dispatch(addNote(this.props.fretboardNotes[a][b].note));
+        
+        // higher octave if beyond middle of fretboard
+        let octave = b >= 11 ? 5 : 4;
+
+        // play tuning tone
+        this.props.audioEnabled ? 
+          playTone(this.props.fretboardNotes[a][b].note, octave) : null;
       }
         
       store.dispatch(populateChordPossibilities());
@@ -85,7 +93,8 @@ class Fretboard extends Component {
 
 const mapStoreToProps = (store) => {
   return {
-    fretboardNotes: store.fretboardState.fretboardNotes
+    fretboardNotes: store.fretboardState.fretboardNotes,
+    audioEnabled: store.fretboardState.audioEnabled
   };
 };
 

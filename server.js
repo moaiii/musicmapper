@@ -1,4 +1,4 @@
-require('dotenv').config()
+// require('dotenv').config()
 var express = require('express');
 var path = require('path');
 var debug = require('debug')('server');
@@ -80,6 +80,6 @@ app.get('*', function(req, res, next) {
   res.sendFile(path.resolve(__dirname, 'public/index.html'));
 });
 
-var server = app.listen(process.env.PORT || process.env.LOCALHOST_PORT, "0.0.0.0", function(){
+var server = app.listen(8080, "0.0.0.0", function(){
   debug('Server running on port: ' + server.address().port);
 });

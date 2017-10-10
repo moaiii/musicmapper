@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import store from '../../store';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {addNote, deleteNote, populateChordPossibilities} from '../../actions/chordbank-actions';
-import {deleteSelected, addSelected} from '../../actions/fretboard-actions';
-import {playTone} from '../../synth/play-sound';
 
 
 class Fret extends Component {

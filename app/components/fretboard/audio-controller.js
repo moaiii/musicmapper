@@ -109,17 +109,6 @@ class AudioController extends Component<Props, State> {
                 <FaVolumeUp className="icon volume"/> :
                 <FaVolumeOff className="icon volume"/>}
         </div>
-
-        <div className="slider">
-          <Slider
-            min={0}
-            max={100}
-            tooltip={false}
-            value={this.state.volume}
-            onChangeStart={this._checkWasMuted}
-            onChange={this._updateSlider}
-            onChangeComplete={this._updateVolume}/>
-        </div>
       </div>
     )
   }
