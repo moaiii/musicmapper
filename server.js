@@ -81,5 +81,5 @@ app.get('*', function(req, res, next) {
 });
 
 var server = app.listen(8080, "0.0.0.0", function(){
-  debug('Server running on port: ' + server.address().port);
+  console.log('Server running on port: ' + server.address().port);
 });
