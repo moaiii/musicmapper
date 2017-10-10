@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import React, {Component} from 'react';
-import Key from './key';
 import Utility from '../../utility/utility';
+
+// child components
+import Key from './key';
+import ReactTooltip from 'react-tooltip';
 
 
 class Keyboard extends Component {
@@ -40,9 +43,19 @@ class Keyboard extends Component {
        />)
     });
 
+    let tooltip__keyboard = 
+      <ReactTooltip 
+        id='tooltip__keyboard' 
+        place="top" type="success" effect="solid">
+        <p>The notes of your selected chord from the right hand panel will show here.</p> 
+        <p>Any missing notes from your fret inputs will show in yellow.</p>
+      </ReactTooltip>
+
     return (
-      <div className="keyboard">
+      <div className="keyboard"
+          data-tip data-for='tooltip__keyboard'>
         {keys}
+        {tooltip__keyboard}
       </div>
     );
   }

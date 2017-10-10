@@ -1,9 +1,12 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import store from '../../store';
-import ToggleButton from 'react-toggle-button'
 import {toggleExactMatching, setSelectedChordName} from '../../actions/chordbank-actions';
 import {clearSelection, highlightSelection} from '../../actions/keyboard-actions';
+
+// child components
+import ReactTooltip from 'react-tooltip';
+import ToggleButton from 'react-toggle-button'
 
 
 class PossibleChords extends Component {
@@ -82,13 +85,28 @@ class PossibleChords extends Component {
 
     return(
       <div className="chords__container">
-        <div className="chords__match-toggle">
+        <div className="chords__match-toggle"
+              data-tip data-for='tooltip__match-toggle'>
           <h4>Exact chord matching</h4>
           {toggle}
         </div>
-        <div className="chords__list">
+        <div className="chords__list"
+             data-tip data-for='tooltip__chords__list'>
           {this.props.isShowingExactChordMatches ? exactChords : possibleChords}
         </div>
+
+        <ReactTooltip 
+          id='tooltip__chords__list' 
+          place="left" type="success" effect="solid">
+          <p>All chords containing the notes you have selected on the fretboard</p> 
+          <p>will show here - select one to show its shape in the keyboard</p>
+        </ReactTooltip>
+
+        <ReactTooltip 
+          id='tooltip__match-toggle' 
+          place="left" type="success" effect="solid">
+          <p>Show only the chords that match the exact notes you select</p> 
+        </ReactTooltip>
       </div>
     )
   }

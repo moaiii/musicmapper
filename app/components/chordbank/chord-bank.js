@@ -1,16 +1,19 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
-import PossibleChords from './possible-chords';
 import store from '../../store';
 import {clearAllNotes} from '../../actions/chordbank-actions';
 import {clearSelection} from '../../actions/keyboard-actions';
 import {deleteAllSelected} from '../../actions/fretboard-actions';
 import {generateMidi} from '../../api/midi-api';
-import Modal from '../layout/partials/modal';
 import {ProgressDownloadingText, ErrorDownloadingText} from '../../data/modal-text';
-import FaBan from 'react-icons/lib/fa/ban';
-import FaDownload from 'react-icons/lib/fa/download';
 import _ from 'lodash';
+
+//child components
+import PossibleChords from './possible-chords';
+import FaDownload from 'react-icons/lib/fa/download';
+import FaBan from 'react-icons/lib/fa/ban';
+import Modal from '../layout/partials/modal';
+import ReactTooltip from 'react-tooltip';
 
 
 class ChordBank extends Component {
@@ -124,7 +127,8 @@ class ChordBank extends Component {
         </div>
 
         <div className="chordbank__data">
-          <h4 className="chordbank__header">
+          <h4 className="chordbank__header"
+              data-tip data-for='tooltip__difference'>
             Difference
           </h4>
           <div className="chordbank__active-notes">
@@ -135,6 +139,13 @@ class ChordBank extends Component {
             )}
           </div>
           
+          <ReactTooltip 
+            id='tooltip__difference' 
+            place="right" type="success" effect="solid">
+            <p>This shows the notes in your selected chord which are</p> 
+            <p>missing from the frets you selected, they will show on the</p>
+            <p>keyboard in yellow</p>
+          </ReactTooltip>
         </div>
 
         <div className="button-bar">
@@ -145,24 +156,37 @@ class ChordBank extends Component {
             <p>Clear</p>
           </button>
 
-          <button className="chordbank__button"
-                  data-download="chord"
-                  disabled={this.props.selectedChord === "" ? true : false}
-                  onClick={this._downloadMidi.bind(this)}>
-            <FaDownload
-              className="icon"/>
-            <p>MIDI Chord</p>
-          </button>
+          <div className="button-bar--downloads"
+               data-tip data-for='tooltip__download-chord'>     
+            <button className="chordbank__button"
+                    data-download="chord"
+                    disabled={this.props.selectedChord === "" ? true : false}
+                    onClick={this._downloadMidi.bind(this)}>
+              <FaDownload
+                className="icon"/>
+              <p>MIDI Chord</p>
+            </button>
 
-          <button className="chordbank__button"
-                  data-download="scales"
-                  disabled={this.props.selectedChord === "" ? true : false}
-                  onClick={this._downloadMidi.bind(this)}>
-            <FaDownload
+            
+            <button className="chordbank__button"
+              data-download="scales"
+              disabled={this.props.selectedChord === "" ? true : false}
+              onClick={this._downloadMidi.bind(this)}>
+              <FaDownload
               className="icon"/>
-            <p>MIDI Scales</p>
-          </button>
+              <p>MIDI Scales</p>
+            </button>
+          </div>
+          
         </div>
+
+        <ReactTooltip 
+          id='tooltip__download-chord' 
+          place="right" type="success" effect="solid">
+          <p>Once you have selected a chord from the right hand panel you can</p> 
+          <p>download the midi files for the chord and its corresponding 7 scale modes </p>
+          <p>for easy import into your DAW project, bypassing the keyboard completely!</p>
+        </ReactTooltip>
       </div>
     )
   }

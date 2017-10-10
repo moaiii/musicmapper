@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import ReactSVG from 'react-svg'
 import {toggleAudio} from '../../actions/fretboard-actions';
-import Slider from 'react-rangeslider';
+
+// child components
 import FaVolumeOff from 'react-icons/lib/fa/volume-off';
 import FaVolumeUp from 'react-icons/lib/fa/volume-up';
+import ReactTooltip from 'react-tooltip';
 
 
 //@flow 
@@ -98,7 +100,8 @@ class AudioController extends Component<Props, State> {
 
   render(){
     return(
-      <div className="audio-controller">
+      <div className="audio-controller"
+           data-tip data-for='tooltip__audio-control'>
         <p className="audio-controller__status">
           {this.props.audioEnabled ? "Note On" : "Note Off"}
         </p>
@@ -109,6 +112,13 @@ class AudioController extends Component<Props, State> {
                 <FaVolumeUp className="icon volume"/> :
                 <FaVolumeOff className="icon volume"/>}
         </div>
+
+        <ReactTooltip 
+          id='tooltip__audio-control' 
+          place="bottom" type="success" effect="solid">
+          <p>Turn on if you want to hear</p> 
+          <p>the tone of each fret you select</p>
+        </ReactTooltip>
       </div>
     )
   }

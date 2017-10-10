@@ -4,11 +4,14 @@ import {changeTuning, calculateFretboardNotes, addSelected,
   deleteSelected} from "../../actions/fretboard-actions"
 import {addNote, deleteNote, populateChordPossibilities} from "../../actions/chordbank-actions";
 import {connect} from 'react-redux';
-import String from './string';
 import store from '../../store';
-import Tuning from '../fretboard/tuning';
 var _ = require('lodash');
 import {playTone} from '../../synth/play-sound';
+
+// Child components
+import String from './string';
+import Tuning from '../fretboard/tuning';
+import ReactTooltip from 'react-tooltip'
 
 class Fretboard extends Component {
 
@@ -83,9 +86,17 @@ class Fretboard extends Component {
         />);
 
     return (
-        <div className="fretboard">
+        <div className="fretboard" 
+             data-tip data-for='tooltip__fretboard'>
           {numberGuide}
           {strings}
+
+          <ReactTooltip 
+            id='tooltip__fretboard' 
+            place="top" type="success" effect="solid">
+            <p>This is your fretboard</p>
+            <p>Enter your chords notes one by one</p>
+          </ReactTooltip>
         </div>
     );
   }

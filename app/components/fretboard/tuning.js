@@ -1,13 +1,15 @@
 import Dropdown from 'react-dropdown'
 import React, {Component} from 'react';
 import store from '../../store';
-import tunings from '../../data/tunings';
-import Modal from '../layout/partials/modal';
 import {TuningChangeText} from '../../data/modal-text';
 import {deleteAllSelected, changeTuning, calculateFretboardNotes} from "../../actions/fretboard-actions"
 import {clearAllNotes} from '../../actions/chordbank-actions';
 import {clearSelection} from '../../actions/keyboard-actions';
 
+//child components
+import ReactTooltip from 'react-tooltip';
+import tunings from '../../data/tunings';
+import Modal from '../layout/partials/modal';
 
 class Tuning extends Component {
 
@@ -76,9 +78,17 @@ class Tuning extends Component {
         onConfirm = {this._onConfirmHandler} />
         
     return (
-      <div className="tuning-selector">
+      <div className="tuning-selector"
+           data-tip data-for='tooltip__tuning-selector'>
         {tunings_dropdown}
         {tunings_modal}
+
+        <ReactTooltip 
+          id='tooltip__tuning-selector' 
+          place="bottom" type="success" effect="solid">
+          <p>Start here - Pick from a wide range of common tunings</p> 
+          <p>This will overwrite any fret data you have already input</p>
+        </ReactTooltip>
       </div>
     );
   }

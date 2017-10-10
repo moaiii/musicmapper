@@ -3,8 +3,10 @@ import React, {Component} from 'react';
 import Checkbox from 'rc-checkbox';
 import store from '../../store';
 import {toggleLaptopKeyboardKeys} from '../../actions/keyboard-actions';
-import ToggleButton from 'react-toggle-button'
 
+// child components
+import ToggleButton from 'react-toggle-button'
+import ReactTooltip from 'react-tooltip';
 
 class LaptopChecked extends Component {
 
@@ -26,11 +28,19 @@ class LaptopChecked extends Component {
 
   render() {
     return (
-      <div className="laptop-check__container">
+      <div className="laptop-check__container"
+           data-tip data-for='tooltip__laptop-notes'>
         <p>Show laptop keyboard notes</p>
         <ToggleButton
           value={ this.state.disabled || false }
           onToggle={this._toggleLaptopKeyboardKeys.bind(this)} />
+
+        <ReactTooltip 
+          id='tooltip__laptop-notes' 
+          place="top" type="success" effect="solid">
+          <p>Show the keyboard as it appears on your laptop </p> 
+          <p>for quick use in your DAW</p>
+        </ReactTooltip>
       </div>
     );
   }
