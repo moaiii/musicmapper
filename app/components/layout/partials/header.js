@@ -1,12 +1,19 @@
+// functional components
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom'
 import ReactSVG from 'react-svg'
-import Modal from './modal';
 import {HowToUseText} from '../../../data/modal-text';
+import store from '../../../store';
+import * as generalAction from '../../../actions/general-actions';
+
+// child components
+import Modal from './modal';
 import FaQuestion from 'react-icons/lib/fa/question';
 import Register from '../../../auth/register';
 import Login from '../../../auth/login';
 import Share from './share';
+import ToggleButton from 'react-toggle-button';
+
 
 class Header extends Component {
 
@@ -16,11 +23,13 @@ class Header extends Component {
     this.state = {
       showHowToUse: false,
       showLogin: false,
-      showRegister: false
+      showRegister: false,
+      tooltipIsOn: false
     };
 
     this._hideHowToUse = this._hideHowToUse.bind(this);
     this._showHowToUse = this._showHowToUse.bind(this);
+    this.toggleTooltip = this.toggleTooltip.bind(this)
   }
 
   _showHowToUse() {
@@ -59,6 +68,16 @@ class Header extends Component {
     })
   }
 
+  toggleTooltip() {
+    this.setState({
+      tooltipIsOn: !this.state.tooltipIsOn
+    }, () => {
+      this.state.tooltipIsOn ? 
+        store.dispatch(generalAction.tooltipOn()) :
+        store.dispatch(generalAction.tooltipOff())
+    });
+  };
+
   render() {
 
     let howToUse =
@@ -71,6 +90,13 @@ class Header extends Component {
     let temp_hide = {
       display: 'none'
     }    
+
+    let toggle =
+    <ToggleButton
+      inactiveLabel={'OFF'}
+      activeLabel={'ON'}
+      value={this.state.tooltipIsOn || false}
+      onToggle={this.toggleTooltip} />
 
     return(
       <div className="header">
@@ -85,6 +111,10 @@ class Header extends Component {
 
         <div className="header__nav">
           <ul className="nav__container">
+            <li className="nav__item how-to-use">
+              Tooltips
+              {toggle}
+            </li>
             <li className="nav__item how-to-use" 
                 onClick={this._showHowToUse.bind(this)}>
               How to use

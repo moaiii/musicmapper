@@ -6,7 +6,7 @@ import {clearSelection, highlightSelection} from '../../actions/keyboard-actions
 
 // child components
 import ReactTooltip from 'react-tooltip';
-import ToggleButton from 'react-toggle-button'
+import ToggleButton from 'react-toggle-button';
 
 
 class PossibleChords extends Component {
@@ -97,14 +97,20 @@ class PossibleChords extends Component {
 
         <ReactTooltip 
           id='tooltip__chords__list' 
-          place="left" type="success" effect="solid">
+          place="left" 
+          type="success" 
+          effect="solid" 
+          disable={!this.props.tooltipIsOn}>
           <p>All chords containing the notes you have selected on the fretboard</p> 
           <p>will show here - select one to show its shape in the keyboard</p>
         </ReactTooltip>
 
         <ReactTooltip 
           id='tooltip__match-toggle' 
-          place="left" type="success" effect="solid">
+          place="left" 
+          type="success" 
+          effect="solid" 
+          disable={!this.props.tooltipIsOn}>
           <p>Show only the chords that match the exact notes you select</p> 
         </ReactTooltip>
       </div>
@@ -117,7 +123,8 @@ const mapStoreToProps = (store) => {
     isShowingExactChordMatches: store.chordbankState.isShowingExactChordMatches,
     possibleChords: store.chordbankState.possibleChords,
     exactChords: store.chordbankState.exactChords,
-    selected: store.chordbankState.selectedChord
+    selected: store.chordbankState.selectedChord,
+    tooltipIsOn: store.generalState.tooltipIsOn
   };
 };
 

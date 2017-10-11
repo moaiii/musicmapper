@@ -1,4 +1,12 @@
 /**
+ * General action types
+ * @type {string}
+ */
+export const GENERAL_TOOLTIP_OFF = "GENERAL_TOOLTIP_OFF";
+export const GENERAL_TOOLTIP_ON = "GENERAL_TOOLTIP_ON";
+
+
+/**
  * Fretboard action types
  * @type {string}
  */

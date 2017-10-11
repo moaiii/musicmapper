@@ -99,6 +99,7 @@ class ChordBank extends Component {
           isVisible = {this.state.showError}
           onReject = {this._hideError.bind(this)}
           onConfirm = {this._hideError.bind(this)} />
+
         
     return(
       <div className="chordbank">
@@ -141,7 +142,7 @@ class ChordBank extends Component {
           
           <ReactTooltip 
             id='tooltip__difference' 
-            place="right" type="success" effect="solid">
+            place="right" type="success" effect="solid" disable={!this.props.tooltipIsOn}>
             <p>This shows the notes in your selected chord which are</p> 
             <p>missing from the frets you selected, they will show on the</p>
             <p>keyboard in yellow</p>
@@ -182,7 +183,10 @@ class ChordBank extends Component {
 
         <ReactTooltip 
           id='tooltip__download-chord' 
-          place="right" type="success" effect="solid">
+          place="right" 
+          type="success" 
+          effect="solid" 
+          disable={!this.props.tooltipIsOn}>
           <p>Once you have selected a chord from the right hand panel you can</p> 
           <p>download the midi files for the chord and its corresponding 7 scale modes </p>
           <p>for easy import into your DAW project, bypassing the keyboard completely!</p>
@@ -196,7 +200,8 @@ const mapStoreToProps = (store) => {
   return {
     notes: store.chordbankState.activeNotes,
     selectedChord: store.chordbankState.selectedChord,
-    differenceNotes: store.keyboardState.differenceNotes
+    differenceNotes: store.keyboardState.differenceNotes,
+    tooltipIsOn: store.generalState.tooltipIsOn
   };
 };
 

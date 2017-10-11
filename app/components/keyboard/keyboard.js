@@ -46,7 +46,10 @@ class Keyboard extends Component {
     let tooltip__keyboard = 
       <ReactTooltip 
         id='tooltip__keyboard' 
-        place="top" type="success" effect="solid">
+        place="top" 
+        type="success" 
+        effect="solid"
+        disable={!this.props.tooltipIsOn}>
         <p>The notes of your selected chord from the right hand panel will show here.</p> 
         <p>Any missing notes from your fret inputs will show in yellow.</p>
       </ReactTooltip>
@@ -65,7 +68,8 @@ const mapStoreToProps = (store) => {
   return {
     highlighted: store.keyboardState.highlightedNotes,
     difference: store.keyboardState.differenceNotes,
-    showLaptopKeys: store.keyboardState.showLaptopKeys
+    showLaptopKeys: store.keyboardState.showLaptopKeys,
+    tooltipIsOn: store.generalState.tooltipIsOn
   };
 };
 

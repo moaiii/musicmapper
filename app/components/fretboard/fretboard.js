@@ -93,7 +93,10 @@ class Fretboard extends Component {
 
           <ReactTooltip 
             id='tooltip__fretboard' 
-            place="top" type="success" effect="solid">
+            place="top" 
+            type="success" 
+            effect="solid"
+            disable={!this.props.tooltipIsOn}>
             <p>This is your fretboard</p>
             <p>Enter your chords notes one by one</p>
           </ReactTooltip>
@@ -105,7 +108,8 @@ class Fretboard extends Component {
 const mapStoreToProps = (store) => {
   return {
     fretboardNotes: store.fretboardState.fretboardNotes,
-    audioEnabled: store.fretboardState.audioEnabled
+    audioEnabled: store.fretboardState.audioEnabled,
+    tooltipIsOn: store.generalState.tooltipIsOn
   };
 };
 

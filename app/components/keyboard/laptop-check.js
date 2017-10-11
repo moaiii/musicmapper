@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import Checkbox from 'rc-checkbox';
 import store from '../../store';
@@ -37,7 +37,10 @@ class LaptopChecked extends Component {
 
         <ReactTooltip 
           id='tooltip__laptop-notes' 
-          place="top" type="success" effect="solid">
+          place="top" 
+          type="success" 
+          effect="solid"
+          disable={!this.props.tooltipIsOn}>
           <p>Show the keyboard as it appears on your laptop </p> 
           <p>for quick use in your DAW</p>
         </ReactTooltip>
@@ -49,6 +52,7 @@ class LaptopChecked extends Component {
 const mapStoreToProps = (store) => {
   return {
     showLaptopKeys: store.keyboardState.showLaptopKeys,
+    tooltipIsOn: store.generalState.tooltipIsOn
   };
 };
 

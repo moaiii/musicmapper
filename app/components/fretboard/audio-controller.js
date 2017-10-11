@@ -115,7 +115,10 @@ class AudioController extends Component<Props, State> {
 
         <ReactTooltip 
           id='tooltip__audio-control' 
-          place="bottom" type="success" effect="solid">
+          place="bottom" 
+          type="success" 
+          effect="solid"
+          disable={!this.props.tooltipIsOn}>
           <p>Turn on if you want to hear</p> 
           <p>the tone of each fret you select</p>
         </ReactTooltip>
@@ -126,7 +129,8 @@ class AudioController extends Component<Props, State> {
 
 const mapStoreToProps = (store) => {
   return {
-    audioEnabled: store.fretboardState.audioEnabled
+    audioEnabled: store.fretboardState.audioEnabled,
+    tooltipIsOn: store.generalState.tooltipIsOn
   };
 };
 

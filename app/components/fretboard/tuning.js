@@ -1,6 +1,8 @@
+// functional componenets
 import Dropdown from 'react-dropdown'
 import React, {Component} from 'react';
 import store from '../../store';
+import {connect} from 'react-redux';
 import {TuningChangeText} from '../../data/modal-text';
 import {deleteAllSelected, changeTuning, calculateFretboardNotes} from "../../actions/fretboard-actions"
 import {clearAllNotes} from '../../actions/chordbank-actions';
@@ -10,6 +12,7 @@ import {clearSelection} from '../../actions/keyboard-actions';
 import ReactTooltip from 'react-tooltip';
 import tunings from '../../data/tunings';
 import Modal from '../layout/partials/modal';
+
 
 class Tuning extends Component {
 
@@ -85,14 +88,22 @@ class Tuning extends Component {
 
         <ReactTooltip 
           id='tooltip__tuning-selector' 
-          place="bottom" type="success" effect="solid">
+          place="bottom" 
+          type="success" 
+          effect="solid"
+          disable={!this.props.tooltipIsOn}>
           <p>Start here - Pick from a wide range of common tunings</p> 
           <p>This will overwrite any fret data you have already input</p>
         </ReactTooltip>
       </div>
     );
   }
-}
+};
 
+const mapStoreToProps = (store) => {
+  return {
+    tooltipIsOn: store.generalState.tooltipIsOn
+  };
+};
 
 export default Tuning;
