@@ -458,8 +458,8 @@ body {
   border: 1px solid #ccc;
   border-radius: 2px;
   box-sizing: border-box;
-  color: #333;
-  cursor: default;
+  color: rgb(184, 127, 127);
+  cursor: pointer;
   outline: none;
   padding: 8px 52px 8px 10px;
   transition: all 200ms ease;
@@ -755,6 +755,10 @@ body {
 
 .highlighted {
   background-color: $color-primary !important;
+}
+
+.scale {
+  background-color: $color-tertiary !important;
 }
 
 .sharp {

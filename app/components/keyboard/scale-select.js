@@ -3,7 +3,7 @@ import Dropdown from 'react-dropdown'
 import React, {Component} from 'react';
 import store from '../../store';
 import {connect} from 'react-redux';
-import * as chordbankAction from "../../actions/fretboard-actions";
+import * as chordbankAction from "../../actions/chordbank-actions";
 
 //child components
 import ReactTooltip from 'react-tooltip';
@@ -15,30 +15,47 @@ class ScaleSelect extends Component {
     super();
 
     this.state = {
-      newScale: '',
-      oldScale: ''
+      selectedScale: '',
+      selectedNotes: [],
+      modes: []
     };
-  }
+  };
 
-  changeScale() {
-    this.setState({ 
-
-    }, () => {
-      store.dispatch(chordbankAction.setSelectedScale(this.state.selectedScaleIndex));
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      modes: nextProps.modes
     });
-  }
+  };
+
+  changeScale(e) {
+
+    this.setState({ 
+      selectedScale: e.value
+    }, () => {
+
+      let rootName = this.state.selectedScale.split(" - ")[0];
+      let modeName = this.state.selectedScale.split(" - ")[1];
+  
+      let selectedNotes = this.props.modes
+        .filter(scale => 
+          scale.root === rootName && scale.mode === modeName);
+
+      this.setState({
+        selectedNotes: selectedNotes[0].notes
+      }, () => {
+        store.dispatch(chordbankAction.setSelectedScale(this.state.selectedNotes))
+      })
+    });
+  };
 
   render() {
-
-    let scale_options = this.props.modes !== undefined ? this.props.modes.map(scale => {
-      return `${scale.root} - ${scale.mode}`;
-    }) : null;
+    let scale_options = this.state.modes.map(scale => `${scale.root} - ${scale.mode}`);
 
     let scaleSelectDropdown = 
       <Dropdown 
         options = {scale_options}
         onChange = {this.changeScale.bind(this)}
-        value = {this.state.newScale}
+        value = {this.state.selectedScale}
         placeholder = "Select a scale" />
 
         
@@ -62,10 +79,9 @@ class ScaleSelect extends Component {
 };
 
 const mapStoreToProps = (store) => {
-  console.log("SCALES: ", store.chordbankState.modeScales);
   return {
     modes: store.chordbankState.modeScales
   };
 };
 
-export default ScaleSelect;
+export default connect(mapStoreToProps)(ScaleSelect);

@@ -25,13 +25,23 @@ class Keyboard extends Component {
 
       let key_class_mod = "";
 
-      this.props.highlighted.map(highlighted_note => {
-        if(note === highlighted_note) key_class_mod = "highlighted"
-      });
+      if(this.props.type === "chord") {
 
-      this.props.difference.map(difference_note => {
-        if(note === difference_note) key_class_mod = "difference"
-      });
+        this.props.highlighted.map(highlighted_note => {
+          if(note === highlighted_note) key_class_mod = "highlighted"
+        });
+  
+        this.props.difference.map(difference_note => {
+          if(note === difference_note) key_class_mod = "difference"
+        });
+
+      } else if (this.props.type === "scale") {
+        
+        this.props.selectedScaleNotes.map(highlighted_note => {
+          if(note === highlighted_note) key_class_mod = "scale"
+        });
+      }
+
 
       return (
        <Key
@@ -69,7 +79,8 @@ const mapStoreToProps = (store) => {
     highlighted: store.keyboardState.highlightedNotes,
     difference: store.keyboardState.differenceNotes,
     showLaptopKeys: store.keyboardState.showLaptopKeys,
-    tooltipIsOn: store.generalState.tooltipIsOn
+    tooltipIsOn: store.generalState.tooltipIsOn,
+    selectedScaleNotes: store.chordbankState.selectedScaleNotes
   };
 };
 
