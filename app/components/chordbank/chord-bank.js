@@ -4,7 +4,7 @@ import store from '../../store';
 import {clearAllNotes} from '../../actions/chordbank-actions';
 import {clearSelection} from '../../actions/keyboard-actions';
 import {deleteAllSelected} from '../../actions/fretboard-actions';
-import {generateMidi} from '../../api/midi-api';
+import * as midiApi  from '../../api/midi-api';
 import {ProgressDownloadingText, ErrorDownloadingText} from '../../data/modal-text';
 import _ from 'lodash';
 
@@ -45,9 +45,6 @@ class ChordBank extends Component {
   }
 
   
-  componentDidMount() {};
-
-
   _clearNotes() {
     store.dispatch(clearAllNotes());
     store.dispatch(clearSelection());
@@ -55,31 +52,61 @@ class ChordBank extends Component {
   };
 
 
+  /**
+   * 
+   * @param {event} e 
+   */
   _downloadMidi(e) {
-    let self = this;
-    let type = e.currentTarget.getAttribute('data-download'); 
-    self._showDownloading();
-
-    generateMidi({
-      notes: this.props.notes, 
-      diff: this.props.differenceNotes, 
-      type: type,
-      chordName: this.props.selectedChord
+    this._showDownloading();
     
-    }).then((response) => {
+    let midi_type = e.currentTarget.getAttribute('data-download'); 
+    
+    if(midi_type === "scales") {
+      
+      let scales_name = `${this.props.selectedChord}-modes`;
+      let scale_notes = {notes: JSON.stringify(this.props.modeScales[0])};
 
-      self._hideDownloading();
+      this.callMidiApi(scale_notes, scales_name, midi_type);
 
-      this.setState({
-        downloadLink: JSON.parse(response.data.body)["download-link"]
+    } else if (midi_type === "chord") {
 
-      }, () => {
-        window.open(this.state.downloadLink);
-      });
+      let chord_name = this.props.selectedChord;
+      let chord_notes = JSON
+        .stringify(_.concat(this.props.notes, this.props.differenceNotes));
 
-    }).catch((error) => {
-      self._hideDownloading();
-      self._showError();
+      this.callMidiApi(chord_notes, chord_name, midi_type);
+
+    } else {
+      console.error("Error cannot send data for file download!");
+    } 
+  }; 
+
+
+  /**
+   * 
+   * @param {string} notes 
+   * @param {string} name 
+   * @param {string} midi_type 
+   */
+  callMidiApi(notes, name, midi_type) {
+    midiApi.generateMidi(notes, name, midi_type)
+    .then((response) => {
+      this._hideDownloading();
+
+      let downloadLink = JSON.parse(response.data.body)["download-link"];
+
+      if (downloadLink !== undefined) {
+        this.setState({
+          downloadLink: downloadLink
+  
+        }, () => {
+          window.open(this.state.downloadLink);
+        });
+      };
+    })
+    .catch((error) => {
+      this._hideDownloading();
+      this._showError();
       console.log('Error in chord bank: ', error);
     });
   };
@@ -200,6 +227,7 @@ const mapStoreToProps = (store) => {
   return {
     notes: store.chordbankState.activeNotes,
     selectedChord: store.chordbankState.selectedChord,
+    modeScales: store.chordbankState.modeScales,
     differenceNotes: store.keyboardState.differenceNotes,
     tooltipIsOn: store.generalState.tooltipIsOn
   };

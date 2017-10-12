@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import store from '../../store';
-import {toggleExactMatching, setSelectedChordName} from '../../actions/chordbank-actions';
+import {toggleExactMatching, setSelectedChordName, populateAllScales} from '../../actions/chordbank-actions';
 import {clearSelection, highlightSelection} from '../../actions/keyboard-actions';
 
 // child components
@@ -38,6 +38,7 @@ class PossibleChords extends Component {
       "difference": e.difference
     }));
     store.dispatch(setSelectedChordName(e.name));
+    store.dispatch(populateAllScales());
   };
 
   render(){

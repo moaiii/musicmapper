@@ -3,16 +3,12 @@ import axios from 'axios';
 import _ from 'lodash';
 
 
-export function generateMidi(input) {
-
+export function generateMidi(notes, name, midi_type) {
   return new Promise((resolve, reject) => {
-    let all_notes = _.concat(input.notes, input.diff);
-    
     axios.post(DEV_GENERATE_MIDI_URL, {
-      notes: all_notes,
-      name: input.chordName,
-      midi_type: input.midiType,
-      timeStamp: input.timeStamp
+      notes: notes,
+      name: name,
+      midi_type: midi_type,
       
     }).then(response => {
       console.log(response);

@@ -8,6 +8,7 @@ import Keyboard from '../keyboard/keyboard';
 import React, {Component} from 'react';
 import ChordBank from '../chordbank/chord-bank';
 import LaptopCheck from '../keyboard/laptop-check';
+import ScaleSelect from '../keyboard/scale-select';
 import PossibleChords from '../chordbank/possible-chords';
 import Share from './partials/share';
 import ChordSelector from '../chordbank/chord-selector';
@@ -66,8 +67,14 @@ class LayoutMain extends Component<State> {
             <div className="container__center">
               <Fretboard />
               <div className="keyboard__container">
-                <LaptopCheck />
-                <Keyboard />
+                <div className="keyboard__controller">
+                  <LaptopCheck />
+                  <ScaleSelect />
+                </div>
+                <div className="keyboards">
+                  <Keyboard type="chord"/>
+                  <Keyboard type="scale"/>
+                </div>
               </div>
             </div>
             <div className="container__right">

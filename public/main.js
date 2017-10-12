@@ -24180,9 +24180,11 @@
 	var CHORDBANK_ADD_NOTE = exports.CHORDBANK_ADD_NOTE = "CHORDBANK_ADD_NOTE";
 	var CHORDBANK_DELETE_NOTE = exports.CHORDBANK_DELETE_NOTE = "CHORDBANK_DELETE_NOTE";
 	var CHORDBANK_POPULATE_POSSIBLE_CHORDS = exports.CHORDBANK_POPULATE_POSSIBLE_CHORDS = "CHORDBANK_POPULATE_POSSIBLE_CHORDS";
+	var CHORDBANK_POPULATE_POSSIBLE_SCALES = exports.CHORDBANK_POPULATE_POSSIBLE_SCALES = "CHORDBANK_POPULATE_POSSIBLE_SCALES";
 	var CHORDBANK_TOGGLE_EXACT_MATCHING = exports.CHORDBANK_TOGGLE_EXACT_MATCHING = "CHORDBANK_TOGGLE_EXACT_MATCHING";
 	var CHORDBANK_CLEAR_ALL_NOTES = exports.CHORDBANK_CLEAR_ALL_NOTES = "CHORDBANK_CLEAR_ALL_NOTES";
 	var CHORDBANK_SELECTED_CHORD_NAME = exports.CHORDBANK_SELECTED_CHORD_NAME = "CHORDBANK_SELECTED_CHORD_NAME";
+	var CHORDBANK_SET_SELECTED_SCALE_NOTES = exports.CHORDBANK_SET_SELECTED_SCALE_NOTES = "CHORDBANK_SET_SELECTED_SCALE_NOTES";
 
 /***/ }),
 /* 220 */
@@ -41582,7 +41584,10 @@
 	  possibleChords: [],
 	  exactChords: [],
 	  selectedChord: "",
-	  isShowingExactChordMatches: false
+	  modeScales: [],
+	  allPossibleScales: [],
+	  isShowingExactChordMatches: false,
+	  selectedScaleNotes: []
 	};
 	
 	var chordbankReducer = function chordbankReducer() {
@@ -41654,15 +41659,14 @@
 	
 	      break;
 	
-	    // Populate chord bank
-	    case types.CHORDBANK_GET_SCALE_CHORDS:
-	      if (state.activeNotes.length >= 2) {
-	
-	        var _chord_matches = (0, _getPossibleChords.get_possible_chords)(state.activeNotes);
+	    // Populate scales data
+	    case types.CHORDBANK_POPULATE_POSSIBLE_SCALES:
+	      if (state.selectedChord.length !== 0) {
+	        var _scale_matches = (0, _getPossibleScales.get_possible_scales)(state.selectedChord);
 	
 	        return Object.assign({}, state, {
-	          possibleChords: _chord_matches.possible_chords,
-	          exactChords: _chord_matches.exact_chords
+	          modeScales: _scale_matches.modeScales,
+	          allPossibleScales: _scale_matches.allPossibleScales
 	        });
 	      } else {
 	        return state;
@@ -41693,6 +41697,11 @@
 	
 	      return Object.assign({}, state, {
 	        selectedChord: action.payload
+	      });
+	
+	    case types.CHORDBANK_SET_SELECTED_SCALE_NOTES:
+	      return Object.assign({}, state, {
+	        selectedScaleNotes: action.payload
 	      });
 	
 	    default:
@@ -50979,6 +50988,10 @@
 	
 	var _laptopCheck2 = _interopRequireDefault(_laptopCheck);
 	
+	var _scaleSelect = __webpack_require__(542);
+	
+	var _scaleSelect2 = _interopRequireDefault(_scaleSelect);
+	
 	var _possibleChords = __webpack_require__(435);
 	
 	var _possibleChords2 = _interopRequireDefault(_possibleChords);
@@ -51070,8 +51083,18 @@
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'keyboard__container' },
-	                _react2.default.createElement(_laptopCheck2.default, null),
-	                _react2.default.createElement(_keyboard2.default, null)
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'keyboard__controller' },
+	                  _react2.default.createElement(_laptopCheck2.default, null),
+	                  _react2.default.createElement(_scaleSelect2.default, null)
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'keyboards' },
+	                  _react2.default.createElement(_keyboard2.default, { type: 'chord' }),
+	                  _react2.default.createElement(_keyboard2.default, { type: 'scale' })
+	                )
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -54896,9 +54919,11 @@
 	exports.addNote = addNote;
 	exports.deleteNote = deleteNote;
 	exports.populateChordPossibilities = populateChordPossibilities;
+	exports.populateAllScales = populateAllScales;
 	exports.toggleExactMatching = toggleExactMatching;
 	exports.clearAllNotes = clearAllNotes;
 	exports.setSelectedChordName = setSelectedChordName;
+	exports.setSelectedScale = setSelectedScale;
 	
 	var _types = __webpack_require__(219);
 	
@@ -54911,40 +54936,54 @@
 	    type: types.CHORDBANK_ADD_NOTE,
 	    payload: note
 	  };
-	}
+	};
 	
 	function deleteNote(note) {
 	  return {
 	    type: types.CHORDBANK_DELETE_NOTE,
 	    payload: note
 	  };
-	}
+	};
 	
 	function populateChordPossibilities() {
 	  return {
 	    type: types.CHORDBANK_POPULATE_POSSIBLE_CHORDS,
 	    payload: []
 	  };
-	}
+	};
+	
+	function populateAllScales() {
+	  return {
+	    type: types.CHORDBANK_POPULATE_POSSIBLE_SCALES,
+	    payload: null
+	  };
+	};
 	
 	function toggleExactMatching(isExactMatch) {
 	  return {
 	    type: types.CHORDBANK_TOGGLE_EXACT_MATCHING,
 	    payload: isExactMatch
 	  };
-	}
+	};
 	
 	function clearAllNotes() {
 	  return {
 	    type: types.CHORDBANK_CLEAR_ALL_NOTES,
 	    payload: {}
 	  };
-	}
+	};
 	
 	function setSelectedChordName(name) {
 	  return {
 	    type: types.CHORDBANK_SELECTED_CHORD_NAME,
 	    payload: name
+	  };
+	};
+	
+	function setSelectedScale(notes) {
+	  return {
+	    type: types.CHORDBANK_SET_SELECTED_SCALE_NOTES,
+	    payload: notes
 	  };
 	}
 
@@ -55621,7 +55660,7 @@
 	
 	var ProgressDownloadingText = exports.ProgressDownloadingText = {
 	  title: "Downloading",
-	  message: "Please wait while we generate and download your midi files. This may take a moment.",
+	  message: "Please allow pop ups from this webpage. Your midi files are generating - this may take a moment.",
 	  confirmText: "OK",
 	  rejectText: "What?",
 	  hideRejectButton: true
@@ -67495,8 +67534,7 @@
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'keyboard__key' + this.state.note_class_modifier + ' ' + this.props.key_class_mod + ' ' + this.props.note.charAt(0),
-	          onClick: this._handleKeyClick.bind(this) },
+	        { className: 'keyboard__key' + this.state.note_class_modifier + ' ' + this.props.key_class_mod + ' ' + this.props.note.charAt(0) },
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'key__name' },
@@ -67543,6 +67581,8 @@
 	
 	var _midiApi = __webpack_require__(434);
 	
+	var midiApi = _interopRequireWildcard(_midiApi);
+	
 	var _modalText = __webpack_require__(337);
 	
 	var _lodash = __webpack_require__(222);
@@ -67568,6 +67608,8 @@
 	var _reactTooltip = __webpack_require__(316);
 	
 	var _reactTooltip2 = _interopRequireDefault(_reactTooltip);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -67617,9 +67659,6 @@
 	      this.setState({ showError: false });
 	    }
 	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
-	  }, {
 	    key: '_clearNotes',
 	    value: function _clearNotes() {
 	      _store2.default.dispatch((0, _chordbankActions.clearAllNotes)());
@@ -67628,32 +67667,62 @@
 	    }
 	  }, {
 	    key: '_downloadMidi',
+	
+	
+	    /**
+	     * 
+	     * @param {event} e 
+	     */
 	    value: function _downloadMidi(e) {
+	      this._showDownloading();
+	
+	      var midi_type = e.currentTarget.getAttribute('data-download');
+	
+	      if (midi_type === "scales") {
+	
+	        var scales_name = this.props.selectedChord + '-modes';
+	        var scale_notes = { notes: JSON.stringify(this.props.modeScales[0]) };
+	
+	        this.callMidiApi(scale_notes, scales_name, midi_type);
+	      } else if (midi_type === "chord") {
+	
+	        var chord_name = this.props.selectedChord;
+	        var chord_notes = JSON.stringify(_lodash2.default.concat(this.props.notes, this.props.differenceNotes));
+	
+	        this.callMidiApi(chord_notes, chord_name, midi_type);
+	      } else {
+	        console.error("Error cannot send data for file download!");
+	      }
+	    }
+	  }, {
+	    key: 'callMidiApi',
+	
+	
+	    /**
+	     * 
+	     * @param {string} notes 
+	     * @param {string} name 
+	     * @param {string} midi_type 
+	     */
+	    value: function callMidiApi(notes, name, midi_type) {
 	      var _this2 = this;
 	
-	      var self = this;
-	      var type = e.currentTarget.getAttribute('data-download');
-	      self._showDownloading();
+	      midiApi.generateMidi(notes, name, midi_type).then(function (response) {
+	        _this2._hideDownloading();
 	
-	      (0, _midiApi.generateMidi)({
-	        notes: this.props.notes,
-	        diff: this.props.differenceNotes,
-	        type: type,
-	        chordName: this.props.selectedChord
+	        var downloadLink = JSON.parse(response.data.body)["download-link"];
 	
-	      }).then(function (response) {
+	        if (downloadLink !== undefined) {
+	          _this2.setState({
+	            downloadLink: downloadLink
 	
-	        self._hideDownloading();
-	
-	        _this2.setState({
-	          downloadLink: JSON.parse(response.data.body)["download-link"]
-	
-	        }, function () {
-	          window.open(_this2.state.downloadLink);
-	        });
+	          }, function () {
+	            window.open(_this2.state.downloadLink);
+	          });
+	        };
 	      }).catch(function (error) {
-	        self._hideDownloading();
-	        self._showError();
+	        _this2._hideDownloading();
+	        _this2._showError();
 	        console.log('Error in chord bank: ', error);
 	      });
 	    }
@@ -67841,6 +67910,7 @@
 	  return {
 	    notes: store.chordbankState.activeNotes,
 	    selectedChord: store.chordbankState.selectedChord,
+	    modeScales: store.chordbankState.modeScales,
 	    differenceNotes: store.keyboardState.differenceNotes,
 	    tooltipIsOn: store.generalState.tooltipIsOn
 	  };
@@ -67871,16 +67941,12 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function generateMidi(input) {
-	
+	function generateMidi(notes, name, midi_type) {
 	  return new Promise(function (resolve, reject) {
-	    var all_notes = _lodash2.default.concat(input.notes, input.diff);
-	
 	    _axios2.default.post(_config.DEV_GENERATE_MIDI_URL, {
-	      notes: all_notes,
-	      name: input.chordName,
-	      midi_type: input.midiType,
-	      timeStamp: input.timeStamp
+	      notes: notes,
+	      name: name,
+	      midi_type: midi_type
 	
 	    }).then(function (response) {
 	      console.log(response);
@@ -67976,6 +68042,7 @@
 	        "difference": e.difference
 	      }));
 	      _store2.default.dispatch((0, _chordbankActions.setSelectedChordName)(e.name));
+	      _store2.default.dispatch((0, _chordbankActions.populateAllScales)());
 	    }
 	  }, {
 	    key: 'render',
@@ -71204,7 +71271,7 @@
 	exports.i(__webpack_require__(540), "");
 	
 	// module
-	exports.push([module.id, "/**\n *  VARIABLES\n */\n/**\n *  IMPORTS\n */\n.btn {\n  cursor: pointer; }\n\n* {\n  font-family: 'Roboto Slab', serif; }\n\nbody {\n  margin: 0; }\n\n.app {\n  margin: 0;\n  padding: 0;\n  filter: blur(0.4px) saturate(1.1);\n  min-height: 100vh; }\n\n.app__root {\n  background-color: white;\n  position: relative; }\n\n.app__container {\n  padding: 0 2rem;\n  max-width: 1000px;\n  display: block;\n  margin: auto;\n  position: relative; }\n\n.header {\n  border-bottom: 1px solid #ecf0f1;\n  height: 80px;\n  position: relative;\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 1.5rem; }\n  .header div {\n    display: flex;\n    align-items: center; }\n  .header h1 {\n    display: inline-block;\n    margin-right: 1rem; }\n\n.header__nav {\n  width: 50%; }\n\n.nav__container {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end; }\n\n.nav__item {\n  cursor: pointer;\n  display: flex;\n  align-items: center; }\n\n.footer {\n  background-color: #191919;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  height: 150px;\n  justify-content: space-evenly;\n  position: fixed;\n  width: 100%;\n  padding: 15px;\n  margin: 50px 0 0 0;\n  box-sizing: border-box;\n  bottom: 0; }\n\n.contact__container {\n  display: flex;\n  width: 40%;\n  justify-content: space-evenly; }\n  .contact__container div {\n    cursor: pointer;\n    display: inline-block;\n    margin: 0.4rem;\n    position: relative;\n    top: 1px; }\n    .contact__container div svg {\n      fill: #ecf0f1; }\n  .contact__container p {\n    display: inline-block; }\n\n.copyright__container {\n  display: inline-block; }\n  .copyright__container p {\n    font-size: 0.7rem;\n    color: #7f8c8d; }\n\n.share {\n  display: inline-flex; }\n\n.share__container {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .share__container div {\n    cursor: pointer;\n    display: flex;\n    justify-content: center;\n    margin: 0.5rem; }\n  .share__container p {\n    display: flex;\n    margin: 1rem;\n    justify-content: center; }\n\n.icon__container {\n  cursor: pointer;\n  z-index: 2; }\n  .icon__container div {\n    z-index: -1; }\n  .icon__container svg {\n    z-index: -1; }\n\n.icon__container--audio-control {\n  position: relative;\n  top: 12px;\n  margin: 0 0 0 0.5rem; }\n  .icon__container--audio-control div div svg {\n    width: 24px;\n    height: 24px; }\n\n.icon {\n  z-index: 1; }\n  .icon:hover {\n    fill: #2ecc71; }\n  .icon .share {\n    color: #191919; }\n  .icon .volume:hover {\n    fill: #ecf0f1; }\n\n.modal__container {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 100%;\n  z-index: -1;\n  opacity: 1;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  display: none; }\n  .modal__container.isVisible {\n    z-index: 6;\n    bottom: 0;\n    display: flex; }\n\n.modal__messagebox {\n  z-index: -1;\n  height: auto;\n  width: 30%;\n  background-color: white;\n  border-radius: 3px;\n  display: flex;\n  flex-direction: column;\n  padding: 2rem;\n  align-items: center;\n  transform: translateY(0);\n  transition: all 0.1s ease;\n  opacity: 0; }\n  .modal__messagebox.isVisible {\n    z-index: 6;\n    opacity: 1; }\n  .modal__messagebox h1 {\n    margin-right: 0; }\n  .modal__messagebox p {\n    margin: 0 0 2rem 0;\n    font-weight: 100;\n    text-align: center;\n    text-align: justify; }\n  @media (max-width: 768px) {\n    .modal__messagebox {\n      width: 70%; } }\n  @media (max-width: 425px) {\n    .modal__messagebox {\n      width: 100%; } }\n\n.modal__curtain {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 100%;\n  background-color: #191919;\n  z-index: 5;\n  opacity: 0;\n  transition: opacity 0.1s ease; }\n  .modal__curtain.isVisible {\n    opacity: 0.95;\n    bottom: 0; }\n\n.modal__button-container {\n  display: flex;\n  justify-content: space-evenly;\n  width: 100%; }\n\n.modal__button {\n  display: inline-block;\n  padding: 0.5rem 1rem;\n  font-size: 1rem;\n  border: 2px solid;\n  background-color: transparent; }\n  .modal__button:hover {\n    cursor: pointer; }\n  .modal__button.confirm {\n    border-color: #449d44;\n    color: #449d44; }\n    .modal__button.confirm:hover {\n      color: white;\n      background-color: #449d44; }\n  .modal__button.reject {\n    border-color: #d9534f;\n    color: #d9534f; }\n    .modal__button.reject:hover {\n      color: white;\n      background-color: #d9534f; }\n\n.fretboard {\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column-reverse;\n  padding: 1rem;\n  border-radius: 3px;\n  border: 1px solid transparent;\n  transition: border 0.25s ease;\n  width: 100%;\n  margin: 0 auto; }\n  .fretboard:hover {\n    transition: border 0.25s ease; }\n\n.fretboard__container {\n  width: 100%;\n  display: block;\n  margin: 0 auto; }\n\n.fretboard__header {\n  display: flex;\n  justify-content: space-between;\n  background-color: transparent;\n  padding: 0 1rem; }\n\n.header__tuning {\n  width: 80%; }\n\n.header__audio-control {\n  width: 20%; }\n\n.audio-controller {\n  position: relative;\n  display: flex;\n  justify-content: flex-end;\n  top: 5px; }\n\n.fretboard__string {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around; }\n\n.tuning__title {\n  display: inline-block;\n  min-width: 130px; }\n\n.tuning__note {\n  display: inline-block;\n  margin: 0.5rem; }\n\n.string {\n  display: flex; }\n\n.string__fret {\n  border: 1px solid #191919;\n  width: calc(100%/23);\n  height: 1.7rem;\n  position: relative;\n  opacity: 0.7;\n  max-height: 100%;\n  background-color: #ecf0f1;\n  margin: 1px;\n  border-radius: 4px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  align-content: center;\n  font-weight: 100; }\n  .string__fret:hover {\n    cursor: pointer;\n    background-color: #ecf0f1;\n    opacity: 1; }\n  .string__fret.root {\n    background-color: white;\n    font-weight: 600; }\n  .string__fret.selected {\n    background-color: #2ecc71 !important;\n    opacity: 1 !important; }\n    .string__fret.selected p {\n      color: #191919;\n      font-weight: 700; }\n  .string__fret.guide {\n    border: none;\n    background: transparent;\n    opacity: 0.4; }\n    .string__fret.guide:hover {\n      opacity: 0.7; }\n\n.fret__name {\n  color: #191919;\n  font-size: 0.7rem; }\n\n.fret__number {\n  display: none;\n  color: #191919;\n  font-size: 0.8rem;\n  position: absolute; }\n\n.fret--guide {\n  background-color: white; }\n\n.tuning-selector {\n  width: 30%;\n  position: relative;\n  display: inline-block;\n  top: 12px;\n  margin-right: 3rem; }\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease; }\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 14px;\n  width: 0; }\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch; }\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px; }\n  .Dropdown-option.isSelected {\n    background-color: #f2f9fc;\n    color: #333; }\n\n/**\n *  CHORD BANK\n */\n.chordbank__container {\n  display: flex;\n  margin: 2rem;\n  justify-content: space-evenly; }\n\n.chordbank__data {\n  display: block;\n  height: 90px; }\n  .chordbank__data:nth-of-type(1) {\n    border-bottom: 1px solid #ecf0f1; }\n  .chordbank__data:nth-of-type(2) {\n    border-bottom: 1px solid #ecf0f1; }\n\n.chordbank {\n  box-sizing: border-box;\n  display: inline-block;\n  height: 100%;\n  width: 100%;\n  transition: border 0.25s ease; }\n\n.chords__container {\n  border-radius: 4px;\n  box-sizing: border-box;\n  display: inline-block;\n  position: relative;\n  height: 100%;\n  width: 100%;\n  overflow-x: hidden;\n  overflow-y: scroll;\n  transition: border 0.25s ease; }\n\n.chords__match-toggle {\n  display: flex;\n  justify-content: flex-start; }\n  .chords__match-toggle h4 {\n    display: inline-block;\n    padding-left: 1rem; }\n\n.chords__list {\n  box-sizing: border-box;\n  display: block;\n  position: relative;\n  overflow-y: scroll;\n  width: 100%;\n  height: 300px; }\n\n.chordbank__header {\n  display: inline-block;\n  margin-right: 1rem;\n  min-width: 130px;\n  margin-bottom: 0; }\n\n.chordbank__active-notes {\n  padding: 0 0 0 1rem; }\n  .chordbank__active-notes p {\n    display: inline-block;\n    margin-right: 0.5rem; }\n\n.chordbank__selected-chord {\n  padding: 0 0 0 1rem;\n  display: block; }\n\n.button-bar {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n\n.chordbank__button {\n  display: flex;\n  align-items: center;\n  justify-content: baseline;\n  width: 150px;\n  padding: 0 0.5rem;\n  border: 1px solid #7f8c8d;\n  background-color: #ecf0f1;\n  border-radius: 4px;\n  font-size: 0.7rem;\n  margin-top: 0.5rem;\n  -webkit-transition: background-color 0.1s;\n  -moz-transition: background-color 0.1s;\n  -ms-transition: background-color 0.1s;\n  -o-transition: background-color 0.1s;\n  transition: background-color 0.1s; }\n  .chordbank__button:hover {\n    cursor: pointer;\n    background-color: #191919;\n    color: #ecf0f1; }\n  .chordbank__button p {\n    text-transform: uppercase; }\n  .chordbank__button svg {\n    vertical-align: middle;\n    margin: 0 0.5rem;\n    width: 18px;\n    height: 30px; }\n\n.chord-match {\n  box-sizing: border-box;\n  height: 35px;\n  padding: 0 1rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  opacity: 0.8; }\n  .chord-match:hover {\n    cursor: pointer;\n    opacity: 1; }\n\n.chord-match--selected {\n  background-color: #ecf0f1;\n  border: 1px solid lightgrey;\n  opacity: 1; }\n  .chord-match--selected p {\n    font-weight: bolder; }\n\n.chord-match__name {\n  font-size: 0.9rem;\n  display: inline-block;\n  margin-right: 1rem; }\n\n.chord-match__notes {\n  display: inline-block; }\n  .chord-match__notes p {\n    display: inline-block;\n    font-size: 0.8rem; }\n\n/**\n *  KEYBOARD\n */\n.keyboard {\n  display: flex;\n  justify-content: center;\n  position: relative;\n  width: 300px; }\n\n.keyboard__container {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n\n.keyboard__key {\n  background-color: white;\n  border: 1px solid #111;\n  display: inline-block;\n  height: 130px;\n  position: relative;\n  width: 35px;\n  border-bottom-left-radius: 5px;\n  border-bottom-right-radius: 5px; }\n  .keyboard__key:hover {\n    cursor: pointer; }\n  .keyboard__key p {\n    text-align: center;\n    position: absolute;\n    bottom: 0;\n    left: 50%;\n    transform: translateX(-50%);\n    display: block; }\n    .keyboard__key p.key__name--keyboard {\n      bottom: 1.5rem; }\n\n.difference {\n  background-color: #f1c40f !important; }\n\n.highlighted {\n  background-color: #2ecc71 !important; }\n\n.sharp {\n  background-color: #191919;\n  position: absolute;\n  top: 0px;\n  z-index: 2;\n  height: 75px;\n  left: 40px;\n  width: 32px; }\n  .sharp p {\n    color: #ecf0f1 !important;\n    text-align: center; }\n  .sharp.D {\n    left: 78px; }\n  .sharp.F {\n    left: 150px; }\n  .sharp.G {\n    left: 188px; }\n  .sharp.A {\n    left: 226px; }\n\n.laptop-check__container {\n  text-align: center;\n  display: flex;\n  justify-content: center; }\n  .laptop-check__container p {\n    font-weight: 100;\n    margin-right: 1rem; }\n\n.rc-checkbox-input {\n  width: 15px;\n  height: 15px; }\n\n.audio-controller__status {\n  display: inline-block; }\n\n.chordselectors__container {\n  width: 100%;\n  display: flex; }\n\n.register,\n.login {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  z-index: -1;\n  opacity: 0; }\n  .register.isVisible,\n  .login.isVisible {\n    z-index: 10;\n    opacity: 1; }\n\n.register__container,\n.login__container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-content: center;\n  position: absolute;\n  left: 0;\n  top: 0;\n  background-color: #ecf0f1;\n  z-index: 10;\n  width: 50%;\n  height: 50%;\n  transform: translate3d(50%, 50%, 0); }\n\n.register__title,\n.login__title {\n  font-weight: 400;\n  width: 100%;\n  display: block;\n  text-align: center;\n  text-transform: uppercase; }\n\n.register__form,\n.login__form {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  width: 100%; }\n\n.form-group {\n  width: 50%;\n  margin: 1rem 0;\n  display: flex;\n  flex-direction: column; }\n  .form-group input {\n    width: 100%;\n    height: 2rem; }\n\n.app__auth {\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  z-index: -1;\n  opacity: 0; }\n  .app__auth.isVisible {\n    z-index: 10;\n    opacity: 1; }\n\n.container__all {\n  display: flex;\n  justify-content: space-around; }\n\n.container__left {\n  width: 20%;\n  padding-left: 1rem;\n  box-sizing: border-box; }\n\n.container__center {\n  width: 60%; }\n\n.container__right {\n  height: 400px;\n  width: 20%;\n  padding-right: 1rem;\n  box-sizing: border-box; }\n", ""]);
+	exports.push([module.id, "/**\n *  VARIABLES\n */\n/**\n *  IMPORTS\n */\n.btn {\n  cursor: pointer; }\n\n* {\n  font-family: 'Roboto Slab', serif; }\n\nbody {\n  margin: 0; }\n\n.app {\n  margin: 0;\n  padding: 0;\n  filter: blur(0.4px) saturate(1.1);\n  min-height: 100vh; }\n\n.app__root {\n  background-color: white;\n  position: relative; }\n\n.app__container {\n  padding: 0 2rem;\n  max-width: 1000px;\n  display: block;\n  margin: auto;\n  position: relative; }\n\n.header {\n  border-bottom: 1px solid #ecf0f1;\n  height: 80px;\n  position: relative;\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 1.5rem; }\n  .header div {\n    display: flex;\n    align-items: center; }\n  .header h1 {\n    display: inline-block;\n    margin-right: 1rem; }\n\n.header__nav {\n  width: 50%; }\n\n.nav__container {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end; }\n\n.nav__item {\n  cursor: pointer;\n  display: flex;\n  align-items: center; }\n\n.footer {\n  background-color: #191919;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  height: 150px;\n  justify-content: space-evenly;\n  position: fixed;\n  width: 100%;\n  padding: 15px;\n  margin: 50px 0 0 0;\n  box-sizing: border-box;\n  bottom: 0; }\n\n.contact__container {\n  display: flex;\n  width: 40%;\n  justify-content: space-evenly; }\n  .contact__container div {\n    cursor: pointer;\n    display: inline-block;\n    margin: 0.4rem;\n    position: relative;\n    top: 1px; }\n    .contact__container div svg {\n      fill: #ecf0f1; }\n  .contact__container p {\n    display: inline-block; }\n\n.copyright__container {\n  display: inline-block; }\n  .copyright__container p {\n    font-size: 0.7rem;\n    color: #7f8c8d; }\n\n.share {\n  display: inline-flex; }\n\n.share__container {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .share__container div {\n    cursor: pointer;\n    display: flex;\n    justify-content: center;\n    margin: 0.5rem; }\n  .share__container p {\n    display: flex;\n    margin: 1rem;\n    justify-content: center; }\n\n.icon__container {\n  cursor: pointer;\n  z-index: 2; }\n  .icon__container div {\n    z-index: -1; }\n  .icon__container svg {\n    z-index: -1; }\n\n.icon__container--audio-control {\n  position: relative;\n  top: 12px;\n  margin: 0 0 0 0.5rem; }\n  .icon__container--audio-control div div svg {\n    width: 24px;\n    height: 24px; }\n\n.icon {\n  z-index: 1; }\n  .icon:hover {\n    fill: #2ecc71; }\n  .icon .share {\n    color: #191919; }\n  .icon .volume:hover {\n    fill: #ecf0f1; }\n\n.modal__container {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 100%;\n  z-index: -1;\n  opacity: 1;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  display: none; }\n  .modal__container.isVisible {\n    z-index: 6;\n    bottom: 0;\n    display: flex; }\n\n.modal__messagebox {\n  z-index: -1;\n  height: auto;\n  width: 30%;\n  background-color: white;\n  border-radius: 3px;\n  display: flex;\n  flex-direction: column;\n  padding: 2rem;\n  align-items: center;\n  transform: translateY(0);\n  transition: all 0.1s ease;\n  opacity: 0; }\n  .modal__messagebox.isVisible {\n    z-index: 6;\n    opacity: 1; }\n  .modal__messagebox h1 {\n    margin-right: 0; }\n  .modal__messagebox p {\n    margin: 0 0 2rem 0;\n    font-weight: 100;\n    text-align: center;\n    text-align: justify; }\n  @media (max-width: 768px) {\n    .modal__messagebox {\n      width: 70%; } }\n  @media (max-width: 425px) {\n    .modal__messagebox {\n      width: 100%; } }\n\n.modal__curtain {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 100%;\n  background-color: #191919;\n  z-index: 5;\n  opacity: 0;\n  transition: opacity 0.1s ease; }\n  .modal__curtain.isVisible {\n    opacity: 0.95;\n    bottom: 0; }\n\n.modal__button-container {\n  display: flex;\n  justify-content: space-evenly;\n  width: 100%; }\n\n.modal__button {\n  display: inline-block;\n  padding: 0.5rem 1rem;\n  font-size: 1rem;\n  border: 2px solid;\n  background-color: transparent; }\n  .modal__button:hover {\n    cursor: pointer; }\n  .modal__button.confirm {\n    border-color: #449d44;\n    color: #449d44; }\n    .modal__button.confirm:hover {\n      color: white;\n      background-color: #449d44; }\n  .modal__button.reject {\n    border-color: #d9534f;\n    color: #d9534f; }\n    .modal__button.reject:hover {\n      color: white;\n      background-color: #d9534f; }\n\n.fretboard {\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column-reverse;\n  padding: 1rem;\n  border-radius: 3px;\n  border: 1px solid transparent;\n  transition: border 0.25s ease;\n  width: 100%;\n  margin: 0 auto; }\n  .fretboard:hover {\n    transition: border 0.25s ease; }\n\n.fretboard__container {\n  width: 100%;\n  display: block;\n  margin: 0 auto; }\n\n.fretboard__header {\n  display: flex;\n  justify-content: space-between;\n  background-color: transparent;\n  padding: 0 1rem; }\n\n.header__tuning {\n  width: 80%; }\n\n.header__audio-control {\n  width: 20%; }\n\n.audio-controller {\n  position: relative;\n  display: flex;\n  justify-content: flex-end;\n  top: 5px; }\n\n.fretboard__string {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around; }\n\n.tuning__title {\n  display: inline-block;\n  min-width: 130px; }\n\n.tuning__note {\n  display: inline-block;\n  margin: 0.5rem; }\n\n.string {\n  display: flex; }\n\n.string__fret {\n  border: 1px solid #191919;\n  width: calc(100%/23);\n  height: 1.7rem;\n  position: relative;\n  opacity: 0.7;\n  max-height: 100%;\n  background-color: #ecf0f1;\n  margin: 1px;\n  border-radius: 4px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  align-content: center;\n  font-weight: 100; }\n  .string__fret:hover {\n    cursor: pointer;\n    background-color: #ecf0f1;\n    opacity: 1; }\n  .string__fret.root {\n    background-color: white;\n    font-weight: 600; }\n  .string__fret.selected {\n    background-color: #2ecc71 !important;\n    opacity: 1 !important; }\n    .string__fret.selected p {\n      color: #191919;\n      font-weight: 700; }\n  .string__fret.guide {\n    border: none;\n    background: transparent;\n    opacity: 0.4; }\n    .string__fret.guide:hover {\n      opacity: 0.7; }\n\n.fret__name {\n  color: #191919;\n  font-size: 0.7rem; }\n\n.fret__number {\n  display: none;\n  color: #191919;\n  font-size: 0.8rem;\n  position: absolute; }\n\n.fret--guide {\n  background-color: white; }\n\n.tuning-selector {\n  width: 30%;\n  position: relative;\n  display: inline-block;\n  top: 6px;\n  margin-right: 3rem;\n  cursor: pointer; }\n\n.scales-selector {\n  width: 30%;\n  position: relative;\n  display: inline-block;\n  top: 12px;\n  margin: 0;\n  cursor: pointer; }\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease; }\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 14px;\n  width: 0; }\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch; }\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px; }\n  .Dropdown-option.isSelected {\n    background-color: #f2f9fc;\n    color: #333; }\n\n/**\n *  CHORD BANK\n */\n.chordbank__container {\n  display: flex;\n  margin: 2rem;\n  justify-content: space-evenly; }\n\n.chordbank__data {\n  display: block;\n  height: 90px; }\n  .chordbank__data:nth-of-type(1) {\n    border-bottom: 1px solid #ecf0f1; }\n  .chordbank__data:nth-of-type(2) {\n    border-bottom: 1px solid #ecf0f1; }\n\n.chordbank {\n  box-sizing: border-box;\n  display: inline-block;\n  height: 100%;\n  width: 100%;\n  transition: border 0.25s ease; }\n\n.chords__container {\n  border-radius: 4px;\n  box-sizing: border-box;\n  display: inline-block;\n  position: relative;\n  height: 100%;\n  width: 100%;\n  overflow-x: hidden;\n  overflow-y: scroll;\n  transition: border 0.25s ease; }\n\n.chords__match-toggle {\n  display: flex;\n  justify-content: flex-start; }\n  .chords__match-toggle h4 {\n    display: inline-block;\n    padding-left: 1rem; }\n\n.chords__list {\n  box-sizing: border-box;\n  display: block;\n  position: relative;\n  overflow-y: scroll;\n  width: 100%;\n  height: 300px; }\n\n.chordbank__header {\n  display: inline-block;\n  margin-right: 1rem;\n  min-width: 130px;\n  margin-bottom: 0; }\n\n.chordbank__active-notes {\n  padding: 0 0 0 1rem; }\n  .chordbank__active-notes p {\n    display: inline-block;\n    margin-right: 0.5rem; }\n\n.chordbank__selected-chord {\n  padding: 0 0 0 1rem;\n  display: block; }\n\n.button-bar {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n\n.chordbank__button {\n  display: flex;\n  align-items: center;\n  justify-content: baseline;\n  width: 150px;\n  padding: 0 0.5rem;\n  border: 2px solid #191919;\n  background-color: transparent;\n  font-size: 0.7rem;\n  margin-top: 0.5rem;\n  -webkit-transition: background-color 0.1s;\n  -moz-transition: background-color 0.1s;\n  -ms-transition: background-color 0.1s;\n  -o-transition: background-color 0.1s;\n  transition: background-color 0.1s; }\n  .chordbank__button:disabled {\n    opacity: 0.6; }\n    .chordbank__button:disabled:hover {\n      cursor: not-allowed;\n      background-color: transparent; }\n  .chordbank__button:hover {\n    cursor: pointer;\n    background-color: #191919;\n    color: #ecf0f1; }\n  .chordbank__button p {\n    text-transform: uppercase; }\n  .chordbank__button svg {\n    vertical-align: middle;\n    margin: 0 0.5rem;\n    width: 18px;\n    height: 30px; }\n\n.chord-match {\n  box-sizing: border-box;\n  height: 35px;\n  padding: 0 1rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  opacity: 0.8; }\n  .chord-match:hover {\n    cursor: pointer;\n    opacity: 1; }\n\n.chord-match--selected {\n  background-color: #ecf0f1;\n  border: 1px solid lightgrey;\n  opacity: 1; }\n  .chord-match--selected p {\n    font-weight: bolder; }\n\n.chord-match__name {\n  font-size: 0.9rem;\n  display: inline-block;\n  margin-right: 1rem; }\n\n.chord-match__notes {\n  display: inline-block; }\n  .chord-match__notes p {\n    display: inline-block;\n    font-size: 0.8rem; }\n\n/**\n *  KEYBOARD\n */\n.keyboard {\n  display: flex;\n  justify-content: center;\n  position: relative;\n  width: 300px; }\n\n.keyboard__container {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n\n.keyboard__controller {\n  display: flex;\n  width: 100%;\n  justify-content: space-evenly; }\n\n.keyboards {\n  display: flex; }\n\n.keyboard__key {\n  background-color: white;\n  border: 1px solid #111;\n  display: inline-block;\n  height: 130px;\n  position: relative;\n  width: 35px;\n  border-bottom-left-radius: 5px;\n  border-bottom-right-radius: 5px; }\n  .keyboard__key:hover {\n    cursor: pointer; }\n  .keyboard__key p {\n    text-align: center;\n    position: absolute;\n    bottom: 0;\n    left: 50%;\n    transform: translateX(-50%);\n    display: block; }\n    .keyboard__key p.key__name--keyboard {\n      bottom: 1.5rem; }\n\n.difference {\n  background-color: #f1c40f !important; }\n\n.highlighted {\n  background-color: #2ecc71 !important; }\n\n.sharp {\n  background-color: #191919;\n  position: absolute;\n  top: 0px;\n  z-index: 2;\n  height: 75px;\n  left: 40px;\n  width: 32px; }\n  .sharp p {\n    color: #ecf0f1 !important;\n    text-align: center; }\n  .sharp.D {\n    left: 78px; }\n  .sharp.F {\n    left: 150px; }\n  .sharp.G {\n    left: 188px; }\n  .sharp.A {\n    left: 226px; }\n\n.laptop-check__container {\n  text-align: center;\n  display: flex;\n  justify-content: center; }\n  .laptop-check__container p {\n    font-weight: 100;\n    margin-right: 1rem; }\n\n.rc-checkbox-input {\n  width: 15px;\n  height: 15px; }\n\n.audio-controller__status {\n  display: inline-block; }\n\n.chordselectors__container {\n  width: 100%;\n  display: flex; }\n\n.register,\n.login {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  z-index: -1;\n  opacity: 0; }\n  .register.isVisible,\n  .login.isVisible {\n    z-index: 10;\n    opacity: 1; }\n\n.register__container,\n.login__container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-content: center;\n  position: absolute;\n  left: 0;\n  top: 0;\n  background-color: #ecf0f1;\n  z-index: 10;\n  width: 50%;\n  height: 50%;\n  transform: translate3d(50%, 50%, 0); }\n\n.register__title,\n.login__title {\n  font-weight: 400;\n  width: 100%;\n  display: block;\n  text-align: center;\n  text-transform: uppercase; }\n\n.register__form,\n.login__form {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  width: 100%; }\n\n.form-group {\n  width: 50%;\n  margin: 1rem 0;\n  display: flex;\n  flex-direction: column; }\n  .form-group input {\n    width: 100%;\n    height: 2rem; }\n\n.app__auth {\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  z-index: -1;\n  opacity: 0; }\n  .app__auth.isVisible {\n    z-index: 10;\n    opacity: 1; }\n\n.container__all {\n  display: flex;\n  justify-content: space-around; }\n\n.container__left {\n  width: 20%;\n  padding-left: 1rem;\n  box-sizing: border-box; }\n\n.container__center {\n  width: 60%; }\n\n.container__right {\n  height: 400px;\n  width: 20%;\n  padding-right: 1rem;\n  box-sizing: border-box; }\n", ""]);
 	
 	// exports
 
@@ -71530,6 +71597,134 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ }),
+/* 542 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _reactDropdown = __webpack_require__(336);
+	
+	var _reactDropdown2 = _interopRequireDefault(_reactDropdown);
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _store = __webpack_require__(215);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _reactRedux = __webpack_require__(183);
+	
+	var _fretboardActions = __webpack_require__(293);
+	
+	var chordbankAction = _interopRequireWildcard(_fretboardActions);
+	
+	var _reactTooltip = __webpack_require__(316);
+	
+	var _reactTooltip2 = _interopRequireDefault(_reactTooltip);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // functional componenets
+	
+	
+	//child components
+	
+	
+	var ScaleSelect = function (_Component) {
+	  _inherits(ScaleSelect, _Component);
+	
+	  function ScaleSelect() {
+	    _classCallCheck(this, ScaleSelect);
+	
+	    var _this = _possibleConstructorReturn(this, (ScaleSelect.__proto__ || Object.getPrototypeOf(ScaleSelect)).call(this));
+	
+	    _this.state = {
+	      newScale: '',
+	      oldScale: ''
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(ScaleSelect, [{
+	    key: 'changeScale',
+	    value: function changeScale() {
+	      var _this2 = this;
+	
+	      this.setState({}, function () {
+	        _store2.default.dispatch(chordbankAction.setSelectedScale(_this2.state.selectedScaleIndex));
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	
+	      var scale_options = this.props.modes !== undefined ? this.props.modes.map(function (scale) {
+	        return scale.root + ' - ' + scale.mode;
+	      }) : null;
+	
+	      var scaleSelectDropdown = _react2.default.createElement(_reactDropdown2.default, {
+	        options: scale_options,
+	        onChange: this.changeScale.bind(this),
+	        value: this.state.newScale,
+	        placeholder: 'Select a scale' });
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'scales-selector',
+	          'data-tip': true, 'data-for': 'tooltip__scales-selector' },
+	        scaleSelectDropdown,
+	        _react2.default.createElement(
+	          _reactTooltip2.default,
+	          {
+	            id: 'tooltip__scales-selector',
+	            place: 'top',
+	            type: 'success',
+	            effect: 'solid',
+	            disable: !this.props.tooltipIsOn },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Here you can see all possible scales'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'associated with your selected chord.'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return ScaleSelect;
+	}(_react.Component);
+	
+	;
+	
+	var mapStoreToProps = function mapStoreToProps(store) {
+	  console.log("SCALES: ", store.chordbankState.modeScales);
+	  return {
+	    modes: store.chordbankState.modeScales
+	  };
+	};
+	
+	exports.default = ScaleSelect;
 
 /***/ })
 /******/ ]);

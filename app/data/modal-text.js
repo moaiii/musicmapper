@@ -24,7 +24,7 @@ export const HowToUseText = {
 
 export const ProgressDownloadingText = {
   title: "Downloading",
-  message: "Please wait while we generate and download your midi files. This may take a moment.",
+  message: "Please allow pop ups from this webpage. Your midi files are generating - this may take a moment.",
   confirmText: "OK",
   rejectText: "What?",
   hideRejectButton: true
