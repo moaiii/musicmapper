@@ -28,6 +28,7 @@ body {
   display: block;
   margin: auto;
   position: relative;
+  margin-bottom: 150px;
 }
 
 .header {
@@ -84,7 +85,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 150px;
+  height: 100px;
   justify-content: space-evenly;
   position: fixed;
   width: 100%;
