@@ -16,15 +16,17 @@ class TuningBar extends Component {
       <div className="fretboard__container">
         <div className="fretboard__header">
           <div className="header__tuning">
-            <h4 className="tuning__title">Tuning</h4>
+            <h1 className="tuning__title">Tuning</h1>
             <Tuning/>
-            {this.props.tuningSelection
-              .map((note: string, index: number) =>
-                <h4 key={`tuning-note-${index}`} 
-                    className="tuning__note">
-                    {note}
-                </h4>
-            )}
+            <div className="tuning__notes-container">
+              {this.props.tuningSelection
+                .map((note: string, index: number) =>
+                  <h4 key={`tuning-note-${index}`} 
+                      className="tuning__note">
+                      {note}
+                  </h4>
+              )}
+            </div>
           </div>
           <AudioController />
         </div>

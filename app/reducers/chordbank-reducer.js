@@ -12,7 +12,10 @@ const initalState = {
   modeScales: [],
   allPossibleScales: [],
   isShowingExactChordMatches: false,
-  selectedScaleNotes: []
+  selectedScale: {
+    name: "",
+    notes: ""
+  }
 };
 
 const chordbankReducer = (state = initalState, action) => {
@@ -127,9 +130,12 @@ const chordbankReducer = (state = initalState, action) => {
       });
 
 
-    case types.CHORDBANK_SET_SELECTED_SCALE_NOTES:
+    case types.CHORDBANK_SET_SELECTED_SCALE:
       return Object.assign({}, state, {
-        selectedScaleNotes: action.payload
+        selectedScale: {
+          name: action.payload.name,
+          notes: action.payload.notes
+        }
       });
 
     default:

@@ -49,9 +49,12 @@ export function setSelectedChordName(name) {
     }
 };
 
-export function setSelectedScale(notes) {
+export function setSelectedScale(notes, name) {
   return {
-    type: types.CHORDBANK_SET_SELECTED_SCALE_NOTES,
-    payload: notes
+    type: types.CHORDBANK_SET_SELECTED_SCALE,
+    payload: {
+      notes: notes,
+      name: name
+    }
   }
 }

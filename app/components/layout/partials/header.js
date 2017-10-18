@@ -104,7 +104,7 @@ class Header extends Component {
           <h1>Music Mapper</h1>
           <ReactSVG
             path="./svg/rock.svg"
-            className="example"
+            className="logo"
             style={{ width: 55, height: 55, display: 'inline-block' }}
           />
         </div>

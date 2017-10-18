@@ -36,10 +36,18 @@ class Keyboard extends Component {
         });
 
       } else if (this.props.type === "scale") {
-        
-        this.props.selectedScaleNotes.map(highlighted_note => {
-          if(note === highlighted_note) key_class_mod = "scale"
-        });
+        debugger;
+        // if(this.props.selectedScaleNotes !== undefined ||
+        //    this.props.selectedScaleNotes !== null ||
+        //    this.props.selectedScaleNotes !== "") {
+
+        //      this.props.selectedScaleNotes
+        //        // .split(",")
+        //        .map(highlighted_note => {
+        //          if(note === highlighted_note) key_class_mod = "scale"
+        //        });
+        //    }
+
       }
 
 
@@ -80,7 +88,7 @@ const mapStoreToProps = (store) => {
     difference: store.keyboardState.differenceNotes,
     showLaptopKeys: store.keyboardState.showLaptopKeys,
     tooltipIsOn: store.generalState.tooltipIsOn,
-    selectedScaleNotes: store.chordbankState.selectedScaleNotes
+    selectedScaleNotes: store.chordbankState.selectedScale.notes
   };
 };
 

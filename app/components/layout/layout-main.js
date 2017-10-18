@@ -10,6 +10,7 @@ import ChordBank from '../chordbank/chord-bank';
 import LaptopCheck from '../keyboard/laptop-check';
 import ScaleSelect from '../keyboard/scale-select';
 import PossibleChords from '../chordbank/possible-chords';
+import DownloadMidi from '../chordbank/download-midi';
 import Share from './partials/share';
 import ChordSelector from '../chordbank/chord-selector';
 import Modal from './partials/modal';
@@ -61,24 +62,46 @@ class LayoutMain extends Component<State> {
           <Header />
           <TuningBar />
           <div className="container__all">
-            <div className="container__left">
-              <ChordBank />
-            </div>
-            <div className="container__center">
-              <Fretboard />
-              <div className="keyboard__container">
-                <div className="keyboard__controller">
-                  <LaptopCheck />
-                  <ScaleSelect />
+              <div className="container__center">
+                <div className="fretboard__container--main">
+                  <h1>Fretboard</h1>
+                  <Fretboard />
                 </div>
-                <div className="keyboards">
-                  <Keyboard type="chord"/>
-                  <Keyboard type="scale"/>
+                <div className="keyboard__container">
+                  <h1 className="keyboard__title">Keyboard</h1>
+                  <div className="keyboard__controller">
+                    <LaptopCheck />
+                    <ScaleSelect />
+                  </div>
+                  <div className="keyboards">
+                    <div className="keyboards__chord">
+                      <h2>Chord</h2>
+                      <Keyboard type="chord"/>
+                    </div>
+                    <div className="keyboards__scale">
+                      <h2>Scale</h2>
+                      <Keyboard type="scale"/>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
             <div className="container__right">
-              <PossibleChords />
+              <div className="right--verticals">
+                <div className="container__options">
+                  <h1 className="options__title">Options</h1>
+                  <PossibleChords />
+                </div>
+                <div className="container__choice">
+                  <h1 className="choice__title">Choice</h1>
+                  <ChordBank />
+                </div>
+              </div>
+              <div className="right--horizontal">
+                <div className="container__download">
+                  <h1 className="choice__title">Download Midi</h1>
+                  <DownloadMidi />
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -30,7 +30,7 @@ class ScaleSelect extends Component {
   changeScale(e) {
 
     this.setState({ 
-      selectedScale: e.value
+      selectedScale: e.value.replace(" ", "")
     }, () => {
 
       let rootName = this.state.selectedScale.split(" - ")[0];
@@ -43,7 +43,8 @@ class ScaleSelect extends Component {
       this.setState({
         selectedNotes: selectedNotes[0].notes
       }, () => {
-        store.dispatch(chordbankAction.setSelectedScale(this.state.selectedNotes))
+        store.dispatch(chordbankAction
+          .setSelectedScale(this.state.selectedNotes, this.state.selectedScale))
       })
     });
   };
