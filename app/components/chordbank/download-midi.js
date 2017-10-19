@@ -64,7 +64,7 @@ class DownloadMidi extends Component {
     // MIDI-SCALES
     if(midi_type === "scales") {
       
-      let scale_name = `${this.props.selectedScale.name}`;
+      let scale_name = `${this.props.selectedScale.name.replace(" ", "")}`;
       let scale_notes = `${this.props.selectedScale.notes}`;
       debugger;
       
@@ -73,7 +73,7 @@ class DownloadMidi extends Component {
     // MIDI-CHORD
     } else if (midi_type === "chord") {
 
-      let chord_name = this.props.selectedChord;
+      let chord_name = this.props.selectedChord.replace(" ", "");
       let chord_notes = JSON
         .stringify(_.concat(this.props.notes, this.props.differenceNotes));
 

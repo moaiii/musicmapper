@@ -6,6 +6,24 @@
   font-family: 'Roboto Slab', serif;
 }
 
+h1 {
+  font-size: 1.2rem;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: 0.8rem;
+}
+
+
+
+p {
+  font-size: 0.8rem;
+}
+
 body {
   margin: 0;
 }
@@ -28,11 +46,11 @@ body {
   display: block;
   margin: auto;
   position: relative;
-  margin-bottom: 150px;
+  height: 100vh;
 }
 
 .header {
-  border-bottom: 1px solid $color-white;
+  // border-bottom: 1px solid $color-white;
   height: 80px;
   position: relative;
   display: flex;
@@ -55,7 +73,10 @@ body {
 }
 
 .header__logo {
-
+  h1 {
+    letter-spacing: -3px;
+    font-size: 3rem;
+  }
 }
 
 .header__nav {
@@ -133,6 +154,7 @@ body {
 
 .share {
   display: inline-flex;
+  background-color: $color-title-hover;
 }
 
 
@@ -154,6 +176,12 @@ body {
     margin: 1rem;
     justify-content: center;
   }
+
+  &:hover {
+    p {
+      text-decoration: line-through;
+    }
+  }
 }
 
 .icon__container {
@@ -171,7 +199,7 @@ body {
 
 .icon__container--audio-control {
   position: relative;
-  top: 12px;
+  top: 8px;
   margin: 0 0 0 0.5rem;
 
   div {
@@ -332,9 +360,9 @@ body {
 }
 
 .fretboard__container {
-  width: 100%;
+  width: 98%;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 1rem auto;
 }
 
 .fretboard__container--main {
@@ -343,23 +371,33 @@ body {
 
   h1 {
     margin: 0;
+    left: 8px;
   }
+
+  @include content-box-style;
 }
 
 .fretboard__header {
   display: flex;
   justify-content: space-between;
   background-color: transparent;
-
+  
   @include tablet {
     flex-direction: column;
   }
 }
 
 .header__tuning {
-  width: 80%;
+  width: 61%;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  h1 {
+    top: -28px !important;
+  }
+  
+  @include content-box-style;
 
   @include tablet {
     width: 100%;
@@ -377,7 +415,6 @@ body {
   position: relative;
   display: flex;
   justify-content: flex-end;
-  top: 5px;
 }
 
 .fretboard__string {
@@ -388,7 +425,6 @@ body {
 
 .tuning__title {
   display: inline-block;
-  min-width: 130px;
 
   @include tablet {
     text-align: center;
@@ -477,7 +513,7 @@ body {
   width: 30%;
   position: relative;
   display: inline-block;
-  top: 6px;
+  top: 3px;
   margin-right: 3rem;
   cursor: pointer;
 
@@ -526,7 +562,7 @@ body {
   margin-top: -ceil(2.5);
   position: absolute;
   right: 10px;
-  top: 14px;
+  top: 11px;
   width: 0;
 }
 
@@ -605,13 +641,15 @@ body {
 .chords__container {
   border-radius: 4px;
   box-sizing: border-box;
-  display: inline-block;
   position: relative;
   height: 100%;
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
   transition: border 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
   &:hover {
   }
@@ -622,8 +660,10 @@ body {
   justify-content: flex-start;
 
   h4 {
+    margin: 0;
     display: inline-block;
     padding-left: 1rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -687,6 +727,43 @@ body {
   -o-transition: background-color 0.1s;
   transition: background-color 0.1s;
 
+  &.--clear {
+    width: auto;
+    padding-right: 1rem;
+    opacity: 0.9;
+
+    &:hover {
+      opacity: 1;
+      background-color: $color-white;
+      border: 2px solid $color-red;
+      color: $color-red;
+      
+      svg {
+        fill: $color-red;
+      }
+    }
+  }
+
+  &.--chord {
+    &:hover {
+      color: $color-primary;
+      
+      svg {
+        fill: $color-primary;
+      }
+    }
+  };
+
+  &.--scale {
+    &:hover {
+      color: $color-tertiary;
+      
+      svg {
+        fill: $color-tertiary;
+      }
+    }
+  };
+
   &:disabled {
     opacity: 0.6;
 
@@ -733,9 +810,10 @@ body {
 }
 
 .chord-match--selected {
-  background-color: $color-white;
-  border: 1px solid lightgrey;
+  background-color: $color-title-hover;
+  border: 1px solid $color-white;
   opacity: 1;
+  border-radius: 3px;
 
   p {
     font-weight: bolder;
@@ -743,17 +821,19 @@ body {
 }
 
 .chord-match__name {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   display: inline-block;
   margin-right: 1rem;
 }
 
 .chord-match__notes {
   display: inline-block;
+  line-height: 0;
 
   p {
     display: inline-block;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+    opacity: 0.9;
   }
 }
 
@@ -773,19 +853,24 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
+
+  h1 {
+    left: 8px;
+  }
+
+  @include content-box-style;
 }
 
 .keyboard__title {
   text-align: start;
   margin: 0;
-  width: 100%;
 }
 
 .keyboard__controller {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
-  margin-bottom: 1rem;
 
   @include tablet {
     flex-direction: column;
@@ -808,7 +893,7 @@ body {
   flex-direction: column;
 
   h2 {
-    text-align: left;
+    text-align: center;
     margin: 0;
   }
 }
@@ -991,6 +1076,7 @@ body {
 .container__all {
   display: flex;
   justify-content: space-around;
+  height: calc(100% - 300px);
 
   @include tablet {
     flex-direction: column;
@@ -1002,23 +1088,33 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 36%;
 
   .right--verticals {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    height: 76%;
   }
-
+  
   .right--horizontal {
-    // display: flex;
+    height: 16%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    @include content-box-style;
     // flex-direction: col;
   }
 }
 
 .container__choice {
-  width: 50%;
-  padding-left: 1rem;
+  width: 48%;
+  padding: 1rem;
   box-sizing: border-box;
   height: 400px;
+
+  @include content-box-style;
 
   @include tablet {
     width: 100%;
@@ -1031,6 +1127,9 @@ body {
 
 .container__center {
   width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @include tablet {
     width: 100%;
@@ -1039,9 +1138,11 @@ body {
 
 .container__options {
   height: 400px;
-  width: 50%;
-  padding-right: 1rem;
+  width: 48%;
+  padding: 1rem;
   box-sizing: border-box;
+
+  @include content-box-style;
 
   @include tablet {
     width: 100%;
@@ -1050,4 +1151,27 @@ body {
 
 .choice__title {
   margin: 0;
+}
+
+.app__misc {
+  width: 36.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    top: -27px !important;
+  }
+
+  @include content-box-style;
+
+  .how-to-use {
+    display: flex;
+    margin-right: 1rem;
+
+    p {
+      margin-right: 0.5rem;
+    }
+  }
 }

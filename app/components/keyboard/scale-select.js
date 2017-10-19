@@ -33,8 +33,9 @@ class ScaleSelect extends Component {
       selectedScale: e.value.replace(" ", "")
     }, () => {
 
-      let rootName = this.state.selectedScale.split(" - ")[0];
-      let modeName = this.state.selectedScale.split(" - ")[1];
+      let split = this.state.selectedScale.split("-");
+      let rootName = split[0];
+      let modeName = split[1].replace(" ", "");
   
       let selectedNotes = this.props.modes
         .filter(scale => 

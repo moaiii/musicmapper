@@ -1,17 +1,45 @@
-import AudioController from './audio-controller';
+// functional components
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import store from '../../store';
+import * as generalAction from '../../actions/general-actions';
+
+// child components
+import AudioController from './audio-controller';
 import Tuning from '../fretboard/tuning';
+import ToggleButton from 'react-toggle-button';
 
 
 class TuningBar extends Component {
 
   constructor() {
     super();
+
+    this.state = {
+      tooltipIsOn: false
+    };
+
+    this.toggleTooltip = this.toggleTooltip.bind(this)
   }
 
+  toggleTooltip() {
+    this.setState({
+      tooltipIsOn: !this.state.tooltipIsOn
+    }, () => {
+      this.state.tooltipIsOn ? 
+        store.dispatch(generalAction.tooltipOn()) :
+        store.dispatch(generalAction.tooltipOff())
+    });
+  };
+
   render() {
+    let toggle =
+      <ToggleButton
+        inactiveLabel={'OFF'}
+        activeLabel={'ON'}
+        value={this.state.tooltipIsOn || false}
+        onToggle={this.toggleTooltip} />
+        
     return (
       <div className="fretboard__container">
         <div className="fretboard__header">
@@ -28,7 +56,14 @@ class TuningBar extends Component {
               )}
             </div>
           </div>
-          <AudioController />
+          <div className="app__misc">
+            <h1>Control</h1>
+            <div className="how-to-use">
+              <p>Tooltips</p>
+              {toggle}
+            </div>
+            <AudioController />
+          </div>
         </div>
       </div>
     );

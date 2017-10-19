@@ -88,7 +88,7 @@ class PossibleChords extends Component {
       <div className="chords__container">
         <div className="chords__match-toggle"
               data-tip data-for='tooltip__match-toggle'>
-          <h4>Exact chord matching</h4>
+          <h4>Chord match</h4>
           {toggle}
         </div>
         <div className="chords__list"

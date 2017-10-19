@@ -177,7 +177,7 @@ class ChordBank extends Component {
         </div>
 
         <div className="button-bar">
-          <button className="chordbank__button"
+          <button className="chordbank__button --clear"
                   onClick={this._clearNotes.bind(this)}>
             <FaBan
               className="icon"/>

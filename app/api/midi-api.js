@@ -7,7 +7,7 @@ export function generateMidi(notes, name, midi_type) {
   return new Promise((resolve, reject) => {
     axios.post(DEV_GENERATE_MIDI_URL, {
       notes: notes,
-      name: name,
+      name: name.replace(" ", ""), // remove empty spaces
       midi_type: midi_type,
       
     }).then(response => {

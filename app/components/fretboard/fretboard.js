@@ -13,6 +13,7 @@ import String from './string';
 import Tuning from '../fretboard/tuning';
 import ReactTooltip from 'react-tooltip'
 
+
 class Fretboard extends Component {
 
   constructor() {

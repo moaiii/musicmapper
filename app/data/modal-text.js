@@ -8,7 +8,7 @@ export const MobileWarningText = {
 
 export const TuningChangeText = {
   title: "Change tuning",
-  message: "Confrim change of tuning to ${this.state.newTuning}? This will overwrite any previous chord data.",
+  message: "Confrim the change of tuning? This will overwrite any previous chord data.",
   confirmText: "Confirm",
   rejectText: "Cancel",
   hideRejectButton: false

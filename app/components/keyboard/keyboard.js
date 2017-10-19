@@ -26,7 +26,6 @@ class Keyboard extends Component {
       let key_class_mod = "";
 
       if(this.props.type === "chord") {
-
         this.props.highlighted.map(highlighted_note => {
           if(note === highlighted_note) key_class_mod = "highlighted"
         });
@@ -36,17 +35,23 @@ class Keyboard extends Component {
         });
 
       } else if (this.props.type === "scale") {
-        debugger;
-        // if(this.props.selectedScaleNotes !== undefined ||
-        //    this.props.selectedScaleNotes !== null ||
-        //    this.props.selectedScaleNotes !== "") {
+        if(this.props.selectedScaleNotes !== undefined ||
+           this.props.selectedScaleNotes !== null) {
 
-        //      this.props.selectedScaleNotes
-        //        // .split(",")
-        //        .map(highlighted_note => {
-        //          if(note === highlighted_note) key_class_mod = "scale"
-        //        });
-        //    }
+            if(this.props.selectedScaleNotes === "") {
+              this.props.selectedScaleNotes
+                .split(",")
+                .map(highlighted_note => {
+                  if(note === highlighted_note) key_class_mod = "scale"
+                });
+            } else {
+              this.props.selectedScaleNotes
+                .map(highlighted_note => {
+                  if(note === highlighted_note) key_class_mod = "scale"
+                });
+            }
+
+           }
 
       }
 

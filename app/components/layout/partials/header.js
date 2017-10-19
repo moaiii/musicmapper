@@ -92,11 +92,11 @@ class Header extends Component {
     }    
 
     let toggle =
-    <ToggleButton
-      inactiveLabel={'OFF'}
-      activeLabel={'ON'}
-      value={this.state.tooltipIsOn || false}
-      onToggle={this.toggleTooltip} />
+      <ToggleButton
+        inactiveLabel={'OFF'}
+        activeLabel={'ON'}
+        value={this.state.tooltipIsOn || false}
+        onToggle={this.toggleTooltip} />
 
     return(
       <div className="header">
@@ -111,11 +111,13 @@ class Header extends Component {
 
         <div className="header__nav">
           <ul className="nav__container">
-            <li className="nav__item how-to-use">
+            <li className="nav__item how-to-use"
+                style={temp_hide}>
               Tooltips
               {toggle}
             </li>
             <li className="nav__item how-to-use" 
+                style={temp_hide}
                 onClick={this._showHowToUse.bind(this)}>
               How to use
               <FaQuestion />

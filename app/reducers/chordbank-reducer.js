@@ -116,7 +116,11 @@ const chordbankReducer = (state = initalState, action) => {
         activeNotes: [],
         possibleChords: [],
         exactChords: [],
-        selectedChord: ""
+        selectedChord: "",
+        selectedScale: {
+          name: "",
+          notes: ""
+        }
       };
       break;
 
