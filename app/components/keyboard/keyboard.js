@@ -50,9 +50,7 @@ class Keyboard extends Component {
                   if(note === highlighted_note) key_class_mod = "scale"
                 });
             }
-
            }
-
       }
 
 

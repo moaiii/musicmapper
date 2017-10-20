@@ -1,5 +1,8 @@
+// Functional modules
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
+
+// Child modules
 import FaYoutube from 'react-icons/lib/fa/youtube';
 import FaFacebook from 'react-icons/lib/fa/facebook';
 import FaTwitter from 'react-icons/lib/fa/twitter';
@@ -20,7 +23,7 @@ class Footer extends Component {
 
     switch(type) {
       case "twitter":
-        url = "https://twitter.com/moaimsc";
+        url = "https://twitter.com/___moaiii";
         break;
       case "soundcloud":
         url = "https://soundcloud.com/moai_music";

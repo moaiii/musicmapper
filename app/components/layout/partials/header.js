@@ -13,6 +13,7 @@ import Register from '../../../auth/register';
 import Login from '../../../auth/login';
 import Share from './share';
 import ToggleButton from 'react-toggle-button';
+import ReactPlayer from 'react-player';
 
 
 class Header extends Component {
@@ -24,7 +25,8 @@ class Header extends Component {
       showHowToUse: false,
       showLogin: false,
       showRegister: false,
-      tooltipIsOn: false
+      tooltipIsOn: false,
+      classVideoVisible: ""
     };
 
     this._hideHowToUse = this._hideHowToUse.bind(this);
@@ -34,13 +36,15 @@ class Header extends Component {
 
   _showHowToUse() {
     this.setState({
-      showHowToUse: true
+      showHowToUse: true,
+      classVideoVisible: "isVisible"
     })
   }
-
+  
   _hideHowToUse() {
     this.setState({
-      showHowToUse: false
+      showHowToUse: false,
+      classVideoVisible: ""
     })
   }
 
@@ -81,11 +85,15 @@ class Header extends Component {
   render() {
 
     let howToUse =
-      <Modal 
-        {...HowToUseText}
-        isVisible = {this.state.showHowToUse}
-        onReject = {this._hideHowToUse}
-        onConfirm = {this._hideHowToUse} />
+      <ReactPlayer 
+        url={"https://www.youtube.com/watch?v=IA1liCmUsAM"}
+        playing={this.state.showHowToUse}
+      />
+      // <Modal 
+      //   {...HowToUseText}
+      //   isVisible = {this.state.showHowToUse}
+      //   onReject = {this._hideHowToUse}
+      //   onConfirm = {this._hideHowToUse} />
 
     let temp_hide = {
       display: 'none'
@@ -116,8 +124,7 @@ class Header extends Component {
               Tooltips
               {toggle}
             </li>
-            <li className="nav__item how-to-use" 
-                style={temp_hide}
+            <li className="nav__item --how-to-use" 
                 onClick={this._showHowToUse.bind(this)}>
               How to use
               <FaQuestion />
@@ -132,12 +139,18 @@ class Header extends Component {
             </li>
           </ul>
         </div>
+        <div className={`modal__curtain ${this.state.classVideoVisible}` }
+             onClick={this._hideHowToUse.bind(this)}> </div>
 
         <div className={`app__auth ${this.state.showLogin || this.state.showRegister ? " isVisible" : " "}`}>
           <Register isVisible={this.state.showRegister}/>
           <Login isVisible={this.state.showLogin}/>
         </div>
-        {howToUse}
+
+        <div className={`howToUse__video-container ${this.state.classVideoVisible}`}>
+          <p onClick={this._hideHowToUse.bind(this)}>CLOSE</p>
+          {howToUse}
+        </div>
       </div>
     )
   }

@@ -47,6 +47,10 @@ body {
   margin: auto;
   position: relative;
   height: 100vh;
+
+  @include tablet {
+    height: auto;
+  }
 }
 
 .header {
@@ -56,6 +60,13 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
+
+  @include tablet {
+    height: 300px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
   div {
     display: flex;
@@ -81,6 +92,10 @@ body {
 
 .header__nav {
   width: 50%;
+
+  @include tablet {
+    width: 100%;
+  }
 }
 
 .nav__container {
@@ -88,10 +103,10 @@ body {
   width: 100%;
   justify-content: flex-end;
 
-  .how-to-use {
-    @include tablet {
-      display: none;
-    }
+  @include tablet {
+    padding: 0;
+    margin: 0;  
+    justify-content: space-evenly;
   }
 }
 
@@ -99,6 +114,14 @@ body {
   cursor: pointer;
   display: flex;
   align-items: center;
+
+  &.--how-to-use {
+    margin: 0 2rem 0 0;
+
+    @include tablet {
+      margin: 0;
+    }
+  }
 }
 
 .footer {
@@ -147,7 +170,8 @@ body {
   display: inline-block;
 
   p {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
+    opacity: 0.6;
     color: $color-grey;
   }
 }
@@ -281,9 +305,14 @@ body {
   }
 
   @include tablet {
-    height: 100%;
+    height: 70%;
+    width: 70%;
     display: flex;
     justify-content: center;
+
+    p {
+      max-width: 60%;
+    }
   }
 }
 
@@ -372,6 +401,10 @@ body {
   h1 {
     margin: 0;
     left: 8px;
+  }
+
+  @include tablet {
+    justify-content: flex-end;
   }
 
   @include content-box-style;
@@ -487,6 +520,14 @@ body {
       opacity: 0.7;
     }
   }
+
+  @include tablet {
+    height: 1.5rem;
+    
+    p {
+      font-size: 0.6rem;
+    }
+  }
 }
 
 .fret__name {
@@ -530,6 +571,10 @@ body {
   top: 12px;
   margin: 0;
   cursor: pointer;
+
+  @include tablet {
+    top: 3px;
+  }
 }
 
 .Dropdown-control {
@@ -632,10 +677,9 @@ body {
   width: 100%;
   transition: border 0.25s ease;
 
-  &:hover {
+  @include tablet {
+    height: 85%;
   }
-
-  
 }
 
 .chords__container {
@@ -653,6 +697,10 @@ body {
 
   &:hover {
   }
+
+  @include tablet {
+    height: 85%;
+  }
 }
 
 .chords__match-toggle {
@@ -664,6 +712,11 @@ body {
     display: inline-block;
     padding-left: 1rem;
     font-size: 0.8rem;
+  }
+
+  @include tablet {
+    margin-top: 5px;
+    justify-content: space-between;
   }
 }
 
@@ -859,6 +912,10 @@ body {
     left: 8px;
   }
 
+  @include tablet {
+    justify-content: center;
+  }
+
   @include content-box-style;
 }
 
@@ -873,8 +930,8 @@ body {
   justify-content: space-evenly;
 
   @include tablet {
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
   }
 }
@@ -883,7 +940,7 @@ body {
   display: flex;
 
   @include tablet {
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 
@@ -1080,6 +1137,10 @@ body {
 
   @include tablet {
     flex-direction: column;
+  }
+
+  @include laptop {
+    flex-direction: column;
     margin-bottom: 200px;
   }
 }
@@ -1089,6 +1150,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   width: 36%;
+
+  @include tablet {
+    width: 100%;
+  }
 
   .right--verticals {
     display: flex;
@@ -1117,7 +1182,9 @@ body {
   @include content-box-style;
 
   @include tablet {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 }
 
@@ -1145,7 +1212,9 @@ body {
   @include content-box-style;
 
   @include tablet {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 }
 
@@ -1172,6 +1241,31 @@ body {
 
     p {
       margin-right: 0.5rem;
+    }
+  }
+}
+
+.howToUse__video-container {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate3D(-50%, -250%, 0);
+  z-index: 10;
+  flex-direction: column;
+  
+  &.isVisible {
+    transform: translate3D(-50%, -60%, 0);
+  }
+
+  p {
+    opacity: 0.85;
+    font-size: 1rem;
+    color: $color-white;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: line-through;
+      opacity: 1;
     }
   }
 }

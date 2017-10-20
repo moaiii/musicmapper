@@ -50982,7 +50982,7 @@
 	
 	var _header2 = _interopRequireDefault(_header);
 	
-	var _keyboard = __webpack_require__(431);
+	var _keyboard = __webpack_require__(447);
 	
 	var _keyboard2 = _interopRequireDefault(_keyboard);
 	
@@ -50990,23 +50990,23 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _chordBank = __webpack_require__(433);
+	var _chordBank = __webpack_require__(449);
 	
 	var _chordBank2 = _interopRequireDefault(_chordBank);
 	
-	var _laptopCheck = __webpack_require__(438);
+	var _laptopCheck = __webpack_require__(454);
 	
 	var _laptopCheck2 = _interopRequireDefault(_laptopCheck);
 	
-	var _scaleSelect = __webpack_require__(536);
+	var _scaleSelect = __webpack_require__(552);
 	
 	var _scaleSelect2 = _interopRequireDefault(_scaleSelect);
 	
-	var _possibleChords = __webpack_require__(435);
+	var _possibleChords = __webpack_require__(451);
 	
 	var _possibleChords2 = _interopRequireDefault(_possibleChords);
 	
-	var _downloadMidi = __webpack_require__(537);
+	var _downloadMidi = __webpack_require__(553);
 	
 	var _downloadMidi2 = _interopRequireDefault(_downloadMidi);
 	
@@ -51014,7 +51014,7 @@
 	
 	var _share2 = _interopRequireDefault(_share);
 	
-	var _chordSelector = __webpack_require__(538);
+	var _chordSelector = __webpack_require__(554);
 	
 	var _chordSelector2 = _interopRequireDefault(_chordSelector);
 	
@@ -51024,7 +51024,7 @@
 	
 	var _modalText = __webpack_require__(337);
 	
-	__webpack_require__(539);
+	__webpack_require__(555);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -51305,7 +51305,11 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Functional modules
+	
+	
+	// Child modules
+	
 	
 	var Footer = function (_Component) {
 	  _inherits(Footer, _Component);
@@ -51325,7 +51329,7 @@
 	
 	      switch (type) {
 	        case "twitter":
-	          url = "https://twitter.com/moaimsc";
+	          url = "https://twitter.com/___moaiii";
 	          break;
 	        case "soundcloud":
 	          url = "https://soundcloud.com/moai_music";
@@ -56083,8 +56087,6 @@
 	  value: true
 	});
 	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
@@ -56133,6 +56135,10 @@
 	
 	var _reactToggleButton2 = _interopRequireDefault(_reactToggleButton);
 	
+	var _reactPlayer = __webpack_require__(431);
+	
+	var _reactPlayer2 = _interopRequireDefault(_reactPlayer);
+	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -56159,7 +56165,8 @@
 	      showHowToUse: false,
 	      showLogin: false,
 	      showRegister: false,
-	      tooltipIsOn: false
+	      tooltipIsOn: false,
+	      classVideoVisible: ""
 	    };
 	
 	    _this._hideHowToUse = _this._hideHowToUse.bind(_this);
@@ -56172,14 +56179,16 @@
 	    key: '_showHowToUse',
 	    value: function _showHowToUse() {
 	      this.setState({
-	        showHowToUse: true
+	        showHowToUse: true,
+	        classVideoVisible: "isVisible"
 	      });
 	    }
 	  }, {
 	    key: '_hideHowToUse',
 	    value: function _hideHowToUse() {
 	      this.setState({
-	        showHowToUse: false
+	        showHowToUse: false,
+	        classVideoVisible: ""
 	      });
 	    }
 	  }, {
@@ -56225,10 +56234,15 @@
 	    key: 'render',
 	    value: function render() {
 	
-	      var howToUse = _react2.default.createElement(_modal2.default, _extends({}, _modalText.HowToUseText, {
-	        isVisible: this.state.showHowToUse,
-	        onReject: this._hideHowToUse,
-	        onConfirm: this._hideHowToUse }));
+	      var howToUse = _react2.default.createElement(_reactPlayer2.default, {
+	        url: "https://www.youtube.com/watch?v=IA1liCmUsAM",
+	        playing: this.state.showHowToUse
+	      });
+	      // <Modal 
+	      //   {...HowToUseText}
+	      //   isVisible = {this.state.showHowToUse}
+	      //   onReject = {this._hideHowToUse}
+	      //   onConfirm = {this._hideHowToUse} />
 	
 	      var temp_hide = {
 	        display: 'none'
@@ -56272,8 +56286,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'li',
-	              { className: 'nav__item how-to-use',
-	                style: temp_hide,
+	              { className: 'nav__item --how-to-use',
 	                onClick: this._showHowToUse.bind(this) },
 	              'How to use',
 	              _react2.default.createElement(_question2.default, null)
@@ -56294,11 +56307,26 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
+	          { className: 'modal__curtain ' + this.state.classVideoVisible,
+	            onClick: this._hideHowToUse.bind(this) },
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'div',
 	          { className: 'app__auth ' + (this.state.showLogin || this.state.showRegister ? " isVisible" : " ") },
 	          _react2.default.createElement(_register2.default, { isVisible: this.state.showRegister }),
 	          _react2.default.createElement(_login2.default, { isVisible: this.state.showLogin })
 	        ),
-	        howToUse
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'howToUse__video-container ' + this.state.classVideoVisible },
+	          _react2.default.createElement(
+	            'p',
+	            { onClick: this._hideHowToUse.bind(this) },
+	            'CLOSE'
+	          ),
+	          howToUse
+	        )
 	      );
 	    }
 	  }]);
@@ -67474,6 +67502,3962 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _lodash = __webpack_require__(432);
+	
+	var _lodash2 = _interopRequireDefault(_lodash);
+	
+	var _props3 = __webpack_require__(433);
+	
+	var _YouTube = __webpack_require__(434);
+	
+	var _YouTube2 = _interopRequireDefault(_YouTube);
+	
+	var _SoundCloud = __webpack_require__(438);
+	
+	var _SoundCloud2 = _interopRequireDefault(_SoundCloud);
+	
+	var _Vimeo = __webpack_require__(441);
+	
+	var _Vimeo2 = _interopRequireDefault(_Vimeo);
+	
+	var _Facebook = __webpack_require__(442);
+	
+	var _Facebook2 = _interopRequireDefault(_Facebook);
+	
+	var _FilePlayer = __webpack_require__(440);
+	
+	var _FilePlayer2 = _interopRequireDefault(_FilePlayer);
+	
+	var _Streamable = __webpack_require__(443);
+	
+	var _Streamable2 = _interopRequireDefault(_Streamable);
+	
+	var _Vidme = __webpack_require__(444);
+	
+	var _Vidme2 = _interopRequireDefault(_Vidme);
+	
+	var _Wistia = __webpack_require__(445);
+	
+	var _Wistia2 = _interopRequireDefault(_Wistia);
+	
+	var _DailyMotion = __webpack_require__(446);
+	
+	var _DailyMotion2 = _interopRequireDefault(_DailyMotion);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ReactPlayer = function (_Component) {
+	  _inherits(ReactPlayer, _Component);
+	
+	  function ReactPlayer() {
+	    var _ref;
+	
+	    var _temp, _this, _ret;
+	
+	    _classCallCheck(this, ReactPlayer);
+	
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ReactPlayer.__proto__ || Object.getPrototypeOf(ReactPlayer)).call.apply(_ref, [this].concat(args))), _this), _this.seekTo = function (fraction) {
+	      if (_this.player) {
+	        _this.player.seekTo(fraction);
+	      }
+	    }, _this.getDuration = function () {
+	      if (!_this.player) return null;
+	      return _this.player.getDuration();
+	    }, _this.getCurrentTime = function () {
+	      if (!_this.player) return null;
+	      var duration = _this.player.getDuration();
+	      var fractionPlayed = _this.player.getFractionPlayed();
+	      if (duration === null || fractionPlayed === null) {
+	        return null;
+	      }
+	      return fractionPlayed * duration;
+	    }, _this.progress = function () {
+	      if (_this.props.url && _this.player) {
+	        var loaded = _this.player.getFractionLoaded() || 0;
+	        var played = _this.player.getFractionPlayed() || 0;
+	        var duration = _this.player.getDuration();
+	        var progress = {};
+	        if (loaded !== _this.prevLoaded) {
+	          progress.loaded = loaded;
+	          if (duration) {
+	            progress.loadedSeconds = progress.loaded * duration;
+	          }
+	        }
+	        if (played !== _this.prevPlayed) {
+	          progress.played = played;
+	          if (duration) {
+	            progress.playedSeconds = progress.played * duration;
+	          }
+	        }
+	        if (progress.loaded || progress.played) {
+	          _this.props.onProgress(progress);
+	        }
+	        _this.prevLoaded = loaded;
+	        _this.prevPlayed = played;
+	      }
+	      _this.progressTimeout = setTimeout(_this.progress, _this.props.progressFrequency);
+	    }, _this.ref = function (player) {
+	      _this.player = player;
+	    }, _this.renderPlayer = function (Player) {
+	      var active = Player.canPlay(_this.props.url);
+	
+	      var _this$props = _this.props,
+	          youtubeConfig = _this$props.youtubeConfig,
+	          vimeoConfig = _this$props.vimeoConfig,
+	          dailymotionConfig = _this$props.dailymotionConfig,
+	          activeProps = _objectWithoutProperties(_this$props, ['youtubeConfig', 'vimeoConfig', 'dailymotionConfig']);
+	
+	      var props = active ? _extends({}, activeProps, { ref: _this.ref }) : {};
+	      // Only youtube and vimeo config passed to
+	      // inactive players due to preload behaviour
+	      return _react2['default'].createElement(Player, _extends({
+	        key: Player.displayName,
+	        youtubeConfig: youtubeConfig,
+	        vimeoConfig: vimeoConfig,
+	        dailymotionConfig: dailymotionConfig
+	      }, props));
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+	
+	  _createClass(ReactPlayer, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.progress();
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearTimeout(this.progressTimeout);
+	    }
+	  }, {
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps) {
+	      return this.props.url !== nextProps.url || this.props.playing !== nextProps.playing || this.props.volume !== nextProps.volume || this.props.playbackRate !== nextProps.playbackRate || this.props.height !== nextProps.height || this.props.width !== nextProps.width || this.props.hidden !== nextProps.hidden;
+	    }
+	  }, {
+	    key: 'renderPlayers',
+	    value: function renderPlayers() {
+	      // Build array of players to render based on URL and preload config
+	      var _props = this.props,
+	          url = _props.url,
+	          youtubeConfig = _props.youtubeConfig,
+	          vimeoConfig = _props.vimeoConfig,
+	          dailymotionConfig = _props.dailymotionConfig;
+	
+	      var players = [];
+	      if (_YouTube2['default'].canPlay(url)) {
+	        players.push(_YouTube2['default']);
+	      } else if (_SoundCloud2['default'].canPlay(url)) {
+	        players.push(_SoundCloud2['default']);
+	      } else if (_Vimeo2['default'].canPlay(url)) {
+	        players.push(_Vimeo2['default']);
+	      } else if (_Facebook2['default'].canPlay(url)) {
+	        players.push(_Facebook2['default']);
+	      } else if (_DailyMotion2['default'].canPlay(url)) {
+	        players.push(_DailyMotion2['default']);
+	      } else if (_Streamable2['default'].canPlay(url)) {
+	        players.push(_Streamable2['default']);
+	      } else if (_Vidme2['default'].canPlay(url)) {
+	        players.push(_Vidme2['default']);
+	      } else if (_Wistia2['default'].canPlay(url)) {
+	        players.push(_Wistia2['default']);
+	      } else if (url) {
+	        // Fall back to FilePlayer if nothing else can play the URL
+	        players.push(_FilePlayer2['default']);
+	      }
+	      // Render additional players if preload config is set
+	      if (!_YouTube2['default'].canPlay(url) && youtubeConfig.preload) {
+	        players.push(_YouTube2['default']);
+	      }
+	      if (!_Vimeo2['default'].canPlay(url) && vimeoConfig.preload) {
+	        players.push(_Vimeo2['default']);
+	      }
+	      if (!_DailyMotion2['default'].canPlay(url) && dailymotionConfig.preload) {
+	        players.push(_DailyMotion2['default']);
+	      }
+	      return players.map(this.renderPlayer);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props2 = this.props,
+	          style = _props2.style,
+	          width = _props2.width,
+	          height = _props2.height;
+	
+	      var otherProps = (0, _lodash2['default'])(this.props, Object.keys(_props3.propTypes));
+	      var players = this.renderPlayers();
+	      return _react2['default'].createElement(
+	        'div',
+	        _extends({ style: _extends({}, style, { width: width, height: height }) }, otherProps),
+	        players
+	      );
+	    }
+	  }]);
+	
+	  return ReactPlayer;
+	}(_react.Component);
+	
+	ReactPlayer.displayName = 'ReactPlayer';
+	ReactPlayer.propTypes = _props3.propTypes;
+	ReactPlayer.defaultProps = _props3.defaultProps;
+	exports['default'] = ReactPlayer;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 432 */
+/***/ (function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/**
+	 * lodash (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modularize exports="npm" -o ./`
+	 * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+	 * Released under MIT license <https://lodash.com/license>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 */
+	
+	/** Used as the size to enable large array optimizations. */
+	var LARGE_ARRAY_SIZE = 200;
+	
+	/** Used to stand-in for `undefined` hash values. */
+	var HASH_UNDEFINED = '__lodash_hash_undefined__';
+	
+	/** Used as references for various `Number` constants. */
+	var INFINITY = 1 / 0,
+	    MAX_SAFE_INTEGER = 9007199254740991;
+	
+	/** `Object#toString` result references. */
+	var argsTag = '[object Arguments]',
+	    funcTag = '[object Function]',
+	    genTag = '[object GeneratorFunction]',
+	    symbolTag = '[object Symbol]';
+	
+	/**
+	 * Used to match `RegExp`
+	 * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
+	 */
+	var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
+	
+	/** Used to detect host constructors (Safari). */
+	var reIsHostCtor = /^\[object .+?Constructor\]$/;
+	
+	/** Used to detect unsigned integer values. */
+	var reIsUint = /^(?:0|[1-9]\d*)$/;
+	
+	/** Detect free variable `global` from Node.js. */
+	var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+	
+	/** Detect free variable `self`. */
+	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+	
+	/** Used as a reference to the global object. */
+	var root = freeGlobal || freeSelf || Function('return this')();
+	
+	/**
+	 * A faster alternative to `Function#apply`, this function invokes `func`
+	 * with the `this` binding of `thisArg` and the arguments of `args`.
+	 *
+	 * @private
+	 * @param {Function} func The function to invoke.
+	 * @param {*} thisArg The `this` binding of `func`.
+	 * @param {Array} args The arguments to invoke `func` with.
+	 * @returns {*} Returns the result of `func`.
+	 */
+	function apply(func, thisArg, args) {
+	  switch (args.length) {
+	    case 0: return func.call(thisArg);
+	    case 1: return func.call(thisArg, args[0]);
+	    case 2: return func.call(thisArg, args[0], args[1]);
+	    case 3: return func.call(thisArg, args[0], args[1], args[2]);
+	  }
+	  return func.apply(thisArg, args);
+	}
+	
+	/**
+	 * A specialized version of `_.includes` for arrays without support for
+	 * specifying an index to search from.
+	 *
+	 * @private
+	 * @param {Array} [array] The array to inspect.
+	 * @param {*} target The value to search for.
+	 * @returns {boolean} Returns `true` if `target` is found, else `false`.
+	 */
+	function arrayIncludes(array, value) {
+	  var length = array ? array.length : 0;
+	  return !!length && baseIndexOf(array, value, 0) > -1;
+	}
+	
+	/**
+	 * This function is like `arrayIncludes` except that it accepts a comparator.
+	 *
+	 * @private
+	 * @param {Array} [array] The array to inspect.
+	 * @param {*} target The value to search for.
+	 * @param {Function} comparator The comparator invoked per element.
+	 * @returns {boolean} Returns `true` if `target` is found, else `false`.
+	 */
+	function arrayIncludesWith(array, value, comparator) {
+	  var index = -1,
+	      length = array ? array.length : 0;
+	
+	  while (++index < length) {
+	    if (comparator(value, array[index])) {
+	      return true;
+	    }
+	  }
+	  return false;
+	}
+	
+	/**
+	 * A specialized version of `_.map` for arrays without support for iteratee
+	 * shorthands.
+	 *
+	 * @private
+	 * @param {Array} [array] The array to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Array} Returns the new mapped array.
+	 */
+	function arrayMap(array, iteratee) {
+	  var index = -1,
+	      length = array ? array.length : 0,
+	      result = Array(length);
+	
+	  while (++index < length) {
+	    result[index] = iteratee(array[index], index, array);
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Appends the elements of `values` to `array`.
+	 *
+	 * @private
+	 * @param {Array} array The array to modify.
+	 * @param {Array} values The values to append.
+	 * @returns {Array} Returns `array`.
+	 */
+	function arrayPush(array, values) {
+	  var index = -1,
+	      length = values.length,
+	      offset = array.length;
+	
+	  while (++index < length) {
+	    array[offset + index] = values[index];
+	  }
+	  return array;
+	}
+	
+	/**
+	 * The base implementation of `_.findIndex` and `_.findLastIndex` without
+	 * support for iteratee shorthands.
+	 *
+	 * @private
+	 * @param {Array} array The array to inspect.
+	 * @param {Function} predicate The function invoked per iteration.
+	 * @param {number} fromIndex The index to search from.
+	 * @param {boolean} [fromRight] Specify iterating from right to left.
+	 * @returns {number} Returns the index of the matched value, else `-1`.
+	 */
+	function baseFindIndex(array, predicate, fromIndex, fromRight) {
+	  var length = array.length,
+	      index = fromIndex + (fromRight ? 1 : -1);
+	
+	  while ((fromRight ? index-- : ++index < length)) {
+	    if (predicate(array[index], index, array)) {
+	      return index;
+	    }
+	  }
+	  return -1;
+	}
+	
+	/**
+	 * The base implementation of `_.indexOf` without `fromIndex` bounds checks.
+	 *
+	 * @private
+	 * @param {Array} array The array to inspect.
+	 * @param {*} value The value to search for.
+	 * @param {number} fromIndex The index to search from.
+	 * @returns {number} Returns the index of the matched value, else `-1`.
+	 */
+	function baseIndexOf(array, value, fromIndex) {
+	  if (value !== value) {
+	    return baseFindIndex(array, baseIsNaN, fromIndex);
+	  }
+	  var index = fromIndex - 1,
+	      length = array.length;
+	
+	  while (++index < length) {
+	    if (array[index] === value) {
+	      return index;
+	    }
+	  }
+	  return -1;
+	}
+	
+	/**
+	 * The base implementation of `_.isNaN` without support for number objects.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is `NaN`, else `false`.
+	 */
+	function baseIsNaN(value) {
+	  return value !== value;
+	}
+	
+	/**
+	 * The base implementation of `_.times` without support for iteratee shorthands
+	 * or max array length checks.
+	 *
+	 * @private
+	 * @param {number} n The number of times to invoke `iteratee`.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Array} Returns the array of results.
+	 */
+	function baseTimes(n, iteratee) {
+	  var index = -1,
+	      result = Array(n);
+	
+	  while (++index < n) {
+	    result[index] = iteratee(index);
+	  }
+	  return result;
+	}
+	
+	/**
+	 * The base implementation of `_.unary` without support for storing metadata.
+	 *
+	 * @private
+	 * @param {Function} func The function to cap arguments for.
+	 * @returns {Function} Returns the new capped function.
+	 */
+	function baseUnary(func) {
+	  return function(value) {
+	    return func(value);
+	  };
+	}
+	
+	/**
+	 * Checks if a cache value for `key` exists.
+	 *
+	 * @private
+	 * @param {Object} cache The cache to query.
+	 * @param {string} key The key of the entry to check.
+	 * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+	 */
+	function cacheHas(cache, key) {
+	  return cache.has(key);
+	}
+	
+	/**
+	 * Gets the value at `key` of `object`.
+	 *
+	 * @private
+	 * @param {Object} [object] The object to query.
+	 * @param {string} key The key of the property to get.
+	 * @returns {*} Returns the property value.
+	 */
+	function getValue(object, key) {
+	  return object == null ? undefined : object[key];
+	}
+	
+	/**
+	 * Checks if `value` is a host object in IE < 9.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+	 */
+	function isHostObject(value) {
+	  // Many host objects are `Object` objects that can coerce to strings
+	  // despite having improperly defined `toString` methods.
+	  var result = false;
+	  if (value != null && typeof value.toString != 'function') {
+	    try {
+	      result = !!(value + '');
+	    } catch (e) {}
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Creates a unary function that invokes `func` with its argument transformed.
+	 *
+	 * @private
+	 * @param {Function} func The function to wrap.
+	 * @param {Function} transform The argument transform.
+	 * @returns {Function} Returns the new function.
+	 */
+	function overArg(func, transform) {
+	  return function(arg) {
+	    return func(transform(arg));
+	  };
+	}
+	
+	/** Used for built-in method references. */
+	var arrayProto = Array.prototype,
+	    funcProto = Function.prototype,
+	    objectProto = Object.prototype;
+	
+	/** Used to detect overreaching core-js shims. */
+	var coreJsData = root['__core-js_shared__'];
+	
+	/** Used to detect methods masquerading as native. */
+	var maskSrcKey = (function() {
+	  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
+	  return uid ? ('Symbol(src)_1.' + uid) : '';
+	}());
+	
+	/** Used to resolve the decompiled source of functions. */
+	var funcToString = funcProto.toString;
+	
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+	
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objectToString = objectProto.toString;
+	
+	/** Used to detect if a method is native. */
+	var reIsNative = RegExp('^' +
+	  funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&')
+	  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+	);
+	
+	/** Built-in value references. */
+	var Symbol = root.Symbol,
+	    getPrototype = overArg(Object.getPrototypeOf, Object),
+	    propertyIsEnumerable = objectProto.propertyIsEnumerable,
+	    splice = arrayProto.splice,
+	    spreadableSymbol = Symbol ? Symbol.isConcatSpreadable : undefined;
+	
+	/* Built-in method references for those with the same name as other `lodash` methods. */
+	var nativeGetSymbols = Object.getOwnPropertySymbols,
+	    nativeMax = Math.max;
+	
+	/* Built-in method references that are verified to be native. */
+	var Map = getNative(root, 'Map'),
+	    nativeCreate = getNative(Object, 'create');
+	
+	/**
+	 * Creates a hash object.
+	 *
+	 * @private
+	 * @constructor
+	 * @param {Array} [entries] The key-value pairs to cache.
+	 */
+	function Hash(entries) {
+	  var index = -1,
+	      length = entries ? entries.length : 0;
+	
+	  this.clear();
+	  while (++index < length) {
+	    var entry = entries[index];
+	    this.set(entry[0], entry[1]);
+	  }
+	}
+	
+	/**
+	 * Removes all key-value entries from the hash.
+	 *
+	 * @private
+	 * @name clear
+	 * @memberOf Hash
+	 */
+	function hashClear() {
+	  this.__data__ = nativeCreate ? nativeCreate(null) : {};
+	}
+	
+	/**
+	 * Removes `key` and its value from the hash.
+	 *
+	 * @private
+	 * @name delete
+	 * @memberOf Hash
+	 * @param {Object} hash The hash to modify.
+	 * @param {string} key The key of the value to remove.
+	 * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+	 */
+	function hashDelete(key) {
+	  return this.has(key) && delete this.__data__[key];
+	}
+	
+	/**
+	 * Gets the hash value for `key`.
+	 *
+	 * @private
+	 * @name get
+	 * @memberOf Hash
+	 * @param {string} key The key of the value to get.
+	 * @returns {*} Returns the entry value.
+	 */
+	function hashGet(key) {
+	  var data = this.__data__;
+	  if (nativeCreate) {
+	    var result = data[key];
+	    return result === HASH_UNDEFINED ? undefined : result;
+	  }
+	  return hasOwnProperty.call(data, key) ? data[key] : undefined;
+	}
+	
+	/**
+	 * Checks if a hash value for `key` exists.
+	 *
+	 * @private
+	 * @name has
+	 * @memberOf Hash
+	 * @param {string} key The key of the entry to check.
+	 * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+	 */
+	function hashHas(key) {
+	  var data = this.__data__;
+	  return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key);
+	}
+	
+	/**
+	 * Sets the hash `key` to `value`.
+	 *
+	 * @private
+	 * @name set
+	 * @memberOf Hash
+	 * @param {string} key The key of the value to set.
+	 * @param {*} value The value to set.
+	 * @returns {Object} Returns the hash instance.
+	 */
+	function hashSet(key, value) {
+	  var data = this.__data__;
+	  data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
+	  return this;
+	}
+	
+	// Add methods to `Hash`.
+	Hash.prototype.clear = hashClear;
+	Hash.prototype['delete'] = hashDelete;
+	Hash.prototype.get = hashGet;
+	Hash.prototype.has = hashHas;
+	Hash.prototype.set = hashSet;
+	
+	/**
+	 * Creates an list cache object.
+	 *
+	 * @private
+	 * @constructor
+	 * @param {Array} [entries] The key-value pairs to cache.
+	 */
+	function ListCache(entries) {
+	  var index = -1,
+	      length = entries ? entries.length : 0;
+	
+	  this.clear();
+	  while (++index < length) {
+	    var entry = entries[index];
+	    this.set(entry[0], entry[1]);
+	  }
+	}
+	
+	/**
+	 * Removes all key-value entries from the list cache.
+	 *
+	 * @private
+	 * @name clear
+	 * @memberOf ListCache
+	 */
+	function listCacheClear() {
+	  this.__data__ = [];
+	}
+	
+	/**
+	 * Removes `key` and its value from the list cache.
+	 *
+	 * @private
+	 * @name delete
+	 * @memberOf ListCache
+	 * @param {string} key The key of the value to remove.
+	 * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+	 */
+	function listCacheDelete(key) {
+	  var data = this.__data__,
+	      index = assocIndexOf(data, key);
+	
+	  if (index < 0) {
+	    return false;
+	  }
+	  var lastIndex = data.length - 1;
+	  if (index == lastIndex) {
+	    data.pop();
+	  } else {
+	    splice.call(data, index, 1);
+	  }
+	  return true;
+	}
+	
+	/**
+	 * Gets the list cache value for `key`.
+	 *
+	 * @private
+	 * @name get
+	 * @memberOf ListCache
+	 * @param {string} key The key of the value to get.
+	 * @returns {*} Returns the entry value.
+	 */
+	function listCacheGet(key) {
+	  var data = this.__data__,
+	      index = assocIndexOf(data, key);
+	
+	  return index < 0 ? undefined : data[index][1];
+	}
+	
+	/**
+	 * Checks if a list cache value for `key` exists.
+	 *
+	 * @private
+	 * @name has
+	 * @memberOf ListCache
+	 * @param {string} key The key of the entry to check.
+	 * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+	 */
+	function listCacheHas(key) {
+	  return assocIndexOf(this.__data__, key) > -1;
+	}
+	
+	/**
+	 * Sets the list cache `key` to `value`.
+	 *
+	 * @private
+	 * @name set
+	 * @memberOf ListCache
+	 * @param {string} key The key of the value to set.
+	 * @param {*} value The value to set.
+	 * @returns {Object} Returns the list cache instance.
+	 */
+	function listCacheSet(key, value) {
+	  var data = this.__data__,
+	      index = assocIndexOf(data, key);
+	
+	  if (index < 0) {
+	    data.push([key, value]);
+	  } else {
+	    data[index][1] = value;
+	  }
+	  return this;
+	}
+	
+	// Add methods to `ListCache`.
+	ListCache.prototype.clear = listCacheClear;
+	ListCache.prototype['delete'] = listCacheDelete;
+	ListCache.prototype.get = listCacheGet;
+	ListCache.prototype.has = listCacheHas;
+	ListCache.prototype.set = listCacheSet;
+	
+	/**
+	 * Creates a map cache object to store key-value pairs.
+	 *
+	 * @private
+	 * @constructor
+	 * @param {Array} [entries] The key-value pairs to cache.
+	 */
+	function MapCache(entries) {
+	  var index = -1,
+	      length = entries ? entries.length : 0;
+	
+	  this.clear();
+	  while (++index < length) {
+	    var entry = entries[index];
+	    this.set(entry[0], entry[1]);
+	  }
+	}
+	
+	/**
+	 * Removes all key-value entries from the map.
+	 *
+	 * @private
+	 * @name clear
+	 * @memberOf MapCache
+	 */
+	function mapCacheClear() {
+	  this.__data__ = {
+	    'hash': new Hash,
+	    'map': new (Map || ListCache),
+	    'string': new Hash
+	  };
+	}
+	
+	/**
+	 * Removes `key` and its value from the map.
+	 *
+	 * @private
+	 * @name delete
+	 * @memberOf MapCache
+	 * @param {string} key The key of the value to remove.
+	 * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+	 */
+	function mapCacheDelete(key) {
+	  return getMapData(this, key)['delete'](key);
+	}
+	
+	/**
+	 * Gets the map value for `key`.
+	 *
+	 * @private
+	 * @name get
+	 * @memberOf MapCache
+	 * @param {string} key The key of the value to get.
+	 * @returns {*} Returns the entry value.
+	 */
+	function mapCacheGet(key) {
+	  return getMapData(this, key).get(key);
+	}
+	
+	/**
+	 * Checks if a map value for `key` exists.
+	 *
+	 * @private
+	 * @name has
+	 * @memberOf MapCache
+	 * @param {string} key The key of the entry to check.
+	 * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+	 */
+	function mapCacheHas(key) {
+	  return getMapData(this, key).has(key);
+	}
+	
+	/**
+	 * Sets the map `key` to `value`.
+	 *
+	 * @private
+	 * @name set
+	 * @memberOf MapCache
+	 * @param {string} key The key of the value to set.
+	 * @param {*} value The value to set.
+	 * @returns {Object} Returns the map cache instance.
+	 */
+	function mapCacheSet(key, value) {
+	  getMapData(this, key).set(key, value);
+	  return this;
+	}
+	
+	// Add methods to `MapCache`.
+	MapCache.prototype.clear = mapCacheClear;
+	MapCache.prototype['delete'] = mapCacheDelete;
+	MapCache.prototype.get = mapCacheGet;
+	MapCache.prototype.has = mapCacheHas;
+	MapCache.prototype.set = mapCacheSet;
+	
+	/**
+	 *
+	 * Creates an array cache object to store unique values.
+	 *
+	 * @private
+	 * @constructor
+	 * @param {Array} [values] The values to cache.
+	 */
+	function SetCache(values) {
+	  var index = -1,
+	      length = values ? values.length : 0;
+	
+	  this.__data__ = new MapCache;
+	  while (++index < length) {
+	    this.add(values[index]);
+	  }
+	}
+	
+	/**
+	 * Adds `value` to the array cache.
+	 *
+	 * @private
+	 * @name add
+	 * @memberOf SetCache
+	 * @alias push
+	 * @param {*} value The value to cache.
+	 * @returns {Object} Returns the cache instance.
+	 */
+	function setCacheAdd(value) {
+	  this.__data__.set(value, HASH_UNDEFINED);
+	  return this;
+	}
+	
+	/**
+	 * Checks if `value` is in the array cache.
+	 *
+	 * @private
+	 * @name has
+	 * @memberOf SetCache
+	 * @param {*} value The value to search for.
+	 * @returns {number} Returns `true` if `value` is found, else `false`.
+	 */
+	function setCacheHas(value) {
+	  return this.__data__.has(value);
+	}
+	
+	// Add methods to `SetCache`.
+	SetCache.prototype.add = SetCache.prototype.push = setCacheAdd;
+	SetCache.prototype.has = setCacheHas;
+	
+	/**
+	 * Creates an array of the enumerable property names of the array-like `value`.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @param {boolean} inherited Specify returning inherited property names.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function arrayLikeKeys(value, inherited) {
+	  // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
+	  // Safari 9 makes `arguments.length` enumerable in strict mode.
+	  var result = (isArray(value) || isArguments(value))
+	    ? baseTimes(value.length, String)
+	    : [];
+	
+	  var length = result.length,
+	      skipIndexes = !!length;
+	
+	  for (var key in value) {
+	    if ((inherited || hasOwnProperty.call(value, key)) &&
+	        !(skipIndexes && (key == 'length' || isIndex(key, length)))) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Gets the index at which the `key` is found in `array` of key-value pairs.
+	 *
+	 * @private
+	 * @param {Array} array The array to inspect.
+	 * @param {*} key The key to search for.
+	 * @returns {number} Returns the index of the matched value, else `-1`.
+	 */
+	function assocIndexOf(array, key) {
+	  var length = array.length;
+	  while (length--) {
+	    if (eq(array[length][0], key)) {
+	      return length;
+	    }
+	  }
+	  return -1;
+	}
+	
+	/**
+	 * The base implementation of methods like `_.difference` without support
+	 * for excluding multiple arrays or iteratee shorthands.
+	 *
+	 * @private
+	 * @param {Array} array The array to inspect.
+	 * @param {Array} values The values to exclude.
+	 * @param {Function} [iteratee] The iteratee invoked per element.
+	 * @param {Function} [comparator] The comparator invoked per element.
+	 * @returns {Array} Returns the new array of filtered values.
+	 */
+	function baseDifference(array, values, iteratee, comparator) {
+	  var index = -1,
+	      includes = arrayIncludes,
+	      isCommon = true,
+	      length = array.length,
+	      result = [],
+	      valuesLength = values.length;
+	
+	  if (!length) {
+	    return result;
+	  }
+	  if (iteratee) {
+	    values = arrayMap(values, baseUnary(iteratee));
+	  }
+	  if (comparator) {
+	    includes = arrayIncludesWith;
+	    isCommon = false;
+	  }
+	  else if (values.length >= LARGE_ARRAY_SIZE) {
+	    includes = cacheHas;
+	    isCommon = false;
+	    values = new SetCache(values);
+	  }
+	  outer:
+	  while (++index < length) {
+	    var value = array[index],
+	        computed = iteratee ? iteratee(value) : value;
+	
+	    value = (comparator || value !== 0) ? value : 0;
+	    if (isCommon && computed === computed) {
+	      var valuesIndex = valuesLength;
+	      while (valuesIndex--) {
+	        if (values[valuesIndex] === computed) {
+	          continue outer;
+	        }
+	      }
+	      result.push(value);
+	    }
+	    else if (!includes(values, computed, comparator)) {
+	      result.push(value);
+	    }
+	  }
+	  return result;
+	}
+	
+	/**
+	 * The base implementation of `_.flatten` with support for restricting flattening.
+	 *
+	 * @private
+	 * @param {Array} array The array to flatten.
+	 * @param {number} depth The maximum recursion depth.
+	 * @param {boolean} [predicate=isFlattenable] The function invoked per iteration.
+	 * @param {boolean} [isStrict] Restrict to values that pass `predicate` checks.
+	 * @param {Array} [result=[]] The initial result value.
+	 * @returns {Array} Returns the new flattened array.
+	 */
+	function baseFlatten(array, depth, predicate, isStrict, result) {
+	  var index = -1,
+	      length = array.length;
+	
+	  predicate || (predicate = isFlattenable);
+	  result || (result = []);
+	
+	  while (++index < length) {
+	    var value = array[index];
+	    if (depth > 0 && predicate(value)) {
+	      if (depth > 1) {
+	        // Recursively flatten arrays (susceptible to call stack limits).
+	        baseFlatten(value, depth - 1, predicate, isStrict, result);
+	      } else {
+	        arrayPush(result, value);
+	      }
+	    } else if (!isStrict) {
+	      result[result.length] = value;
+	    }
+	  }
+	  return result;
+	}
+	
+	/**
+	 * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
+	 * `keysFunc` and `symbolsFunc` to get the enumerable property names and
+	 * symbols of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @param {Function} keysFunc The function to get the keys of `object`.
+	 * @param {Function} symbolsFunc The function to get the symbols of `object`.
+	 * @returns {Array} Returns the array of property names and symbols.
+	 */
+	function baseGetAllKeys(object, keysFunc, symbolsFunc) {
+	  var result = keysFunc(object);
+	  return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
+	}
+	
+	/**
+	 * The base implementation of `_.isNative` without bad shim checks.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a native function,
+	 *  else `false`.
+	 */
+	function baseIsNative(value) {
+	  if (!isObject(value) || isMasked(value)) {
+	    return false;
+	  }
+	  var pattern = (isFunction(value) || isHostObject(value)) ? reIsNative : reIsHostCtor;
+	  return pattern.test(toSource(value));
+	}
+	
+	/**
+	 * The base implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function baseKeysIn(object) {
+	  if (!isObject(object)) {
+	    return nativeKeysIn(object);
+	  }
+	  var isProto = isPrototype(object),
+	      result = [];
+	
+	  for (var key in object) {
+	    if (!(key == 'constructor' && (isProto || !hasOwnProperty.call(object, key)))) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+	
+	/**
+	 * The base implementation of `_.pick` without support for individual
+	 * property identifiers.
+	 *
+	 * @private
+	 * @param {Object} object The source object.
+	 * @param {string[]} props The property identifiers to pick.
+	 * @returns {Object} Returns the new object.
+	 */
+	function basePick(object, props) {
+	  object = Object(object);
+	  return basePickBy(object, props, function(value, key) {
+	    return key in object;
+	  });
+	}
+	
+	/**
+	 * The base implementation of  `_.pickBy` without support for iteratee shorthands.
+	 *
+	 * @private
+	 * @param {Object} object The source object.
+	 * @param {string[]} props The property identifiers to pick from.
+	 * @param {Function} predicate The function invoked per property.
+	 * @returns {Object} Returns the new object.
+	 */
+	function basePickBy(object, props, predicate) {
+	  var index = -1,
+	      length = props.length,
+	      result = {};
+	
+	  while (++index < length) {
+	    var key = props[index],
+	        value = object[key];
+	
+	    if (predicate(value, key)) {
+	      result[key] = value;
+	    }
+	  }
+	  return result;
+	}
+	
+	/**
+	 * The base implementation of `_.rest` which doesn't validate or coerce arguments.
+	 *
+	 * @private
+	 * @param {Function} func The function to apply a rest parameter to.
+	 * @param {number} [start=func.length-1] The start position of the rest parameter.
+	 * @returns {Function} Returns the new function.
+	 */
+	function baseRest(func, start) {
+	  start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
+	  return function() {
+	    var args = arguments,
+	        index = -1,
+	        length = nativeMax(args.length - start, 0),
+	        array = Array(length);
+	
+	    while (++index < length) {
+	      array[index] = args[start + index];
+	    }
+	    index = -1;
+	    var otherArgs = Array(start + 1);
+	    while (++index < start) {
+	      otherArgs[index] = args[index];
+	    }
+	    otherArgs[start] = array;
+	    return apply(func, this, otherArgs);
+	  };
+	}
+	
+	/**
+	 * Creates an array of own and inherited enumerable property names and
+	 * symbols of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names and symbols.
+	 */
+	function getAllKeysIn(object) {
+	  return baseGetAllKeys(object, keysIn, getSymbolsIn);
+	}
+	
+	/**
+	 * Gets the data for `map`.
+	 *
+	 * @private
+	 * @param {Object} map The map to query.
+	 * @param {string} key The reference key.
+	 * @returns {*} Returns the map data.
+	 */
+	function getMapData(map, key) {
+	  var data = map.__data__;
+	  return isKeyable(key)
+	    ? data[typeof key == 'string' ? 'string' : 'hash']
+	    : data.map;
+	}
+	
+	/**
+	 * Gets the native function at `key` of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @param {string} key The key of the method to get.
+	 * @returns {*} Returns the function if it's native, else `undefined`.
+	 */
+	function getNative(object, key) {
+	  var value = getValue(object, key);
+	  return baseIsNative(value) ? value : undefined;
+	}
+	
+	/**
+	 * Creates an array of the own enumerable symbol properties of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of symbols.
+	 */
+	var getSymbols = nativeGetSymbols ? overArg(nativeGetSymbols, Object) : stubArray;
+	
+	/**
+	 * Creates an array of the own and inherited enumerable symbol properties
+	 * of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of symbols.
+	 */
+	var getSymbolsIn = !nativeGetSymbols ? stubArray : function(object) {
+	  var result = [];
+	  while (object) {
+	    arrayPush(result, getSymbols(object));
+	    object = getPrototype(object);
+	  }
+	  return result;
+	};
+	
+	/**
+	 * Checks if `value` is a flattenable `arguments` object or array.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is flattenable, else `false`.
+	 */
+	function isFlattenable(value) {
+	  return isArray(value) || isArguments(value) ||
+	    !!(spreadableSymbol && value && value[spreadableSymbol]);
+	}
+	
+	/**
+	 * Checks if `value` is a valid array-like index.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+	 * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+	 */
+	function isIndex(value, length) {
+	  length = length == null ? MAX_SAFE_INTEGER : length;
+	  return !!length &&
+	    (typeof value == 'number' || reIsUint.test(value)) &&
+	    (value > -1 && value % 1 == 0 && value < length);
+	}
+	
+	/**
+	 * Checks if `value` is suitable for use as unique object key.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
+	 */
+	function isKeyable(value) {
+	  var type = typeof value;
+	  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
+	    ? (value !== '__proto__')
+	    : (value === null);
+	}
+	
+	/**
+	 * Checks if `func` has its source masked.
+	 *
+	 * @private
+	 * @param {Function} func The function to check.
+	 * @returns {boolean} Returns `true` if `func` is masked, else `false`.
+	 */
+	function isMasked(func) {
+	  return !!maskSrcKey && (maskSrcKey in func);
+	}
+	
+	/**
+	 * Checks if `value` is likely a prototype object.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+	 */
+	function isPrototype(value) {
+	  var Ctor = value && value.constructor,
+	      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
+	
+	  return value === proto;
+	}
+	
+	/**
+	 * This function is like
+	 * [`Object.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+	 * except that it includes inherited enumerable properties.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function nativeKeysIn(object) {
+	  var result = [];
+	  if (object != null) {
+	    for (var key in Object(object)) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Converts `value` to a string key if it's not a string or symbol.
+	 *
+	 * @private
+	 * @param {*} value The value to inspect.
+	 * @returns {string|symbol} Returns the key.
+	 */
+	function toKey(value) {
+	  if (typeof value == 'string' || isSymbol(value)) {
+	    return value;
+	  }
+	  var result = (value + '');
+	  return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
+	}
+	
+	/**
+	 * Converts `func` to its source code.
+	 *
+	 * @private
+	 * @param {Function} func The function to process.
+	 * @returns {string} Returns the source code.
+	 */
+	function toSource(func) {
+	  if (func != null) {
+	    try {
+	      return funcToString.call(func);
+	    } catch (e) {}
+	    try {
+	      return (func + '');
+	    } catch (e) {}
+	  }
+	  return '';
+	}
+	
+	/**
+	 * Performs a
+	 * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+	 * comparison between two values to determine if they are equivalent.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to compare.
+	 * @param {*} other The other value to compare.
+	 * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+	 * @example
+	 *
+	 * var object = { 'a': 1 };
+	 * var other = { 'a': 1 };
+	 *
+	 * _.eq(object, object);
+	 * // => true
+	 *
+	 * _.eq(object, other);
+	 * // => false
+	 *
+	 * _.eq('a', 'a');
+	 * // => true
+	 *
+	 * _.eq('a', Object('a'));
+	 * // => false
+	 *
+	 * _.eq(NaN, NaN);
+	 * // => true
+	 */
+	function eq(value, other) {
+	  return value === other || (value !== value && other !== other);
+	}
+	
+	/**
+	 * Checks if `value` is likely an `arguments` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+	 *  else `false`.
+	 * @example
+	 *
+	 * _.isArguments(function() { return arguments; }());
+	 * // => true
+	 *
+	 * _.isArguments([1, 2, 3]);
+	 * // => false
+	 */
+	function isArguments(value) {
+	  // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
+	  return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
+	    (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
+	}
+	
+	/**
+	 * Checks if `value` is classified as an `Array` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+	 * @example
+	 *
+	 * _.isArray([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArray(document.body.children);
+	 * // => false
+	 *
+	 * _.isArray('abc');
+	 * // => false
+	 *
+	 * _.isArray(_.noop);
+	 * // => false
+	 */
+	var isArray = Array.isArray;
+	
+	/**
+	 * Checks if `value` is array-like. A value is considered array-like if it's
+	 * not a function and has a `value.length` that's an integer greater than or
+	 * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+	 * @example
+	 *
+	 * _.isArrayLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArrayLike(document.body.children);
+	 * // => true
+	 *
+	 * _.isArrayLike('abc');
+	 * // => true
+	 *
+	 * _.isArrayLike(_.noop);
+	 * // => false
+	 */
+	function isArrayLike(value) {
+	  return value != null && isLength(value.length) && !isFunction(value);
+	}
+	
+	/**
+	 * This method is like `_.isArrayLike` except that it also checks if `value`
+	 * is an object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an array-like object,
+	 *  else `false`.
+	 * @example
+	 *
+	 * _.isArrayLikeObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArrayLikeObject(document.body.children);
+	 * // => true
+	 *
+	 * _.isArrayLikeObject('abc');
+	 * // => false
+	 *
+	 * _.isArrayLikeObject(_.noop);
+	 * // => false
+	 */
+	function isArrayLikeObject(value) {
+	  return isObjectLike(value) && isArrayLike(value);
+	}
+	
+	/**
+	 * Checks if `value` is classified as a `Function` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+	 * @example
+	 *
+	 * _.isFunction(_);
+	 * // => true
+	 *
+	 * _.isFunction(/abc/);
+	 * // => false
+	 */
+	function isFunction(value) {
+	  // The use of `Object#toString` avoids issues with the `typeof` operator
+	  // in Safari 8-9 which returns 'object' for typed array and other constructors.
+	  var tag = isObject(value) ? objectToString.call(value) : '';
+	  return tag == funcTag || tag == genTag;
+	}
+	
+	/**
+	 * Checks if `value` is a valid array-like length.
+	 *
+	 * **Note:** This method is loosely based on
+	 * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+	 * @example
+	 *
+	 * _.isLength(3);
+	 * // => true
+	 *
+	 * _.isLength(Number.MIN_VALUE);
+	 * // => false
+	 *
+	 * _.isLength(Infinity);
+	 * // => false
+	 *
+	 * _.isLength('3');
+	 * // => false
+	 */
+	function isLength(value) {
+	  return typeof value == 'number' &&
+	    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+	}
+	
+	/**
+	 * Checks if `value` is the
+	 * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+	 * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+	 * @example
+	 *
+	 * _.isObject({});
+	 * // => true
+	 *
+	 * _.isObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObject(_.noop);
+	 * // => true
+	 *
+	 * _.isObject(null);
+	 * // => false
+	 */
+	function isObject(value) {
+	  var type = typeof value;
+	  return !!value && (type == 'object' || type == 'function');
+	}
+	
+	/**
+	 * Checks if `value` is object-like. A value is object-like if it's not `null`
+	 * and has a `typeof` result of "object".
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 * @example
+	 *
+	 * _.isObjectLike({});
+	 * // => true
+	 *
+	 * _.isObjectLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObjectLike(_.noop);
+	 * // => false
+	 *
+	 * _.isObjectLike(null);
+	 * // => false
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+	
+	/**
+	 * Checks if `value` is classified as a `Symbol` primitive or object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+	 * @example
+	 *
+	 * _.isSymbol(Symbol.iterator);
+	 * // => true
+	 *
+	 * _.isSymbol('abc');
+	 * // => false
+	 */
+	function isSymbol(value) {
+	  return typeof value == 'symbol' ||
+	    (isObjectLike(value) && objectToString.call(value) == symbolTag);
+	}
+	
+	/**
+	 * Creates an array of the own and inherited enumerable property names of `object`.
+	 *
+	 * **Note:** Non-object values are coerced to objects.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 3.0.0
+	 * @category Object
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.keysIn(new Foo);
+	 * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
+	 */
+	function keysIn(object) {
+	  return isArrayLike(object) ? arrayLikeKeys(object, true) : baseKeysIn(object);
+	}
+	
+	/**
+	 * The opposite of `_.pick`; this method creates an object composed of the
+	 * own and inherited enumerable string keyed properties of `object` that are
+	 * not omitted.
+	 *
+	 * @static
+	 * @since 0.1.0
+	 * @memberOf _
+	 * @category Object
+	 * @param {Object} object The source object.
+	 * @param {...(string|string[])} [props] The property identifiers to omit.
+	 * @returns {Object} Returns the new object.
+	 * @example
+	 *
+	 * var object = { 'a': 1, 'b': '2', 'c': 3 };
+	 *
+	 * _.omit(object, ['a', 'c']);
+	 * // => { 'b': '2' }
+	 */
+	var omit = baseRest(function(object, props) {
+	  if (object == null) {
+	    return {};
+	  }
+	  props = arrayMap(baseFlatten(props, 1), toKey);
+	  return basePick(object, baseDifference(getAllKeysIn(object), props));
+	});
+	
+	/**
+	 * This method returns a new empty array.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.13.0
+	 * @category Util
+	 * @returns {Array} Returns the new empty array.
+	 * @example
+	 *
+	 * var arrays = _.times(2, _.stubArray);
+	 *
+	 * console.log(arrays);
+	 * // => [[], []]
+	 *
+	 * console.log(arrays[0] === arrays[1]);
+	 * // => false
+	 */
+	function stubArray() {
+	  return [];
+	}
+	
+	module.exports = omit;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ }),
+/* 433 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.defaultProps = exports.propTypes = undefined;
+	
+	var _propTypes = __webpack_require__(185);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var string = _propTypes2['default'].string,
+	    bool = _propTypes2['default'].bool,
+	    number = _propTypes2['default'].number,
+	    array = _propTypes2['default'].array,
+	    oneOfType = _propTypes2['default'].oneOfType,
+	    shape = _propTypes2['default'].shape,
+	    object = _propTypes2['default'].object,
+	    func = _propTypes2['default'].func;
+	var propTypes = exports.propTypes = {
+	  url: oneOfType([string, array]),
+	  playing: bool,
+	  loop: bool,
+	  controls: bool,
+	  volume: number,
+	  playbackRate: number,
+	  width: oneOfType([string, number]),
+	  height: oneOfType([string, number]),
+	  style: object,
+	  progressFrequency: number,
+	  playsinline: bool,
+	  soundcloudConfig: shape({
+	    clientId: string,
+	    showArtwork: bool
+	  }),
+	  youtubeConfig: shape({
+	    playerVars: object,
+	    preload: bool
+	  }),
+	  facebookConfig: shape({
+	    appId: string
+	  }),
+	  dailymotionConfig: shape({
+	    params: object,
+	    preload: bool
+	  }),
+	  vimeoConfig: shape({
+	    iframeParams: object,
+	    preload: bool
+	  }),
+	  vidmeConfig: shape({
+	    format: string
+	  }),
+	  fileConfig: shape({
+	    attributes: object,
+	    forceAudio: bool,
+	    forceHLS: bool,
+	    forceDASH: bool
+	  }),
+	  onReady: func,
+	  onStart: func,
+	  onPlay: func,
+	  onPause: func,
+	  onBuffer: func,
+	  onEnded: func,
+	  onError: func,
+	  onDuration: func,
+	  onProgress: func
+	};
+	
+	var defaultProps = exports.defaultProps = {
+	  playing: false,
+	  loop: false,
+	  controls: false,
+	  volume: 0.8,
+	  playbackRate: 1,
+	  width: 640,
+	  height: 360,
+	  hidden: false,
+	  progressFrequency: 1000,
+	  playsinline: false,
+	  soundcloudConfig: {
+	    clientId: 'e8b6f84fbcad14c301ca1355cae1dea2',
+	    showArtwork: true
+	  },
+	  youtubeConfig: {
+	    playerVars: {},
+	    preload: false
+	  },
+	  facebookConfig: {
+	    appId: '1309697205772819'
+	  },
+	  dailymotionConfig: {
+	    params: {},
+	    preload: false
+	  },
+	  vimeoConfig: {
+	    iframeParams: {},
+	    preload: false
+	  },
+	  vidmeConfig: {
+	    format: null
+	  },
+	  fileConfig: {
+	    attributes: {},
+	    forceAudio: false,
+	    forceHLS: false,
+	    forceDASH: false
+	  },
+	  onReady: function onReady() {},
+	  onStart: function onStart() {},
+	  onPlay: function onPlay() {},
+	  onPause: function onPause() {},
+	  onBuffer: function onBuffer() {},
+	  onEnded: function onEnded() {},
+	  onError: function onError() {},
+	  onDuration: function onDuration() {},
+	  onProgress: function onProgress() {}
+	};
+
+/***/ }),
+/* 434 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _loadScript = __webpack_require__(435);
+	
+	var _loadScript2 = _interopRequireDefault(_loadScript);
+	
+	var _Base2 = __webpack_require__(436);
+	
+	var _Base3 = _interopRequireDefault(_Base2);
+	
+	var _utils = __webpack_require__(437);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var SDK_URL = 'https://www.youtube.com/iframe_api';
+	var SDK_GLOBAL = 'YT';
+	var SDK_GLOBAL_READY = 'onYouTubeIframeAPIReady';
+	var MATCH_URL = /^(?:https?:\/\/)?(?:www\.|m\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+	var BLANK_VIDEO_URL = 'https://www.youtube.com/watch?v=GlCmAC4MHek';
+	var DEFAULT_PLAYER_VARS = {
+	  autoplay: 0,
+	  playsinline: 1,
+	  showinfo: 0,
+	  rel: 0,
+	  iv_load_policy: 3
+	};
+	
+	var YouTube = function (_Base) {
+	  _inherits(YouTube, _Base);
+	
+	  function YouTube() {
+	    var _ref;
+	
+	    var _temp, _this, _ret;
+	
+	    _classCallCheck(this, YouTube);
+	
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = YouTube.__proto__ || Object.getPrototypeOf(YouTube)).call.apply(_ref, [this].concat(args))), _this), _this.onStateChange = function (_ref2) {
+	      var data = _ref2.data;
+	      var _this$props = _this.props,
+	          onPause = _this$props.onPause,
+	          onBuffer = _this$props.onBuffer;
+	      var _window$SDK_GLOBAL$Pl = window[SDK_GLOBAL].PlayerState,
+	          PLAYING = _window$SDK_GLOBAL$Pl.PLAYING,
+	          PAUSED = _window$SDK_GLOBAL$Pl.PAUSED,
+	          BUFFERING = _window$SDK_GLOBAL$Pl.BUFFERING,
+	          ENDED = _window$SDK_GLOBAL$Pl.ENDED,
+	          CUED = _window$SDK_GLOBAL$Pl.CUED;
+	
+	      if (data === PLAYING) _this.onPlay();
+	      if (data === PAUSED) onPause();
+	      if (data === BUFFERING) onBuffer();
+	      if (data === ENDED) _this.onEnded();
+	      if (data === CUED) _this.onReady();
+	    }, _this.onEnded = function () {
+	      var _this$props2 = _this.props,
+	          loop = _this$props2.loop,
+	          onEnded = _this$props2.onEnded;
+	
+	      if (loop) {
+	        _this.seekTo(0);
+	      }
+	      onEnded();
+	    }, _this.ref = function (container) {
+	      _this.container = container;
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+	
+	  _createClass(YouTube, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _props = this.props,
+	          url = _props.url,
+	          youtubeConfig = _props.youtubeConfig;
+	
+	      if (!url && youtubeConfig.preload) {
+	        this.preloading = true;
+	        this.load(BLANK_VIDEO_URL);
+	      }
+	      _get(YouTube.prototype.__proto__ || Object.getPrototypeOf(YouTube.prototype), 'componentDidMount', this).call(this);
+	    }
+	  }, {
+	    key: 'getSDK',
+	    value: function getSDK() {
+	      if (window[SDK_GLOBAL] && window[SDK_GLOBAL].loaded) {
+	        return Promise.resolve(window[SDK_GLOBAL]);
+	      }
+	      return new Promise(function (resolve, reject) {
+	        var previousOnReady = window[SDK_GLOBAL_READY];
+	        window[SDK_GLOBAL_READY] = function () {
+	          if (previousOnReady) previousOnReady();
+	          resolve(window[SDK_GLOBAL]);
+	        };
+	        (0, _loadScript2['default'])(SDK_URL, function (err) {
+	          if (err) reject(err);
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'load',
+	    value: function load(url) {
+	      var _this2 = this;
+	
+	      var _props2 = this.props,
+	          playsinline = _props2.playsinline,
+	          controls = _props2.controls,
+	          youtubeConfig = _props2.youtubeConfig,
+	          _onError = _props2.onError;
+	
+	      var id = url && url.match(MATCH_URL)[1];
+	      if (this.isReady) {
+	        this.player.cueVideoById({
+	          videoId: id,
+	          startSeconds: (0, _utils.parseStartTime)(url)
+	        });
+	        return;
+	      }
+	      if (this.loadingSDK) {
+	        this.loadOnReady = url;
+	        return;
+	      }
+	      this.loadingSDK = true;
+	      this.getSDK().then(function (YT) {
+	        _this2.player = new YT.Player(_this2.container, {
+	          width: '100%',
+	          height: '100%',
+	          videoId: id,
+	          playerVars: _extends({}, DEFAULT_PLAYER_VARS, {
+	            controls: controls ? 1 : 0,
+	            start: (0, _utils.parseStartTime)(url),
+	            origin: window.location.origin,
+	            playsinline: playsinline
+	          }, youtubeConfig.playerVars),
+	          events: {
+	            onReady: _this2.onReady,
+	            onStateChange: _this2.onStateChange,
+	            onError: function onError(event) {
+	              return _onError(event.data);
+	            }
+	          }
+	        });
+	      }, _onError);
+	    }
+	  }, {
+	    key: 'play',
+	    value: function play() {
+	      if (!this.isReady || !this.player.playVideo) return;
+	      this.player.playVideo();
+	    }
+	  }, {
+	    key: 'pause',
+	    value: function pause() {
+	      if (!this.isReady || !this.player.pauseVideo) return;
+	      this.player.pauseVideo();
+	    }
+	  }, {
+	    key: 'stop',
+	    value: function stop() {
+	      if (!this.isReady || !this.player.stopVideo) return;
+	      if (!document.body.contains(this.player.getIframe())) return;
+	      this.player.stopVideo();
+	    }
+	  }, {
+	    key: 'seekTo',
+	    value: function seekTo(fraction) {
+	      _get(YouTube.prototype.__proto__ || Object.getPrototypeOf(YouTube.prototype), 'seekTo', this).call(this, fraction);
+	      if (!this.isReady || !this.player.seekTo) return;
+	      this.player.seekTo(this.getDuration() * fraction);
+	    }
+	  }, {
+	    key: 'setVolume',
+	    value: function setVolume(fraction) {
+	      if (!this.isReady || !this.player.setVolume) return;
+	      this.player.setVolume(fraction * 100);
+	    }
+	  }, {
+	    key: 'setPlaybackRate',
+	    value: function setPlaybackRate(rate) {
+	      if (!this.isReady || !this.player.setPlaybackRate) return;
+	      this.player.setPlaybackRate(rate);
+	    }
+	  }, {
+	    key: 'getDuration',
+	    value: function getDuration() {
+	      if (!this.isReady || !this.player.getDuration) return null;
+	      return this.player.getDuration();
+	    }
+	  }, {
+	    key: 'getFractionPlayed',
+	    value: function getFractionPlayed() {
+	      if (!this.isReady || !this.getDuration()) return null;
+	      return this.player.getCurrentTime() / this.getDuration();
+	    }
+	  }, {
+	    key: 'getFractionLoaded',
+	    value: function getFractionLoaded() {
+	      if (!this.isReady || !this.player.getVideoLoadedFraction) return null;
+	      return this.player.getVideoLoadedFraction();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var style = {
+	        width: '100%',
+	        height: '100%',
+	        display: this.props.url ? 'block' : 'none'
+	      };
+	      return _react2['default'].createElement(
+	        'div',
+	        { style: style },
+	        _react2['default'].createElement('div', { ref: this.ref })
+	      );
+	    }
+	  }], [{
+	    key: 'canPlay',
+	    value: function canPlay(url) {
+	      return MATCH_URL.test(url);
+	    }
+	  }]);
+	
+	  return YouTube;
+	}(_Base3['default']);
+	
+	YouTube.displayName = 'YouTube';
+	exports['default'] = YouTube;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 435 */
+/***/ (function(module, exports) {
+
+	
+	module.exports = function load (src, opts, cb) {
+	  var head = document.head || document.getElementsByTagName('head')[0]
+	  var script = document.createElement('script')
+	
+	  if (typeof opts === 'function') {
+	    cb = opts
+	    opts = {}
+	  }
+	
+	  opts = opts || {}
+	  cb = cb || function() {}
+	
+	  script.type = opts.type || 'text/javascript'
+	  script.charset = opts.charset || 'utf8';
+	  script.async = 'async' in opts ? !!opts.async : true
+	  script.src = src
+	
+	  if (opts.attrs) {
+	    setAttributes(script, opts.attrs)
+	  }
+	
+	  if (opts.text) {
+	    script.text = '' + opts.text
+	  }
+	
+	  var onend = 'onload' in script ? stdOnEnd : ieOnEnd
+	  onend(script, cb)
+	
+	  // some good legacy browsers (firefox) fail the 'in' detection above
+	  // so as a fallback we always set onload
+	  // old IE will ignore this and new IE will set onload
+	  if (!script.onload) {
+	    stdOnEnd(script, cb);
+	  }
+	
+	  head.appendChild(script)
+	}
+	
+	function setAttributes(script, attrs) {
+	  for (var attr in attrs) {
+	    script.setAttribute(attr, attrs[attr]);
+	  }
+	}
+	
+	function stdOnEnd (script, cb) {
+	  script.onload = function () {
+	    this.onerror = this.onload = null
+	    cb(null, script)
+	  }
+	  script.onerror = function () {
+	    // this.onload = null here is necessary
+	    // because even IE9 works not like others
+	    this.onerror = this.onload = null
+	    cb(new Error('Failed to load ' + this.src), script)
+	  }
+	}
+	
+	function ieOnEnd (script, cb) {
+	  script.onreadystatechange = function () {
+	    if (this.readyState != 'complete' && this.readyState != 'loaded') return
+	    this.onreadystatechange = null
+	    cb(null, script) // there is no way to catch loading errors in IE8
+	  }
+	}
+
+
+/***/ }),
+/* 436 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _props2 = __webpack_require__(433);
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var SEEK_ON_PLAY_EXPIRY = 5000;
+	
+	var Base = function (_Component) {
+	  _inherits(Base, _Component);
+	
+	  function Base() {
+	    var _ref;
+	
+	    var _temp, _this, _ret;
+	
+	    _classCallCheck(this, Base);
+	
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Base.__proto__ || Object.getPrototypeOf(Base)).call.apply(_ref, [this].concat(args))), _this), _this.isReady = false, _this.startOnPlay = true, _this.durationOnPlay = false, _this.seekOnPlay = null, _this.onPlay = function () {
+	      var _this$props = _this.props,
+	          volume = _this$props.volume,
+	          onStart = _this$props.onStart,
+	          onPlay = _this$props.onPlay,
+	          onDuration = _this$props.onDuration,
+	          playbackRate = _this$props.playbackRate;
+	
+	      if (_this.startOnPlay) {
+	        _this.setPlaybackRate(playbackRate);
+	        _this.setVolume(volume);
+	        onStart();
+	        _this.startOnPlay = false;
+	      }
+	      onPlay();
+	      if (_this.seekOnPlay) {
+	        _this.seekTo(_this.seekOnPlay);
+	        _this.seekOnPlay = null;
+	      }
+	      if (_this.durationOnPlay) {
+	        onDuration(_this.getDuration());
+	        _this.durationOnPlay = false;
+	      }
+	    }, _this.onReady = function () {
+	      var _this$props2 = _this.props,
+	          onReady = _this$props2.onReady,
+	          playing = _this$props2.playing,
+	          onDuration = _this$props2.onDuration;
+	
+	      _this.isReady = true;
+	      _this.loadingSDK = false;
+	      onReady();
+	      if (playing || _this.preloading) {
+	        _this.preloading = false;
+	        if (_this.loadOnReady) {
+	          _this.load(_this.loadOnReady);
+	          _this.loadOnReady = null;
+	        } else {
+	          _this.play();
+	        }
+	      }
+	      var duration = _this.getDuration();
+	      if (duration) {
+	        onDuration(duration);
+	      } else {
+	        _this.durationOnPlay = true;
+	      }
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+	
+	  _createClass(Base, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var url = this.props.url;
+	
+	      this.mounted = true;
+	      if (url) {
+	        this.load(url);
+	      }
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.stop();
+	      this.mounted = false;
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      var _props = this.props,
+	          url = _props.url,
+	          playing = _props.playing,
+	          volume = _props.volume,
+	          playbackRate = _props.playbackRate;
+	      // Invoke player methods based on incoming props
+	
+	      if (url !== nextProps.url && nextProps.url) {
+	        this.seekOnPlay = null;
+	        this.startOnPlay = true;
+	        this.load(nextProps.url);
+	      } else if (url && !nextProps.url) {
+	        this.stop();
+	        clearTimeout(this.updateTimeout);
+	      } else if (!playing && nextProps.playing) {
+	        this.play();
+	      } else if (playing && !nextProps.playing) {
+	        this.pause();
+	      } else if (volume !== nextProps.volume) {
+	        this.setVolume(nextProps.volume);
+	      } else if (playbackRate !== nextProps.playbackRate) {
+	        this.setPlaybackRate(nextProps.playbackRate);
+	      }
+	    }
+	  }, {
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps) {
+	      return this.props.url !== nextProps.url;
+	    }
+	  }, {
+	    key: 'seekTo',
+	    value: function seekTo(fraction) {
+	      var _this2 = this;
+	
+	      // When seeking before player is ready, store value and seek later
+	      if (!this.isReady && fraction !== 0) {
+	        this.seekOnPlay = fraction;
+	        setTimeout(function () {
+	          _this2.seekOnPlay = null;
+	        }, SEEK_ON_PLAY_EXPIRY);
+	      }
+	    }
+	  }]);
+	
+	  return Base;
+	}(_react.Component);
+	
+	Base.propTypes = _props2.propTypes;
+	Base.defaultProps = _props2.defaultProps;
+	exports['default'] = Base;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 437 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+	
+	exports.parseStartTime = parseStartTime;
+	var MATCH_START_QUERY = /[?&#](?:start|t)=([0-9hms]+)/;
+	var MATCH_START_STAMP = /(\d+)(h|m|s)/g;
+	var MATCH_NUMERIC = /^\d+$/;
+	
+	// Parse YouTube URL for a start time param, ie ?t=1h14m30s
+	// and return the start time in seconds
+	function parseStartTime(url) {
+	  var match = url.match(MATCH_START_QUERY);
+	  if (match) {
+	    var stamp = match[1];
+	    if (stamp.match(MATCH_START_STAMP)) {
+	      return parseStartStamp(stamp);
+	    }
+	    if (MATCH_NUMERIC.test(stamp)) {
+	      return parseInt(stamp, 10);
+	    }
+	  }
+	  return 0;
+	}
+	
+	function parseStartStamp(stamp) {
+	  var seconds = 0;
+	  var array = MATCH_START_STAMP.exec(stamp);
+	  while (array !== null) {
+	    var _array = array,
+	        _array2 = _slicedToArray(_array, 3),
+	        count = _array2[1],
+	        period = _array2[2];
+	
+	    if (period === 'h') seconds += parseInt(count, 10) * 60 * 60;
+	    if (period === 'm') seconds += parseInt(count, 10) * 60;
+	    if (period === 's') seconds += parseInt(count, 10);
+	    array = MATCH_START_STAMP.exec(stamp);
+	  }
+	  return seconds;
+	}
+
+/***/ }),
+/* 438 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _fetchJsonp = __webpack_require__(439);
+	
+	var _fetchJsonp2 = _interopRequireDefault(_fetchJsonp);
+	
+	var _FilePlayer2 = __webpack_require__(440);
+	
+	var _FilePlayer3 = _interopRequireDefault(_FilePlayer2);
+	
+	var _props3 = __webpack_require__(433);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var RESOLVE_URL = '//api.soundcloud.com/resolve.json';
+	var MATCH_URL = /^https?:\/\/(soundcloud.com|snd.sc)\/([a-z0-9-_]+\/[a-z0-9-_]+)$/;
+	
+	var songData = {}; // Cache song data requests
+	
+	var SoundCloud = function (_FilePlayer) {
+	  _inherits(SoundCloud, _FilePlayer);
+	
+	  function SoundCloud() {
+	    var _ref;
+	
+	    var _temp, _this, _ret;
+	
+	    _classCallCheck(this, SoundCloud);
+	
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SoundCloud.__proto__ || Object.getPrototypeOf(SoundCloud)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+	      image: null
+	    }, _this.clientId = _this.props.soundcloudConfig.clientId || _props3.defaultProps.soundcloudConfig.clientId, _this.ref = function (player) {
+	      _this.player = player;
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+	
+	  _createClass(SoundCloud, [{
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return _get(SoundCloud.prototype.__proto__ || Object.getPrototypeOf(SoundCloud.prototype), 'shouldComponentUpdate', this).call(this, nextProps, nextState) || this.state.image !== nextState.image;
+	    }
+	  }, {
+	    key: 'getSongData',
+	    value: function getSongData(url) {
+	      var _this2 = this;
+	
+	      if (songData[url]) {
+	        return Promise.resolve(songData[url]);
+	      }
+	      return (0, _fetchJsonp2['default'])(RESOLVE_URL + '?url=' + url + '&client_id=' + this.clientId).then(function (response) {
+	        if (response.ok) {
+	          songData[url] = response.json();
+	          return songData[url];
+	        } else {
+	          _this2.props.onError(new Error('SoundCloud track could not be resolved'));
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'load',
+	    value: function load(url) {
+	      var _this3 = this;
+	
+	      var _props = this.props,
+	          soundcloudConfig = _props.soundcloudConfig,
+	          onError = _props.onError;
+	
+	      this.stop();
+	      this.getSongData(url).then(function (data) {
+	        if (!_this3.mounted) return;
+	        if (!data.streamable) {
+	          onError(new Error('SoundCloud track is not streamable'));
+	          return;
+	        }
+	        var image = data.artwork_url || data.user.avatar_url;
+	        if (image && soundcloudConfig.showArtwork) {
+	          _this3.setState({ image: image.replace('-large', '-t500x500') });
+	        }
+	        _this3.player.src = data.stream_url + '?client_id=' + _this3.clientId;
+	      }, onError);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props2 = this.props,
+	          url = _props2.url,
+	          loop = _props2.loop,
+	          controls = _props2.controls;
+	
+	      var style = {
+	        display: url ? 'block' : 'none',
+	        height: '100%',
+	        backgroundImage: this.state.image ? 'url(' + this.state.image + ')' : null,
+	        backgroundSize: 'cover',
+	        backgroundPosition: 'center'
+	      };
+	      return _react2['default'].createElement(
+	        'div',
+	        { style: style },
+	        _react2['default'].createElement('audio', {
+	          ref: this.ref,
+	          type: 'audio/mpeg',
+	          preload: 'auto',
+	          style: {
+	            width: '100%',
+	            height: '100%'
+	          },
+	          controls: controls,
+	          loop: loop
+	        })
+	      );
+	    }
+	  }], [{
+	    key: 'canPlay',
+	    value: function canPlay(url) {
+	      return MATCH_URL.test(url);
+	    }
+	  }]);
+	
+	  return SoundCloud;
+	}(_FilePlayer3['default']);
+	
+	SoundCloud.displayName = 'SoundCloud';
+	exports['default'] = SoundCloud;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 439 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, module], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
+	    factory(exports, module);
+	  } else {
+	    var mod = {
+	      exports: {}
+	    };
+	    factory(mod.exports, mod);
+	    global.fetchJsonp = mod.exports;
+	  }
+	})(this, function (exports, module) {
+	  'use strict';
+	
+	  var defaultOptions = {
+	    timeout: 5000,
+	    jsonpCallback: 'callback',
+	    jsonpCallbackFunction: null
+	  };
+	
+	  function generateCallbackFunction() {
+	    return 'jsonp_' + Date.now() + '_' + Math.ceil(Math.random() * 100000);
+	  }
+	
+	  function clearFunction(functionName) {
+	    // IE8 throws an exception when you try to delete a property on window
+	    // http://stackoverflow.com/a/1824228/751089
+	    try {
+	      delete window[functionName];
+	    } catch (e) {
+	      window[functionName] = undefined;
+	    }
+	  }
+	
+	  function removeScript(scriptId) {
+	    var script = document.getElementById(scriptId);
+	    if (script) {
+	      document.getElementsByTagName('head')[0].removeChild(script);
+	    }
+	  }
+	
+	  function fetchJsonp(_url) {
+	    var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+	
+	    // to avoid param reassign
+	    var url = _url;
+	    var timeout = options.timeout || defaultOptions.timeout;
+	    var jsonpCallback = options.jsonpCallback || defaultOptions.jsonpCallback;
+	
+	    var timeoutId = undefined;
+	
+	    return new Promise(function (resolve, reject) {
+	      var callbackFunction = options.jsonpCallbackFunction || generateCallbackFunction();
+	      var scriptId = jsonpCallback + '_' + callbackFunction;
+	
+	      window[callbackFunction] = function (response) {
+	        resolve({
+	          ok: true,
+	          // keep consistent with fetch API
+	          json: function json() {
+	            return Promise.resolve(response);
+	          }
+	        });
+	
+	        if (timeoutId) clearTimeout(timeoutId);
+	
+	        removeScript(scriptId);
+	
+	        clearFunction(callbackFunction);
+	      };
+	
+	      // Check if the user set their own params, and if not add a ? to start a list of params
+	      url += url.indexOf('?') === -1 ? '?' : '&';
+	
+	      var jsonpScript = document.createElement('script');
+	      jsonpScript.setAttribute('src', '' + url + jsonpCallback + '=' + callbackFunction);
+	      if (options.charset) {
+	        jsonpScript.setAttribute('charset', options.charset);
+	      }
+	      jsonpScript.id = scriptId;
+	      document.getElementsByTagName('head')[0].appendChild(jsonpScript);
+	
+	      timeoutId = setTimeout(function () {
+	        reject(new Error('JSONP request to ' + _url + ' timed out'));
+	
+	        clearFunction(callbackFunction);
+	        removeScript(scriptId);
+	      }, timeout);
+	
+	      // Caught if got 404/500
+	      jsonpScript.onerror = function () {
+	        reject(new Error('JSONP request to ' + _url + ' failed'));
+	
+	        clearFunction(callbackFunction);
+	        removeScript(scriptId);
+	        if (timeoutId) clearTimeout(timeoutId);
+	      };
+	    });
+	  }
+	
+	  // export as global function
+	  /*
+	  let local;
+	  if (typeof global !== 'undefined') {
+	    local = global;
+	  } else if (typeof self !== 'undefined') {
+	    local = self;
+	  } else {
+	    try {
+	      local = Function('return this')();
+	    } catch (e) {
+	      throw new Error('polyfill failed because global object is unavailable in this environment');
+	    }
+	  }
+	  local.fetchJsonp = fetchJsonp;
+	  */
+	
+	  module.exports = fetchJsonp;
+	});
+
+/***/ }),
+/* 440 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Base2 = __webpack_require__(436);
+	
+	var _Base3 = _interopRequireDefault(_Base2);
+	
+	var _loadScript = __webpack_require__(435);
+	
+	var _loadScript2 = _interopRequireDefault(_loadScript);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var AUDIO_EXTENSIONS = /\.(m4a|mp4a|mpga|mp2|mp2a|mp3|m2a|m3a|wav|weba|aac|oga|spx)($|\?)/i;
+	var HLS_EXTENSIONS = /\.(m3u8)($|\?)/i;
+	var HLS_SDK_URL = 'https://cdn.jsdelivr.net/hls.js/latest/hls.min.js';
+	var HLS_GLOBAL = 'Hls';
+	var DASH_EXTENSIONS = /\.(mpd)($|\?)/i;
+	var DASH_SDK_URL = 'https://cdnjs.cloudflare.com/ajax/libs/dashjs/2.5.0/dash.all.min.js';
+	var DASH_GLOBAL = 'dashjs';
+	
+	var FilePlayer = function (_Base) {
+	  _inherits(FilePlayer, _Base);
+	
+	  function FilePlayer() {
+	    var _ref;
+	
+	    var _temp, _this, _ret;
+	
+	    _classCallCheck(this, FilePlayer);
+	
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = FilePlayer.__proto__ || Object.getPrototypeOf(FilePlayer)).call.apply(_ref, [this].concat(args))), _this), _this.renderSource = function (source) {
+	      if (typeof source === 'string') {
+	        return _react2['default'].createElement('source', { key: source, src: source });
+	      }
+	      var src = source.src,
+	          type = source.type;
+	
+	      return _react2['default'].createElement('source', { key: src, src: src, type: type });
+	    }, _this.ref = function (player) {
+	      _this.player = player;
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+	
+	  _createClass(FilePlayer, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      var _props = this.props,
+	          playsinline = _props.playsinline,
+	          onPause = _props.onPause,
+	          onEnded = _props.onEnded,
+	          onError = _props.onError;
+	
+	      this.player.addEventListener('canplay', this.onReady);
+	      this.player.addEventListener('play', this.onPlay);
+	      this.player.addEventListener('pause', function () {
+	        if (_this2.mounted) {
+	          onPause();
+	        }
+	      });
+	      this.player.addEventListener('ended', onEnded);
+	      this.player.addEventListener('error', onError);
+	      if (playsinline) {
+	        this.player.setAttribute('playsinline', '');
+	        this.player.setAttribute('webkit-playsinline', '');
+	      }
+	      _get(FilePlayer.prototype.__proto__ || Object.getPrototypeOf(FilePlayer.prototype), 'componentDidMount', this).call(this);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      var _props2 = this.props,
+	          onPause = _props2.onPause,
+	          onEnded = _props2.onEnded,
+	          onError = _props2.onError;
+	
+	      this.player.removeEventListener('canplay', this.onReady);
+	      this.player.removeEventListener('play', this.onPlay);
+	      this.player.removeEventListener('pause', onPause);
+	      this.player.removeEventListener('ended', onEnded);
+	      this.player.removeEventListener('error', onError);
+	      _get(FilePlayer.prototype.__proto__ || Object.getPrototypeOf(FilePlayer.prototype), 'componentWillUnmount', this).call(this);
+	    }
+	  }, {
+	    key: 'shouldUseHLS',
+	    value: function shouldUseHLS(url) {
+	      return HLS_EXTENSIONS.test(url) || this.props.fileConfig.forceHLS;
+	    }
+	  }, {
+	    key: 'shouldUseDASH',
+	    value: function shouldUseDASH(url) {
+	      return DASH_EXTENSIONS.test(url) || this.props.fileConfig.forceDASH;
+	    }
+	  }, {
+	    key: 'load',
+	    value: function load(url) {
+	      var _this3 = this;
+	
+	      if (this.shouldUseHLS(url)) {
+	        loadSDK(HLS_SDK_URL, HLS_GLOBAL).then(function (Hls) {
+	          var hls = new Hls();
+	          hls.loadSource(url);
+	          hls.attachMedia(_this3.player);
+	        });
+	      }
+	      if (this.shouldUseDASH(url)) {
+	        loadSDK(DASH_SDK_URL, DASH_GLOBAL).then(function (dashjs) {
+	          var player = dashjs.MediaPlayer().create();
+	          player.initialize(_this3.player, url, true);
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'play',
+	    value: function play() {
+	      this.player.play();
+	    }
+	  }, {
+	    key: 'pause',
+	    value: function pause() {
+	      this.player.pause();
+	    }
+	  }, {
+	    key: 'stop',
+	    value: function stop() {
+	      this.player.removeAttribute('src');
+	    }
+	  }, {
+	    key: 'seekTo',
+	    value: function seekTo(fraction) {
+	      if (fraction === 1) {
+	        this.pause();
+	      }
+	      _get(FilePlayer.prototype.__proto__ || Object.getPrototypeOf(FilePlayer.prototype), 'seekTo', this).call(this, fraction);
+	      this.player.currentTime = this.getDuration() * fraction;
+	    }
+	  }, {
+	    key: 'setVolume',
+	    value: function setVolume(fraction) {
+	      this.player.volume = fraction;
+	    }
+	  }, {
+	    key: 'setPlaybackRate',
+	    value: function setPlaybackRate(rate) {
+	      this.player.playbackRate = rate;
+	    }
+	  }, {
+	    key: 'getDuration',
+	    value: function getDuration() {
+	      if (!this.isReady) return null;
+	      return this.player.duration;
+	    }
+	  }, {
+	    key: 'getFractionPlayed',
+	    value: function getFractionPlayed() {
+	      if (!this.isReady) return null;
+	      return this.player.currentTime / this.getDuration();
+	    }
+	  }, {
+	    key: 'getFractionLoaded',
+	    value: function getFractionLoaded() {
+	      if (!this.isReady || this.player.buffered.length === 0) return null;
+	      return this.player.buffered.end(0) / this.getDuration();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props3 = this.props,
+	          url = _props3.url,
+	          loop = _props3.loop,
+	          controls = _props3.controls,
+	          fileConfig = _props3.fileConfig;
+	
+	      var useAudio = AUDIO_EXTENSIONS.test(url) || fileConfig.forceAudio;
+	      var useHLS = this.shouldUseHLS(url);
+	      var useDASH = this.shouldUseDASH(url);
+	      var Element = useAudio ? 'audio' : 'video';
+	      var src = url instanceof Array || useHLS || useDASH ? undefined : url;
+	      var style = {
+	        width: '100%',
+	        height: '100%',
+	        display: url ? 'block' : 'none'
+	      };
+	      return _react2['default'].createElement(
+	        Element,
+	        _extends({
+	          ref: this.ref,
+	          src: src,
+	          style: style,
+	          preload: 'auto',
+	          controls: controls,
+	          loop: loop
+	        }, fileConfig.attributes),
+	        url instanceof Array && url.map(this.renderSource)
+	      );
+	    }
+	  }], [{
+	    key: 'canPlay',
+	    value: function canPlay(url) {
+	      return true;
+	    }
+	  }]);
+	
+	  return FilePlayer;
+	}(_Base3['default']);
+	
+	FilePlayer.displayName = 'FilePlayer';
+	exports['default'] = FilePlayer;
+	
+	
+	function loadSDK(url, globalVar) {
+	  if (window[globalVar]) {
+	    return Promise.resolve(window[globalVar]);
+	  }
+	  return new Promise(function (resolve, reject) {
+	    (0, _loadScript2['default'])(url, function (err) {
+	      if (err) reject(err);
+	      resolve(window[globalVar]);
+	    });
+	  });
+	}
+	module.exports = exports['default'];
+
+/***/ }),
+/* 441 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(37);
+	
+	var _loadScript = __webpack_require__(435);
+	
+	var _loadScript2 = _interopRequireDefault(_loadScript);
+	
+	var _Base2 = __webpack_require__(436);
+	
+	var _Base3 = _interopRequireDefault(_Base2);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var SDK_URL = 'https://player.vimeo.com/api/player.js';
+	var SDK_GLOBAL = 'Vimeo';
+	var MATCH_URL = /https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/;
+	var BLANK_VIDEO_URL = 'https://vimeo.com/127250231';
+	
+	var DEFAULT_OPTIONS = {
+	  autopause: false,
+	  autoplay: false,
+	  byline: false,
+	  portrait: false,
+	  title: false
+	};
+	
+	var Vimeo = function (_Base) {
+	  _inherits(Vimeo, _Base);
+	
+	  function Vimeo() {
+	    var _ref;
+	
+	    var _temp, _this, _ret;
+	
+	    _classCallCheck(this, Vimeo);
+	
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Vimeo.__proto__ || Object.getPrototypeOf(Vimeo)).call.apply(_ref, [this].concat(args))), _this), _this.ref = function (container) {
+	      _this.container = container;
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+	
+	  _createClass(Vimeo, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _props = this.props,
+	          url = _props.url,
+	          vimeoConfig = _props.vimeoConfig;
+	
+	      if (!url && vimeoConfig.preload) {
+	        this.preloading = true;
+	        this.load(BLANK_VIDEO_URL);
+	      }
+	      _get(Vimeo.prototype.__proto__ || Object.getPrototypeOf(Vimeo.prototype), 'componentDidMount', this).call(this);
+	    }
+	  }, {
+	    key: 'getSDK',
+	    value: function getSDK() {
+	      if (window[SDK_GLOBAL]) {
+	        return Promise.resolve(window[SDK_GLOBAL]);
+	      }
+	      return new Promise(function (resolve, reject) {
+	        (0, _loadScript2['default'])(SDK_URL, function (err) {
+	          if (err) reject(err);else resolve(window[SDK_GLOBAL]);
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'load',
+	    value: function load(url) {
+	      var _this2 = this;
+	
+	      var id = url.match(MATCH_URL)[3];
+	      this.duration = null;
+	      if (this.isReady) {
+	        this.player.loadVideo(id);
+	        return;
+	      }
+	      if (this.loadingSDK) {
+	        this.loadOnReady = url;
+	        return;
+	      }
+	      this.loadingSDK = true;
+	      this.getSDK().then(function (Vimeo) {
+	        _this2.player = new Vimeo.Player(_this2.container, _extends({}, DEFAULT_OPTIONS, _this2.props.vimeoConfig.playerOptions, {
+	          url: url,
+	          loop: _this2.props.loop
+	        }));
+	        _this2.player.on('loaded', function () {
+	          _this2.onReady();
+	          var iframe = (0, _reactDom.findDOMNode)(_this2).querySelector('iframe');
+	          iframe.style.width = '100%';
+	          iframe.style.height = '100%';
+	        });
+	        _this2.player.on('play', function (_ref2) {
+	          var duration = _ref2.duration;
+	
+	          _this2.duration = duration;
+	          _this2.onPlay();
+	        });
+	        _this2.player.on('pause', _this2.props.onPause);
+	        _this2.player.on('ended', _this2.props.onEnded);
+	        _this2.player.on('error', _this2.props.onError);
+	        _this2.player.on('timeupdate', function (_ref3) {
+	          var percent = _ref3.percent;
+	
+	          _this2.fractionPlayed = percent;
+	        });
+	        _this2.player.on('progress', function (_ref4) {
+	          var percent = _ref4.percent;
+	
+	          _this2.fractionLoaded = percent;
+	        });
+	      }, this.props.onError);
+	    }
+	  }, {
+	    key: 'play',
+	    value: function play() {
+	      if (!this.isReady) return;
+	      this.player.play();
+	    }
+	  }, {
+	    key: 'pause',
+	    value: function pause() {
+	      if (!this.isReady) return;
+	      this.player.pause();
+	    }
+	  }, {
+	    key: 'stop',
+	    value: function stop() {
+	      if (!this.isReady) return;
+	      this.player.unload();
+	    }
+	  }, {
+	    key: 'seekTo',
+	    value: function seekTo(fraction) {
+	      _get(Vimeo.prototype.__proto__ || Object.getPrototypeOf(Vimeo.prototype), 'seekTo', this).call(this, fraction);
+	      if (!this.isReady || !this.player.setCurrentTime) return;
+	      this.player.setCurrentTime(this.duration * fraction);
+	    }
+	  }, {
+	    key: 'setVolume',
+	    value: function setVolume(fraction) {
+	      this.player.setVolume(fraction);
+	    }
+	  }, {
+	    key: 'setPlaybackRate',
+	    value: function setPlaybackRate(rate) {
+	      return null;
+	    }
+	  }, {
+	    key: 'getDuration',
+	    value: function getDuration() {
+	      return this.duration;
+	    }
+	  }, {
+	    key: 'getFractionPlayed',
+	    value: function getFractionPlayed() {
+	      return this.fractionPlayed || null;
+	    }
+	  }, {
+	    key: 'getFractionLoaded',
+	    value: function getFractionLoaded() {
+	      return this.fractionLoaded || null;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var style = {
+	        height: '100%',
+	        display: this.props.url ? 'block' : 'none'
+	      };
+	      return _react2['default'].createElement('div', { style: style, ref: this.ref });
+	    }
+	  }], [{
+	    key: 'canPlay',
+	    value: function canPlay(url) {
+	      return MATCH_URL.test(url);
+	    }
+	  }]);
+	
+	  return Vimeo;
+	}(_Base3['default']);
+	
+	Vimeo.displayName = 'Vimeo';
+	exports['default'] = Vimeo;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 442 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _loadScript = __webpack_require__(435);
+	
+	var _loadScript2 = _interopRequireDefault(_loadScript);
+	
+	var _Base2 = __webpack_require__(436);
+	
+	var _Base3 = _interopRequireDefault(_Base2);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var SDK_URL = '//connect.facebook.net/en_US/sdk.js';
+	var SDK_GLOBAL = 'FB';
+	var SDK_GLOBAL_READY = 'fbAsyncInit';
+	var MATCH_URL = /^https:\/\/www\.facebook\.com\/([^/?].+\/)?video(s|\.php)[/?].*$/;
+	var PLAYER_ID_PREFIX = 'facebook-player-';
+	
+	var YouTube = function (_Base) {
+	  _inherits(YouTube, _Base);
+	
+	  function YouTube() {
+	    var _ref;
+	
+	    var _temp, _this, _ret;
+	
+	    _classCallCheck(this, YouTube);
+	
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = YouTube.__proto__ || Object.getPrototypeOf(YouTube)).call.apply(_ref, [this].concat(args))), _this), _this.playerID = PLAYER_ID_PREFIX + randomString(), _this.onEnded = function () {
+	      var _this$props = _this.props,
+	          loop = _this$props.loop,
+	          onEnded = _this$props.onEnded;
+	
+	      if (loop) {
+	        _this.seekTo(0);
+	      }
+	      onEnded();
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+	
+	  _createClass(YouTube, [{
+	    key: 'getSDK',
+	    value: function getSDK() {
+	      if (window[SDK_GLOBAL]) {
+	        return Promise.resolve(window[SDK_GLOBAL]);
+	      }
+	      return new Promise(function (resolve, reject) {
+	        var previousOnReady = window[SDK_GLOBAL_READY];
+	        window[SDK_GLOBAL_READY] = function () {
+	          if (previousOnReady) previousOnReady();
+	          resolve(window[SDK_GLOBAL]);
+	        };
+	        (0, _loadScript2['default'])(SDK_URL, function (err) {
+	          if (err) reject(err);
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'load',
+	    value: function load(url) {
+	      var _this2 = this;
+	
+	      if (this.isReady) {
+	        this.getSDK().then(function (FB) {
+	          return FB.XFBML.parse();
+	        });
+	        return;
+	      }
+	      this.getSDK().then(function (FB) {
+	        FB.init({
+	          appId: _this2.props.facebookConfig.appId,
+	          xfbml: true,
+	          version: 'v2.5'
+	        });
+	        FB.Event.subscribe('xfbml.ready', function (msg) {
+	          if (msg.type === 'video' && msg.id === _this2.playerID) {
+	            _this2.player = msg.instance;
+	            _this2.player.subscribe('startedPlaying', _this2.onPlay);
+	            _this2.player.subscribe('paused', _this2.props.onPause);
+	            _this2.player.subscribe('finishedPlaying', _this2.onEnded);
+	            _this2.player.subscribe('startedBuffering', _this2.props.onBuffer);
+	            _this2.player.subscribe('error', _this2.props.onError);
+	            _this2.onReady();
+	          }
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'play',
+	    value: function play() {
+	      if (!this.isReady) return;
+	      this.player.play();
+	    }
+	  }, {
+	    key: 'pause',
+	    value: function pause() {
+	      if (!this.isReady) return;
+	      this.player.pause();
+	    }
+	  }, {
+	    key: 'stop',
+	    value: function stop() {
+	      // No need to stop
+	    }
+	  }, {
+	    key: 'seekTo',
+	    value: function seekTo(fraction) {
+	      _get(YouTube.prototype.__proto__ || Object.getPrototypeOf(YouTube.prototype), 'seekTo', this).call(this, fraction);
+	      if (!this.isReady) return;
+	      this.player.seek(this.getDuration() * fraction);
+	    }
+	  }, {
+	    key: 'setVolume',
+	    value: function setVolume(fraction) {
+	      if (!this.isReady) return;
+	      this.player.setVolume(fraction);
+	    }
+	  }, {
+	    key: 'setPlaybackRate',
+	    value: function setPlaybackRate() {
+	      return null;
+	    }
+	  }, {
+	    key: 'getDuration',
+	    value: function getDuration() {
+	      if (!this.isReady) return null;
+	      return this.player.getDuration();
+	    }
+	  }, {
+	    key: 'getFractionPlayed',
+	    value: function getFractionPlayed() {
+	      if (!this.isReady || !this.getDuration()) return null;
+	      return this.player.getCurrentPosition() / this.getDuration();
+	    }
+	  }, {
+	    key: 'getFractionLoaded',
+	    value: function getFractionLoaded() {
+	      return null;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var style = {
+	        width: '100%',
+	        height: '100%',
+	        backgroundColor: 'black'
+	      };
+	      return _react2['default'].createElement('div', {
+	        style: style,
+	        id: this.playerID,
+	        className: 'fb-video',
+	        'data-href': this.props.url,
+	        'data-allowfullscreen': 'true',
+	        'data-controls': !this.props.controls ? 'false' : undefined
+	      });
+	    }
+	  }], [{
+	    key: 'canPlay',
+	    value: function canPlay(url) {
+	      return MATCH_URL.test(url);
+	    }
+	  }]);
+	
+	  return YouTube;
+	}(_Base3['default']);
+	
+	// http://stackoverflow.com/a/38622545
+	
+	
+	YouTube.displayName = 'Facebook';
+	exports['default'] = YouTube;
+	function randomString() {
+	  return Math.random().toString(36).substr(2, 5);
+	}
+	module.exports = exports['default'];
+
+/***/ }),
+/* 443 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _FilePlayer2 = __webpack_require__(440);
+	
+	var _FilePlayer3 = _interopRequireDefault(_FilePlayer2);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var RESOLVE_URL = 'https://api.streamable.com/videos/';
+	var MATCH_URL = /^https?:\/\/streamable.com\/([a-z0-9]+)$/;
+	
+	var cache = {}; // Cache song data requests
+	
+	var Streamable = function (_FilePlayer) {
+	  _inherits(Streamable, _FilePlayer);
+	
+	  function Streamable() {
+	    _classCallCheck(this, Streamable);
+	
+	    return _possibleConstructorReturn(this, (Streamable.__proto__ || Object.getPrototypeOf(Streamable)).apply(this, arguments));
+	  }
+	
+	  _createClass(Streamable, [{
+	    key: 'getData',
+	    value: function getData(url) {
+	      var onError = this.props.onError;
+	
+	      var id = url.match(MATCH_URL)[1];
+	      if (cache[id]) {
+	        return Promise.resolve(cache[id]);
+	      }
+	      return window.fetch(RESOLVE_URL + id).then(function (response) {
+	        if (response.status === 200) {
+	          cache[id] = response.json();
+	          return cache[id];
+	        } else {
+	          onError(new Error('Streamable track could not be resolved'));
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'load',
+	    value: function load(url) {
+	      var _this2 = this;
+	
+	      var onError = this.props.onError;
+	
+	      this.stop();
+	      this.getData(url).then(function (data) {
+	        if (!_this2.mounted) return;
+	        _this2.player.src = data.files.mp4.url;
+	      }, onError);
+	    }
+	  }], [{
+	    key: 'canPlay',
+	    value: function canPlay(url) {
+	      return MATCH_URL.test(url);
+	    }
+	  }]);
+	
+	  return Streamable;
+	}(_FilePlayer3['default']);
+	
+	Streamable.displayName = 'Streamable';
+	exports['default'] = Streamable;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 444 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _FilePlayer2 = __webpack_require__(440);
+	
+	var _FilePlayer3 = _interopRequireDefault(_FilePlayer2);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var RESOLVE_URL = 'https://api.vid.me/videoByUrl/';
+	var MATCH_URL = /^https?:\/\/vid.me\/([a-z0-9]+)$/i;
+	
+	var cache = {}; // Cache song data requests
+	
+	var Vidme = function (_FilePlayer) {
+	  _inherits(Vidme, _FilePlayer);
+	
+	  function Vidme() {
+	    _classCallCheck(this, Vidme);
+	
+	    return _possibleConstructorReturn(this, (Vidme.__proto__ || Object.getPrototypeOf(Vidme)).apply(this, arguments));
+	  }
+	
+	  _createClass(Vidme, [{
+	    key: 'getData',
+	    value: function getData(url) {
+	      var onError = this.props.onError;
+	
+	      var id = url.match(MATCH_URL)[1];
+	      if (cache[id]) {
+	        return Promise.resolve(cache[id]);
+	      }
+	      return window.fetch(RESOLVE_URL + id).then(function (response) {
+	        if (response.status === 200) {
+	          cache[id] = response.json();
+	          return cache[id];
+	        } else {
+	          onError(new Error('Vidme track could not be resolved'));
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'getURL',
+	    value: function getURL(_ref) {
+	      var video = _ref.video;
+	      var vidmeConfig = this.props.vidmeConfig;
+	
+	      if (vidmeConfig.format && video.formats && video.formats.length !== 0) {
+	        var index = video.formats.findIndex(function (f) {
+	          return f.type === vidmeConfig.format;
+	        });
+	        if (index !== -1) {
+	          return video.formats[index].uri;
+	        } else {
+	          console.warn('Vidme format "' + vidmeConfig.format + '" was not found for ' + video.full_url);
+	        }
+	      }
+	      return video.complete_url;
+	    }
+	  }, {
+	    key: 'load',
+	    value: function load(url) {
+	      var _this2 = this;
+	
+	      var onError = this.props.onError;
+	
+	      this.stop();
+	      this.getData(url).then(function (data) {
+	        if (!_this2.mounted) return;
+	        _this2.player.src = _this2.getURL(data);
+	      }, onError);
+	    }
+	  }], [{
+	    key: 'canPlay',
+	    value: function canPlay(url) {
+	      return MATCH_URL.test(url);
+	    }
+	  }]);
+	
+	  return Vidme;
+	}(_FilePlayer3['default']);
+	
+	Vidme.displayName = 'Vidme';
+	exports['default'] = Vidme;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 445 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _loadScript = __webpack_require__(435);
+	
+	var _loadScript2 = _interopRequireDefault(_loadScript);
+	
+	var _Base2 = __webpack_require__(436);
+	
+	var _Base3 = _interopRequireDefault(_Base2);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var SDK_URL = '//fast.wistia.com/assets/external/E-v1.js';
+	var SDK_GLOBAL = 'Wistia';
+	var MATCH_URL = /^https?:\/\/(.+)?(wistia.com|wi.st)\/(medias|embed)\/(.*)$/;
+	
+	var Wistia = function (_Base) {
+	  _inherits(Wistia, _Base);
+	
+	  function Wistia() {
+	    _classCallCheck(this, Wistia);
+	
+	    return _possibleConstructorReturn(this, (Wistia.__proto__ || Object.getPrototypeOf(Wistia)).apply(this, arguments));
+	  }
+	
+	  _createClass(Wistia, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      var _props = this.props,
+	          onStart = _props.onStart,
+	          onPause = _props.onPause,
+	          onEnded = _props.onEnded;
+	
+	      this.loadingSDK = true;
+	      this.getSDK().then(function () {
+	        window._wq = window._wq || [];
+	        window._wq.push({
+	          id: _this2.getID(_this2.props.url),
+	          onReady: function onReady(player) {
+	            _this2.player = player;
+	            _this2.player.bind('start', onStart);
+	            _this2.player.bind('play', _this2.onPlay);
+	            _this2.player.bind('pause', onPause);
+	            _this2.player.bind('end', onEnded);
+	            _this2.onReady();
+	          }
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'getSDK',
+	    value: function getSDK() {
+	      return new Promise(function (resolve, reject) {
+	        if (window[SDK_GLOBAL]) {
+	          resolve();
+	        } else {
+	          (0, _loadScript2['default'])(SDK_URL, function (err, script) {
+	            if (err) reject(err);
+	            resolve(script);
+	          });
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'getID',
+	    value: function getID(url) {
+	      return url && url.match(MATCH_URL)[4];
+	    }
+	  }, {
+	    key: 'load',
+	    value: function load(url) {
+	      var id = this.getID(url);
+	      if (this.isReady) {
+	        this.player.replaceWith(id);
+	        this.props.onReady();
+	        this.onReady();
+	      }
+	    }
+	  }, {
+	    key: 'play',
+	    value: function play() {
+	      if (!this.isReady || !this.player) return;
+	      this.player.play();
+	    }
+	  }, {
+	    key: 'pause',
+	    value: function pause() {
+	      if (!this.isReady || !this.player) return;
+	      this.player && this.player.pause();
+	    }
+	  }, {
+	    key: 'stop',
+	    value: function stop() {
+	      if (!this.isReady || !this.player) return;
+	      this.player.pause();
+	    }
+	  }, {
+	    key: 'seekTo',
+	    value: function seekTo(fraction) {
+	      _get(Wistia.prototype.__proto__ || Object.getPrototypeOf(Wistia.prototype), 'seekTo', this).call(this, fraction);
+	      if (!this.isReady || !this.player) return;
+	      this.player.time(this.getDuration() * fraction);
+	    }
+	  }, {
+	    key: 'setVolume',
+	    value: function setVolume(fraction) {
+	      if (!this.isReady || !this.player || !this.player.volume) return;
+	      this.player.volume(fraction);
+	    }
+	  }, {
+	    key: 'setPlaybackRate',
+	    value: function setPlaybackRate(rate) {
+	      if (!this.isReady || !this.player || !this.player.playbackRate) return;
+	      this.player.playbackRate(rate);
+	    }
+	  }, {
+	    key: 'getDuration',
+	    value: function getDuration() {
+	      if (!this.isReady || !this.player || !this.player.duration) return;
+	      return this.player.duration();
+	    }
+	  }, {
+	    key: 'getFractionPlayed',
+	    value: function getFractionPlayed() {
+	      if (!this.isReady || !this.player || !this.player.percentWatched) return null;
+	      return this.player.percentWatched();
+	    }
+	  }, {
+	    key: 'getFractionLoaded',
+	    value: function getFractionLoaded() {
+	      return null;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var id = this.getID(this.props.url);
+	      var className = 'wistia_embed wistia_async_' + id;
+	      var style = {
+	        width: '100%',
+	        height: '100%',
+	        display: this.props.url ? 'block' : 'none'
+	      };
+	      return _react2['default'].createElement('div', { className: className, style: style });
+	    }
+	  }], [{
+	    key: 'canPlay',
+	    value: function canPlay(url) {
+	      return MATCH_URL.test(url);
+	    }
+	  }]);
+	
+	  return Wistia;
+	}(_Base3['default']);
+	
+	Wistia.displayName = 'Wistia';
+	exports['default'] = Wistia;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 446 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _loadScript = __webpack_require__(435);
+	
+	var _loadScript2 = _interopRequireDefault(_loadScript);
+	
+	var _Base2 = __webpack_require__(436);
+	
+	var _Base3 = _interopRequireDefault(_Base2);
+	
+	var _utils = __webpack_require__(437);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var SDK_URL = 'https://api.dmcdn.net/all.js';
+	var SDK_GLOBAL = 'DM';
+	var SDK_GLOBAL_READY = 'dmAsyncInit';
+	var MATCH_URL = /^.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/;
+	var BLANK_VIDEO_URL = 'http://www.dailymotion.com/video/x522udb';
+	var DEFAULT_PLAYER_VARS = {
+	  autoplay: 0,
+	  api: 1,
+	  'endscreen-enable': false
+	};
+	
+	var DailyMotion = function (_Base) {
+	  _inherits(DailyMotion, _Base);
+	
+	  function DailyMotion() {
+	    var _ref;
+	
+	    var _temp, _this, _ret;
+	
+	    _classCallCheck(this, DailyMotion);
+	
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = DailyMotion.__proto__ || Object.getPrototypeOf(DailyMotion)).call.apply(_ref, [this].concat(args))), _this), _this.onDurationChange = function (event) {
+	      var onDuration = _this.props.onDuration;
+	
+	      var duration = _this.getDuration();
+	      onDuration(duration);
+	    }, _this.onEnded = function () {
+	      var _this$props = _this.props,
+	          loop = _this$props.loop,
+	          onEnded = _this$props.onEnded;
+	
+	      if (loop) {
+	        _this.seekTo(0);
+	      }
+	      onEnded();
+	    }, _this.ref = function (container) {
+	      _this.container = container;
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+	
+	  _createClass(DailyMotion, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _props = this.props,
+	          url = _props.url,
+	          dailymotionConfig = _props.dailymotionConfig;
+	
+	      if (!url && dailymotionConfig.preload) {
+	        this.preloading = true;
+	        this.load(BLANK_VIDEO_URL);
+	      }
+	      _get(DailyMotion.prototype.__proto__ || Object.getPrototypeOf(DailyMotion.prototype), 'componentDidMount', this).call(this);
+	    }
+	  }, {
+	    key: 'getSDK',
+	    value: function getSDK() {
+	      if (window[SDK_GLOBAL] && window[SDK_GLOBAL].player) {
+	        return Promise.resolve(window[SDK_GLOBAL]);
+	      }
+	      return new Promise(function (resolve, reject) {
+	        var previousOnReady = window[SDK_GLOBAL_READY];
+	        window[SDK_GLOBAL_READY] = function () {
+	          if (previousOnReady) previousOnReady();
+	          resolve(window[SDK_GLOBAL]);
+	        };
+	        (0, _loadScript2['default'])(SDK_URL, function (err) {
+	          if (err) {
+	            reject(err);
+	          }
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'parseId',
+	    value: function parseId(url) {
+	      var m = url.match(MATCH_URL);
+	      return m[4] || m[2];
+	    }
+	  }, {
+	    key: 'load',
+	    value: function load(url) {
+	      var _this2 = this;
+	
+	      var _props2 = this.props,
+	          controls = _props2.controls,
+	          dailymotionConfig = _props2.dailymotionConfig,
+	          onError = _props2.onError,
+	          playing = _props2.playing;
+	
+	      var id = this.parseId(url);
+	      if (this.player) {
+	        this.player.load(id, {
+	          start: (0, _utils.parseStartTime)(url),
+	          autoplay: playing
+	        });
+	        return;
+	      }
+	      if (this.loadingSDK) {
+	        this.loadOnReady = url;
+	        return;
+	      }
+	      this.loadingSDK = true;
+	      this.getSDK().then(function (DM) {
+	        var Player = DM.player;
+	        _this2.player = new Player(_this2.container, {
+	          width: '100%',
+	          height: '100%',
+	          video: id,
+	          params: _extends({}, DEFAULT_PLAYER_VARS, {
+	            controls: controls,
+	            autoplay: _this2.props.playing,
+	            start: (0, _utils.parseStartTime)(url),
+	            origin: window.location.origin
+	          }, dailymotionConfig.params),
+	          events: {
+	            apiready: function apiready() {
+	              _this2.loadingSDK = false;
+	            },
+	            video_end: _this2.onEnded,
+	            durationchange: _this2.onDurationChange,
+	            pause: _this2.props.onPause,
+	            playing: _this2.onPlay,
+	            waiting: _this2.props.onBuffer,
+	            loadedmetadata: _this2.onReady,
+	            error: function error(event) {
+	              return onError(event);
+	            }
+	          }
+	        });
+	      }, onError);
+	    }
+	  }, {
+	    key: 'play',
+	    value: function play() {
+	      if (!this.isReady || !this.player.play) return;
+	      this.player.play();
+	    }
+	  }, {
+	    key: 'pause',
+	    value: function pause() {
+	      if (!this.isReady || !this.player.pause) return;
+	      this.player.pause();
+	    }
+	  }, {
+	    key: 'stop',
+	    value: function stop() {
+	      // Nothing to do
+	    }
+	  }, {
+	    key: 'seekTo',
+	    value: function seekTo(fraction) {
+	      _get(DailyMotion.prototype.__proto__ || Object.getPrototypeOf(DailyMotion.prototype), 'seekTo', this).call(this, fraction);
+	      if (!this.isReady || !this.player.seek) return;
+	      this.player.seek(this.getDuration() * fraction);
+	    }
+	  }, {
+	    key: 'setVolume',
+	    value: function setVolume(fraction) {
+	      if (!this.isReady || !this.player.setVolume) return;
+	      this.player.setVolume(fraction);
+	    }
+	  }, {
+	    key: 'setPlaybackRate',
+	    value: function setPlaybackRate() {
+	      return null;
+	    }
+	  }, {
+	    key: 'getDuration',
+	    value: function getDuration() {
+	      if (!this.isReady || !this.player.duration) return null;
+	      return this.player.duration;
+	    }
+	  }, {
+	    key: 'getFractionPlayed',
+	    value: function getFractionPlayed() {
+	      if (!this.isReady || !this.getDuration()) return null;
+	      return this.player.currentTime / this.getDuration();
+	    }
+	  }, {
+	    key: 'getFractionLoaded',
+	    value: function getFractionLoaded() {
+	      if (!this.isReady || !this.getDuration() || !this.player.bufferedTime) return null;
+	      return this.player.bufferedTime / this.getDuration();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var style = {
+	        width: '100%',
+	        height: '100%',
+	        backgroundColor: 'black',
+	        display: this.props.url ? 'block' : 'none'
+	      };
+	      return _react2['default'].createElement(
+	        'div',
+	        { style: style },
+	        _react2['default'].createElement('div', { ref: this.ref })
+	      );
+	    }
+	  }], [{
+	    key: 'canPlay',
+	    value: function canPlay(url) {
+	      return MATCH_URL.test(url);
+	    }
+	  }]);
+	
+	  return DailyMotion;
+	}(_Base3['default']);
+	
+	DailyMotion.displayName = 'DailyMotion';
+	exports['default'] = DailyMotion;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 447 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _reactRedux = __webpack_require__(183);
@@ -67486,7 +71470,7 @@
 	
 	var _utility2 = _interopRequireDefault(_utility);
 	
-	var _key = __webpack_require__(432);
+	var _key = __webpack_require__(448);
 	
 	var _key2 = _interopRequireDefault(_key);
 	
@@ -67609,7 +71593,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStoreToProps)(Keyboard);
 
 /***/ }),
-/* 432 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67710,7 +71694,7 @@
 	exports.default = Key;
 
 /***/ }),
-/* 433 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67739,7 +71723,7 @@
 	
 	var _fretboardActions = __webpack_require__(293);
 	
-	var _midiApi = __webpack_require__(434);
+	var _midiApi = __webpack_require__(450);
 	
 	var midiApi = _interopRequireWildcard(_midiApi);
 	
@@ -67749,15 +71733,15 @@
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _possibleChords = __webpack_require__(435);
+	var _possibleChords = __webpack_require__(451);
 	
 	var _possibleChords2 = _interopRequireDefault(_possibleChords);
 	
-	var _download = __webpack_require__(436);
+	var _download = __webpack_require__(452);
 	
 	var _download2 = _interopRequireDefault(_download);
 	
-	var _ban = __webpack_require__(437);
+	var _ban = __webpack_require__(453);
 	
 	var _ban2 = _interopRequireDefault(_ban);
 	
@@ -68022,7 +72006,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStoreToProps)(ChordBank);
 
 /***/ }),
-/* 434 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68062,7 +72046,7 @@
 	};
 
 /***/ }),
-/* 435 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68281,7 +72265,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStoreToProps)(PossibleChords);
 
 /***/ }),
-/* 436 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68318,7 +72302,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 437 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68355,7 +72339,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 438 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68372,7 +72356,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _rcCheckbox = __webpack_require__(439);
+	var _rcCheckbox = __webpack_require__(455);
 	
 	var _rcCheckbox2 = _interopRequireDefault(_rcCheckbox);
 	
@@ -68477,7 +72461,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStoreToProps)(LaptopChecked);
 
 /***/ }),
-/* 439 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68486,7 +72470,7 @@
 	  value: true
 	});
 	
-	var _Checkbox = __webpack_require__(440);
+	var _Checkbox = __webpack_require__(456);
 	
 	Object.defineProperty(exports, 'default', {
 	  enumerable: true,
@@ -68500,7 +72484,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 440 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68509,31 +72493,31 @@
 	  value: true
 	});
 	
-	var _extends2 = __webpack_require__(441);
+	var _extends2 = __webpack_require__(457);
 	
 	var _extends3 = _interopRequireDefault(_extends2);
 	
-	var _defineProperty2 = __webpack_require__(479);
+	var _defineProperty2 = __webpack_require__(495);
 	
 	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 	
-	var _objectWithoutProperties2 = __webpack_require__(483);
+	var _objectWithoutProperties2 = __webpack_require__(499);
 	
 	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
 	
-	var _classCallCheck2 = __webpack_require__(484);
+	var _classCallCheck2 = __webpack_require__(500);
 	
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 	
-	var _createClass2 = __webpack_require__(485);
+	var _createClass2 = __webpack_require__(501);
 	
 	var _createClass3 = _interopRequireDefault(_createClass2);
 	
-	var _possibleConstructorReturn2 = __webpack_require__(486);
+	var _possibleConstructorReturn2 = __webpack_require__(502);
 	
 	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 	
-	var _inherits2 = __webpack_require__(522);
+	var _inherits2 = __webpack_require__(538);
 	
 	var _inherits3 = _interopRequireDefault(_inherits2);
 	
@@ -68545,7 +72529,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _PureRenderMixin = __webpack_require__(530);
+	var _PureRenderMixin = __webpack_require__(546);
 	
 	var _PureRenderMixin2 = _interopRequireDefault(_PureRenderMixin);
 	
@@ -68704,14 +72688,14 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 441 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	exports.__esModule = true;
 	
-	var _assign = __webpack_require__(442);
+	var _assign = __webpack_require__(458);
 	
 	var _assign2 = _interopRequireDefault(_assign);
 	
@@ -68732,35 +72716,35 @@
 	};
 
 /***/ }),
-/* 442 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(443), __esModule: true };
+	module.exports = { "default": __webpack_require__(459), __esModule: true };
 
 /***/ }),
-/* 443 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(444);
-	module.exports = __webpack_require__(447).Object.assign;
+	__webpack_require__(460);
+	module.exports = __webpack_require__(463).Object.assign;
 
 /***/ }),
-/* 444 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.3.1 Object.assign(target, source)
-	var $export = __webpack_require__(445);
+	var $export = __webpack_require__(461);
 	
-	$export($export.S + $export.F, 'Object', {assign: __webpack_require__(460)});
+	$export($export.S + $export.F, 'Object', {assign: __webpack_require__(476)});
 
 /***/ }),
-/* 445 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var global    = __webpack_require__(446)
-	  , core      = __webpack_require__(447)
-	  , ctx       = __webpack_require__(448)
-	  , hide      = __webpack_require__(450)
+	var global    = __webpack_require__(462)
+	  , core      = __webpack_require__(463)
+	  , ctx       = __webpack_require__(464)
+	  , hide      = __webpack_require__(466)
 	  , PROTOTYPE = 'prototype';
 	
 	var $export = function(type, name, source){
@@ -68820,7 +72804,7 @@
 	module.exports = $export;
 
 /***/ }),
-/* 446 */
+/* 462 */
 /***/ (function(module, exports) {
 
 	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -68829,18 +72813,18 @@
 	if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 
 /***/ }),
-/* 447 */
+/* 463 */
 /***/ (function(module, exports) {
 
 	var core = module.exports = {version: '2.4.0'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ }),
-/* 448 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// optional / simple context binding
-	var aFunction = __webpack_require__(449);
+	var aFunction = __webpack_require__(465);
 	module.exports = function(fn, that, length){
 	  aFunction(fn);
 	  if(that === undefined)return fn;
@@ -68861,7 +72845,7 @@
 	};
 
 /***/ }),
-/* 449 */
+/* 465 */
 /***/ (function(module, exports) {
 
 	module.exports = function(it){
@@ -68870,12 +72854,12 @@
 	};
 
 /***/ }),
-/* 450 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var dP         = __webpack_require__(451)
-	  , createDesc = __webpack_require__(459);
-	module.exports = __webpack_require__(455) ? function(object, key, value){
+	var dP         = __webpack_require__(467)
+	  , createDesc = __webpack_require__(475);
+	module.exports = __webpack_require__(471) ? function(object, key, value){
 	  return dP.f(object, key, createDesc(1, value));
 	} : function(object, key, value){
 	  object[key] = value;
@@ -68883,15 +72867,15 @@
 	};
 
 /***/ }),
-/* 451 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var anObject       = __webpack_require__(452)
-	  , IE8_DOM_DEFINE = __webpack_require__(454)
-	  , toPrimitive    = __webpack_require__(458)
+	var anObject       = __webpack_require__(468)
+	  , IE8_DOM_DEFINE = __webpack_require__(470)
+	  , toPrimitive    = __webpack_require__(474)
 	  , dP             = Object.defineProperty;
 	
-	exports.f = __webpack_require__(455) ? Object.defineProperty : function defineProperty(O, P, Attributes){
+	exports.f = __webpack_require__(471) ? Object.defineProperty : function defineProperty(O, P, Attributes){
 	  anObject(O);
 	  P = toPrimitive(P, true);
 	  anObject(Attributes);
@@ -68904,17 +72888,17 @@
 	};
 
 /***/ }),
-/* 452 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(453);
+	var isObject = __webpack_require__(469);
 	module.exports = function(it){
 	  if(!isObject(it))throw TypeError(it + ' is not an object!');
 	  return it;
 	};
 
 /***/ }),
-/* 453 */
+/* 469 */
 /***/ (function(module, exports) {
 
 	module.exports = function(it){
@@ -68922,24 +72906,24 @@
 	};
 
 /***/ }),
-/* 454 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = !__webpack_require__(455) && !__webpack_require__(456)(function(){
-	  return Object.defineProperty(__webpack_require__(457)('div'), 'a', {get: function(){ return 7; }}).a != 7;
+	module.exports = !__webpack_require__(471) && !__webpack_require__(472)(function(){
+	  return Object.defineProperty(__webpack_require__(473)('div'), 'a', {get: function(){ return 7; }}).a != 7;
 	});
 
 /***/ }),
-/* 455 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Thank's IE8 for his funny defineProperty
-	module.exports = !__webpack_require__(456)(function(){
+	module.exports = !__webpack_require__(472)(function(){
 	  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 	});
 
 /***/ }),
-/* 456 */
+/* 472 */
 /***/ (function(module, exports) {
 
 	module.exports = function(exec){
@@ -68951,11 +72935,11 @@
 	};
 
 /***/ }),
-/* 457 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(453)
-	  , document = __webpack_require__(446).document
+	var isObject = __webpack_require__(469)
+	  , document = __webpack_require__(462).document
 	  // in old IE typeof document.createElement is 'object'
 	  , is = isObject(document) && isObject(document.createElement);
 	module.exports = function(it){
@@ -68963,11 +72947,11 @@
 	};
 
 /***/ }),
-/* 458 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 7.1.1 ToPrimitive(input [, PreferredType])
-	var isObject = __webpack_require__(453);
+	var isObject = __webpack_require__(469);
 	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
 	// and the second argument - flag - preferred type is a string
 	module.exports = function(it, S){
@@ -68980,7 +72964,7 @@
 	};
 
 /***/ }),
-/* 459 */
+/* 475 */
 /***/ (function(module, exports) {
 
 	module.exports = function(bitmap, value){
@@ -68993,20 +72977,20 @@
 	};
 
 /***/ }),
-/* 460 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// 19.1.2.1 Object.assign(target, source, ...)
-	var getKeys  = __webpack_require__(461)
-	  , gOPS     = __webpack_require__(476)
-	  , pIE      = __webpack_require__(477)
-	  , toObject = __webpack_require__(478)
-	  , IObject  = __webpack_require__(465)
+	var getKeys  = __webpack_require__(477)
+	  , gOPS     = __webpack_require__(492)
+	  , pIE      = __webpack_require__(493)
+	  , toObject = __webpack_require__(494)
+	  , IObject  = __webpack_require__(481)
 	  , $assign  = Object.assign;
 	
 	// should work with symbols and should have deterministic property order (V8 bug)
-	module.exports = !$assign || __webpack_require__(456)(function(){
+	module.exports = !$assign || __webpack_require__(472)(function(){
 	  var A = {}
 	    , B = {}
 	    , S = Symbol()
@@ -69031,25 +73015,25 @@
 	} : $assign;
 
 /***/ }),
-/* 461 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-	var $keys       = __webpack_require__(462)
-	  , enumBugKeys = __webpack_require__(475);
+	var $keys       = __webpack_require__(478)
+	  , enumBugKeys = __webpack_require__(491);
 	
 	module.exports = Object.keys || function keys(O){
 	  return $keys(O, enumBugKeys);
 	};
 
 /***/ }),
-/* 462 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var has          = __webpack_require__(463)
-	  , toIObject    = __webpack_require__(464)
-	  , arrayIndexOf = __webpack_require__(468)(false)
-	  , IE_PROTO     = __webpack_require__(472)('IE_PROTO');
+	var has          = __webpack_require__(479)
+	  , toIObject    = __webpack_require__(480)
+	  , arrayIndexOf = __webpack_require__(484)(false)
+	  , IE_PROTO     = __webpack_require__(488)('IE_PROTO');
 	
 	module.exports = function(object, names){
 	  var O      = toIObject(object)
@@ -69065,7 +73049,7 @@
 	};
 
 /***/ }),
-/* 463 */
+/* 479 */
 /***/ (function(module, exports) {
 
 	var hasOwnProperty = {}.hasOwnProperty;
@@ -69074,28 +73058,28 @@
 	};
 
 /***/ }),
-/* 464 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// to indexed object, toObject with fallback for non-array-like ES3 strings
-	var IObject = __webpack_require__(465)
-	  , defined = __webpack_require__(467);
+	var IObject = __webpack_require__(481)
+	  , defined = __webpack_require__(483);
 	module.exports = function(it){
 	  return IObject(defined(it));
 	};
 
 /***/ }),
-/* 465 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// fallback for non-array-like ES3 and non-enumerable old V8 strings
-	var cof = __webpack_require__(466);
+	var cof = __webpack_require__(482);
 	module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
 	  return cof(it) == 'String' ? it.split('') : Object(it);
 	};
 
 /***/ }),
-/* 466 */
+/* 482 */
 /***/ (function(module, exports) {
 
 	var toString = {}.toString;
@@ -69105,7 +73089,7 @@
 	};
 
 /***/ }),
-/* 467 */
+/* 483 */
 /***/ (function(module, exports) {
 
 	// 7.2.1 RequireObjectCoercible(argument)
@@ -69115,14 +73099,14 @@
 	};
 
 /***/ }),
-/* 468 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// false -> Array#indexOf
 	// true  -> Array#includes
-	var toIObject = __webpack_require__(464)
-	  , toLength  = __webpack_require__(469)
-	  , toIndex   = __webpack_require__(471);
+	var toIObject = __webpack_require__(480)
+	  , toLength  = __webpack_require__(485)
+	  , toIndex   = __webpack_require__(487);
 	module.exports = function(IS_INCLUDES){
 	  return function($this, el, fromIndex){
 	    var O      = toIObject($this)
@@ -69141,18 +73125,18 @@
 	};
 
 /***/ }),
-/* 469 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 7.1.15 ToLength
-	var toInteger = __webpack_require__(470)
+	var toInteger = __webpack_require__(486)
 	  , min       = Math.min;
 	module.exports = function(it){
 	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 	};
 
 /***/ }),
-/* 470 */
+/* 486 */
 /***/ (function(module, exports) {
 
 	// 7.1.4 ToInteger
@@ -69163,10 +73147,10 @@
 	};
 
 /***/ }),
-/* 471 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var toInteger = __webpack_require__(470)
+	var toInteger = __webpack_require__(486)
 	  , max       = Math.max
 	  , min       = Math.min;
 	module.exports = function(index, length){
@@ -69175,20 +73159,20 @@
 	};
 
 /***/ }),
-/* 472 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var shared = __webpack_require__(473)('keys')
-	  , uid    = __webpack_require__(474);
+	var shared = __webpack_require__(489)('keys')
+	  , uid    = __webpack_require__(490);
 	module.exports = function(key){
 	  return shared[key] || (shared[key] = uid(key));
 	};
 
 /***/ }),
-/* 473 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var global = __webpack_require__(446)
+	var global = __webpack_require__(462)
 	  , SHARED = '__core-js_shared__'
 	  , store  = global[SHARED] || (global[SHARED] = {});
 	module.exports = function(key){
@@ -69196,7 +73180,7 @@
 	};
 
 /***/ }),
-/* 474 */
+/* 490 */
 /***/ (function(module, exports) {
 
 	var id = 0
@@ -69206,7 +73190,7 @@
 	};
 
 /***/ }),
-/* 475 */
+/* 491 */
 /***/ (function(module, exports) {
 
 	// IE 8- don't enum bug keys
@@ -69215,36 +73199,36 @@
 	).split(',');
 
 /***/ }),
-/* 476 */
+/* 492 */
 /***/ (function(module, exports) {
 
 	exports.f = Object.getOwnPropertySymbols;
 
 /***/ }),
-/* 477 */
+/* 493 */
 /***/ (function(module, exports) {
 
 	exports.f = {}.propertyIsEnumerable;
 
 /***/ }),
-/* 478 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 7.1.13 ToObject(argument)
-	var defined = __webpack_require__(467);
+	var defined = __webpack_require__(483);
 	module.exports = function(it){
 	  return Object(defined(it));
 	};
 
 /***/ }),
-/* 479 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	exports.__esModule = true;
 	
-	var _defineProperty = __webpack_require__(480);
+	var _defineProperty = __webpack_require__(496);
 	
 	var _defineProperty2 = _interopRequireDefault(_defineProperty);
 	
@@ -69266,31 +73250,31 @@
 	};
 
 /***/ }),
-/* 480 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(481), __esModule: true };
+	module.exports = { "default": __webpack_require__(497), __esModule: true };
 
 /***/ }),
-/* 481 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(482);
-	var $Object = __webpack_require__(447).Object;
+	__webpack_require__(498);
+	var $Object = __webpack_require__(463).Object;
 	module.exports = function defineProperty(it, key, desc){
 	  return $Object.defineProperty(it, key, desc);
 	};
 
 /***/ }),
-/* 482 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var $export = __webpack_require__(445);
+	var $export = __webpack_require__(461);
 	// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-	$export($export.S + $export.F * !__webpack_require__(455), 'Object', {defineProperty: __webpack_require__(451).f});
+	$export($export.S + $export.F * !__webpack_require__(471), 'Object', {defineProperty: __webpack_require__(467).f});
 
 /***/ }),
-/* 483 */
+/* 499 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -69310,7 +73294,7 @@
 	};
 
 /***/ }),
-/* 484 */
+/* 500 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -69324,14 +73308,14 @@
 	};
 
 /***/ }),
-/* 485 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	exports.__esModule = true;
 	
-	var _defineProperty = __webpack_require__(480);
+	var _defineProperty = __webpack_require__(496);
 	
 	var _defineProperty2 = _interopRequireDefault(_defineProperty);
 	
@@ -69356,14 +73340,14 @@
 	}();
 
 /***/ }),
-/* 486 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	exports.__esModule = true;
 	
-	var _typeof2 = __webpack_require__(487);
+	var _typeof2 = __webpack_require__(503);
 	
 	var _typeof3 = _interopRequireDefault(_typeof2);
 	
@@ -69378,18 +73362,18 @@
 	};
 
 /***/ }),
-/* 487 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	exports.__esModule = true;
 	
-	var _iterator = __webpack_require__(488);
+	var _iterator = __webpack_require__(504);
 	
 	var _iterator2 = _interopRequireDefault(_iterator);
 	
-	var _symbol = __webpack_require__(508);
+	var _symbol = __webpack_require__(524);
 	
 	var _symbol2 = _interopRequireDefault(_symbol);
 	
@@ -69404,28 +73388,28 @@
 	};
 
 /***/ }),
-/* 488 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(489), __esModule: true };
+	module.exports = { "default": __webpack_require__(505), __esModule: true };
 
 /***/ }),
-/* 489 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(490);
-	__webpack_require__(503);
-	module.exports = __webpack_require__(507).f('iterator');
+	__webpack_require__(506);
+	__webpack_require__(519);
+	module.exports = __webpack_require__(523).f('iterator');
 
 /***/ }),
-/* 490 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var $at  = __webpack_require__(491)(true);
+	var $at  = __webpack_require__(507)(true);
 	
 	// 21.1.3.27 String.prototype[@@iterator]()
-	__webpack_require__(492)(String, 'String', function(iterated){
+	__webpack_require__(508)(String, 'String', function(iterated){
 	  this._t = String(iterated); // target
 	  this._i = 0;                // next index
 	// 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -69440,11 +73424,11 @@
 	});
 
 /***/ }),
-/* 491 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var toInteger = __webpack_require__(470)
-	  , defined   = __webpack_require__(467);
+	var toInteger = __webpack_require__(486)
+	  , defined   = __webpack_require__(483);
 	// true  -> String#at
 	// false -> String#codePointAt
 	module.exports = function(TO_STRING){
@@ -69462,20 +73446,20 @@
 	};
 
 /***/ }),
-/* 492 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var LIBRARY        = __webpack_require__(493)
-	  , $export        = __webpack_require__(445)
-	  , redefine       = __webpack_require__(494)
-	  , hide           = __webpack_require__(450)
-	  , has            = __webpack_require__(463)
-	  , Iterators      = __webpack_require__(495)
-	  , $iterCreate    = __webpack_require__(496)
-	  , setToStringTag = __webpack_require__(500)
-	  , getPrototypeOf = __webpack_require__(502)
-	  , ITERATOR       = __webpack_require__(501)('iterator')
+	var LIBRARY        = __webpack_require__(509)
+	  , $export        = __webpack_require__(461)
+	  , redefine       = __webpack_require__(510)
+	  , hide           = __webpack_require__(466)
+	  , has            = __webpack_require__(479)
+	  , Iterators      = __webpack_require__(511)
+	  , $iterCreate    = __webpack_require__(512)
+	  , setToStringTag = __webpack_require__(516)
+	  , getPrototypeOf = __webpack_require__(518)
+	  , ITERATOR       = __webpack_require__(517)('iterator')
 	  , BUGGY          = !([].keys && 'next' in [].keys()) // Safari has buggy iterators w/o `next`
 	  , FF_ITERATOR    = '@@iterator'
 	  , KEYS           = 'keys'
@@ -69537,35 +73521,35 @@
 	};
 
 /***/ }),
-/* 493 */
+/* 509 */
 /***/ (function(module, exports) {
 
 	module.exports = true;
 
 /***/ }),
-/* 494 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(450);
+	module.exports = __webpack_require__(466);
 
 /***/ }),
-/* 495 */
+/* 511 */
 /***/ (function(module, exports) {
 
 	module.exports = {};
 
 /***/ }),
-/* 496 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var create         = __webpack_require__(497)
-	  , descriptor     = __webpack_require__(459)
-	  , setToStringTag = __webpack_require__(500)
+	var create         = __webpack_require__(513)
+	  , descriptor     = __webpack_require__(475)
+	  , setToStringTag = __webpack_require__(516)
 	  , IteratorPrototype = {};
 	
 	// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-	__webpack_require__(450)(IteratorPrototype, __webpack_require__(501)('iterator'), function(){ return this; });
+	__webpack_require__(466)(IteratorPrototype, __webpack_require__(517)('iterator'), function(){ return this; });
 	
 	module.exports = function(Constructor, NAME, next){
 	  Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
@@ -69573,27 +73557,27 @@
 	};
 
 /***/ }),
-/* 497 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-	var anObject    = __webpack_require__(452)
-	  , dPs         = __webpack_require__(498)
-	  , enumBugKeys = __webpack_require__(475)
-	  , IE_PROTO    = __webpack_require__(472)('IE_PROTO')
+	var anObject    = __webpack_require__(468)
+	  , dPs         = __webpack_require__(514)
+	  , enumBugKeys = __webpack_require__(491)
+	  , IE_PROTO    = __webpack_require__(488)('IE_PROTO')
 	  , Empty       = function(){ /* empty */ }
 	  , PROTOTYPE   = 'prototype';
 	
 	// Create object with fake `null` prototype: use iframe Object with cleared prototype
 	var createDict = function(){
 	  // Thrash, waste and sodomy: IE GC bug
-	  var iframe = __webpack_require__(457)('iframe')
+	  var iframe = __webpack_require__(473)('iframe')
 	    , i      = enumBugKeys.length
 	    , lt     = '<'
 	    , gt     = '>'
 	    , iframeDocument;
 	  iframe.style.display = 'none';
-	  __webpack_require__(499).appendChild(iframe);
+	  __webpack_require__(515).appendChild(iframe);
 	  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
 	  // createDict = iframe.contentWindow.Object;
 	  // html.removeChild(iframe);
@@ -69620,14 +73604,14 @@
 
 
 /***/ }),
-/* 498 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var dP       = __webpack_require__(451)
-	  , anObject = __webpack_require__(452)
-	  , getKeys  = __webpack_require__(461);
+	var dP       = __webpack_require__(467)
+	  , anObject = __webpack_require__(468)
+	  , getKeys  = __webpack_require__(477);
 	
-	module.exports = __webpack_require__(455) ? Object.defineProperties : function defineProperties(O, Properties){
+	module.exports = __webpack_require__(471) ? Object.defineProperties : function defineProperties(O, Properties){
 	  anObject(O);
 	  var keys   = getKeys(Properties)
 	    , length = keys.length
@@ -69638,30 +73622,30 @@
 	};
 
 /***/ }),
-/* 499 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(446).document && document.documentElement;
+	module.exports = __webpack_require__(462).document && document.documentElement;
 
 /***/ }),
-/* 500 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var def = __webpack_require__(451).f
-	  , has = __webpack_require__(463)
-	  , TAG = __webpack_require__(501)('toStringTag');
+	var def = __webpack_require__(467).f
+	  , has = __webpack_require__(479)
+	  , TAG = __webpack_require__(517)('toStringTag');
 	
 	module.exports = function(it, tag, stat){
 	  if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
 	};
 
 /***/ }),
-/* 501 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var store      = __webpack_require__(473)('wks')
-	  , uid        = __webpack_require__(474)
-	  , Symbol     = __webpack_require__(446).Symbol
+	var store      = __webpack_require__(489)('wks')
+	  , uid        = __webpack_require__(490)
+	  , Symbol     = __webpack_require__(462).Symbol
 	  , USE_SYMBOL = typeof Symbol == 'function';
 	
 	var $exports = module.exports = function(name){
@@ -69672,13 +73656,13 @@
 	$exports.store = store;
 
 /***/ }),
-/* 502 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-	var has         = __webpack_require__(463)
-	  , toObject    = __webpack_require__(478)
-	  , IE_PROTO    = __webpack_require__(472)('IE_PROTO')
+	var has         = __webpack_require__(479)
+	  , toObject    = __webpack_require__(494)
+	  , IE_PROTO    = __webpack_require__(488)('IE_PROTO')
 	  , ObjectProto = Object.prototype;
 	
 	module.exports = Object.getPrototypeOf || function(O){
@@ -69690,14 +73674,14 @@
 	};
 
 /***/ }),
-/* 503 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(504);
-	var global        = __webpack_require__(446)
-	  , hide          = __webpack_require__(450)
-	  , Iterators     = __webpack_require__(495)
-	  , TO_STRING_TAG = __webpack_require__(501)('toStringTag');
+	__webpack_require__(520);
+	var global        = __webpack_require__(462)
+	  , hide          = __webpack_require__(466)
+	  , Iterators     = __webpack_require__(511)
+	  , TO_STRING_TAG = __webpack_require__(517)('toStringTag');
 	
 	for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList', 'CSSRuleList'], i = 0; i < 5; i++){
 	  var NAME       = collections[i]
@@ -69708,20 +73692,20 @@
 	}
 
 /***/ }),
-/* 504 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var addToUnscopables = __webpack_require__(505)
-	  , step             = __webpack_require__(506)
-	  , Iterators        = __webpack_require__(495)
-	  , toIObject        = __webpack_require__(464);
+	var addToUnscopables = __webpack_require__(521)
+	  , step             = __webpack_require__(522)
+	  , Iterators        = __webpack_require__(511)
+	  , toIObject        = __webpack_require__(480);
 	
 	// 22.1.3.4 Array.prototype.entries()
 	// 22.1.3.13 Array.prototype.keys()
 	// 22.1.3.29 Array.prototype.values()
 	// 22.1.3.30 Array.prototype[@@iterator]()
-	module.exports = __webpack_require__(492)(Array, 'Array', function(iterated, kind){
+	module.exports = __webpack_require__(508)(Array, 'Array', function(iterated, kind){
 	  this._t = toIObject(iterated); // target
 	  this._i = 0;                   // next index
 	  this._k = kind;                // kind
@@ -69747,13 +73731,13 @@
 	addToUnscopables('entries');
 
 /***/ }),
-/* 505 */
+/* 521 */
 /***/ (function(module, exports) {
 
 	module.exports = function(){ /* empty */ };
 
 /***/ }),
-/* 506 */
+/* 522 */
 /***/ (function(module, exports) {
 
 	module.exports = function(done, value){
@@ -69761,58 +73745,58 @@
 	};
 
 /***/ }),
-/* 507 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports.f = __webpack_require__(501);
+	exports.f = __webpack_require__(517);
 
 /***/ }),
-/* 508 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(509), __esModule: true };
+	module.exports = { "default": __webpack_require__(525), __esModule: true };
 
 /***/ }),
-/* 509 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(510);
-	__webpack_require__(519);
-	__webpack_require__(520);
-	__webpack_require__(521);
-	module.exports = __webpack_require__(447).Symbol;
+	__webpack_require__(526);
+	__webpack_require__(535);
+	__webpack_require__(536);
+	__webpack_require__(537);
+	module.exports = __webpack_require__(463).Symbol;
 
 /***/ }),
-/* 510 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// ECMAScript 6 symbols shim
-	var global         = __webpack_require__(446)
-	  , has            = __webpack_require__(463)
-	  , DESCRIPTORS    = __webpack_require__(455)
-	  , $export        = __webpack_require__(445)
-	  , redefine       = __webpack_require__(494)
-	  , META           = __webpack_require__(511).KEY
-	  , $fails         = __webpack_require__(456)
-	  , shared         = __webpack_require__(473)
-	  , setToStringTag = __webpack_require__(500)
-	  , uid            = __webpack_require__(474)
-	  , wks            = __webpack_require__(501)
-	  , wksExt         = __webpack_require__(507)
-	  , wksDefine      = __webpack_require__(512)
-	  , keyOf          = __webpack_require__(513)
-	  , enumKeys       = __webpack_require__(514)
-	  , isArray        = __webpack_require__(515)
-	  , anObject       = __webpack_require__(452)
-	  , toIObject      = __webpack_require__(464)
-	  , toPrimitive    = __webpack_require__(458)
-	  , createDesc     = __webpack_require__(459)
-	  , _create        = __webpack_require__(497)
-	  , gOPNExt        = __webpack_require__(516)
-	  , $GOPD          = __webpack_require__(518)
-	  , $DP            = __webpack_require__(451)
-	  , $keys          = __webpack_require__(461)
+	var global         = __webpack_require__(462)
+	  , has            = __webpack_require__(479)
+	  , DESCRIPTORS    = __webpack_require__(471)
+	  , $export        = __webpack_require__(461)
+	  , redefine       = __webpack_require__(510)
+	  , META           = __webpack_require__(527).KEY
+	  , $fails         = __webpack_require__(472)
+	  , shared         = __webpack_require__(489)
+	  , setToStringTag = __webpack_require__(516)
+	  , uid            = __webpack_require__(490)
+	  , wks            = __webpack_require__(517)
+	  , wksExt         = __webpack_require__(523)
+	  , wksDefine      = __webpack_require__(528)
+	  , keyOf          = __webpack_require__(529)
+	  , enumKeys       = __webpack_require__(530)
+	  , isArray        = __webpack_require__(531)
+	  , anObject       = __webpack_require__(468)
+	  , toIObject      = __webpack_require__(480)
+	  , toPrimitive    = __webpack_require__(474)
+	  , createDesc     = __webpack_require__(475)
+	  , _create        = __webpack_require__(513)
+	  , gOPNExt        = __webpack_require__(532)
+	  , $GOPD          = __webpack_require__(534)
+	  , $DP            = __webpack_require__(467)
+	  , $keys          = __webpack_require__(477)
 	  , gOPD           = $GOPD.f
 	  , dP             = $DP.f
 	  , gOPN           = gOPNExt.f
@@ -69935,11 +73919,11 @@
 	
 	  $GOPD.f = $getOwnPropertyDescriptor;
 	  $DP.f   = $defineProperty;
-	  __webpack_require__(517).f = gOPNExt.f = $getOwnPropertyNames;
-	  __webpack_require__(477).f  = $propertyIsEnumerable;
-	  __webpack_require__(476).f = $getOwnPropertySymbols;
+	  __webpack_require__(533).f = gOPNExt.f = $getOwnPropertyNames;
+	  __webpack_require__(493).f  = $propertyIsEnumerable;
+	  __webpack_require__(492).f = $getOwnPropertySymbols;
 	
-	  if(DESCRIPTORS && !__webpack_require__(493)){
+	  if(DESCRIPTORS && !__webpack_require__(509)){
 	    redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
 	  }
 	
@@ -70014,7 +73998,7 @@
 	});
 	
 	// 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-	$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(450)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+	$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(466)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 	// 19.4.3.5 Symbol.prototype[@@toStringTag]
 	setToStringTag($Symbol, 'Symbol');
 	// 20.2.1.9 Math[@@toStringTag]
@@ -70023,18 +74007,18 @@
 	setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 511 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var META     = __webpack_require__(474)('meta')
-	  , isObject = __webpack_require__(453)
-	  , has      = __webpack_require__(463)
-	  , setDesc  = __webpack_require__(451).f
+	var META     = __webpack_require__(490)('meta')
+	  , isObject = __webpack_require__(469)
+	  , has      = __webpack_require__(479)
+	  , setDesc  = __webpack_require__(467).f
 	  , id       = 0;
 	var isExtensible = Object.isExtensible || function(){
 	  return true;
 	};
-	var FREEZE = !__webpack_require__(456)(function(){
+	var FREEZE = !__webpack_require__(472)(function(){
 	  return isExtensible(Object.preventExtensions({}));
 	});
 	var setMeta = function(it){
@@ -70081,25 +74065,25 @@
 	};
 
 /***/ }),
-/* 512 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var global         = __webpack_require__(446)
-	  , core           = __webpack_require__(447)
-	  , LIBRARY        = __webpack_require__(493)
-	  , wksExt         = __webpack_require__(507)
-	  , defineProperty = __webpack_require__(451).f;
+	var global         = __webpack_require__(462)
+	  , core           = __webpack_require__(463)
+	  , LIBRARY        = __webpack_require__(509)
+	  , wksExt         = __webpack_require__(523)
+	  , defineProperty = __webpack_require__(467).f;
 	module.exports = function(name){
 	  var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
 	  if(name.charAt(0) != '_' && !(name in $Symbol))defineProperty($Symbol, name, {value: wksExt.f(name)});
 	};
 
 /***/ }),
-/* 513 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getKeys   = __webpack_require__(461)
-	  , toIObject = __webpack_require__(464);
+	var getKeys   = __webpack_require__(477)
+	  , toIObject = __webpack_require__(480);
 	module.exports = function(object, el){
 	  var O      = toIObject(object)
 	    , keys   = getKeys(O)
@@ -70110,13 +74094,13 @@
 	};
 
 /***/ }),
-/* 514 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// all enumerable object keys, includes symbols
-	var getKeys = __webpack_require__(461)
-	  , gOPS    = __webpack_require__(476)
-	  , pIE     = __webpack_require__(477);
+	var getKeys = __webpack_require__(477)
+	  , gOPS    = __webpack_require__(492)
+	  , pIE     = __webpack_require__(493);
 	module.exports = function(it){
 	  var result     = getKeys(it)
 	    , getSymbols = gOPS.f;
@@ -70130,22 +74114,22 @@
 	};
 
 /***/ }),
-/* 515 */
+/* 531 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 7.2.2 IsArray(argument)
-	var cof = __webpack_require__(466);
+	var cof = __webpack_require__(482);
 	module.exports = Array.isArray || function isArray(arg){
 	  return cof(arg) == 'Array';
 	};
 
 /***/ }),
-/* 516 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-	var toIObject = __webpack_require__(464)
-	  , gOPN      = __webpack_require__(517).f
+	var toIObject = __webpack_require__(480)
+	  , gOPN      = __webpack_require__(533).f
 	  , toString  = {}.toString;
 	
 	var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -70165,30 +74149,30 @@
 
 
 /***/ }),
-/* 517 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-	var $keys      = __webpack_require__(462)
-	  , hiddenKeys = __webpack_require__(475).concat('length', 'prototype');
+	var $keys      = __webpack_require__(478)
+	  , hiddenKeys = __webpack_require__(491).concat('length', 'prototype');
 	
 	exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
 	  return $keys(O, hiddenKeys);
 	};
 
 /***/ }),
-/* 518 */
+/* 534 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var pIE            = __webpack_require__(477)
-	  , createDesc     = __webpack_require__(459)
-	  , toIObject      = __webpack_require__(464)
-	  , toPrimitive    = __webpack_require__(458)
-	  , has            = __webpack_require__(463)
-	  , IE8_DOM_DEFINE = __webpack_require__(454)
+	var pIE            = __webpack_require__(493)
+	  , createDesc     = __webpack_require__(475)
+	  , toIObject      = __webpack_require__(480)
+	  , toPrimitive    = __webpack_require__(474)
+	  , has            = __webpack_require__(479)
+	  , IE8_DOM_DEFINE = __webpack_require__(470)
 	  , gOPD           = Object.getOwnPropertyDescriptor;
 	
-	exports.f = __webpack_require__(455) ? gOPD : function getOwnPropertyDescriptor(O, P){
+	exports.f = __webpack_require__(471) ? gOPD : function getOwnPropertyDescriptor(O, P){
 	  O = toIObject(O);
 	  P = toPrimitive(P, true);
 	  if(IE8_DOM_DEFINE)try {
@@ -70198,40 +74182,40 @@
 	};
 
 /***/ }),
-/* 519 */
+/* 535 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 520 */
+/* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(512)('asyncIterator');
+	__webpack_require__(528)('asyncIterator');
 
 /***/ }),
-/* 521 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(512)('observable');
+	__webpack_require__(528)('observable');
 
 /***/ }),
-/* 522 */
+/* 538 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	exports.__esModule = true;
 	
-	var _setPrototypeOf = __webpack_require__(523);
+	var _setPrototypeOf = __webpack_require__(539);
 	
 	var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 	
-	var _create = __webpack_require__(527);
+	var _create = __webpack_require__(543);
 	
 	var _create2 = _interopRequireDefault(_create);
 	
-	var _typeof2 = __webpack_require__(487);
+	var _typeof2 = __webpack_require__(503);
 	
 	var _typeof3 = _interopRequireDefault(_typeof2);
 	
@@ -70254,34 +74238,34 @@
 	};
 
 /***/ }),
-/* 523 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(524), __esModule: true };
+	module.exports = { "default": __webpack_require__(540), __esModule: true };
 
 /***/ }),
-/* 524 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(525);
-	module.exports = __webpack_require__(447).Object.setPrototypeOf;
+	__webpack_require__(541);
+	module.exports = __webpack_require__(463).Object.setPrototypeOf;
 
 /***/ }),
-/* 525 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.3.19 Object.setPrototypeOf(O, proto)
-	var $export = __webpack_require__(445);
-	$export($export.S, 'Object', {setPrototypeOf: __webpack_require__(526).set});
+	var $export = __webpack_require__(461);
+	$export($export.S, 'Object', {setPrototypeOf: __webpack_require__(542).set});
 
 /***/ }),
-/* 526 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Works with __proto__ only. Old v8 can't work with null proto objects.
 	/* eslint-disable no-proto */
-	var isObject = __webpack_require__(453)
-	  , anObject = __webpack_require__(452);
+	var isObject = __webpack_require__(469)
+	  , anObject = __webpack_require__(468);
 	var check = function(O, proto){
 	  anObject(O);
 	  if(!isObject(proto) && proto !== null)throw TypeError(proto + ": can't set as prototype!");
@@ -70290,7 +74274,7 @@
 	  set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
 	    function(test, buggy, set){
 	      try {
-	        set = __webpack_require__(448)(Function.call, __webpack_require__(518).f(Object.prototype, '__proto__').set, 2);
+	        set = __webpack_require__(464)(Function.call, __webpack_require__(534).f(Object.prototype, '__proto__').set, 2);
 	        set(test, []);
 	        buggy = !(test instanceof Array);
 	      } catch(e){ buggy = true; }
@@ -70305,31 +74289,31 @@
 	};
 
 /***/ }),
-/* 527 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(528), __esModule: true };
+	module.exports = { "default": __webpack_require__(544), __esModule: true };
 
 /***/ }),
-/* 528 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(529);
-	var $Object = __webpack_require__(447).Object;
+	__webpack_require__(545);
+	var $Object = __webpack_require__(463).Object;
 	module.exports = function create(P, D){
 	  return $Object.create(P, D);
 	};
 
 /***/ }),
-/* 529 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var $export = __webpack_require__(445)
+	var $export = __webpack_require__(461)
 	// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-	$export($export.S, 'Object', {create: __webpack_require__(497)});
+	$export($export.S, 'Object', {create: __webpack_require__(513)});
 
 /***/ }),
-/* 530 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70345,7 +74329,7 @@
 	 * @providesModule ReactComponentWithPureRenderMixin
 	 */
 	
-	var shallowEqual = __webpack_require__(531);
+	var shallowEqual = __webpack_require__(547);
 	
 	function shallowCompare(instance, nextProps, nextState) {
 	  return !shallowEqual(instance.props, nextProps) || !shallowEqual(instance.state, nextState);
@@ -70386,12 +74370,12 @@
 	module.exports = ReactComponentWithPureRenderMixin;
 
 /***/ }),
-/* 531 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var fetchKeys = __webpack_require__(532);
+	var fetchKeys = __webpack_require__(548);
 	
 	module.exports = function shallowEqual(objA, objB, compare, compareContext) {
 	
@@ -70439,7 +74423,7 @@
 	};
 
 /***/ }),
-/* 532 */
+/* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -70450,9 +74434,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var getNative = __webpack_require__(533),
-	    isArguments = __webpack_require__(534),
-	    isArray = __webpack_require__(535);
+	var getNative = __webpack_require__(549),
+	    isArguments = __webpack_require__(550),
+	    isArray = __webpack_require__(551);
 	
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -70681,7 +74665,7 @@
 
 
 /***/ }),
-/* 533 */
+/* 549 */
 /***/ (function(module, exports) {
 
 	/**
@@ -70824,7 +74808,7 @@
 
 
 /***/ }),
-/* 534 */
+/* 550 */
 /***/ (function(module, exports) {
 
 	/**
@@ -71059,7 +75043,7 @@
 
 
 /***/ }),
-/* 535 */
+/* 551 */
 /***/ (function(module, exports) {
 
 	/**
@@ -71245,7 +75229,7 @@
 
 
 /***/ }),
-/* 536 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71394,7 +75378,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStoreToProps)(ScaleSelect);
 
 /***/ }),
-/* 537 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71423,7 +75407,7 @@
 	
 	var _fretboardActions = __webpack_require__(293);
 	
-	var _midiApi = __webpack_require__(434);
+	var _midiApi = __webpack_require__(450);
 	
 	var midiApi = _interopRequireWildcard(_midiApi);
 	
@@ -71433,15 +75417,15 @@
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _possibleChords = __webpack_require__(435);
+	var _possibleChords = __webpack_require__(451);
 	
 	var _possibleChords2 = _interopRequireDefault(_possibleChords);
 	
-	var _download = __webpack_require__(436);
+	var _download = __webpack_require__(452);
 	
 	var _download2 = _interopRequireDefault(_download);
 	
-	var _ban = __webpack_require__(437);
+	var _ban = __webpack_require__(453);
 	
 	var _ban2 = _interopRequireDefault(_ban);
 	
@@ -71676,7 +75660,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStoreToProps)(DownloadMidi);
 
 /***/ }),
-/* 538 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71770,16 +75754,16 @@
 	exports.default = (0, _reactRedux.connect)(mapStoreToProps)(ChordSelector);
 
 /***/ }),
-/* 539 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(540);
+	var content = __webpack_require__(556);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(543)(content, {});
+	var update = __webpack_require__(559)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -71796,22 +75780,22 @@
 	}
 
 /***/ }),
-/* 540 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(541)();
+	exports = module.exports = __webpack_require__(557)();
 	// imports
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700);", ""]);
-	exports.i(__webpack_require__(542), "");
+	exports.i(__webpack_require__(558), "");
 	
 	// module
-	exports.push([module.id, "/**\n *  VARIABLES\n */\n@keyframes expand-letters {\n  0% {\n    letter-spacing: 2px; }\n  50% {\n    letter-spacing: 1.7px; }\n  100% {\n    letter-spacing: 2px; } }\n\n/**\n *  IMPORTS\n */\n.btn {\n  cursor: pointer; }\n\n* {\n  font-family: 'Roboto Slab', serif; }\n\nh1 {\n  font-size: 1.2rem; }\n\nh2 {\n  font-size: 1rem; }\n\nh4 {\n  font-size: 0.8rem; }\n\np {\n  font-size: 0.8rem; }\n\nbody {\n  margin: 0; }\n\n.app {\n  margin: 0;\n  padding: 0;\n  filter: blur(0.4px) saturate(1.1);\n  min-height: 100vh; }\n\n.app__root {\n  background-color: white;\n  position: relative; }\n\n.app__container {\n  padding: 0 2rem;\n  max-width: 1000px;\n  display: block;\n  margin: auto;\n  position: relative;\n  height: 100vh; }\n\n.header {\n  height: 80px;\n  position: relative;\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 0.5rem; }\n  .header div {\n    display: flex;\n    align-items: center; }\n  .header h1 {\n    display: inline-block;\n    margin-right: 1rem; }\n    @media (max-width: 768px) {\n      .header h1 {\n        font-size: 1.5rem; } }\n\n.header__logo h1 {\n  letter-spacing: -3px;\n  font-size: 3rem; }\n\n.header__nav {\n  width: 50%; }\n\n.nav__container {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end; }\n  @media (max-width: 768px) {\n    .nav__container .how-to-use {\n      display: none; } }\n\n.nav__item {\n  cursor: pointer;\n  display: flex;\n  align-items: center; }\n\n.footer {\n  background-color: #191919;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  height: 100px;\n  justify-content: space-evenly;\n  position: fixed;\n  width: 100%;\n  padding: 15px;\n  margin: 50px 0 0 0;\n  box-sizing: border-box;\n  bottom: 0;\n  z-index: 2; }\n  @media (max-width: 768px) {\n    .footer {\n      position: relative; } }\n\n.contact__container {\n  display: flex;\n  width: 40%;\n  justify-content: space-evenly; }\n  .contact__container div {\n    cursor: pointer;\n    display: inline-block;\n    margin: 0.4rem;\n    position: relative;\n    top: 1px; }\n    .contact__container div svg {\n      fill: #ecf0f1; }\n  .contact__container p {\n    display: inline-block; }\n\n.copyright__container {\n  display: inline-block; }\n  .copyright__container p {\n    font-size: 0.7rem;\n    color: #7f8c8d; }\n\n.share {\n  display: inline-flex;\n  background-color: #cbf3dc; }\n\n.share__container {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .share__container div {\n    cursor: pointer;\n    display: flex;\n    justify-content: center;\n    margin: 0.5rem; }\n  .share__container p {\n    display: flex;\n    margin: 1rem;\n    justify-content: center; }\n  .share__container:hover p {\n    text-decoration: line-through; }\n\n.icon__container {\n  cursor: pointer;\n  z-index: 2; }\n  .icon__container div {\n    z-index: -1; }\n  .icon__container svg {\n    z-index: -1; }\n\n.icon__container--audio-control {\n  position: relative;\n  top: 8px;\n  margin: 0 0 0 0.5rem; }\n  .icon__container--audio-control div div svg {\n    width: 24px;\n    height: 24px; }\n\n.icon {\n  z-index: 1; }\n  .icon:hover {\n    fill: #2ecc71; }\n  .icon .share {\n    color: #191919; }\n  .icon .volume:hover {\n    fill: #ecf0f1; }\n\n.modal__container {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 100%;\n  z-index: -1;\n  opacity: 1;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  display: none; }\n  .modal__container.isVisible {\n    z-index: 6;\n    bottom: 0;\n    display: flex; }\n\n.modal__messagebox {\n  z-index: -1;\n  height: auto;\n  width: 30%;\n  background-color: #ecf0f1;\n  border-radius: 3px;\n  display: flex;\n  flex-direction: column;\n  padding: 2rem;\n  align-items: center;\n  transform: translateY(0);\n  transition: all 0.1s ease;\n  opacity: 0; }\n  .modal__messagebox.isVisible {\n    z-index: 6;\n    opacity: 1; }\n  .modal__messagebox h1 {\n    margin-right: 0; }\n  .modal__messagebox p {\n    margin: 0 0 2rem 0;\n    font-weight: 100;\n    text-align: center;\n    text-align: justify; }\n  @media (max-width: 768px) {\n    .modal__messagebox {\n      height: 100%;\n      display: flex;\n      justify-content: center; } }\n\n.modal__curtain {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 100%;\n  background-color: #191919;\n  z-index: 5;\n  opacity: 0;\n  transition: opacity 0.1s ease; }\n  .modal__curtain.isVisible {\n    opacity: 0.95;\n    bottom: 0; }\n\n.modal__button-container {\n  display: flex;\n  justify-content: space-evenly;\n  width: 100%; }\n\n.modal__button {\n  display: inline-block;\n  padding: 0.5rem 1rem;\n  font-size: 1rem;\n  border: 2px solid;\n  background-color: transparent; }\n  .modal__button:hover {\n    cursor: pointer; }\n  .modal__button.confirm {\n    border-color: #449d44;\n    color: #449d44; }\n    .modal__button.confirm:hover {\n      color: white;\n      background-color: #449d44; }\n  .modal__button.reject {\n    border-color: #d9534f;\n    color: #d9534f; }\n    .modal__button.reject:hover {\n      color: white;\n      background-color: #d9534f; }\n\n.fretboard {\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column-reverse;\n  padding: 1rem;\n  border-radius: 3px;\n  border: 1px solid transparent;\n  transition: border 0.25s ease;\n  width: 100%;\n  margin: 0 auto; }\n  .fretboard:hover {\n    transition: border 0.25s ease; }\n\n.fretboard__container {\n  width: 98%;\n  display: block;\n  margin: 0 auto 1rem auto; }\n\n.fretboard__container--main {\n  display: flex;\n  flex-direction: column;\n  border: 1px solid rgba(189, 196, 196, 0.7);\n  position: relative;\n  border-radius: 10px;\n  transition: border 0.25s ease; }\n  .fretboard__container--main h1 {\n    margin: 0;\n    left: 8px; }\n  .fretboard__container--main h1 {\n    background-color: #fff;\n    padding: 0 0.3rem;\n    position: absolute;\n    letter-spacing: 2px;\n    top: -14px;\n    left: 8px;\n    transition: background-color 0.25s ease; }\n  .fretboard__container--main:hover {\n    border: 1px solid #7f8c8d;\n    transition: border 0.25s ease; }\n    .fretboard__container--main:hover h1 {\n      animation: expand-letters 0.3s ease-out;\n      transition: background-color 0.2s ease-in;\n      background-color: #cbf3dc; }\n\n.fretboard__header {\n  display: flex;\n  justify-content: space-between;\n  background-color: transparent; }\n  @media (max-width: 768px) {\n    .fretboard__header {\n      flex-direction: column; } }\n\n.header__tuning {\n  width: 61%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border: 1px solid rgba(189, 196, 196, 0.7);\n  position: relative;\n  border-radius: 10px;\n  transition: border 0.25s ease; }\n  .header__tuning h1 {\n    top: -28px !important; }\n  .header__tuning h1 {\n    background-color: #fff;\n    padding: 0 0.3rem;\n    position: absolute;\n    letter-spacing: 2px;\n    top: -14px;\n    left: 8px;\n    transition: background-color 0.25s ease; }\n  .header__tuning:hover {\n    border: 1px solid #7f8c8d;\n    transition: border 0.25s ease; }\n    .header__tuning:hover h1 {\n      animation: expand-letters 0.3s ease-out;\n      transition: background-color 0.2s ease-in;\n      background-color: #cbf3dc; }\n  @media (max-width: 768px) {\n    .header__tuning {\n      width: 100%;\n      display: flex;\n      flex-direction: column;\n      height: 100vh; } }\n\n.header__audio-control {\n  width: 20%; }\n\n.audio-controller {\n  position: relative;\n  display: flex;\n  justify-content: flex-end; }\n\n.fretboard__string {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around; }\n\n.tuning__title {\n  display: inline-block; }\n  @media (max-width: 768px) {\n    .tuning__title {\n      text-align: center;\n      margin: 0.5rem 0; } }\n\n.tuning__note {\n  display: inline-block;\n  margin: 0.5rem; }\n\n.string {\n  display: flex; }\n\n.string__fret {\n  border: 1px solid #191919;\n  width: calc(100%/23);\n  height: 1.7rem;\n  position: relative;\n  opacity: 0.7;\n  max-height: 100%;\n  background-color: #ecf0f1;\n  margin: 1px;\n  border-radius: 4px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  align-content: center;\n  font-weight: 100; }\n  .string__fret:hover {\n    cursor: pointer;\n    background-color: #ecf0f1;\n    opacity: 1; }\n  .string__fret.root {\n    background-color: white;\n    font-weight: 600; }\n  .string__fret.selected {\n    background-color: #2ecc71 !important;\n    opacity: 1 !important; }\n    .string__fret.selected p {\n      color: #191919;\n      font-weight: 700; }\n  .string__fret.guide {\n    border: none;\n    background: transparent;\n    opacity: 0.4; }\n    .string__fret.guide:hover {\n      opacity: 0.7; }\n\n.fret__name {\n  color: #191919;\n  font-size: 0.7rem; }\n\n.fret__number {\n  display: none;\n  color: #191919;\n  font-size: 0.8rem;\n  position: absolute; }\n\n.fret--guide {\n  background-color: white; }\n\n.tuning-selector {\n  width: 30%;\n  position: relative;\n  display: inline-block;\n  top: 3px;\n  margin-right: 3rem;\n  cursor: pointer; }\n  @media (max-width: 768px) {\n    .tuning-selector {\n      width: 80%;\n      margin: 0 0 1rem 0; } }\n\n.scales-selector {\n  width: 30%;\n  position: relative;\n  display: inline-block;\n  top: 12px;\n  margin: 0;\n  cursor: pointer; }\n\n.Dropdown-control {\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #191919;\n  cursor: pointer;\n  outline: none;\n  padding: 5px 45px 5px 10px;\n  transition: all 200ms ease;\n  position: relative;\n  bottom: 3px; }\n\n.Dropdown-placeholder {\n  font-size: 0.8rem;\n  color: #191919; }\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 11px;\n  width: 0; }\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch; }\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px; }\n  .Dropdown-option.isSelected {\n    background-color: #f2f9fc;\n    color: #333; }\n\n/**\n *  CHORD BANK\n */\n.chordbank__container {\n  display: flex;\n  margin: 2rem;\n  justify-content: space-evenly; }\n\n.chordbank__data {\n  display: block;\n  height: 90px; }\n  .chordbank__data h4 {\n    margin: 0; }\n  .chordbank__data:nth-of-type(1) {\n    border-bottom: 1px solid #ecf0f1; }\n  .chordbank__data:nth-of-type(2) {\n    border-bottom: 1px solid #ecf0f1; }\n\n.chordbank {\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-evenly;\n  height: 100%;\n  width: 100%;\n  transition: border 0.25s ease; }\n\n.chords__container {\n  border-radius: 4px;\n  box-sizing: border-box;\n  position: relative;\n  height: 100%;\n  width: 100%;\n  overflow-x: hidden;\n  overflow-y: scroll;\n  transition: border 0.25s ease;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly; }\n\n.chords__match-toggle {\n  display: flex;\n  justify-content: flex-start; }\n  .chords__match-toggle h4 {\n    margin: 0;\n    display: inline-block;\n    padding-left: 1rem;\n    font-size: 0.8rem; }\n\n.chords__list {\n  box-sizing: border-box;\n  display: block;\n  position: relative;\n  overflow-y: scroll;\n  width: 100%;\n  height: 300px; }\n\n.chordbank__header {\n  display: inline-block;\n  margin-right: 1rem;\n  min-width: 130px;\n  margin-bottom: 0; }\n\n.chordbank__active-notes {\n  padding: 0 0 0 1rem; }\n  .chordbank__active-notes p {\n    display: inline-block;\n    margin-right: 0.5rem; }\n\n.chordbank__selected-chord {\n  padding: 0 0 0 1rem;\n  display: block; }\n\n.button-bar {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  width: 100%; }\n  .button-bar.\\--downloads {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-evenly;\n    width: 100%; }\n\n.chordbank__button {\n  display: flex;\n  align-items: center;\n  justify-content: baseline;\n  width: 150px;\n  padding: 0 0.5rem;\n  border: 2px solid #191919;\n  background-color: transparent;\n  font-size: 0.7rem;\n  margin-top: 0.5rem;\n  -webkit-transition: background-color 0.1s;\n  -moz-transition: background-color 0.1s;\n  -ms-transition: background-color 0.1s;\n  -o-transition: background-color 0.1s;\n  transition: background-color 0.1s; }\n  .chordbank__button.\\--clear {\n    width: auto;\n    padding-right: 1rem;\n    opacity: 0.9; }\n    .chordbank__button.\\--clear:hover {\n      opacity: 1;\n      background-color: #ecf0f1;\n      border: 2px solid #d9534f;\n      color: #d9534f; }\n      .chordbank__button.\\--clear:hover svg {\n        fill: #d9534f; }\n  .chordbank__button.\\--chord:hover {\n    color: #2ecc71; }\n    .chordbank__button.\\--chord:hover svg {\n      fill: #2ecc71; }\n  .chordbank__button.\\--scale:hover {\n    color: #cc2e89; }\n    .chordbank__button.\\--scale:hover svg {\n      fill: #cc2e89; }\n  .chordbank__button:disabled {\n    opacity: 0.6; }\n    .chordbank__button:disabled:hover {\n      cursor: not-allowed;\n      background-color: transparent; }\n  .chordbank__button:hover {\n    cursor: pointer;\n    background-color: #191919;\n    color: #ecf0f1; }\n  .chordbank__button p {\n    text-transform: uppercase; }\n  .chordbank__button svg {\n    vertical-align: middle;\n    margin: 0 0.5rem;\n    width: 18px;\n    height: 30px; }\n\n.chord-match {\n  box-sizing: border-box;\n  height: 35px;\n  padding: 0 1rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  opacity: 0.8; }\n  .chord-match:hover {\n    cursor: pointer;\n    opacity: 1; }\n\n.chord-match--selected {\n  background-color: #cbf3dc;\n  border: 1px solid #ecf0f1;\n  opacity: 1;\n  border-radius: 3px; }\n  .chord-match--selected p {\n    font-weight: bolder; }\n\n.chord-match__name {\n  font-size: 0.7rem;\n  display: inline-block;\n  margin-right: 1rem; }\n\n.chord-match__notes {\n  display: inline-block;\n  line-height: 0; }\n  .chord-match__notes p {\n    display: inline-block;\n    font-size: 0.6rem;\n    opacity: 0.9; }\n\n/**\n *  KEYBOARD\n */\n.keyboard {\n  display: flex;\n  justify-content: center;\n  position: relative;\n  width: 300px; }\n\n.keyboard__container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 1rem;\n  border: 1px solid rgba(189, 196, 196, 0.7);\n  position: relative;\n  border-radius: 10px;\n  transition: border 0.25s ease; }\n  .keyboard__container h1 {\n    left: 8px; }\n  .keyboard__container h1 {\n    background-color: #fff;\n    padding: 0 0.3rem;\n    position: absolute;\n    letter-spacing: 2px;\n    top: -14px;\n    left: 8px;\n    transition: background-color 0.25s ease; }\n  .keyboard__container:hover {\n    border: 1px solid #7f8c8d;\n    transition: border 0.25s ease; }\n    .keyboard__container:hover h1 {\n      animation: expand-letters 0.3s ease-out;\n      transition: background-color 0.2s ease-in;\n      background-color: #cbf3dc; }\n\n.keyboard__title {\n  text-align: start;\n  margin: 0; }\n\n.keyboard__controller {\n  display: flex;\n  width: 100%;\n  justify-content: space-evenly; }\n  @media (max-width: 768px) {\n    .keyboard__controller {\n      flex-direction: column;\n      justify-content: center;\n      align-items: center; } }\n\n.keyboards {\n  display: flex; }\n  @media (max-width: 768px) {\n    .keyboards {\n      flex-direction: column; } }\n\n.keyboards__chord,\n.keyboards__scale {\n  display: flex;\n  flex-direction: column; }\n  .keyboards__chord h2,\n  .keyboards__scale h2 {\n    text-align: center;\n    margin: 0; }\n\n.keyboard__key {\n  background-color: white;\n  border: 1px solid #111;\n  display: inline-block;\n  height: 130px;\n  position: relative;\n  width: 35px;\n  border-bottom-left-radius: 5px;\n  border-bottom-right-radius: 5px; }\n  .keyboard__key:hover {\n    cursor: pointer; }\n  .keyboard__key p {\n    text-align: center;\n    position: absolute;\n    bottom: 0;\n    left: 50%;\n    transform: translateX(-50%);\n    display: block; }\n    .keyboard__key p.key__name--keyboard {\n      bottom: 1.5rem; }\n\n.difference {\n  background-color: #2eccc0 !important; }\n\n.highlighted {\n  background-color: #2ecc71 !important; }\n\n.scale {\n  background-color: #cc2e89 !important; }\n\n.sharp {\n  background-color: #191919;\n  position: absolute;\n  top: 0px;\n  z-index: 2;\n  height: 75px;\n  left: 40px;\n  width: 32px; }\n  .sharp p {\n    color: #ecf0f1 !important;\n    text-align: center; }\n  .sharp.D {\n    left: 78px; }\n  .sharp.F {\n    left: 150px; }\n  .sharp.G {\n    left: 188px; }\n  .sharp.A {\n    left: 226px; }\n\n.laptop-check__container {\n  text-align: center;\n  display: flex;\n  justify-content: center; }\n  .laptop-check__container p {\n    font-weight: 100;\n    margin-right: 1rem; }\n\n.rc-checkbox-input {\n  width: 15px;\n  height: 15px; }\n\n.audio-controller__status {\n  display: inline-block; }\n\n.chordselectors__container {\n  width: 100%;\n  display: flex; }\n\n.register,\n.login {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  z-index: -1;\n  opacity: 0; }\n  .register.isVisible,\n  .login.isVisible {\n    z-index: 10;\n    opacity: 1; }\n\n.register__container,\n.login__container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-content: center;\n  position: absolute;\n  left: 0;\n  top: 0;\n  background-color: #ecf0f1;\n  z-index: 10;\n  width: 50%;\n  height: 50%;\n  transform: translate3d(50%, 50%, 0); }\n\n.register__title,\n.login__title {\n  font-weight: 400;\n  width: 100%;\n  display: block;\n  text-align: center;\n  text-transform: uppercase; }\n\n.register__form,\n.login__form {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  width: 100%; }\n\n.form-group {\n  width: 50%;\n  margin: 1rem 0;\n  display: flex;\n  flex-direction: column; }\n  .form-group input {\n    width: 100%;\n    height: 2rem; }\n\n.app__auth {\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  z-index: -1;\n  opacity: 0; }\n  .app__auth.isVisible {\n    z-index: 10;\n    opacity: 1; }\n\n.container__all {\n  display: flex;\n  justify-content: space-around;\n  height: calc(100% - 300px); }\n  @media (max-width: 768px) {\n    .container__all {\n      flex-direction: column;\n      margin-bottom: 200px; } }\n\n.container__right {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 36%; }\n  .container__right .right--verticals {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    height: 76%; }\n  .container__right .right--horizontal {\n    height: 16%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    border: 1px solid rgba(189, 196, 196, 0.7);\n    position: relative;\n    border-radius: 10px;\n    transition: border 0.25s ease; }\n    .container__right .right--horizontal h1 {\n      background-color: #fff;\n      padding: 0 0.3rem;\n      position: absolute;\n      letter-spacing: 2px;\n      top: -14px;\n      left: 8px;\n      transition: background-color 0.25s ease; }\n    .container__right .right--horizontal:hover {\n      border: 1px solid #7f8c8d;\n      transition: border 0.25s ease; }\n      .container__right .right--horizontal:hover h1 {\n        animation: expand-letters 0.3s ease-out;\n        transition: background-color 0.2s ease-in;\n        background-color: #cbf3dc; }\n\n.container__choice {\n  width: 48%;\n  padding: 1rem;\n  box-sizing: border-box;\n  height: 400px;\n  border: 1px solid rgba(189, 196, 196, 0.7);\n  position: relative;\n  border-radius: 10px;\n  transition: border 0.25s ease; }\n  .container__choice h1 {\n    background-color: #fff;\n    padding: 0 0.3rem;\n    position: absolute;\n    letter-spacing: 2px;\n    top: -14px;\n    left: 8px;\n    transition: background-color 0.25s ease; }\n  .container__choice:hover {\n    border: 1px solid #7f8c8d;\n    transition: border 0.25s ease; }\n    .container__choice:hover h1 {\n      animation: expand-letters 0.3s ease-out;\n      transition: background-color 0.2s ease-in;\n      background-color: #cbf3dc; }\n  @media (max-width: 768px) {\n    .container__choice {\n      width: 100%; } }\n\n.options__title {\n  margin: 0; }\n\n.container__center {\n  width: 60%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between; }\n  @media (max-width: 768px) {\n    .container__center {\n      width: 100%; } }\n\n.container__options {\n  height: 400px;\n  width: 48%;\n  padding: 1rem;\n  box-sizing: border-box;\n  border: 1px solid rgba(189, 196, 196, 0.7);\n  position: relative;\n  border-radius: 10px;\n  transition: border 0.25s ease; }\n  .container__options h1 {\n    background-color: #fff;\n    padding: 0 0.3rem;\n    position: absolute;\n    letter-spacing: 2px;\n    top: -14px;\n    left: 8px;\n    transition: background-color 0.25s ease; }\n  .container__options:hover {\n    border: 1px solid #7f8c8d;\n    transition: border 0.25s ease; }\n    .container__options:hover h1 {\n      animation: expand-letters 0.3s ease-out;\n      transition: background-color 0.2s ease-in;\n      background-color: #cbf3dc; }\n  @media (max-width: 768px) {\n    .container__options {\n      width: 100%; } }\n\n.choice__title {\n  margin: 0; }\n\n.app__misc {\n  width: 36.5%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  border: 1px solid rgba(189, 196, 196, 0.7);\n  position: relative;\n  border-radius: 10px;\n  transition: border 0.25s ease; }\n  .app__misc h1 {\n    top: -27px !important; }\n  .app__misc h1 {\n    background-color: #fff;\n    padding: 0 0.3rem;\n    position: absolute;\n    letter-spacing: 2px;\n    top: -14px;\n    left: 8px;\n    transition: background-color 0.25s ease; }\n  .app__misc:hover {\n    border: 1px solid #7f8c8d;\n    transition: border 0.25s ease; }\n    .app__misc:hover h1 {\n      animation: expand-letters 0.3s ease-out;\n      transition: background-color 0.2s ease-in;\n      background-color: #cbf3dc; }\n  .app__misc .how-to-use {\n    display: flex;\n    margin-right: 1rem; }\n    .app__misc .how-to-use p {\n      margin-right: 0.5rem; }\n", ""]);
+	exports.push([module.id, "/**\n *  VARIABLES\n */\n@keyframes expand-letters {\n  0% {\n    letter-spacing: 2px; }\n  50% {\n    letter-spacing: 1.7px; }\n  100% {\n    letter-spacing: 2px; } }\n\n/**\n *  IMPORTS\n */\n.btn {\n  cursor: pointer; }\n\n* {\n  font-family: 'Roboto Slab', serif; }\n\nh1 {\n  font-size: 1.2rem; }\n\nh2 {\n  font-size: 1rem; }\n\nh4 {\n  font-size: 0.8rem; }\n\np {\n  font-size: 0.8rem; }\n\nbody {\n  margin: 0; }\n\n.app {\n  margin: 0;\n  padding: 0;\n  filter: blur(0.4px) saturate(1.1);\n  min-height: 100vh; }\n\n.app__root {\n  background-color: white;\n  position: relative; }\n\n.app__container {\n  padding: 0 2rem;\n  max-width: 1000px;\n  display: block;\n  margin: auto;\n  position: relative;\n  height: 100vh; }\n  @media (max-width: 768px) {\n    .app__container {\n      height: auto; } }\n\n.header {\n  height: 80px;\n  position: relative;\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 0.5rem; }\n  @media (max-width: 768px) {\n    .header {\n      height: 300px;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center; } }\n  .header div {\n    display: flex;\n    align-items: center; }\n  .header h1 {\n    display: inline-block;\n    margin-right: 1rem; }\n    @media (max-width: 768px) {\n      .header h1 {\n        font-size: 1.5rem; } }\n\n.header__logo h1 {\n  letter-spacing: -3px;\n  font-size: 3rem; }\n\n.header__nav {\n  width: 50%; }\n  @media (max-width: 768px) {\n    .header__nav {\n      width: 100%; } }\n\n.nav__container {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end; }\n  @media (max-width: 768px) {\n    .nav__container {\n      padding: 0;\n      margin: 0;\n      justify-content: space-evenly; } }\n\n.nav__item {\n  cursor: pointer;\n  display: flex;\n  align-items: center; }\n  .nav__item.\\--how-to-use {\n    margin: 0 2rem 0 0; }\n    @media (max-width: 768px) {\n      .nav__item.\\--how-to-use {\n        margin: 0; } }\n\n.footer {\n  background-color: #191919;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  height: 100px;\n  justify-content: space-evenly;\n  position: fixed;\n  width: 100%;\n  padding: 15px;\n  margin: 50px 0 0 0;\n  box-sizing: border-box;\n  bottom: 0;\n  z-index: 2; }\n  @media (max-width: 768px) {\n    .footer {\n      position: relative; } }\n\n.contact__container {\n  display: flex;\n  width: 40%;\n  justify-content: space-evenly; }\n  .contact__container div {\n    cursor: pointer;\n    display: inline-block;\n    margin: 0.4rem;\n    position: relative;\n    top: 1px; }\n    .contact__container div svg {\n      fill: #ecf0f1; }\n  .contact__container p {\n    display: inline-block; }\n\n.copyright__container {\n  display: inline-block; }\n  .copyright__container p {\n    font-size: 0.6rem;\n    opacity: 0.6;\n    color: #7f8c8d; }\n\n.share {\n  display: inline-flex;\n  background-color: #cbf3dc; }\n\n.share__container {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .share__container div {\n    cursor: pointer;\n    display: flex;\n    justify-content: center;\n    margin: 0.5rem; }\n  .share__container p {\n    display: flex;\n    margin: 1rem;\n    justify-content: center; }\n  .share__container:hover p {\n    text-decoration: line-through; }\n\n.icon__container {\n  cursor: pointer;\n  z-index: 2; }\n  .icon__container div {\n    z-index: -1; }\n  .icon__container svg {\n    z-index: -1; }\n\n.icon__container--audio-control {\n  position: relative;\n  top: 8px;\n  margin: 0 0 0 0.5rem; }\n  .icon__container--audio-control div div svg {\n    width: 24px;\n    height: 24px; }\n\n.icon {\n  z-index: 1; }\n  .icon:hover {\n    fill: #2ecc71; }\n  .icon .share {\n    color: #191919; }\n  .icon .volume:hover {\n    fill: #ecf0f1; }\n\n.modal__container {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 100%;\n  z-index: -1;\n  opacity: 1;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  display: none; }\n  .modal__container.isVisible {\n    z-index: 6;\n    bottom: 0;\n    display: flex; }\n\n.modal__messagebox {\n  z-index: -1;\n  height: auto;\n  width: 30%;\n  background-color: #ecf0f1;\n  border-radius: 3px;\n  display: flex;\n  flex-direction: column;\n  padding: 2rem;\n  align-items: center;\n  transform: translateY(0);\n  transition: all 0.1s ease;\n  opacity: 0; }\n  .modal__messagebox.isVisible {\n    z-index: 6;\n    opacity: 1; }\n  .modal__messagebox h1 {\n    margin-right: 0; }\n  .modal__messagebox p {\n    margin: 0 0 2rem 0;\n    font-weight: 100;\n    text-align: center;\n    text-align: justify; }\n  @media (max-width: 768px) {\n    .modal__messagebox {\n      height: 70%;\n      width: 70%;\n      display: flex;\n      justify-content: center; }\n      .modal__messagebox p {\n        max-width: 60%; } }\n\n.modal__curtain {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 100%;\n  background-color: #191919;\n  z-index: 5;\n  opacity: 0;\n  transition: opacity 0.1s ease; }\n  .modal__curtain.isVisible {\n    opacity: 0.95;\n    bottom: 0; }\n\n.modal__button-container {\n  display: flex;\n  justify-content: space-evenly;\n  width: 100%; }\n\n.modal__button {\n  display: inline-block;\n  padding: 0.5rem 1rem;\n  font-size: 1rem;\n  border: 2px solid;\n  background-color: transparent; }\n  .modal__button:hover {\n    cursor: pointer; }\n  .modal__button.confirm {\n    border-color: #449d44;\n    color: #449d44; }\n    .modal__button.confirm:hover {\n      color: white;\n      background-color: #449d44; }\n  .modal__button.reject {\n    border-color: #d9534f;\n    color: #d9534f; }\n    .modal__button.reject:hover {\n      color: white;\n      background-color: #d9534f; }\n\n.fretboard {\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column-reverse;\n  padding: 1rem;\n  border-radius: 3px;\n  border: 1px solid transparent;\n  transition: border 0.25s ease;\n  width: 100%;\n  margin: 0 auto; }\n  .fretboard:hover {\n    transition: border 0.25s ease; }\n\n.fretboard__container {\n  width: 98%;\n  display: block;\n  margin: 0 auto 1rem auto; }\n\n.fretboard__container--main {\n  display: flex;\n  flex-direction: column;\n  border: 1px solid rgba(189, 196, 196, 0.7);\n  position: relative;\n  border-radius: 10px;\n  transition: border 0.25s ease; }\n  .fretboard__container--main h1 {\n    margin: 0;\n    left: 8px; }\n  @media (max-width: 768px) {\n    .fretboard__container--main {\n      justify-content: flex-end; } }\n  .fretboard__container--main h1 {\n    background-color: #fff;\n    padding: 0 0.3rem;\n    position: absolute;\n    letter-spacing: 2px;\n    top: -14px;\n    left: 8px;\n    transition: background-color 0.25s ease; }\n  .fretboard__container--main:hover {\n    border: 1px solid #7f8c8d;\n    transition: border 0.25s ease; }\n    .fretboard__container--main:hover h1 {\n      animation: expand-letters 0.3s ease-out;\n      transition: background-color 0.2s ease-in;\n      background-color: #cbf3dc; }\n  @media (max-width: 768px) {\n    .fretboard__container--main {\n      width: 100% !important;\n      height: 100vh !important; }\n      .fretboard__container--main h1 {\n        background-color: #cbf3dc;\n        left: 15px !important;\n        top: 15px !important; } }\n\n.fretboard__header {\n  display: flex;\n  justify-content: space-between;\n  background-color: transparent; }\n  @media (max-width: 768px) {\n    .fretboard__header {\n      flex-direction: column; } }\n\n.header__tuning {\n  width: 61%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border: 1px solid rgba(189, 196, 196, 0.7);\n  position: relative;\n  border-radius: 10px;\n  transition: border 0.25s ease; }\n  .header__tuning h1 {\n    top: -28px !important; }\n  .header__tuning h1 {\n    background-color: #fff;\n    padding: 0 0.3rem;\n    position: absolute;\n    letter-spacing: 2px;\n    top: -14px;\n    left: 8px;\n    transition: background-color 0.25s ease; }\n  .header__tuning:hover {\n    border: 1px solid #7f8c8d;\n    transition: border 0.25s ease; }\n    .header__tuning:hover h1 {\n      animation: expand-letters 0.3s ease-out;\n      transition: background-color 0.2s ease-in;\n      background-color: #cbf3dc; }\n  @media (max-width: 768px) {\n    .header__tuning {\n      width: 100% !important;\n      height: 100vh !important; }\n      .header__tuning h1 {\n        background-color: #cbf3dc;\n        left: 15px !important;\n        top: 15px !important; } }\n  @media (max-width: 768px) {\n    .header__tuning {\n      width: 100%;\n      display: flex;\n      flex-direction: column;\n      height: 100vh; } }\n\n.header__audio-control {\n  width: 20%; }\n\n.audio-controller {\n  position: relative;\n  display: flex;\n  justify-content: flex-end; }\n\n.fretboard__string {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around; }\n\n.tuning__title {\n  display: inline-block; }\n  @media (max-width: 768px) {\n    .tuning__title {\n      text-align: center;\n      margin: 0.5rem 0; } }\n\n.tuning__note {\n  display: inline-block;\n  margin: 0.5rem; }\n\n.string {\n  display: flex; }\n\n.string__fret {\n  border: 1px solid #191919;\n  width: calc(100%/23);\n  height: 1.7rem;\n  position: relative;\n  opacity: 0.7;\n  max-height: 100%;\n  background-color: #ecf0f1;\n  margin: 1px;\n  border-radius: 4px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  align-content: center;\n  font-weight: 100; }\n  .string__fret:hover {\n    cursor: pointer;\n    background-color: #ecf0f1;\n    opacity: 1; }\n  .string__fret.root {\n    background-color: white;\n    font-weight: 600; }\n  .string__fret.selected {\n    background-color: #2ecc71 !important;\n    opacity: 1 !important; }\n    .string__fret.selected p {\n      color: #191919;\n      font-weight: 700; }\n  .string__fret.guide {\n    border: none;\n    background: transparent;\n    opacity: 0.4; }\n    .string__fret.guide:hover {\n      opacity: 0.7; }\n  @media (max-width: 768px) {\n    .string__fret {\n      height: 1.5rem; }\n      .string__fret p {\n        font-size: 0.6rem; } }\n\n.fret__name {\n  color: #191919;\n  font-size: 0.7rem; }\n\n.fret__number {\n  display: none;\n  color: #191919;\n  font-size: 0.8rem;\n  position: absolute; }\n\n.fret--guide {\n  background-color: white; }\n\n.tuning-selector {\n  width: 30%;\n  position: relative;\n  display: inline-block;\n  top: 3px;\n  margin-right: 3rem;\n  cursor: pointer; }\n  @media (max-width: 768px) {\n    .tuning-selector {\n      width: 80%;\n      margin: 0 0 1rem 0; } }\n\n.scales-selector {\n  width: 30%;\n  position: relative;\n  display: inline-block;\n  top: 12px;\n  margin: 0;\n  cursor: pointer; }\n  @media (max-width: 768px) {\n    .scales-selector {\n      top: 3px; } }\n\n.Dropdown-control {\n  overflow: hidden;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #191919;\n  cursor: pointer;\n  outline: none;\n  padding: 5px 45px 5px 10px;\n  transition: all 200ms ease;\n  position: relative;\n  bottom: 3px; }\n\n.Dropdown-placeholder {\n  font-size: 0.8rem;\n  color: #191919; }\n\n.Dropdown-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 0;\n  content: ' ';\n  display: block;\n  height: 0;\n  margin-top: -ceil(2.5);\n  position: absolute;\n  right: 10px;\n  top: 11px;\n  width: 0; }\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch; }\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px; }\n  .Dropdown-option.isSelected {\n    background-color: #f2f9fc;\n    color: #333; }\n\n/**\n *  CHORD BANK\n */\n.chordbank__container {\n  display: flex;\n  margin: 2rem;\n  justify-content: space-evenly; }\n\n.chordbank__data {\n  display: block;\n  height: 90px; }\n  .chordbank__data h4 {\n    margin: 0; }\n  .chordbank__data:nth-of-type(1) {\n    border-bottom: 1px solid #ecf0f1; }\n  .chordbank__data:nth-of-type(2) {\n    border-bottom: 1px solid #ecf0f1; }\n\n.chordbank {\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-evenly;\n  height: 100%;\n  width: 100%;\n  transition: border 0.25s ease; }\n  @media (max-width: 768px) {\n    .chordbank {\n      height: 85%; } }\n\n.chords__container {\n  border-radius: 4px;\n  box-sizing: border-box;\n  position: relative;\n  height: 100%;\n  width: 100%;\n  overflow-x: hidden;\n  overflow-y: scroll;\n  transition: border 0.25s ease;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly; }\n  @media (max-width: 768px) {\n    .chords__container {\n      height: 85%; } }\n\n.chords__match-toggle {\n  display: flex;\n  justify-content: flex-start; }\n  .chords__match-toggle h4 {\n    margin: 0;\n    display: inline-block;\n    padding-left: 1rem;\n    font-size: 0.8rem; }\n  @media (max-width: 768px) {\n    .chords__match-toggle {\n      margin-top: 5px;\n      justify-content: space-between; } }\n\n.chords__list {\n  box-sizing: border-box;\n  display: block;\n  position: relative;\n  overflow-y: scroll;\n  width: 100%;\n  height: 300px; }\n\n.chordbank__header {\n  display: inline-block;\n  margin-right: 1rem;\n  min-width: 130px;\n  margin-bottom: 0; }\n\n.chordbank__active-notes {\n  padding: 0 0 0 1rem; }\n  .chordbank__active-notes p {\n    display: inline-block;\n    margin-right: 0.5rem; }\n\n.chordbank__selected-chord {\n  padding: 0 0 0 1rem;\n  display: block; }\n\n.button-bar {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  width: 100%; }\n  .button-bar.\\--downloads {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-evenly;\n    width: 100%; }\n\n.chordbank__button {\n  display: flex;\n  align-items: center;\n  justify-content: baseline;\n  width: 150px;\n  padding: 0 0.5rem;\n  border: 2px solid #191919;\n  background-color: transparent;\n  font-size: 0.7rem;\n  margin-top: 0.5rem;\n  -webkit-transition: background-color 0.1s;\n  -moz-transition: background-color 0.1s;\n  -ms-transition: background-color 0.1s;\n  -o-transition: background-color 0.1s;\n  transition: background-color 0.1s; }\n  .chordbank__button.\\--clear {\n    width: auto;\n    padding-right: 1rem;\n    opacity: 0.9; }\n    .chordbank__button.\\--clear:hover {\n      opacity: 1;\n      background-color: #ecf0f1;\n      border: 2px solid #d9534f;\n      color: #d9534f; }\n      .chordbank__button.\\--clear:hover svg {\n        fill: #d9534f; }\n  .chordbank__button.\\--chord:hover {\n    color: #2ecc71; }\n    .chordbank__button.\\--chord:hover svg {\n      fill: #2ecc71; }\n  .chordbank__button.\\--scale:hover {\n    color: #cc2e89; }\n    .chordbank__button.\\--scale:hover svg {\n      fill: #cc2e89; }\n  .chordbank__button:disabled {\n    opacity: 0.6; }\n    .chordbank__button:disabled:hover {\n      cursor: not-allowed;\n      background-color: transparent; }\n  .chordbank__button:hover {\n    cursor: pointer;\n    background-color: #191919;\n    color: #ecf0f1; }\n  .chordbank__button p {\n    text-transform: uppercase; }\n  .chordbank__button svg {\n    vertical-align: middle;\n    margin: 0 0.5rem;\n    width: 18px;\n    height: 30px; }\n\n.chord-match {\n  box-sizing: border-box;\n  height: 35px;\n  padding: 0 1rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  opacity: 0.8; }\n  .chord-match:hover {\n    cursor: pointer;\n    opacity: 1; }\n\n.chord-match--selected {\n  background-color: #cbf3dc;\n  border: 1px solid #ecf0f1;\n  opacity: 1;\n  border-radius: 3px; }\n  .chord-match--selected p {\n    font-weight: bolder; }\n\n.chord-match__name {\n  font-size: 0.7rem;\n  display: inline-block;\n  margin-right: 1rem; }\n\n.chord-match__notes {\n  display: inline-block;\n  line-height: 0; }\n  .chord-match__notes p {\n    display: inline-block;\n    font-size: 0.6rem;\n    opacity: 0.9; }\n\n/**\n *  KEYBOARD\n */\n.keyboard {\n  display: flex;\n  justify-content: center;\n  position: relative;\n  width: 300px; }\n\n.keyboard__container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 1rem;\n  border: 1px solid rgba(189, 196, 196, 0.7);\n  position: relative;\n  border-radius: 10px;\n  transition: border 0.25s ease; }\n  .keyboard__container h1 {\n    left: 8px; }\n  @media (max-width: 768px) {\n    .keyboard__container {\n      justify-content: center; } }\n  .keyboard__container h1 {\n    background-color: #fff;\n    padding: 0 0.3rem;\n    position: absolute;\n    letter-spacing: 2px;\n    top: -14px;\n    left: 8px;\n    transition: background-color 0.25s ease; }\n  .keyboard__container:hover {\n    border: 1px solid #7f8c8d;\n    transition: border 0.25s ease; }\n    .keyboard__container:hover h1 {\n      animation: expand-letters 0.3s ease-out;\n      transition: background-color 0.2s ease-in;\n      background-color: #cbf3dc; }\n  @media (max-width: 768px) {\n    .keyboard__container {\n      width: 100% !important;\n      height: 100vh !important; }\n      .keyboard__container h1 {\n        background-color: #cbf3dc;\n        left: 15px !important;\n        top: 15px !important; } }\n\n.keyboard__title {\n  text-align: start;\n  margin: 0; }\n\n.keyboard__controller {\n  display: flex;\n  width: 100%;\n  justify-content: space-evenly; }\n  @media (max-width: 768px) {\n    .keyboard__controller {\n      flex-direction: row;\n      justify-content: space-around;\n      align-items: center; } }\n\n.keyboards {\n  display: flex; }\n  @media (max-width: 768px) {\n    .keyboards {\n      flex-direction: row; } }\n\n.keyboards__chord,\n.keyboards__scale {\n  display: flex;\n  flex-direction: column; }\n  .keyboards__chord h2,\n  .keyboards__scale h2 {\n    text-align: center;\n    margin: 0; }\n\n.keyboard__key {\n  background-color: white;\n  border: 1px solid #111;\n  display: inline-block;\n  height: 130px;\n  position: relative;\n  width: 35px;\n  border-bottom-left-radius: 5px;\n  border-bottom-right-radius: 5px; }\n  .keyboard__key:hover {\n    cursor: pointer; }\n  .keyboard__key p {\n    text-align: center;\n    position: absolute;\n    bottom: 0;\n    left: 50%;\n    transform: translateX(-50%);\n    display: block; }\n    .keyboard__key p.key__name--keyboard {\n      bottom: 1.5rem; }\n\n.difference {\n  background-color: #2eccc0 !important; }\n\n.highlighted {\n  background-color: #2ecc71 !important; }\n\n.scale {\n  background-color: #cc2e89 !important; }\n\n.sharp {\n  background-color: #191919;\n  position: absolute;\n  top: 0px;\n  z-index: 2;\n  height: 75px;\n  left: 40px;\n  width: 32px; }\n  .sharp p {\n    color: #ecf0f1 !important;\n    text-align: center; }\n  .sharp.D {\n    left: 78px; }\n  .sharp.F {\n    left: 150px; }\n  .sharp.G {\n    left: 188px; }\n  .sharp.A {\n    left: 226px; }\n\n.laptop-check__container {\n  text-align: center;\n  display: flex;\n  justify-content: center; }\n  .laptop-check__container p {\n    font-weight: 100;\n    margin-right: 1rem; }\n\n.rc-checkbox-input {\n  width: 15px;\n  height: 15px; }\n\n.audio-controller__status {\n  display: inline-block; }\n\n.chordselectors__container {\n  width: 100%;\n  display: flex; }\n\n.register,\n.login {\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  z-index: -1;\n  opacity: 0; }\n  .register.isVisible,\n  .login.isVisible {\n    z-index: 10;\n    opacity: 1; }\n\n.register__container,\n.login__container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-content: center;\n  position: absolute;\n  left: 0;\n  top: 0;\n  background-color: #ecf0f1;\n  z-index: 10;\n  width: 50%;\n  height: 50%;\n  transform: translate3d(50%, 50%, 0); }\n\n.register__title,\n.login__title {\n  font-weight: 400;\n  width: 100%;\n  display: block;\n  text-align: center;\n  text-transform: uppercase; }\n\n.register__form,\n.login__form {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  width: 100%; }\n\n.form-group {\n  width: 50%;\n  margin: 1rem 0;\n  display: flex;\n  flex-direction: column; }\n  .form-group input {\n    width: 100%;\n    height: 2rem; }\n\n.app__auth {\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  z-index: -1;\n  opacity: 0; }\n  .app__auth.isVisible {\n    z-index: 10;\n    opacity: 1; }\n\n.container__all {\n  display: flex;\n  justify-content: space-around;\n  height: calc(100% - 300px); }\n  @media (max-width: 768px) {\n    .container__all {\n      flex-direction: column; } }\n  @media (max-width: 1000px) {\n    .container__all {\n      flex-direction: column;\n      margin-bottom: 200px; } }\n\n.container__right {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 36%; }\n  @media (max-width: 768px) {\n    .container__right {\n      width: 100%; } }\n  .container__right .right--verticals {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    height: 76%; }\n  .container__right .right--horizontal {\n    height: 16%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    border: 1px solid rgba(189, 196, 196, 0.7);\n    position: relative;\n    border-radius: 10px;\n    transition: border 0.25s ease; }\n    .container__right .right--horizontal h1 {\n      background-color: #fff;\n      padding: 0 0.3rem;\n      position: absolute;\n      letter-spacing: 2px;\n      top: -14px;\n      left: 8px;\n      transition: background-color 0.25s ease; }\n    .container__right .right--horizontal:hover {\n      border: 1px solid #7f8c8d;\n      transition: border 0.25s ease; }\n      .container__right .right--horizontal:hover h1 {\n        animation: expand-letters 0.3s ease-out;\n        transition: background-color 0.2s ease-in;\n        background-color: #cbf3dc; }\n    @media (max-width: 768px) {\n      .container__right .right--horizontal {\n        width: 100% !important;\n        height: 100vh !important; }\n        .container__right .right--horizontal h1 {\n          background-color: #cbf3dc;\n          left: 15px !important;\n          top: 15px !important; } }\n\n.container__choice {\n  width: 48%;\n  padding: 1rem;\n  box-sizing: border-box;\n  height: 400px;\n  border: 1px solid rgba(189, 196, 196, 0.7);\n  position: relative;\n  border-radius: 10px;\n  transition: border 0.25s ease; }\n  .container__choice h1 {\n    background-color: #fff;\n    padding: 0 0.3rem;\n    position: absolute;\n    letter-spacing: 2px;\n    top: -14px;\n    left: 8px;\n    transition: background-color 0.25s ease; }\n  .container__choice:hover {\n    border: 1px solid #7f8c8d;\n    transition: border 0.25s ease; }\n    .container__choice:hover h1 {\n      animation: expand-letters 0.3s ease-out;\n      transition: background-color 0.2s ease-in;\n      background-color: #cbf3dc; }\n  @media (max-width: 768px) {\n    .container__choice {\n      width: 100% !important;\n      height: 100vh !important; }\n      .container__choice h1 {\n        background-color: #cbf3dc;\n        left: 15px !important;\n        top: 15px !important; } }\n  @media (max-width: 768px) {\n    .container__choice {\n      display: flex;\n      flex-direction: column;\n      justify-content: flex-end; } }\n\n.options__title {\n  margin: 0; }\n\n.container__center {\n  width: 60%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between; }\n  @media (max-width: 768px) {\n    .container__center {\n      width: 100%; } }\n\n.container__options {\n  height: 400px;\n  width: 48%;\n  padding: 1rem;\n  box-sizing: border-box;\n  border: 1px solid rgba(189, 196, 196, 0.7);\n  position: relative;\n  border-radius: 10px;\n  transition: border 0.25s ease; }\n  .container__options h1 {\n    background-color: #fff;\n    padding: 0 0.3rem;\n    position: absolute;\n    letter-spacing: 2px;\n    top: -14px;\n    left: 8px;\n    transition: background-color 0.25s ease; }\n  .container__options:hover {\n    border: 1px solid #7f8c8d;\n    transition: border 0.25s ease; }\n    .container__options:hover h1 {\n      animation: expand-letters 0.3s ease-out;\n      transition: background-color 0.2s ease-in;\n      background-color: #cbf3dc; }\n  @media (max-width: 768px) {\n    .container__options {\n      width: 100% !important;\n      height: 100vh !important; }\n      .container__options h1 {\n        background-color: #cbf3dc;\n        left: 15px !important;\n        top: 15px !important; } }\n  @media (max-width: 768px) {\n    .container__options {\n      display: flex;\n      flex-direction: column;\n      justify-content: flex-end; } }\n\n.choice__title {\n  margin: 0; }\n\n.app__misc {\n  width: 36.5%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  border: 1px solid rgba(189, 196, 196, 0.7);\n  position: relative;\n  border-radius: 10px;\n  transition: border 0.25s ease; }\n  .app__misc h1 {\n    top: -27px !important; }\n  .app__misc h1 {\n    background-color: #fff;\n    padding: 0 0.3rem;\n    position: absolute;\n    letter-spacing: 2px;\n    top: -14px;\n    left: 8px;\n    transition: background-color 0.25s ease; }\n  .app__misc:hover {\n    border: 1px solid #7f8c8d;\n    transition: border 0.25s ease; }\n    .app__misc:hover h1 {\n      animation: expand-letters 0.3s ease-out;\n      transition: background-color 0.2s ease-in;\n      background-color: #cbf3dc; }\n  @media (max-width: 768px) {\n    .app__misc {\n      width: 100% !important;\n      height: 100vh !important; }\n      .app__misc h1 {\n        background-color: #cbf3dc;\n        left: 15px !important;\n        top: 15px !important; } }\n  .app__misc .how-to-use {\n    display: flex;\n    margin-right: 1rem; }\n    .app__misc .how-to-use p {\n      margin-right: 0.5rem; }\n\n.howToUse__video-container {\n  position: fixed;\n  left: 50%;\n  top: 50%;\n  transform: translate3D(-50%, -250%, 0);\n  z-index: 10;\n  flex-direction: column; }\n  .howToUse__video-container.isVisible {\n    transform: translate3D(-50%, -60%, 0); }\n  .howToUse__video-container p {\n    opacity: 0.85;\n    font-size: 1rem;\n    color: #ecf0f1; }\n    .howToUse__video-container p:hover {\n      cursor: pointer;\n      text-decoration: line-through;\n      opacity: 1; }\n", ""]);
 	
 	// exports
 
 
 /***/ }),
-/* 541 */
+/* 557 */
 /***/ (function(module, exports) {
 
 	/*
@@ -71867,10 +75851,10 @@
 
 
 /***/ }),
-/* 542 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(541)();
+	exports = module.exports = __webpack_require__(557)();
 	// imports
 	
 	
@@ -71881,7 +75865,7 @@
 
 
 /***/ }),
-/* 543 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*

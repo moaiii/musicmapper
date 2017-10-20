@@ -14,7 +14,7 @@ $color-title-hover: #cbf3dc;
 $color-red: #d9534f;
 
 // Viewport dimensions
-$laptop: 1024;
+$laptop: 1000px;
 $tablet: 768px;
 $mobile: 425px;
 
@@ -50,7 +50,7 @@ $mobile: 425px;
   border-radius: 10px;
   transition: border 0.25s ease;
   
-  h1{
+  h1 {
     background-color: $color-pure-white;
     padding: 0 0.3rem;
     position: absolute;
@@ -69,6 +69,17 @@ $mobile: 425px;
       animation: expand-letters 0.3s ease-out;
       transition: background-color 0.2s ease-in;
       background-color: $color-title-hover;
+    }
+  }
+
+  @include tablet {
+    width: 100% !important;
+    height: 100vh !important;
+
+    h1 {
+      background-color: $color-title-hover;
+      left: 15px !important;
+      top: 15px !important;
     }
   }
 }
