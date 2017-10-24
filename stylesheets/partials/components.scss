@@ -18,8 +18,6 @@ h4 {
   font-size: 0.8rem;
 }
 
-
-
 p {
   font-size: 0.8rem;
 }
@@ -35,7 +33,7 @@ body {
   min-height: 100vh;
 }
 
-.app__mobile-landscape {
+.app__mobile-landscape-notification {
   display: none;
 
   @include mobile {
@@ -53,12 +51,12 @@ body {
     bottom: 0;
     background: $color-black;
 
-    h1.mobile-landscape__title {
+    h1 {
       color: white;
       text-align: center;
     }
 
-    p.mobile-lanscape__text {
+    p {
       color: white;
       text-align: center;
       padding: 1rem;

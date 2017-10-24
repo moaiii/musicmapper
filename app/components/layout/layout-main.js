@@ -58,13 +58,9 @@ class LayoutMain extends Component<State> {
 
     return(
       <div className="app">
-        <div className="app__mobile-landscape">
-          <h1 className="mobile-landscape__title">
-            Please orientate your device
-          </h1>
-          <p className="mobile-lanscape__text">
-            This app is viewed best in landscape mode
-          </p>
+        <div className="app__mobile-landscape-notification">
+          <h1>Please orientate your device</h1>
+          <p>This app is viewed best in landscape mode</p>
         </div>
         <div className="app__container">
           <Header />
