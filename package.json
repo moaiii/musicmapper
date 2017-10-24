@@ -69,7 +69,7 @@
   "scripts": {
     "flow": "flow",
     "dev": "webpack --config_env dev --progress --colors --watch & forever ./server.js",
-    "production": "webpack --config_env production --progress --colors --watch & forever ./server.js"
+    "production": "webpack --optimize-minimize --optimize-dedupe --config_env production --progress --colors --watch & forever ./server.js"
   },
   "author": "Christopher Melville",
   "license": "Private"

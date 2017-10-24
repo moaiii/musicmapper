@@ -1,5 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
+new webpack.optimize.OccurrenceOrderPlugin();
+new webpack.optimize.DedupePlugin();
 
 module.exports = {
   devtool: 'cheap-module-source-map',

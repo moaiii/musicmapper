@@ -2,6 +2,9 @@ var webpack = require('webpack');
 var path = require('path');
 var FlowStatusWebpackPlugin = require('flow-status-webpack-plugin');
 var notifier = require('node-notifier');
+new webpack.optimize.OccurrenceOrderPlugin();
+new webpack.optimize.DedupePlugin();
+
 
 module.exports = {
   devtool: 'source-maps',
@@ -33,9 +36,9 @@ module.exports = {
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
-    new FlowStatusWebpackPlugin({
-      onSuccess: function(stdout) { notifier.notify({ title: 'Flow', message: 'Flow is happy!' }); },
-      onError: function(stdout) { notifier.notify({ title: 'Flow', message: 'Flow is sad!' }); }
-    })
+    // new FlowStatusWebpackPlugin({
+    //   onSuccess: function(stdout) { notifier.notify({ title: 'Flow', message: 'Flow is happy!' }); },
+    //   onError: function(stdout) { notifier.notify({ title: 'Flow', message: 'Flow is sad!' }); }
+    // })
   ]
 };
