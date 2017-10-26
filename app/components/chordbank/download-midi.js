@@ -53,32 +53,42 @@ class DownloadMidi extends Component {
 
 
   /**
-   * 
+   * Function to handle with click from the Download CHORD or Download SCALE
+   * button - all params feed through same function dealt with differently in
+   * AWS lambda function on the server side
    * @param {event} e 
    */
   _downloadMidi(e) {
+    // show the UI user feedback modal to show the download is being preped
     this._showDownloading();
-    
+    // Differentiate between scales or chords
     let midi_type = e.currentTarget.getAttribute('data-download'); 
     
-    // MIDI-SCALES
+    /**
+     *  MIDI-SCALES
+     */
     if(midi_type === "scales") {
-      
+      // catch any blank spaces and replace with nothing i.e. delete
       let scale_name = `${this.props.selectedScale.name.replace(" ", "")}`;
+      // scales are coming in here as a string - chords as an array
+      // due to the way they are dealt with in the store so need to stringify here
       let scale_notes = `${this.props.selectedScale.notes}`;
-      debugger;
-      
+      // send the data to the API gateway end point for file download
       this.callMidiApi(scale_notes, scale_name, midi_type);
 
-    // MIDI-CHORD
+    /**
+     *  MIDI-CHORD
+     */
     } else if (midi_type === "chord") {
-
+      // catch any blank spaces and replace with nothing i.e. delete
       let chord_name = this.props.selectedChord.replace(" ", "");
+      // Turn the concatenated array to a string for sending to the AWS endpoint 
       let chord_notes = JSON
         .stringify(_.concat(this.props.notes, this.props.differenceNotes));
-
+      // send the data to the API gateway end point for file download
       this.callMidiApi(chord_notes, chord_name, midi_type);
 
+    // ERROR
     } else {
       console.error("Error cannot send data for file download!");
     } 
@@ -86,23 +96,30 @@ class DownloadMidi extends Component {
 
 
   /**
-   * 
+   * Call the AWS API gateway end point and pass the params which were
+   * satitised in the previous function. Using promises the response will be
+   * handled and the file opened in a new window. The users browsers settings
+   * may prevent this from happenening. 
    * @param {string} notes 
    * @param {string} name 
    * @param {string} midi_type 
    */
   callMidiApi(notes, name, midi_type) {
+    // call the api funciton which hits the endpoint
     midiApi.generateMidi(notes, name, midi_type)
     .then((response) => {
+      console.log("callMidiApi > response = ", response);
+      // hide the modal window alerting the user
       this._hideDownloading();
-
+      // Lambda responds with S3 download link
       let downloadLink = JSON.parse(response.data.body)["download-link"];
-
+      // store the download link in this component
       if (downloadLink !== undefined) {
         this.setState({
           downloadLink: downloadLink
   
         }, () => {
+          // download the file in a new window - pop up may be blocked
           window.open(this.state.downloadLink);
         });
       };

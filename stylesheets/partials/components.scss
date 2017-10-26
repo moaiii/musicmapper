@@ -330,7 +330,6 @@ body {
     margin: 0 0 2rem 0;
     font-weight: 100;
     text-align: center;
-    text-align: justify;
   }
 
   @include tablet {
@@ -624,6 +623,7 @@ body {
 .Dropdown-placeholder {
   font-size: 0.8rem;
   color: $color-black;
+  white-space: nowrap;
 }
 
 .Dropdown-arrow {
@@ -661,6 +661,7 @@ body {
   cursor: pointer;
   display: block;
   padding: 8px 10px;
+  font-size: 0.8rem;
 
   &.isSelected {
     background-color: #f2f9fc;
@@ -722,7 +723,8 @@ body {
   transition: border 0.25s ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding-top: 1rem;
 
   &:hover {
   }
@@ -755,7 +757,7 @@ body {
   position: relative;
   overflow-y: scroll;
   width: 100%;
-  height: 300px;
+  height: 90%;
 }
 
 .chordbank__header {
@@ -1188,11 +1190,11 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 76%;
+    height: 78%;
   }
   
   .right--horizontal {
-    height: 16%;
+    height: 18%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1206,7 +1208,7 @@ body {
   width: 48%;
   padding: 1rem;
   box-sizing: border-box;
-  height: 400px;
+  height: 100%;
 
   @include content-box-style;
 
@@ -1233,10 +1235,10 @@ body {
 }
 
 .container__options {
-  height: 400px;
   width: 48%;
   padding: 1rem;
   box-sizing: border-box;
+  height: 100%;
 
   @include content-box-style;
 

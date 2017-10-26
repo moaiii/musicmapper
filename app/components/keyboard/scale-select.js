@@ -17,13 +17,13 @@ class ScaleSelect extends Component {
     this.state = {
       selectedScale: '',
       selectedNotes: [],
-      modes: []
+      allScales: []
     };
   };
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      modes: nextProps.modes
+      allScales: nextProps.allPossibleScales
     });
   };
 
@@ -37,21 +37,23 @@ class ScaleSelect extends Component {
       let rootName = split[0];
       let modeName = split[1].replace(" ", "");
   
-      let selectedNotes = this.props.modes
+      let selectedNotes = this.props.allPossibleScales
         .filter(scale => 
           scale.root === rootName && scale.mode === modeName);
 
       this.setState({
         selectedNotes: selectedNotes[0].notes
       }, () => {
-        store.dispatch(chordbankAction
-          .setSelectedScale(this.state.selectedNotes, this.state.selectedScale))
+        store
+          .dispatch(chordbankAction
+          .setSelectedScale(this.state.selectedNotes, this.state.selectedScale));
       })
     });
   };
 
   render() {
-    let scale_options = this.state.modes.map(scale => `${scale.root} - ${scale.mode}`);
+    let scale_options = this.state.allScales
+      .map(scale => `${scale.root} - ${scale.mode}`);
 
     let scaleSelectDropdown = 
       <Dropdown 
@@ -82,7 +84,8 @@ class ScaleSelect extends Component {
 
 const mapStoreToProps = (store) => {
   return {
-    modes: store.chordbankState.modeScales
+    modes: store.chordbankState.modeScales,
+    allPossibleScales: store.chordbankState.allPossibleScales
   };
 };
 
