@@ -86,7 +86,7 @@ class Header extends Component {
 
     let howToUse =
       <ReactPlayer 
-        url={"https://www.youtube.com/watch?v=IA1liCmUsAM"}
+        url={"https://www.youtube.com/watch?v=Wcg4J60LyPI"}
         playing={this.state.showHowToUse}
       />
       // <Modal 
