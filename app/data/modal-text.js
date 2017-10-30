@@ -1,6 +1,6 @@
 export const MobileWarningText = {
   title: "Mobile view",
-  message: "It looks like your using the Music Mapper on a mobile device. For the best user experience please open on a desktop or wide screen tablet.",
+  message: "It looks like your using Frets To Keys on a mobile device. For the best user experience please open on a desktop or wide screen tablet.",
   confirmText: "Use anyway",
   rejectText: "Visit Desktop site",
   hideRejectButton: false
