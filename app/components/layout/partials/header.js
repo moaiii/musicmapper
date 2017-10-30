@@ -109,7 +109,7 @@ class Header extends Component {
     return(
       <div className="header">
         <div className="header__logo">
-          <h1>Music Mapper</h1>
+          <h1>Frets to Keys</h1>
           <ReactSVG
             path="./svg/rock.svg"
             className="logo"
