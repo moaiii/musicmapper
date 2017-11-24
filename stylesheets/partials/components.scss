@@ -556,6 +556,10 @@ body {
       font-size: 0.6rem;
     }
   }
+
+  @include short-device {
+    height: 1.4rem;
+  }
 }
 
 .fret__name {

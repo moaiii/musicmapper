@@ -36,6 +36,12 @@ $mobile: 425px;
   }
 }
 
+@mixin short-device {
+  @media (max-height: $tablet) {
+    @content;
+  }
+}
+
 @mixin transition($transition...) {
   -webkit-transition: $transition;
   -moz-transition: $transition;
