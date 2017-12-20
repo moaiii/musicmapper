@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-router';
 import { store } from './store';
-import LayoutMain from './components/layout/layout-main';
+import LayoutMain from './src/main/components/layout-main';
 
 
 export default (

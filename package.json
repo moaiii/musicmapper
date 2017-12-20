@@ -67,7 +67,6 @@
     "webpack": "^1.13.0"
   },
   "scripts": {
-    "flow": "flow",
     "dev": "webpack --config_env dev --progress --colors --watch & forever ./server.js",
     "production": "webpack --optimize-minimize --optimize-dedupe --config_env production --progress --colors --watch & forever ./server.js"
   },

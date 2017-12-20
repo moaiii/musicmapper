@@ -1,6 +1,5 @@
 var webpack = require('webpack');
 var path = require('path');
-var FlowStatusWebpackPlugin = require('flow-status-webpack-plugin');
 var notifier = require('node-notifier');
 new webpack.optimize.OccurrenceOrderPlugin();
 new webpack.optimize.DedupePlugin();
