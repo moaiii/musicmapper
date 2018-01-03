@@ -16,7 +16,7 @@ import Modal from './modal';
 import Share from './share';
 import Header from './header';
 import Footer from './footer';
-import '../../../../public/';
+import '../../../../stylesheets/main.scss';
 
 
 class LayoutMain extends Component {
@@ -44,67 +44,79 @@ class LayoutMain extends Component {
 
   render() {
 
-    let ModalWarning =
-      <Modal 
-        {...MobileWarningText}
-        isVisible = {this.state.showConfirmationModal}
-        onReject = {this._onRejectHandler}
-        onConfirm = {this._onConfirmHandler} />
+    let ModalWarning = <Modal 
+      {...MobileWarningText}
+      isVisible = {this.state.showConfirmationModal}
+      onReject = {this._onRejectHandler}
+      onConfirm = {this._onConfirmHandler} />
+
+    let mobileLandscapeNotification = 
+      <div className="app__mobile-landscape-notification">
+        <h1>Please orientate your device</h1>
+        <p>This app is viewed best in landscape mode</p>
+      </div>
+
+    let downloadMidi = 
+      <div className="main__downloadmidi">
+        <h1 className="choice__title">Download Midi</h1>
+        <DownloadMidi />
+      </div>
+
+    let chordchoice = 
+      <div className="main__choice">
+        <h1 className="choice__title">Choice</h1>
+        <ChordBank />
+      </div>
+
+    let chordoptions = 
+      <div className="main__options">
+        <h1 className="options__title">Options</h1>
+        <PossibleChords />
+      </div>
+
+    let chordkeyboard = 
+      <div className="keyboards__chord">
+        <h2>Chord</h2>
+        <Keyboard type="chord"/>
+      </div>
+
+    let scalekeyboard = 
+      <div className="keyboards__scale">
+        <h2>Scale</h2>
+        <Keyboard type="scale"/>
+      </div>
+
+    let fretboard = 
+      <div className="fretboard__container">
+        <h1>Fretboard</h1>
+        <Fretboard />
+      </div>
+
+    let keyboardcontrols = 
+      <div className="keyboard__controller">
+        <h1 className="keyboard__title">Keyboard</h1>
+        <LaptopCheck />
+        <ScaleSelect />
+      </div>
+
 
     return(
       <div className="app">
-        <div className="app__mobile-landscape-notification">
-          <h1>Please orientate your device</h1>
-          <p>This app is viewed best in landscape mode</p>
-        </div>
+        {mobileLandscapeNotification}
         <div className="app__container">
           <Header />
           <TuningBar />
-          <div className="container__all">
-              <div className="container__center">
-                <div className="fretboard__container--main">
-                  <h1>Fretboard</h1>
-                  <Fretboard />
-                </div>
-                <div className="keyboard__container">
-                  <h1 className="keyboard__title">Keyboard</h1>
-                  <div className="keyboard__controller">
-                    <LaptopCheck />
-                    <ScaleSelect />
-                  </div>
-                  <div className="keyboards">
-                    <div className="keyboards__chord">
-                      <h2>Chord</h2>
-                      <Keyboard type="chord"/>
-                    </div>
-                    <div className="keyboards__scale">
-                      <h2>Scale</h2>
-                      <Keyboard type="scale"/>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <div className="container__right">
-              <div className="right--verticals">
-                <div className="container__options">
-                  <h1 className="options__title">Options</h1>
-                  <PossibleChords />
-                </div>
-                <div className="container__choice">
-                  <h1 className="choice__title">Choice</h1>
-                  <ChordBank />
-                </div>
-              </div>
-              <div className="right--horizontal">
-                <div className="container__download">
-                  <h1 className="choice__title">Download Midi</h1>
-                  <DownloadMidi />
-                </div>
-              </div>
-            </div>
+          {fretboard}
+          <div className="keyboard__container">
+            {keyboardcontrols}
+            {chordkeyboard}
+            {scalekeyboard}
           </div>
+          {chordoptions}
+          {chordchoice}
+          {downloadMidi}
+          <Footer />
         </div>
-        <Footer />
       </div>
     );
   }

@@ -80,7 +80,7 @@ $mobile: 425px;
 
   @include tablet {
     width: 100% !important;
-    height: 100vh !important;
+    // height: 100vh !important;
 
     h1 {
       background-color: $color-title-hover;
@@ -101,5 +101,8 @@ $mobile: 425px;
  */
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
 @import '../node_modules/react-bootstrap-toggle/dist/bootstrap2-toggle.css';
-@import './partials/components';
+@import '../app/src/main/style';
+@import '../app/src/chordbank/style';
+@import '../app/src/fretboard/style';
+@import '../app/src/keyboard/style';
 
