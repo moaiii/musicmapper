@@ -1,6 +1,7 @@
 import scales_data from '../data/scales';
 
 export function get_possible_scales(chordName) {
+  console.log(chordName);
 
   let rootNote = chordName.charAt(1) === "#" ? 
                  chordName.substring(0, 2) : 
@@ -15,7 +16,7 @@ export function get_possible_scales(chordName) {
   });
 
   let allPossibleScales = scales_list.filter(scale => scale.root === rootNote);
-
+  console.log('allPossibleScales', allPossibleScales, 'modeScales', modeScales)
   return {
     modeScales: modeScales,
     allPossibleScales: allPossibleScales
