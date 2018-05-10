@@ -15,8 +15,7 @@ import FaBan from 'react-icons/lib/fa/ban';
 import Modal from '../../main/components/modal';
 import ReactTooltip from 'react-tooltip';
 
-
-class ChordBank extends Component {
+export class ChordBank extends Component {
 
   constructor() {
     super();
