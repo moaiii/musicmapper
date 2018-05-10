@@ -2,12 +2,15 @@ import reducer from './reducer';
 import actions from './actions';
 
 describe('Chordbank reducer', () => {
-  let state = null;
+  describe('sending a g# to CHORDBANK_ADD_NOTE', () => {
+    let actionCreator = {
+      type: 'CHORDBANK_ADD_NOTE',
+      payload: 'g#'
+    }
 
-  beforeEach(() => {
-    state = {
-      activeNotesRaw: [],
-      activeNotes: [],
+    let initialState = {
+      activeNotesRaw: ['e','g#','c','c'],
+      activeNotes: ['e','g#','c'],
       possibleChords: [],
       exactChords: [],
       selectedChord: "",
@@ -19,19 +22,50 @@ describe('Chordbank reducer', () => {
         notes: ""
       }
     };
-  });
 
-  describe('sending a g# to CHORDBANK_ADD_NOTE', () => {
-    it('should add it to the active notes array', () => {
-      let state_tested = Object.assign({}, state, { 
-        activeNotes: ["g#"],
-        activeNotesRaw: ['g#'] 
-      })
-
-      expect(reducer(undefined, {
-        type: 'CHORDBANK_ADD_NOTE',
-        payload: 'g#'
-      })).toEqual(state_tested)
+    it('should add note to raw notes', () => {
+      expect(reducer(initialState, actionCreator))
+        .toHaveProperty('activeNotesRaw', ['e','g#','c','c','g#']);
+    })
+    it('should not add note to active notes (no duplication)', () => {
+      expect(reducer(initialState, actionCreator))
+        .toHaveProperty('activeNotes', ['e','g#','c']);
     })
   })
-})
+
+  describe('sending a c note to CHORDBANK_DELETE_NOTE', () => {
+    let actionCreator = {
+      type: 'CHORDBANK_DELETE_NOTE',
+      payload: 'C'
+    }
+
+    let initialState = {
+      activeNotesRaw: ['E','G#','C','C'],
+      activeNotes: ['E','G#','C'],
+      possibleChords: [],
+      exactChords: [],
+      selectedChord: "",
+      modeScales: [],
+      allPossibleScales: [],
+      isShowingExactChordMatches: false,
+      selectedScale: {
+        name: "",
+        notes: ""
+      }
+    };
+
+    it('should remove one instance from the activeNotesRaw array', () => {
+      expect(reducer(initialState, actionCreator))
+        .toHaveProperty('activeNotes', ['E','G#','C'])
+    })
+    it('2nd call should remove C from the activeNotes array', () => {
+      expect(reducer(initialState, actionCreator))
+        .toHaveProperty('activeNotes', ['E','G#'])
+    })
+    it('3rd call should return the same activeNotes array unchanged', () => {
+      expect(reducer(initialState, actionCreator))
+        .toHaveProperty('activeNotes', ['E','G#'])
+    })
+  })
+});
+
