@@ -71,7 +71,7 @@ describe('Chordbank reducer', () => {
       expect(reducer(initialState, actionCreator__c))
         .toHaveProperty('activeNotes', ['E','G#'])
     })
-    console.log(initialState);
+    // console.log(initialState);
     // it('should remove the e note from array', () => {
     //   expect(reducer(initialState, actionCreator__e))
     //     .toHaveProperty('activeNotes', ['G#'])

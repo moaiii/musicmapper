@@ -1,24 +1,24 @@
 import scales_data from '../data/scales';
 
 export function get_possible_scales(chordName) {
-  console.log(chordName);
-
-  let rootNote = chordName.charAt(1) === "#" ? 
-                 chordName.substring(0, 2) : 
-                 chordName.substring(0, 1);
+  let rootNote = chordName.charAt(1) === "#" 
+    ? chordName.substring(0, 2) 
+    : chordName.substring(0, 1);
 
   let modes = ["Lydian", "Ionian", "Mixolydian", "Dorian", "Aeolian", "Phrygian", "Locrian"];
 
-  let scales_list = scales_data;
+  let modeScales = get_mode_scales(rootNote, modes);
+  let allPossibleScales = get_all_possible_scales(rootNote);
 
-  let modeScales = scales_list.filter(scale => {
+  return { modeScales, allPossibleScales };
+}
+
+export function get_mode_scales(rootNote, modes) {
+  return scales_data.filter(scale => {
     return scale.root === rootNote && modes.includes(scale.mode);
   });
+}
 
-  let allPossibleScales = scales_list.filter(scale => scale.root === rootNote);
-  console.log('allPossibleScales', allPossibleScales, 'modeScales', modeScales)
-  return {
-    modeScales: modeScales,
-    allPossibleScales: allPossibleScales
-  };
+export function get_all_possible_scales(rootNote) {
+  return scales_data.filter(scale => scale.root === rootNote);
 }
