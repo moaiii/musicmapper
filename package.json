@@ -79,6 +79,7 @@
     "webpack": "^1.13.0"
   },
   "jest": {
+    "collectCoverage": false,
     "setupTestFrameworkScriptFile": "./test/setup.js"
   },
   "babel": {
@@ -96,7 +97,7 @@
   "scripts": {
     "dev": "webpack --config_env dev --progress --colors --watch & forever ./server.js",
     "production": "webpack --optimize-minimize --optimize-dedupe --config_env production --progress --colors --watch & forever ./server.js",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "author": "Christopher Melville",
   "license": "Private"

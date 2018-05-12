@@ -34,11 +34,11 @@ export default function Utility() {
       }
     },
 
-
     renderString: (rootNote) => {
       let i = 0;
       let notes = [];
       let offset = chromatic.indexOf(rootNote);
+
       while(i <= TOTAL_NUM_FRETS) {
         notes.push({
           note: chromatic[(i % 12) + offset],
@@ -47,6 +47,7 @@ export default function Utility() {
         });
         i++;
       }
+
       return notes;
     },
 

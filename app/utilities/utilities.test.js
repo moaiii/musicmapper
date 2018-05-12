@@ -1,6 +1,7 @@
 import { get_exact_chords, get_all_possible_chords } from './get-possible-chords';
-import { get_mode_scales, get_all_possible_scales } from './get-possible-scales';import React from 'react';
-import { Utility } from './utility';
+import { get_mode_scales, get_possible_scales, get_all_possible_scales } from './get-possible-scales';import React from 'react';
+import Utility from './utility';
+import scales_data from '../data/scales';
 
 describe('utility: get chords', () => {
   describe('retrieving an exact chord', () => {
@@ -14,9 +15,10 @@ describe('utility: get chords', () => {
 
     it('should not return any chords', () => {
       expect(get_exact_chords(['E']))
+        .toHaveLength(0)
     })
   })
-
+  
   describe('retrieving all possible chords', () => {
     it('should return several chords', () => {
       expect(get_all_possible_chords(['E','B','A','C','F']))
@@ -33,10 +35,56 @@ describe('utility: get chords', () => {
   })
 })
 
-describe('utility: get scales', () => {})
+describe('utility: get scales', () => {
+  describe('retrieving the 7 mode scales', () => {
+    it('should return an array of 7 objects',  () => {
+      expect(get_mode_scales('E'))
+        .toHaveLength(7)
+    })
+  })
+  describe('retrieving all scales', () => {
+    it(`should return an array of ${29} objects`,  () => {
+      expect(get_all_possible_scales('E'))
+        .toHaveLength(29 + 7)
+    })
 
-describe('retrieving a chromatic scale', () => {})
+    it(`should not return anything when given Z`,  () => {
+      expect(get_all_possible_scales('Z'))
+        .toHaveLength(0)
+    })
+  })
+  describe('getting the scales object', () => {
+    expect(get_possible_scales('Emaj')['modeScales'].length)
+      .toBeGreaterThan(0)
+  })
+  describe('getting the scales object', () => {
+    expect(get_possible_scales('Zmaj')['modeScales'].length)
+      .toEqual(0)
+  })
+})
 
-describe('rendering a string of notes', () => {})
+describe('retrieving a chromatic scale', () => {
+  let util = Utility();
 
-describe('rendering a scale of notes', () => {})
+  it('returns a single run of notes starting from E', () => {
+    expect(util.getChromatic(1, 'E'))
+      .toHaveProperty('chromatic', ["E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#"])
+  })
+  it('returns a single run of laptop notes starting from E', () => {
+    expect(util.getChromatic(1, 'E'))
+      .toHaveProperty('keyboard_chromatic', ["d", "f", "t", "g", "y", "h", "u", "j", "a", "w", "s", "e"])
+  })
+})
+
+describe('rendering a string of notes', () => {
+  let util = Utility();
+
+  it('renders a full guitar string (23 notes)', () => {
+    expect(util.renderString('E'))
+      .toHaveLength(23)
+  })
+  it('renders a string starting at F#', () => {
+    expect(util.renderString('F#')[0]['note'])
+      .toEqual('F#')
+  })
+})
