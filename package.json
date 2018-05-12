@@ -79,7 +79,7 @@
     "webpack": "^1.13.0"
   },
   "jest": {
-    "collectCoverage": false,
+    "collectCoverage": true,
     "setupTestFrameworkScriptFile": "./test/setup.js"
   },
   "babel": {
