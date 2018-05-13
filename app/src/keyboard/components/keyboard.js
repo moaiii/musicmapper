@@ -56,12 +56,12 @@ class Keyboard extends Component {
 
       return (
        <Key
-         key={'Key-' + index}
+         id={`key-${index}`}
+         key={`Key-${index}`}
          note={note}
          showLaptopKey={this.props.showLaptopKeys}
          keyboard_note={chromatic_data.keyboard_chromatic[index]}
-         key_class_mod={key_class_mod}
-       />)
+         key_class_mod={key_class_mod} />)
     });
 
     let tooltip__keyboard = 

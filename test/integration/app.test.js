@@ -113,3 +113,17 @@ test('Clearing all data and selections', async () => {
   expect(chordbank_active_notes_count).toEqual(0);
   expect(selected_chord_name).toEqual('');
 })
+
+
+test('Laptop keyboard notes', async () => {
+  await page.click('.laptop-check__container > div:first-of-type')
+
+  let scale_keyboard_note = await page
+    .$eval('.keyboards__scale .keyboard #key-0 p', el => el.innerHTML);
+
+  let chord_keyboard_note = await page
+    .$eval('.keyboards__chord .keyboard #key-8 p', el => el.innerHTML);
+
+  expect(scale_keyboard_note).toEqual('a');
+  expect(chord_keyboard_note).toEqual('y');
+})

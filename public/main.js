@@ -55042,6 +55042,7 @@
 	            _react2.default.createElement(
 	              'button',
 	              { className: 'chordbank__button --chord',
+	                id: 'button__download-chord',
 	                'data-download': 'chord',
 	                disabled: this.props.selectedChord === "" ? true : false,
 	                onClick: this._downloadMidi.bind(this) },
@@ -55056,6 +55057,7 @@
 	            _react2.default.createElement(
 	              'button',
 	              { className: 'chordbank__button --scale',
+	                id: 'button__download-scale',
 	                'data-download': 'scales',
 	                disabled: this.props.selectedChord === "" ? true : false,
 	                onClick: this._downloadMidi.bind(this) },
@@ -57374,12 +57376,12 @@
 	        }
 	
 	        return _react2.default.createElement(_key2.default, {
+	          id: 'key-' + index,
 	          key: 'Key-' + index,
 	          note: note,
 	          showLaptopKey: _this2.props.showLaptopKeys,
 	          keyboard_note: chromatic_data.keyboard_chromatic[index],
-	          key_class_mod: key_class_mod
-	        });
+	          key_class_mod: key_class_mod });
 	      });
 	
 	      var tooltip__keyboard = _react2.default.createElement(
@@ -57510,10 +57512,12 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var id = this.props.id;
+	
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'keyboard__key' + this.state.note_class_modifier + ' ' + this.props.key_class_mod + ' ' + this.props.note.charAt(0) },
+	        { id: id, className: 'keyboard__key' + this.state.note_class_modifier + ' ' + this.props.key_class_mod + ' ' + this.props.note.charAt(0) },
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'key__name' },

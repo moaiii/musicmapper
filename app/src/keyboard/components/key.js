@@ -42,9 +42,10 @@ class Key extends Component {
   }
 
   render() {
+    const { id } = this.props;
 
     return (
-      <div className={`keyboard__key${this.state.note_class_modifier} ${this.props.key_class_mod} ${this.props.note.charAt(0)}`}>
+      <div id={id} className={`keyboard__key${this.state.note_class_modifier} ${this.props.key_class_mod} ${this.props.note.charAt(0)}`}>
         <p className="key__name">{this.props.showLaptopKey ? this.props.keyboard_note : this.props.note}</p>
       </div>
     );

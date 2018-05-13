@@ -157,14 +157,16 @@ class DownloadMidi extends Component {
           <div className="button-bar --downloads"
                data-tip data-for='tooltip__download-chord'>     
             <button className="chordbank__button --chord"
-                    data-download="chord"
-                    disabled={this.props.selectedChord === "" ? true : false}
-                    onClick={this._downloadMidi.bind(this)}>
+              id={`button__download-chord`}
+              data-download="chord"
+              disabled={this.props.selectedChord === "" ? true : false}
+              onClick={this._downloadMidi.bind(this)}>
               <FaDownload
                 className="icon"/>
               <p>MIDI Chord</p>
             </button>
             <button className="chordbank__button --scale"
+              id={`button__download-scale`}
               data-download="scales"
               disabled={this.props.selectedChord === "" ? true : false}
               onClick={this._downloadMidi.bind(this)}>
