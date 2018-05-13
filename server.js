@@ -51,6 +51,6 @@ app.get('*', function(req, res, next) {
   res.sendFile(path.resolve(__dirname, 'public/index.html'));
 });
 
-var server = app.listen(4444, "0.0.0.0", function(){
+var server = app.listen(4444, '0.0.0.0', function(){
   console.log('Server running on port: ' + server.address().port);
 });

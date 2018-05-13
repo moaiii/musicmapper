@@ -7,6 +7,7 @@
   "dependencies": {
     "@trendmicro/react-buttons": "^1.2.0",
     "axios": "^0.11.0",
+    "concurrently": "^3.5.1",
     "css-loader": "^0.23.1",
     "dotenv": "^4.0.0",
     "exports-loader": "^0.6.3",
@@ -54,6 +55,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-15": "^1.0.5",
     "eslint": "^4.19.1",
+    "eslint-watch": "^3.1.4",
     "express-session": "^1.15.6",
     "express-validator": "^4.2.1",
     "flow-bin": "^0.54.1",
@@ -99,9 +101,9 @@
   },
   "scripts": {
     "start": "npm run dev",
-    "dev": "concurrently \"webpack --config_env dev --progress --colors --watch & forever ./server.js\" \"npm run eslint:watch\"",
+    "dev": "concurrently \"webpack --config_env dev --progress --colors --watch & forever ./server.js\" \"npm run lint\"",
     "production": "webpack --optimize-minimize --optimize-dedupe --config_env production --progress --colors --watch & forever ./server.js",
-    "lint": "./node_modules/.bin/eslint *",
+    "lint": "esw -w *.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:api": "jest api.test.js",
