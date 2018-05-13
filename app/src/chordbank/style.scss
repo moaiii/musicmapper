@@ -76,6 +76,7 @@
 }
 
 .chords__list {
+  max-height: 258px;
   box-sizing: border-box;
   display: block;
   position: relative;
@@ -92,6 +93,15 @@
 }
 
 .chordbank__active-notes {
+  padding: 0 0 0 1rem;
+
+  p {
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+}
+
+.chordbank__difference-notes {
   padding: 0 0 0 1rem;
 
   p {

@@ -52,7 +52,6 @@ export class ChordBank extends Component {
 
 
   /**
-   * 
    * @param {event} e 
    */
   _downloadMidi(e) {
@@ -80,9 +79,7 @@ export class ChordBank extends Component {
     } 
   }; 
 
-
   /**
-   * 
    * @param {string} notes 
    * @param {string} name 
    * @param {string} midi_type 
@@ -113,14 +110,14 @@ export class ChordBank extends Component {
 
   render() {
     let progressDownloadModal =
-      <Modal 
+      <Modal
         {...ProgressDownloadingText}
         isVisible = {this.state.showDownloading}
         onReject = {this._hideDownloading.bind(this)}
         onConfirm = {this._hideDownloading.bind(this)} />
 
     let errorDownloadModal =
-        <Modal 
+        <Modal
           {...ErrorDownloadingText}
           isVisible = {this.state.showError}
           onReject = {this._hideError.bind(this)}
@@ -158,7 +155,7 @@ export class ChordBank extends Component {
               data-tip data-for='tooltip__difference'>
             Difference
           </h4>
-          <div className="chordbank__active-notes">
+          <div className="chordbank__difference-notes">
             {this.props.differenceNotes.map((note, index) =>
               <p key={`Dif-Note-${index}`}>
                 {note}
@@ -177,7 +174,8 @@ export class ChordBank extends Component {
 
         <div className="button-bar">
           <button className="chordbank__button --clear"
-                  onClick={this._clearNotes.bind(this)}>
+            id={`clear-button`}
+            onClick={this._clearNotes.bind(this)}>
             <FaBan
               className="icon"/>
             <p>Clear</p>

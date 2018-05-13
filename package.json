@@ -68,6 +68,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "prop-types": "^15.5.10",
+    "puppeteer": "^1.4.0",
     "rc-checkbox": "^2.0.3",
     "react-bootstrap-toggle": "^2.0.8",
     "react-dropdown": "^1.2.5",
@@ -79,7 +80,7 @@
     "webpack": "^1.13.0"
   },
   "jest": {
-    "collectCoverage": true,
+    "collectCoverage": false,
     "setupTestFrameworkScriptFile": "./test/setup.js"
   },
   "babel": {
@@ -95,9 +96,17 @@
     ]
   },
   "scripts": {
+    "start": "npm run dev",
     "dev": "webpack --config_env dev --progress --colors --watch & forever ./server.js",
     "production": "webpack --optimize-minimize --optimize-dedupe --config_env production --progress --colors --watch & forever ./server.js",
-    "test": "jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:api": "jest api.test.js",
+    "test:api:watch": "jest api.test.js --watch",
+    "test:reducers": "jest reducer.test.js",
+    "test:reducers:watch": "jest reducer.test.js --watch",
+    "test:integration": "jest ./test/integration/app.test.js",
+    "test:integration:watch": "jest ./test/integration/app.test.js --watch"
   },
   "author": "Christopher Melville",
   "license": "Private"

@@ -1,0 +1,115 @@
+import pupeteer from 'puppeteer';
+
+let browser, page;
+
+beforeEach(async () => {
+  browser = await pupeteer.launch({ headless: true });
+  page = await browser.newPage();
+  await page.goto('http://localhost:4444')
+  await page.waitFor(1000);
+})
+
+afterEach(async () => {
+  await browser.close();
+})
+
+
+test('Launch the Frets to Keys application', async () => {
+  const header = await page
+    .$eval('.header__logo h1', el => el.innerHTML);
+
+  expect(header).toEqual('Frets to Keys');
+})
+
+
+test('The tuner dropdown has options', async () => {
+  await page.click('.Dropdown-root');
+
+  let dropdown_option_count = await page
+    .$eval('.Dropdown-menu', el => el.childElementCount)
+
+  expect(dropdown_option_count).not.toEqual(0);
+  expect(dropdown_option_count).toEqual(47);
+})
+
+
+test('Adding and deleting active notes', async () => {
+  // add three notes 
+  await page.click('#fret-0-0');
+  await page.click('#fret-1-0');
+  await page.click('#fret-2-0');
+  
+  // delete one 
+  await page.click('#fret-2-0');
+
+  // get active notes count
+  let chordbank_active_notes_count = await page
+    .$eval('.chordbank__active-notes', el => el.childElementCount);
+
+  expect(chordbank_active_notes_count).toEqual(2);
+})
+
+
+test('Returning matching chords', async () => {
+  // add two notes 
+  await page.click('#fret-0-0'); // E
+  await page.click('#fret-1-0'); // A
+  await page.click('#fret-2-0'); // D
+  
+  // turn on exact chord matches
+  await page.click('.chords__match-toggle div');
+  
+  // get active notes count
+  let chord_match_count = await page
+    .$eval('.chords__list', el => el.childElementCount);
+
+  expect(chord_match_count).toEqual(2);
+})
+
+
+test('Selecting a chord and adding notes to the difference array', async () => {
+  // add two notes 
+  await page.click('#fret-0-0'); // E
+  await page.click('#fret-1-0'); // A
+
+  // select 3rd chord match
+  await page.click('#chord-match-3');
+
+  let difference_notes_count = await page
+    .$eval('.chordbank__difference-notes', el => el.childElementCount);
+
+  let selected_chord_name = await page
+    .$eval('.chordbank__selected-chord p', el => el.innerHTML);
+
+  expect(difference_notes_count).not.toEqual(0);
+  expect(difference_notes_count).toBeGreaterThanOrEqual(1);
+  expect(selected_chord_name).not.toEqual('');
+})
+
+
+test('Clearing all data and selections', async () => {
+  // add two notes 
+  await page.click('#fret-0-0'); // E
+  await page.click('#fret-1-0'); // A
+  // select 3rd chord match
+  await page.click('#chord-match-3');
+  // execute a clear call
+  await page.click('#clear-button');
+
+  let difference_notes_count = await page
+    .$eval('.chordbank__difference-notes', el => el.childElementCount);
+  
+  let chord_match_count = await page
+    .$eval('.chords__list', el => el.childElementCount);
+   
+  let chordbank_active_notes_count = await page
+    .$eval('.chordbank__active-notes', el => el.childElementCount);
+
+  let selected_chord_name = await page
+    .$eval('.chordbank__selected-chord p', el => el.innerHTML);
+
+  expect(difference_notes_count).toEqual(0);    
+  expect(chord_match_count).toEqual(0);
+  expect(chordbank_active_notes_count).toEqual(0);
+  expect(selected_chord_name).toEqual('');
+})

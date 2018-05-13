@@ -10,23 +10,26 @@ class String extends Component {
   }
   
   render() {
+    const { stringIndex, notes, guide, stringNumber, handleClick } = this.props;
+
     let fretElements = [];
 
-    if(this.props.notes !== undefined) {
-      fretElements = this.props.notes.map((note, index) =>
+    if(notes !== undefined) {
+      fretElements = notes.map((note, index) =>
         <Fret
-          key={'F-' + this.props.id + '-' + index}
+          fretIndex={`${stringIndex}-${index}`}
+          key={`${index}-string`}
           isRoot={index === 0}
           number={index}
-          guide={this.props.guide}
-          handleClick={() => 
-              this.props.handleClick(this.props.stringNumber, index)}
+          guide={guide}
+          handleClick={() => handleClick(stringNumber, index)}
           note={note}
         />);
     }
 
     return (
-      <div className='fretboard__string'>
+      <div className='fretboard__string'
+        id={`string-${stringIndex}`}>
         {fretElements}
       </div>
     );

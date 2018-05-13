@@ -80,6 +80,7 @@ class Fretboard extends Component {
     let strings = this.props.fretboardNotes
       .map((notes, index) => 
         <String
+          stringIndex={index}
           key={'S-' + index}
           openNote={notes[0].note}
           guide={false}

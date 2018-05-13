@@ -45,6 +45,7 @@ class PossibleChords extends Component {
 
     let toggle =
       <ToggleButton
+        className={`chord-match__toggle`}
         inactiveLabel={'OFF'}
         activeLabel={'ON'}
         value={ this.state.isExactMatch || false }
@@ -52,8 +53,9 @@ class PossibleChords extends Component {
 
     let possibleChords = this.props.possibleChords.map((chord, index) =>
       <div className={"chord-match" + ((this.props.selected === chord.name) ? " chord-match--selected" : "")}
-           key={`poss-chord-${index}`}
-           onClick={this._handleChordSelection.bind(this, chord)}>
+          id={`chord-match-${index}`}
+          key={`poss-chord-${index}`}
+          onClick={this._handleChordSelection.bind(this, chord)}>
         <p className="chord-match__name">
           {chord.name}
         </p>

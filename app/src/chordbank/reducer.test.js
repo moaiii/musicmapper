@@ -2,6 +2,8 @@ import reducer from './reducer';
 import * as actions from './actions';
 
 describe('Chordbank reducer', () => {
+
+  // action: CHORDBANK_ADD_NOTE
   describe('adding G# to selected notes', () => {
     let initialState = {
       activeNotesRaw: ['e','g#','c','c'],
@@ -28,6 +30,7 @@ describe('Chordbank reducer', () => {
     })
   })
 
+  // action: CHORDBANK_DELETE_NOTE
   describe('deleting a C note', () => {
     let initialState = {
       activeNotesRaw: ['E','G#','C','C'],
