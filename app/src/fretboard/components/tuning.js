@@ -1,13 +1,13 @@
 // functional componenets
 import ReactTooltip from 'react-tooltip';
 import React, {Component} from 'react';
-import Dropdown from 'react-dropdown'
+import Dropdown from 'react-dropdown';
 import {connect} from 'react-redux';
 import store from '../../../store';
 
 //child components
 import {TuningChangeText} from '../../../data/modal-text';
-import {deleteAllSelected, changeTuning, calculateFretboardNotes} from "../../fretboard/actions"
+import {deleteAllSelected, changeTuning, calculateFretboardNotes} from "../../fretboard/actions";
 import {clearAllNotes} from '../../chordbank/actions';
 import {clearSelection} from '../../keyboard/actions';
 import tunings from '../../../data/tunings';
@@ -53,14 +53,14 @@ class Tuning extends Component {
   _onConfirmHandler() {
     let self = this;
     this.setState({
-        showConfirmationModal: false
+      showConfirmationModal: false
     }, () => {
       self.changeTuning();
     });
   }
 
   _onRejectHandler() {
-    this.setState({ showConfirmationModal: false })
+    this.setState({showConfirmationModal: false});
   }
 
   render() {
@@ -71,18 +71,18 @@ class Tuning extends Component {
       <Dropdown options = {all_tunings}
         onChange = {this._showConfirmationModal.bind(this)}
         value = {this.state.newTuning}
-        placeholder = "Select a tuning" />
+        placeholder = "Select a tuning" />;
 
     let tunings_modal = 
       <Modal 
         {...TuningChangeText}
         isVisible = {this.state.showConfirmationModal}
         onReject = {this._onRejectHandler}
-        onConfirm = {this._onConfirmHandler} />
+        onConfirm = {this._onConfirmHandler} />;
         
     return (
       <div className="tuning-selector"
-           data-tip data-for='tooltip__tuning-selector'>
+        data-tip data-for='tooltip__tuning-selector'>
         {tunings_dropdown}
         {tunings_modal}
 
@@ -98,7 +98,7 @@ class Tuning extends Component {
       </div>
     );
   }
-};
+}
 
 const mapStoreToProps = (store) => {
   return {

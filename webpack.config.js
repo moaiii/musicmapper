@@ -25,7 +25,7 @@ module.exports = {
       { 
         test: /\.node$/, 
         loader: 'node' 
-      },
+      }
     ]
   },
   node: {
@@ -34,10 +34,6 @@ module.exports = {
     tls: 'empty'
   },
   plugins: [
-    new webpack.NoErrorsPlugin(),
-    // new FlowStatusWebpackPlugin({
-    //   onSuccess: function(stdout) { notifier.notify({ title: 'Flow', message: 'Flow is happy!' }); },
-    //   onError: function(stdout) { notifier.notify({ title: 'Flow', message: 'Flow is sad!' }); }
-    // })
+    new webpack.NoErrorsPlugin()
   ]
 };

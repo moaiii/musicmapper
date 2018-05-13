@@ -12,13 +12,16 @@ describe('Generating the midi file', () => {
       return api.generateMidi(chord_midi_type, chord_name, chord_notes)
         .then(response => {
           let statusCode = response.data.statusCode;
+          
           expect(statusCode).toBe('200');
   
           let downloadLink = JSON.parse(response.data.body)['download-link'];
-          expect(downloadLink).toMatch(/musicmapper-midifiles.s3-eu-west-1.amazonaws.com/)
+          
+          expect(downloadLink)
+            .toMatch(/musicmapper-midifiles.s3-eu-west-1.amazonaws.com/);
         });
-    })
-  })
+    });
+  });
 
   describe('for scales', () => {
     let scale_midi_type = "scales";
@@ -31,11 +34,14 @@ describe('Generating the midi file', () => {
       return api.generateMidi(scale_midi_type, scale_name, scale_notes)
         .then(response => {
           let statusCode = response.data.statusCode;
+          
           expect(statusCode).toBe('200');
   
           let downloadLink = JSON.parse(response.data.body)['download-link'];
-          expect(downloadLink).toMatch(/musicmapper-midifiles.s3-eu-west-1.amazonaws.com/)
+          
+          expect(downloadLink)
+            .toMatch(/musicmapper-midifiles.s3-eu-west-1.amazonaws.com/);
         });
-    })
-  })
-})
+    });
+  });
+});

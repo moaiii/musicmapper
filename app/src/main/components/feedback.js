@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 
@@ -14,7 +14,7 @@ class Footer extends Component {
       <div className="feedback">
         {FeedbackForm}
       </div>
-    )
+    );
   }
 }
 

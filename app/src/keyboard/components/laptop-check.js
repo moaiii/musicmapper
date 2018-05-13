@@ -5,7 +5,7 @@ import store from '../../../store';
 import {toggleLaptopKeyboardKeys} from '../../keyboard/actions';
 
 // child components
-import ToggleButton from 'react-toggle-button'
+import ToggleButton from 'react-toggle-button';
 import ReactTooltip from 'react-tooltip';
 
 class LaptopChecked extends Component {
@@ -16,20 +16,20 @@ class LaptopChecked extends Component {
     this.state = {
       disabled: false
     };
-  };
+  }
 
   _toggleLaptopKeyboardKeys() {
     this.setState({
       disabled: !this.state.disabled
     }, () => {
-      store.dispatch(toggleLaptopKeyboardKeys(this.state.disabled))
+      store.dispatch(toggleLaptopKeyboardKeys(this.state.disabled));
     });
-  };
+  }
 
   render() {
     return (
       <div className="laptop-check__container"
-           data-tip data-for='tooltip__laptop-notes'>
+        data-tip data-for='tooltip__laptop-notes'>
         <p>Show laptop keyboard notes</p>
         <ToggleButton
           value={ this.state.disabled || false }

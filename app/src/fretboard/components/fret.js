@@ -14,7 +14,7 @@ class Fret extends Component {
   }
 
   render() {
-    let { note, isRoot, guide, fretIndex, number } = this.props;
+    let {note, isRoot, guide, fretIndex, number} = this.props;
 
     let selectedModifier = note.selected ? ' selected' : '';
     let rootModifier = isRoot ? ' root' : '';
@@ -33,7 +33,7 @@ class Fret extends Component {
       </div>
     );
   }
-};
+}
 
 Fret.propTypes = {
   note: PropTypes.object,

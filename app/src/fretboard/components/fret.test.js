@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import {shallow, mount, render} from 'enzyme';
 
 import Fret from './fret';
 
@@ -9,7 +9,7 @@ describe('the Fret component', () => {
       note:"D",
       octave:5,
       selected:false
-    }
+    };
 
     let handleClick = jest.fn();
 
@@ -23,5 +23,5 @@ describe('the Fret component', () => {
     // console.log(handleClick.mock.calls)
 
     // expect(fret.find('.clicks-1').length).to.equal(1);
-  })
-})
+  });
+});

@@ -18,9 +18,9 @@ class PossibleChords extends Component {
       selectors: [],
       isExactMatch: false
     };
-  };
+  }
 
-  componentDidMount() {};
+  componentDidMount() {}
 
   onToggle() {
     this.setState({
@@ -28,10 +28,9 @@ class PossibleChords extends Component {
     }, () => {
       store.dispatch(toggleExactMatching(this.state.isExactMatch));
     });
-  };
+  }
 
   _handleChordSelection(e) {
-    console.log(e);
     store.dispatch(clearSelection());
     store.dispatch(highlightSelection({
       "notes": e.notes,
@@ -39,7 +38,7 @@ class PossibleChords extends Component {
     }));
     store.dispatch(setSelectedChordName(e.name));
     store.dispatch(populateAllScales());
-  };
+  }
 
   render(){
 
@@ -49,13 +48,13 @@ class PossibleChords extends Component {
         inactiveLabel={'OFF'}
         activeLabel={'ON'}
         value={ this.state.isExactMatch || false }
-        onToggle={this.onToggle.bind(this)} />
+        onToggle={this.onToggle.bind(this)} />;
 
     let possibleChords = this.props.possibleChords.map((chord, index) =>
-      <div className={"chord-match" + ((this.props.selected === chord.name) ? " chord-match--selected" : "")}
-          id={`chord-match-${index}`}
-          key={`poss-chord-${index}`}
-          onClick={this._handleChordSelection.bind(this, chord)}>
+      <div className={"chord-match" + (this.props.selected === chord.name ? " chord-match--selected" : "")}
+        id={`chord-match-${index}`}
+        key={`poss-chord-${index}`}
+        onClick={this._handleChordSelection.bind(this, chord)}>
         <p className="chord-match__name">
           {chord.name}
         </p>
@@ -70,9 +69,9 @@ class PossibleChords extends Component {
     );
 
     let exactChords = this.props.exactChords.map((chord, index) =>
-      <div className={"chord-match" + ((this.props.selected === chord.name) ? " chord-match--selected" : "")}
-           key={`exact-chord-${index}`}
-           onClick={this._handleChordSelection.bind(this, chord)}>
+      <div className={"chord-match" + (this.props.selected === chord.name ? " chord-match--selected" : "")}
+        key={`exact-chord-${index}`}
+        onClick={this._handleChordSelection.bind(this, chord)}>
         <p className="chord-match__name">
           {chord.name}
         </p>
@@ -89,12 +88,12 @@ class PossibleChords extends Component {
     return(
       <div className="chords__container">
         <div className="chords__match-toggle"
-              data-tip data-for='tooltip__match-toggle'>
+          data-tip data-for='tooltip__match-toggle'>
           <h4>Chord match</h4>
           {toggle}
         </div>
         <div className="chords__list"
-             data-tip data-for='tooltip__chords__list'>
+          data-tip data-for='tooltip__chords__list'>
           {this.props.isShowingExactChordMatches ? exactChords : possibleChords}
         </div>
 
@@ -104,8 +103,10 @@ class PossibleChords extends Component {
           type="success" 
           effect="solid" 
           disable={!this.props.tooltipIsOn}>
-          <p>All chords containing the notes you have selected on the fretboard</p> 
-          <p>will show here - select one to show its shape in the keyboard</p>
+          <p>All chords containing the notes you 
+            have selected on the fretboard</p> 
+          <p>will show here - select one to show 
+            its shape in the keyboard</p>
         </ReactTooltip>
 
         <ReactTooltip 
@@ -117,7 +118,7 @@ class PossibleChords extends Component {
           <p>Show only the chords that match the exact notes you select</p> 
         </ReactTooltip>
       </div>
-    )
+    );
   }
 }
 

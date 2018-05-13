@@ -24,8 +24,6 @@ export function playTone(freq, octave) {
 
   osc.start();
 
-  console.log("freq: ", freq, ", freq_value: ", freq_value, );
-
   setTimeout(() => {
     osc.stop();
     // masterGainNode.gain.value = 0.5;

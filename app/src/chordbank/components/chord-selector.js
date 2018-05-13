@@ -10,9 +10,9 @@ class ChordSelector extends Component {
     this.state = {
       selectedOption: "option0"
     };
-  };
+  }
 
-  componentDidMount() {};
+  componentDidMount() {}
 
   _onChordChange(e) {
     this.setState({
@@ -26,9 +26,9 @@ class ChordSelector extends Component {
       <div className="radio">
         <label>
           <input type="radio"
-                 value={`option${index}`}
-                 checked={this.state.selectedOption === `option${index}`}
-                 onChange={this.handleOptionChange} />
+            value={`option${index}`}
+            checked={this.state.selectedOption === `option${index}`}
+            onChange={this.handleOptionChange} />
           {!selector.name === undefined ? selector.name : `${index}`}
         </label>
       </div>
@@ -40,7 +40,7 @@ class ChordSelector extends Component {
           {radioButtons}
         </form>
       </div>
-    )
+    );
   }
 }
 

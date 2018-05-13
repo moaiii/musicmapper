@@ -2,19 +2,19 @@ import chords_data from '../data/chords';
 var _ = require('lodash');
 
 export function get_possible_chords(activeNotes) {
-    let possible_chords = get_all_possible_chords(activeNotes)
-    let exact_chords = get_exact_chords(activeNotes)
+  let possible_chords = get_all_possible_chords(activeNotes);
+  let exact_chords = get_exact_chords(activeNotes);
 
-    return {
-      "possible_chords": possible_chords,
-      "exact_chords": exact_chords
-    }
-};
+  return {
+    "possible_chords": possible_chords,
+    "exact_chords": exact_chords
+  };
+}
 
 export function get_exact_chords(activeNotes) {
   return chords_data.filter(chord => {
-    return (_.difference(chord.notes, activeNotes).length === 0 && 
-      _.difference(activeNotes, chord.notes).length === 0) // i.e. no difference
+    return _.difference(chord.notes, activeNotes).length === 0 && 
+      _.difference(activeNotes, chord.notes).length === 0; // i.e. no difference
   });
 }
 

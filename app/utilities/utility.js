@@ -41,9 +41,9 @@ export default function Utility() {
 
       while(i <= TOTAL_NUM_FRETS) {
         notes.push({
-          note: chromatic[(i % 12) + offset],
+          note: chromatic[i % 12 + offset],
           selected: false,
-          octave: (i >= 12 ? 5 : 4)
+          octave: i >= 12 ? 5 : 4
         });
         i++;
       }
@@ -56,7 +56,7 @@ export default function Utility() {
       let test = [1, 2, 2, 1, 2, 1]; // 0, 1, 3, 5, 6, 8, 9,
       let indices = intervals.map((int, array, index) => {
         // if(index ==== 0 )
-      })
+      });
     }
-  }
+  };
 }

@@ -29,19 +29,19 @@ class DownloadMidi extends Component {
   }
 
   _showDownloading() {
-    this.setState({ showDownloading: true })
+    this.setState({showDownloading: true});
   }
 
   _hideDownloading() {
-    this.setState({ showDownloading: false })
+    this.setState({showDownloading: false});
   }
 
   _showError() {
-    this.setState({ showError: true })
+    this.setState({showError: true});
   }
 
   _hideError() {
-    this.setState({ showError: false })
+    this.setState({showError: false});
   }
 
   
@@ -49,7 +49,7 @@ class DownloadMidi extends Component {
     store.dispatch(clearAllNotes());
     store.dispatch(clearSelection());
     store.dispatch(deleteAllSelected());
-  };
+  }
 
 
   /**
@@ -90,9 +90,9 @@ class DownloadMidi extends Component {
 
     // ERROR
     } else {
-      console.error("Error cannot send data for file download!");
+      // console.error("Error cannot send data for file download!");
     } 
-  }; 
+  } 
 
 
   /**
@@ -107,29 +107,28 @@ class DownloadMidi extends Component {
   callMidiApi(notes, name, midi_type) {
     // call the api funciton which hits the endpoint
     midiApi.generateMidi(notes, name, midi_type)
-    .then((response) => {
-      console.log("callMidiApi > response = ", response);
-      // hide the modal window alerting the user
-      this._hideDownloading();
-      // Lambda responds with S3 download link
-      let downloadLink = JSON.parse(response.data.body)["download-link"];
-      // store the download link in this component
-      if (downloadLink !== undefined) {
-        this.setState({
-          downloadLink: downloadLink
+      .then((response) => {
+        // hide the modal window alerting the user
+        this._hideDownloading();
+        // Lambda responds with S3 download link
+        let downloadLink = JSON.parse(response.data.body)["download-link"];
+        // store the download link in this component
+        if (downloadLink !== undefined) {
+          this.setState({
+            downloadLink: downloadLink
   
-        }, () => {
+          }, () => {
           // download the file in a new window - pop up may be blocked
-          window.open(this.state.downloadLink);
-        });
-      };
-    })
-    .catch((error) => {
-      this._hideDownloading();
-      this._showError();
-      console.log('Error in chord bank: ', error);
-    });
-  };
+            window.open(this.state.downloadLink);
+          });
+        }
+      })
+      .catch((error) => {
+        this._hideDownloading();
+        this._showError();
+        // console.log('Error in chord bank: ', error);
+      });
+  }
 
 
   render() {
@@ -138,14 +137,14 @@ class DownloadMidi extends Component {
         {...ProgressDownloadingText}
         isVisible = {this.state.showDownloading}
         onReject = {this._hideDownloading.bind(this)}
-        onConfirm = {this._hideDownloading.bind(this)} />
+        onConfirm = {this._hideDownloading.bind(this)} />;
 
     let errorDownloadModal =
         <Modal 
           {...ErrorDownloadingText}
           isVisible = {this.state.showError}
           onReject = {this._hideError.bind(this)}
-          onConfirm = {this._hideError.bind(this)} />
+          onConfirm = {this._hideError.bind(this)} />;
 
         
     return(
@@ -155,7 +154,7 @@ class DownloadMidi extends Component {
 
         <div className="button-bar">
           <div className="button-bar --downloads"
-               data-tip data-for='tooltip__download-chord'>     
+            data-tip data-for='tooltip__download-chord'>     
             <button className="chordbank__button --chord"
               id={`button__download-chord`}
               data-download="chord"
@@ -171,7 +170,7 @@ class DownloadMidi extends Component {
               disabled={this.props.selectedChord === "" ? true : false}
               onClick={this._downloadMidi.bind(this)}>
               <FaDownload
-              className="icon"/>
+                className="icon"/>
               <p>MIDI Scales</p>
             </button>
           </div>
@@ -184,14 +183,17 @@ class DownloadMidi extends Component {
           type="success" 
           effect="solid" 
           disable={!this.props.tooltipIsOn}>
-          <p>Once you have selected a chord from the right hand panel you can</p> 
-          <p>download the midi files for the chord and its corresponding 7 scale modes </p>
-          <p>for easy import into your DAW project, bypassing the keyboard completely!</p>
+          <p>Once you have selected a chord from the 
+            right hand panel you can</p> 
+          <p>download the midi files for the chord 
+            and its corresponding 7 scale modes </p>
+          <p>for easy import into your DAW project, 
+            bypassing the keyboard completely!</p>
         </ReactTooltip>
       </div>
-    )
+    );
   }
-};
+}
 
 const mapStoreToProps = (store) => {
   return {

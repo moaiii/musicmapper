@@ -2159,6 +2159,6 @@ let scales_data = [
     "mode":"Hirajoshi",
     "notes":["B", "C#", "D", "F#", "G"]
   }
-]
+];
 
 export default scales_data;

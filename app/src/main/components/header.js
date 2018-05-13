@@ -1,7 +1,7 @@
 // functional components
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom'
-import ReactSVG from 'react-svg'
+import ReactDOM from 'react-dom';
+import ReactSVG from 'react-svg';
 import {HowToUseText} from '../../../data/modal-text';
 import store from '../../../store';
 import * as generalAction from '../actions';
@@ -29,45 +29,45 @@ class Header extends Component {
 
     this._hideHowToUse = this._hideHowToUse.bind(this);
     this._showHowToUse = this._showHowToUse.bind(this);
-    this.toggleTooltip = this.toggleTooltip.bind(this)
+    this.toggleTooltip = this.toggleTooltip.bind(this);
   }
 
   _showHowToUse() {
     this.setState({
       showHowToUse: true,
       classVideoVisible: "isVisible"
-    })
+    });
   }
   
   _hideHowToUse() {
     this.setState({
       showHowToUse: false,
       classVideoVisible: ""
-    })
+    });
   }
 
   _showLogin() {
     this.setState({
       showLogin: true
-    })
+    });
   }
 
   _hideLogin() {
     this.setState({
       showLogin: false
-    })
+    });
   }
 
   _showRegister() {
     this.setState({
       showRegister: true
-    })
+    });
   }
 
   _hideRegister() {
     this.setState({
       showRegister: false
-    })
+    });
   }
 
   toggleTooltip() {
@@ -76,17 +76,18 @@ class Header extends Component {
     }, () => {
       this.state.tooltipIsOn ? 
         store.dispatch(generalAction.tooltipOn()) :
-        store.dispatch(generalAction.tooltipOff())
+        store.dispatch(generalAction.tooltipOff());
     });
-  };
+  }
 
   render() {
+    const {classVideoVisible} = this.state;
 
     let howToUse =
       <ReactPlayer 
         url={"https://www.youtube.com/watch?v=Wcg4J60LyPI"}
         playing={this.state.showHowToUse}
-      />
+      />;
       // <Modal 
       //   {...HowToUseText}
       //   isVisible = {this.state.showHowToUse}
@@ -95,14 +96,14 @@ class Header extends Component {
 
     let temp_hide = {
       display: 'none'
-    }    
+    };    
 
     let toggle =
       <ToggleButton
         inactiveLabel={'OFF'}
         activeLabel={'ON'}
         value={this.state.tooltipIsOn || false}
-        onToggle={this.toggleTooltip} />
+        onToggle={this.toggleTooltip} />;
 
     return(
       <div className="header">
@@ -111,41 +112,41 @@ class Header extends Component {
           <ReactSVG
             path="./svg/rock.svg"
             className="logo"
-            style={{ width: 55, height: 55, display: 'inline-block' }}
+            style={{width: 55, height: 55, display: 'inline-block'}}
           />
         </div>
 
         <div className="header__nav">
           <ul className="nav__container">
             <li className="nav__item how-to-use"
-                style={temp_hide}>
+              style={temp_hide}>
               Tooltips
               {toggle}
             </li>
             <li className="nav__item --how-to-use" 
-                onClick={this._showHowToUse.bind(this)}>
+              onClick={this._showHowToUse.bind(this)}>
               How to use
               <FaQuestion />
             </li>
             <li className="nav__item share">
-                <Share />
+              <Share />
             </li>
             <li className="nav__item"
-                style={temp_hide}
-                onClick={this._showRegister.bind(this)}>
+              style={temp_hide}
+              onClick={this._showRegister.bind(this)}>
               Register
             </li>
           </ul>
         </div>
-        <div className={`modal__curtain ${this.state.classVideoVisible}` }
-             onClick={this._hideHowToUse.bind(this)}> </div>
+        <div className={`modal__curtain ${classVideoVisible}` }
+          onClick={this._hideHowToUse.bind(this)}> </div>
 
-        <div className={`howToUse__video-container ${this.state.classVideoVisible}`}>
+        <div className={`howToUse__video-container ${classVideoVisible}`}>
           <p onClick={this._hideHowToUse.bind(this)}>CLOSE</p>
           {howToUse}
         </div>
       </div>
-    )
+    );
   }
 }
 

@@ -1,6 +1,6 @@
 // Functional modules
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 
 // Child modules
 import FaYoutube from 'react-icons/lib/fa/youtube';
@@ -17,28 +17,27 @@ class Footer extends Component {
   }
 
   _handleClick(type) {
-    console.log('click', type);
 
     let url = "";
 
     switch(type) {
-      case "twitter":
-        url = "https://twitter.com/___moaiii";
-        break;
-      case "soundcloud":
-        url = "https://soundcloud.com/moai_music";
-        break;
-      case "youtube":
-        url = "https://www.youtube.com/user/MrMelvi87";
-        break;
-      case "instagram":
-        url = "https://www.instagram.com/_moaiii/";
-        break;
-      case "facebook":
-        url = "https://www.facebook.com/itsmoai";
-        break;
-      default:
-        url = "https://www.facebook.com/itsmoai";
+    case "twitter":
+      url = "https://twitter.com/___moaiii";
+      break;
+    case "soundcloud":
+      url = "https://soundcloud.com/moai_music";
+      break;
+    case "youtube":
+      url = "https://www.youtube.com/user/MrMelvi87";
+      break;
+    case "instagram":
+      url = "https://www.instagram.com/_moaiii/";
+      break;
+    case "facebook":
+      url = "https://www.facebook.com/itsmoai";
+      break;
+    default:
+      url = "https://www.facebook.com/itsmoai";
     }
 
     let win = window.open(url, '_blank');
@@ -57,33 +56,33 @@ class Footer extends Component {
       <div className="footer">
         <div className="contact__container">
           <div className="icon__container" 
-               onClick={this._handleClick.bind(this, "twitter")}>
+            onClick={this._handleClick.bind(this, "twitter")}>
             <FaTwitter
               className="icon"
               style={iconStyle}/>
           </div>
           <div className="icon__container" 
-               onClick={this._handleClick.bind(this, "soundcloud")}>
+            onClick={this._handleClick.bind(this, "soundcloud")}>
             <FaSoundcloud
               className="icon"
               style={iconStyle}/>
           </div>
           <div className="icon__container" 
-               onClick={this._handleClick.bind(this, "youtube")}>
+            onClick={this._handleClick.bind(this, "youtube")}>
             <FaYoutube
               className="icon"
               style={iconStyle}
             />
           </div>
           <div className="icon__container" 
-               onClick={this._handleClick.bind(this, "instagram")}>
+            onClick={this._handleClick.bind(this, "instagram")}>
             <FaInstagram
               className="icon"
               style={iconStyle}
             />
           </div>
           <div className="icon__container" 
-               onClick={this._handleClick.bind(this, "facebook")}>
+            onClick={this._handleClick.bind(this, "facebook")}>
             <FaFacebook
               className="icon"
               style={iconStyle}
@@ -94,7 +93,7 @@ class Footer extends Component {
           <p>Copyright © 2017</p>
         </div>
       </div>
-    )
+    );
   }
 }
 

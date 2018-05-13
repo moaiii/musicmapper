@@ -3,15 +3,15 @@ import pupeteer from 'puppeteer';
 let browser, page;
 
 beforeEach(async () => {
-  browser = await pupeteer.launch({ headless: true });
+  browser = await pupeteer.launch({headless: true});
   page = await browser.newPage();
-  await page.goto('http://localhost:4444')
+  await page.goto('http://localhost:4444');
   await page.waitFor(1000);
-})
+});
 
 afterEach(async () => {
   await browser.close();
-})
+});
 
 
 test('Launch the Frets to Keys application', async () => {
@@ -19,14 +19,14 @@ test('Launch the Frets to Keys application', async () => {
     .$eval('.header__logo h1', el => el.innerHTML);
 
   expect(header).toEqual('Frets to Keys');
-})
+});
 
 
 test('The tuner dropdown has options', async () => {
   await page.click('.Dropdown-root');
 
   let dropdown_option_count = await page
-    .$eval('.Dropdown-menu', el => el.childElementCount)
+    .$eval('.Dropdown-menu', el => el.childElementCount);
 
   expect(dropdown_option_count).not.toEqual(0);
   expect(dropdown_option_count).toEqual(47);
@@ -116,7 +116,7 @@ test('Clearing all data and selections', async () => {
 
 
 test('Laptop keyboard notes', async () => {
-  await page.click('.laptop-check__container > div:first-of-type')
+  await page.click('.laptop-check__container > div:first-of-type');
 
   let scale_keyboard_note = await page
     .$eval('.keyboards__scale .keyboard #key-0 p', el => el.innerHTML);
@@ -140,7 +140,7 @@ test('Scale select dropdown has no value until chord is selected', async () => {
   // get chord count
   let dropdown_selection_count = await page
     .$eval('.scales-selector .Dropdown-root .Dropdown-menu', 
-      el => el.childElementCount)
+      el => el.childElementCount);
 
   expect(dropdown_selection_count).toBeLessThanOrEqual(1);
   expect(dropdown_selection_count).not.toBeGreaterThan(1);
@@ -154,7 +154,7 @@ test('Scale select dropdown has no value until chord is selected', async () => {
   // get chord count (again)
   let dropdown_selection_count_two = await page
     .$eval('.scales-selector .Dropdown-root .Dropdown-menu', 
-      el => el.childElementCount)
+      el => el.childElementCount);
 
   expect(dropdown_selection_count_two).toBeGreaterThan(10);
 }, 15000);

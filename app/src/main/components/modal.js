@@ -25,7 +25,7 @@ class Modal extends Component<Props, State> {
     this.state = {};
   }
 
-  componentDidMount() {};
+  componentDidMount() {}
 
   render() {
     return(
@@ -34,7 +34,7 @@ class Modal extends Component<Props, State> {
 
         <div className={"modal__curtain" + 
               (this.props.isVisible ? " isVisible" : "") }
-             onClick={this.props.onReject}> </div>
+        onClick={this.props.onReject}> </div>
 
         <div className={"modal__messagebox" + 
               (this.props.isVisible ? " isVisible" : "") }>
@@ -43,13 +43,13 @@ class Modal extends Component<Props, State> {
 
           <div className="modal__button-container">
             <button className="modal__button confirm"
-                    onClick={this.props.onConfirm}>
+              onClick={this.props.onConfirm}>
               {this.props.confirmText}
             </button>
 
             {!this.props.hideRejectButton ? 
               <button className="modal__button reject"
-                      onClick={this.props.onReject}>
+                onClick={this.props.onReject}>
                 {this.props.rejectText}
               </button> : 
               null

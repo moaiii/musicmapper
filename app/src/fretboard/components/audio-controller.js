@@ -1,7 +1,7 @@
 import store from '../../../store';
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
-import ReactSVG from 'react-svg'
+import ReactSVG from 'react-svg';
 import {toggleAudio} from '../actions';
 
 // child components
@@ -29,7 +29,7 @@ class AudioController extends Component<Props, State> {
       volume: 1,
       isMuted: true
     };
-  };
+  }
 
   _handleClick() {
     store.dispatch(toggleAudio());
@@ -55,7 +55,7 @@ class AudioController extends Component<Props, State> {
       this._handleMute();
     }
 
-    this._sendFullStatus()
+    this._sendFullStatus();
   };
 
 
@@ -70,7 +70,7 @@ class AudioController extends Component<Props, State> {
         volume: 1
       }, () => {
         this._handleMute();
-      })
+      });
     }
   };
 
@@ -101,16 +101,16 @@ class AudioController extends Component<Props, State> {
   render(){
     return(
       <div className="audio-controller"
-           data-tip data-for='tooltip__audio-control'>
+        data-tip data-for='tooltip__audio-control'>
         <p className="audio-controller__status">
           {this.props.audioEnabled ? "Note On" : "Note Off"}
         </p>
 
         <div className="icon__container icon__container--audio-control"
-             onClick={this._handleClick.bind(this)}>
-             {this.props.audioEnabled ? 
-                <FaVolumeUp className="icon volume"/> :
-                <FaVolumeOff className="icon volume"/>}
+          onClick={this._handleClick.bind(this)}>
+          {this.props.audioEnabled ? 
+            <FaVolumeUp className="icon volume"/> :
+            <FaVolumeOff className="icon volume"/>}
         </div>
 
         <ReactTooltip 
@@ -123,7 +123,7 @@ class AudioController extends Component<Props, State> {
           <p>the tone of each fret you select</p>
         </ReactTooltip>
       </div>
-    )
+    );
   }
 }
 

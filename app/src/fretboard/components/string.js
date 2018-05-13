@@ -10,7 +10,7 @@ class String extends Component {
   }
   
   render() {
-    const { stringIndex, notes, guide, stringNumber, handleClick } = this.props;
+    const {stringIndex, notes, guide, stringNumber, handleClick} = this.props;
 
     let fretElements = [];
 
@@ -42,7 +42,7 @@ String.propTypes = {
   guide: PropTypes.bool,
   string_index: PropTypes.number,
   guide: PropTypes.bool
-}
+};
 
 
 export default String;

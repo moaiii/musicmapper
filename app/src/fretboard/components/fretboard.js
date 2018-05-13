@@ -5,7 +5,7 @@ import store from '../../../store';
 
 import AudioController from './audio-controller';
 import {changeTuning, calculateFretboardNotes, addSelected, deleteSelected} 
-  from "../../fretboard/actions"
+  from "../../fretboard/actions";
 import {addNote, deleteNote, populateChordPossibilities} 
   from "../../chordbank/actions";
 import {playTone} from '../../../utilities/play-sound';
@@ -13,7 +13,7 @@ import {playTone} from '../../../utilities/play-sound';
 // Child components
 import String from './string';
 import Tuning from './tuning';
-import ReactTooltip from 'react-tooltip'
+import ReactTooltip from 'react-tooltip';
 
 
 class Fretboard extends Component {
@@ -35,17 +35,17 @@ class Fretboard extends Component {
         let selectedFretNote = null;
         
         this.props.fretboardNotes[a]
-        .forEach((fret, index) => {
-          if(fret.selected === true) {
-            selectedFretIndex = index;
-            selectedFretNote = fret.note;
-          }
-        });
+          .forEach((fret, index) => {
+            if(fret.selected === true) {
+              selectedFretIndex = index;
+              selectedFretNote = fret.note;
+            }
+          });
         
         if(selectedFretIndex !== null && selectedFretNote !== null) {
           store.dispatch(deleteSelected(a, selectedFretIndex));
           store.dispatch(deleteNote(selectedFretNote));
-        };
+        }
         
         // add note
         store.dispatch(addSelected(a, b));
@@ -63,7 +63,7 @@ class Fretboard extends Component {
 
       this.props.fretboardNotes[a][b];
     };
-  };
+  }
 
   render() {
     
@@ -75,7 +75,7 @@ class Fretboard extends Component {
         notes={_.fill(Array(22), {note: "", selected: false, octave: 0})}
         stringNumber={7}
         handleClick={null}
-      />
+      />;
 
     let strings = this.props.fretboardNotes
       .map((notes, index) => 
@@ -90,21 +90,21 @@ class Fretboard extends Component {
         />);
 
     return (
-        <div className="fretboard" 
-             data-tip data-for='tooltip__fretboard'>
-          {numberGuide}
-          {strings}
+      <div className="fretboard" 
+        data-tip data-for='tooltip__fretboard'>
+        {numberGuide}
+        {strings}
 
-          <ReactTooltip 
-            id='tooltip__fretboard' 
-            place="top" 
-            type="success" 
-            effect="solid"
-            disable={!this.props.tooltipIsOn}>
-            <p>This is your fretboard</p>
-            <p>Enter your chords notes one by one</p>
-          </ReactTooltip>
-        </div>
+        <ReactTooltip 
+          id='tooltip__fretboard' 
+          place="top" 
+          type="success" 
+          effect="solid"
+          disable={!this.props.tooltipIsOn}>
+          <p>This is your fretboard</p>
+          <p>Enter your chords notes one by one</p>
+        </ReactTooltip>
+      </div>
     );
   }
 }

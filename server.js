@@ -27,8 +27,8 @@ app.use(session({
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
     var namespace = param.split('.'),
-    root = namespace.shift(),
-    formParam = root;
+      root = namespace.shift(),
+      formParam = root;
 
     while(namespace.length) {
       formParam += '[' + namespace.shift() + ']';
@@ -52,5 +52,5 @@ app.get('*', function(req, res, next) {
 });
 
 var server = app.listen(4444, '0.0.0.0', function(){
-  console.log('Server running on port: ' + server.address().port);
+  // console.log('Server running on port: ' + server.address().port);
 });

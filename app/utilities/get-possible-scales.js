@@ -11,7 +11,7 @@ export function get_possible_scales(chordName) {
   let modeScales = get_mode_scales(rootNote, modes);
   let allPossibleScales = get_all_possible_scales(rootNote);
 
-  return { modeScales, allPossibleScales };
+  return {modeScales, allPossibleScales};
 }
 
 export function get_mode_scales(rootNote) {

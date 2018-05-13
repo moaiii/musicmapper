@@ -101,9 +101,10 @@
   },
   "scripts": {
     "start": "npm run dev",
-    "dev": "concurrently \"webpack --config_env dev --progress --colors --watch & forever ./server.js\" \"npm run lint\"",
+    "dev": "concurrently \"webpack --config_env dev --progress --colors --watch & forever ./server.js\" \"npm run lint:watch\"",
     "production": "webpack --optimize-minimize --optimize-dedupe --config_env production --progress --colors --watch & forever ./server.js",
-    "lint": "esw -w *.js",
+    "lint": "esw --color --fix . --ext .js",
+    "lint:watch": "esw -w --color --fix . --ext .js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:api": "jest api.test.js",

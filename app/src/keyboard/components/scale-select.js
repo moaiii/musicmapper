@@ -1,5 +1,5 @@
 // functional componenets
-import Dropdown from 'react-dropdown'
+import Dropdown from 'react-dropdown';
 import React, {Component} from 'react';
 import store from '../../../store';
 import {connect} from 'react-redux';
@@ -19,21 +19,22 @@ class ScaleSelect extends Component {
       selectedNotes: [],
       allScales: []
     };
-  };
+  }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       allScales: nextProps.allPossibleScales
     });
-  };
+  }
 
   changeScale(e) {
+    const {selectedNotes, selectedScale} = this.state;
 
     this.setState({ 
       selectedScale: e.value.replace(" ", "")
     }, () => {
 
-      let split = this.state.selectedScale.split("-");
+      let split = selectedScale.split("-");
       let rootName = split[0];
       let modeName = split[1].replace(" ", "");
   
@@ -46,10 +47,10 @@ class ScaleSelect extends Component {
       }, () => {
         store
           .dispatch(chordbankAction
-          .setSelectedScale(this.state.selectedNotes, this.state.selectedScale));
-      })
+            .setSelectedScale(selectedNotes, selectedScale));
+      });
     });
-  };
+  }
 
   render() {
     let scale_options = this.state.allScales
@@ -60,12 +61,12 @@ class ScaleSelect extends Component {
         options = {scale_options}
         onChange = {this.changeScale.bind(this)}
         value = {this.state.selectedScale}
-        placeholder = "Select a scale" />
+        placeholder = "Select a scale" />;
 
         
     return (
       <div className="scales-selector"
-           data-tip data-for='tooltip__scales-selector'>
+        data-tip data-for='tooltip__scales-selector'>
         {scaleSelectDropdown}
 
         <ReactTooltip 
@@ -80,7 +81,7 @@ class ScaleSelect extends Component {
       </div>
     );
   }
-};
+}
 
 const mapStoreToProps = (store) => {
   return {

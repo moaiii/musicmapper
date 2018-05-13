@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 
 // Reducers
 import fretboardReducer from './src/fretboard/reducer';
@@ -11,7 +11,7 @@ var reducers = combineReducers({
   fretboardState: fretboardReducer,
   keyboardState: keyboardReducer,
   chordbankState: chordbankReducer,
-  generalState: generalReducer,
+  generalState: generalReducer
 });
 
 export default reducers;

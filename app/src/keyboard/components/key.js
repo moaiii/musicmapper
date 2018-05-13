@@ -15,21 +15,20 @@ class Key extends Component {
 
   componentDidMount() {
     if(this.props.note.indexOf("#") >= 0)
-      this.setState({note_class_modifier: " sharp"})
+    {this.setState({note_class_modifier: " sharp"});}
   }
 
   _handleKeyClick() {
     !this.state.selected ? this._addNote() : this._deleteNote();
-    store.dispatch(populateChordPossibilities())
-  };
+    store.dispatch(populateChordPossibilities());
+  }
 
   _addNote() {
     this.setState({
       selected: true
     }, () => {
       store.dispatch(addNote(this.props.note));
-      console.log("Adding ", this.props.note);
-    })
+    });
   }
 
   _deleteNote() {
@@ -37,16 +36,20 @@ class Key extends Component {
       selected: false
     }, () => {
       store.dispatch(deleteNote(this.props.note));
-      console.log("Deleting ", this.props.note);
-    })
+    });
   }
 
   render() {
-    const { id } = this.props;
+    const {id, key_class_mod, note, showLaptopKey, keyboard_note} = this.props;
+    const {note_class_modifier} = this.state;
+
+    let keyName = showLaptopKey ? keyboard_note : note;
 
     return (
-      <div id={id} className={`keyboard__key${this.state.note_class_modifier} ${this.props.key_class_mod} ${this.props.note.charAt(0)}`}>
-        <p className="key__name">{this.props.showLaptopKey ? this.props.keyboard_note : this.props.note}</p>
+      <div id={id} 
+        className={`keyboard__key
+        ${note_class_modifier} ${key_class_mod} ${note.charAt(0)}`}>
+        <p className="key__name">{keyName}</p>
       </div>
     );
   }

@@ -28,19 +28,19 @@ export class ChordBank extends Component {
   }
 
   _showDownloading() {
-    this.setState({ showDownloading: true })
+    this.setState({showDownloading: true});
   }
 
   _hideDownloading() {
-    this.setState({ showDownloading: false })
+    this.setState({showDownloading: false});
   }
 
   _showError() {
-    this.setState({ showError: true })
+    this.setState({showError: true});
   }
 
   _hideError() {
-    this.setState({ showError: false })
+    this.setState({showError: false});
   }
 
   
@@ -48,7 +48,7 @@ export class ChordBank extends Component {
     store.dispatch(clearAllNotes());
     store.dispatch(clearSelection());
     store.dispatch(deleteAllSelected());
-  };
+  }
 
 
   /**
@@ -75,9 +75,9 @@ export class ChordBank extends Component {
       this.callMidiApi(chord_notes, chord_name, midi_type);
 
     } else {
-      console.error("Error cannot send data for file download!");
+      // console.error("Error cannot send data for file download!");
     } 
-  }; 
+  } 
 
   /**
    * @param {string} notes 
@@ -86,26 +86,26 @@ export class ChordBank extends Component {
    */
   callMidiApi(notes, name, midi_type) {
     midiApi.generateMidi(notes, name, midi_type)
-    .then((response) => {
-      this._hideDownloading();
+      .then((response) => {
+        this._hideDownloading();
 
-      let downloadLink = JSON.parse(response.data.body)["download-link"];
+        let downloadLink = JSON.parse(response.data.body)["download-link"];
 
-      if (downloadLink !== undefined) {
-        this.setState({
-          downloadLink: downloadLink
+        if (downloadLink !== undefined) {
+          this.setState({
+            downloadLink: downloadLink
   
-        }, () => {
-          window.open(this.state.downloadLink);
-        });
-      };
-    })
-    .catch((error) => {
-      this._hideDownloading();
-      this._showError();
-      console.log('Error in chord bank: ', error);
-    });
-  };
+          }, () => {
+            window.open(this.state.downloadLink);
+          });
+        }
+      })
+      .catch((error) => {
+        this._hideDownloading();
+        this._showError();
+        // console.log('Error in chord bank: ', error);
+      });
+  }
 
 
   render() {
@@ -114,14 +114,14 @@ export class ChordBank extends Component {
         {...ProgressDownloadingText}
         isVisible = {this.state.showDownloading}
         onReject = {this._hideDownloading.bind(this)}
-        onConfirm = {this._hideDownloading.bind(this)} />
+        onConfirm = {this._hideDownloading.bind(this)} />;
 
     let errorDownloadModal =
         <Modal
           {...ErrorDownloadingText}
           isVisible = {this.state.showError}
           onReject = {this._hideError.bind(this)}
-          onConfirm = {this._hideError.bind(this)} />
+          onConfirm = {this._hideError.bind(this)} />;
 
         
     return(
@@ -152,7 +152,7 @@ export class ChordBank extends Component {
 
         <div className="chordbank__data">
           <h4 className="chordbank__header"
-              data-tip data-for='tooltip__difference'>
+            data-tip data-for='tooltip__difference'>
             Difference
           </h4>
           <div className="chordbank__difference-notes">
@@ -182,9 +182,9 @@ export class ChordBank extends Component {
           </button>
         </div>
       </div>
-    )
+    );
   }
-};
+}
 
 const mapStoreToProps = (store) => {
   return {

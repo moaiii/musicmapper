@@ -19,8 +19,8 @@ class TuningBar extends Component {
       tooltipIsOn: false
     };
 
-    this.toggleTooltip = this.toggleTooltip.bind(this)
-  };
+    this.toggleTooltip = this.toggleTooltip.bind(this);
+  }
 
   toggleTooltip() {
     this.setState({
@@ -28,9 +28,9 @@ class TuningBar extends Component {
     }, () => {
       this.state.tooltipIsOn 
         ? store.dispatch(generalAction.tooltipOn()) 
-        : store.dispatch(generalAction.tooltipOff())
+        : store.dispatch(generalAction.tooltipOff());
     });
-  };
+  }
 
   render() {
     let toggle =
@@ -38,7 +38,7 @@ class TuningBar extends Component {
         inactiveLabel={'OFF'}
         activeLabel={'ON'}
         value={this.state.tooltipIsOn || false}
-        onToggle={this.toggleTooltip} />
+        onToggle={this.toggleTooltip} />;
         
     return (
       <div className="controls__container">
@@ -54,7 +54,7 @@ class TuningBar extends Component {
                     className="tuning__note">
                     {note}
                   </h4>
-              )}
+                )}
             </div>
           </div>
           <div className="app__misc">
@@ -68,12 +68,12 @@ class TuningBar extends Component {
         </div>
       </div>
     );
-  };
-};
+  }
+}
 
 const mapStoreToProps = (store) => {
   return {
-    tuningSelection: store.fretboardState.tuning,
+    tuningSelection: store.fretboardState.tuning
   };
 };
 

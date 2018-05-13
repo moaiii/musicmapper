@@ -8,7 +8,7 @@ export function generateMidi(notes, name, midi_type) {
     axios.post(DEV_GENERATE_MIDI_URL, {
       notes: notes,
       name: name.replace(" ", ""), // remove empty spaces
-      midi_type: midi_type,
+      midi_type: midi_type
       
     }).then(response => {
       // console.log(response);
@@ -19,4 +19,4 @@ export function generateMidi(notes, name, midi_type) {
       reject(error);
     });
   });
-};
+}

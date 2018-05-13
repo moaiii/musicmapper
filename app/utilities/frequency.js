@@ -10,7 +10,7 @@ let base_freq = {
   "G#":  	"25.96",
   "A":	  "27.50",
   "A#":	  "29.14",
-  "B":	  "30.87",
+  "B":	  "30.87"
 };
 
 export default base_freq;

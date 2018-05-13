@@ -36,7 +36,7 @@ class LayoutMain extends Component {
   componentDidMount() {
     store.dispatch(changeTuning("STANDARD"));
     store.dispatch(calculateFretboardNotes());
-  };
+  }
 
   _onConfirmHandler() {}
 
@@ -48,56 +48,56 @@ class LayoutMain extends Component {
       {...MobileWarningText}
       isVisible = {this.state.showConfirmationModal}
       onReject = {this._onRejectHandler}
-      onConfirm = {this._onConfirmHandler} />
+      onConfirm = {this._onConfirmHandler} />;
 
     let mobileLandscapeNotification = 
       <div className="app__mobile-landscape-notification">
         <h1>Please orientate your device</h1>
         <p>This app is viewed best in landscape mode</p>
-      </div>
+      </div>;
 
     let downloadMidi = 
       <div className="main__downloadmidi">
         <h1 className="choice__title">Download Midi</h1>
         <DownloadMidi />
-      </div>
+      </div>;
 
     let chordchoice = 
       <div className="main__choice">
         <h1 className="choice__title">Choice</h1>
         <ChordBank />
-      </div>
+      </div>;
 
     let chordoptions = 
       <div className="main__options">
         <h1 className="options__title">Options</h1>
         <PossibleChords />
-      </div>
+      </div>;
 
     let chordkeyboard = 
       <div className="keyboards__chord">
         <h2>Chord</h2>
         <Keyboard type="chord"/>
-      </div>
+      </div>;
 
     let scalekeyboard = 
       <div className="keyboards__scale">
         <h2>Scale</h2>
         <Keyboard type="scale"/>
-      </div>
+      </div>;
 
     let fretboard = 
       <div className="fretboard__container">
         <h1>Fretboard</h1>
         <Fretboard />
-      </div>
+      </div>;
 
     let keyboardcontrols = 
       <div className="keyboard__controller">
         <h1 className="keyboard__title">Keyboard</h1>
         <LaptopCheck />
         <ScaleSelect />
-      </div>
+      </div>;
 
 
     return(

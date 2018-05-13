@@ -23810,7 +23810,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	
 	var _redux = __webpack_require__(193);
@@ -23921,7 +23921,6 @@
 	  switch (action.type) {
 	
 	    case types.FRETBOARD_CHANGE_TUNING:
-	
 	      //lookup tuning by name
 	      var tuning_list = _tunings2.default;
 	      var notes = [];
@@ -23936,7 +23935,6 @@
 	      return Object.assign({}, state, {
 	        tuning: notes
 	      });
-	      break;
 	
 	    case types.FRETBOARD_CALCULATE_NOTES:
 	
@@ -23948,13 +23946,11 @@
 	      return Object.assign({}, state, {
 	        fretboardNotes: fretboard_notes
 	      });
-	      break;
 	
 	    case types.FRETBOARD_TOGGLE_AUDIO:
 	      return Object.assign({}, state, {
 	        audioEnabled: !state.audioEnabled
 	      });
-	      break;
 	
 	    case types.FRETBOARD_ADD_SELECTED:
 	
@@ -23965,18 +23961,19 @@
 	      return Object.assign({}, state, {
 	        fretboardNotes: newFretboardNotesAdd
 	      });
-	      break;
 	
 	    case types.FRETBOARD_DELETE_SELECTED:
 	
+	      var si = action.payload.string_index;
+	      var fi = action.payload.fret_index;
+	
 	      var newFretboardNotesDelete = _.cloneDeep(state.fretboardNotes);
 	
-	      newFretboardNotesDelete[action.payload.string_index][action.payload.fret_index].selected = false;
+	      newFretboardNotesDelete[si][fi].selected = false;
 	
 	      return Object.assign({}, state, {
 	        fretboardNotes: newFretboardNotesDelete
 	      });
-	      break;
 	
 	    case types.FRETBOARD_DELETE_ALL_SELECTED:
 	
@@ -23994,7 +23991,6 @@
 	      return Object.assign({}, state, {
 	        fretboardNotes: newFretboardNotesDeleteAll
 	      });
-	      break;
 	
 	    default:
 	      return state;
@@ -41418,20 +41414,17 @@
 	        highlightedNotes: [],
 	        differenceNotes: []
 	      };
-	      break;
 	
 	    case types.KEYBOARD_HIGHLIGHT_SELECTION:
 	      return Object.assign({}, state, {
 	        highlightedNotes: action.payload.notes,
 	        differenceNotes: action.payload.difference
 	      });
-	      break;
 	
 	    case types.KEYBOARD_TOGGLE_LAPTOP_KEYBOARD:
 	      return Object.assign({}, state, {
 	        showLaptopKeys: action.payload
 	      });
-	      break;
 	
 	    default:
 	      return state;
@@ -41502,9 +41495,7 @@
 	        return Object.assign({}, state, {
 	          activeNotesRaw: raw
 	        });
-	      };
-	
-	      break;
+	      }
 	
 	    // Delete Notes
 	    case types.CHORDBANK_DELETE_NOTE:
@@ -41530,9 +41521,7 @@
 	        return Object.assign({}, state, {
 	          activeNotesRaw: removed
 	        });
-	      };
-	
-	      break;
+	      }
 	
 	    // Populate chord bank
 	    case types.CHORDBANK_POPULATE_POSSIBLE_CHORDS:
@@ -41546,9 +41535,7 @@
 	        });
 	      } else {
 	        return state;
-	      };
-	
-	      break;
+	      }
 	
 	    // Populate scales data
 	    case types.CHORDBANK_POPULATE_POSSIBLE_SCALES:
@@ -41561,16 +41548,13 @@
 	        });
 	      } else {
 	        return state;
-	      };
-	
-	      break;
+	      }
 	
 	    // Toggle either exact match of the chord or view the possibilities
 	    case types.CHORDBANK_TOGGLE_EXACT_MATCHING:
 	      return Object.assign({}, state, {
 	        isShowingExactChordMatches: !state.isShowingExactChordMatches
 	      });
-	      break;
 	
 	    // Delete all data from the active notes array
 	    case types.CHORDBANK_CLEAR_ALL_NOTES:
@@ -41584,7 +41568,6 @@
 	          notes: ""
 	        }
 	      });
-	      break;
 	
 	    case types.CHORDBANK_SELECTED_CHORD_NAME:
 	
@@ -41638,7 +41621,7 @@
 	    "possible_chords": possible_chords,
 	    "exact_chords": exact_chords
 	  };
-	};
+	}
 	
 	function get_exact_chords(activeNotes) {
 	  return _chords2.default.filter(function (chord) {
@@ -45259,13 +45242,11 @@
 	      return Object.assign({}, state, {
 	        tooltipIsOn: false
 	      });
-	      break;
 	
 	    case types.GENERAL_TOOLTIP_ON:
 	      return Object.assign({}, state, {
 	        tooltipIsOn: true
 	      });
-	      break;
 	
 	    default:
 	      return state;
@@ -51382,13 +51363,13 @@
 	      _store2.default.dispatch((0, _actions2.clearSelection)());
 	      _store2.default.dispatch((0, _actions3.deleteAllSelected)());
 	    }
-	  }, {
-	    key: '_downloadMidi',
-	
 	
 	    /**
 	     * @param {event} e 
 	     */
+	
+	  }, {
+	    key: '_downloadMidi',
 	    value: function _downloadMidi(e) {
 	      this._showDownloading();
 	
@@ -51407,18 +51388,18 @@
 	
 	        this.callMidiApi(chord_notes, chord_name, midi_type);
 	      } else {
-	        console.error("Error cannot send data for file download!");
+	        // console.error("Error cannot send data for file download!");
 	      }
 	    }
-	  }, {
-	    key: 'callMidiApi',
-	
 	
 	    /**
 	     * @param {string} notes 
 	     * @param {string} name 
 	     * @param {string} midi_type 
 	     */
+	
+	  }, {
+	    key: 'callMidiApi',
 	    value: function callMidiApi(notes, name, midi_type) {
 	      var _this2 = this;
 	
@@ -51434,11 +51415,11 @@
 	          }, function () {
 	            window.open(_this2.state.downloadLink);
 	          });
-	        };
+	        }
 	      }).catch(function (error) {
 	        _this2._hideDownloading();
 	        _this2._showError();
-	        console.log('Error in chord bank: ', error);
+	        // console.log('Error in chord bank: ', error);
 	      });
 	    }
 	  }, {
@@ -51563,8 +51544,6 @@
 	  return ChordBank;
 	}(_react.Component);
 	
-	;
-	
 	var mapStoreToProps = function mapStoreToProps(store) {
 	  return {
 	    notes: store.chordbankState.activeNotes,
@@ -51606,49 +51585,49 @@
 	    type: types.CHORDBANK_ADD_NOTE,
 	    payload: note
 	  };
-	};
+	}
 	
 	function deleteNote(note) {
 	  return {
 	    type: types.CHORDBANK_DELETE_NOTE,
 	    payload: note
 	  };
-	};
+	}
 	
 	function populateChordPossibilities() {
 	  return {
 	    type: types.CHORDBANK_POPULATE_POSSIBLE_CHORDS,
 	    payload: []
 	  };
-	};
+	}
 	
 	function populateAllScales() {
 	  return {
 	    type: types.CHORDBANK_POPULATE_POSSIBLE_SCALES,
 	    payload: null
 	  };
-	};
+	}
 	
 	function toggleExactMatching(isExactMatch) {
 	  return {
 	    type: types.CHORDBANK_TOGGLE_EXACT_MATCHING,
 	    payload: isExactMatch
 	  };
-	};
+	}
 	
 	function clearAllNotes() {
 	  return {
 	    type: types.CHORDBANK_CLEAR_ALL_NOTES,
 	    payload: {}
 	  };
-	};
+	}
 	
 	function setSelectedChordName(name) {
 	  return {
 	    type: types.CHORDBANK_SELECTED_CHORD_NAME,
 	    payload: name
 	  };
-	};
+	}
 	
 	function setSelectedScale(notes, name) {
 	  return {
@@ -51738,7 +51717,7 @@
 	      reject(error);
 	    });
 	  });
-	};
+	}
 
 /***/ }),
 /* 300 */
@@ -52990,7 +52969,6 @@
 	  }, {
 	    key: '_handleChordSelection',
 	    value: function _handleChordSelection(e) {
-	      console.log(e);
 	      _store2.default.dispatch((0, _actions2.clearSelection)());
 	      _store2.default.dispatch((0, _actions2.highlightSelection)({
 	        "notes": e.notes,
@@ -54931,9 +54909,6 @@
 	      _store2.default.dispatch((0, _actions2.clearSelection)());
 	      _store2.default.dispatch((0, _actions3.deleteAllSelected)());
 	    }
-	  }, {
-	    key: '_downloadMidi',
-	
 	
 	    /**
 	     * Function to handle with click from the Download CHORD or Download SCALE
@@ -54941,6 +54916,9 @@
 	     * AWS lambda function on the server side
 	     * @param {event} e 
 	     */
+	
+	  }, {
+	    key: '_downloadMidi',
 	    value: function _downloadMidi(e) {
 	      // show the UI user feedback modal to show the download is being preped
 	      this._showDownloading();
@@ -54972,12 +54950,9 @@
 	
 	        // ERROR
 	      } else {
-	        console.error("Error cannot send data for file download!");
-	      }
+	          // console.error("Error cannot send data for file download!");
+	        }
 	    }
-	  }, {
-	    key: 'callMidiApi',
-	
 	
 	    /**
 	     * Call the AWS API gateway end point and pass the params which were
@@ -54988,12 +54963,14 @@
 	     * @param {string} name 
 	     * @param {string} midi_type 
 	     */
+	
+	  }, {
+	    key: 'callMidiApi',
 	    value: function callMidiApi(notes, name, midi_type) {
 	      var _this2 = this;
 	
 	      // call the api funciton which hits the endpoint
 	      midiApi.generateMidi(notes, name, midi_type).then(function (response) {
-	        console.log("callMidiApi > response = ", response);
 	        // hide the modal window alerting the user
 	        _this2._hideDownloading();
 	        // Lambda responds with S3 download link
@@ -55007,11 +54984,11 @@
 	            // download the file in a new window - pop up may be blocked
 	            window.open(_this2.state.downloadLink);
 	          });
-	        };
+	        }
 	      }).catch(function (error) {
 	        _this2._hideDownloading();
 	        _this2._showError();
-	        console.log('Error in chord bank: ', error);
+	        // console.log('Error in chord bank: ', error);
 	      });
 	    }
 	  }, {
@@ -55101,8 +55078,6 @@
 	
 	  return DownloadMidi;
 	}(_react.Component);
-	
-	;
 	
 	var mapStoreToProps = function mapStoreToProps(store) {
 	  return {
@@ -55298,7 +55273,7 @@
 	        if (selectedFretIndex !== null && selectedFretNote !== null) {
 	          _store2.default.dispatch((0, _actions.deleteSelected)(a, selectedFretIndex));
 	          _store2.default.dispatch((0, _actions2.deleteNote)(selectedFretNote));
-	        };
+	        }
 	
 	        // add note
 	        _store2.default.dispatch((0, _actions.addSelected)(a, b));
@@ -56451,8 +56426,6 @@
 	
 	  osc.start();
 	
-	  console.log("freq: ", freq, ", freq_value: ", freq_value);
-	
 	  setTimeout(function () {
 	    osc.stop();
 	    // masterGainNode.gain.value = 0.5;
@@ -56668,8 +56641,6 @@
 	  return Fret;
 	}(_react.Component);
 	
-	;
-	
 	Fret.propTypes = {
 	  note: _propTypes2.default.object,
 	  handleFretClick: _propTypes2.default.func
@@ -56845,8 +56816,6 @@
 	
 	  return Tuning;
 	}(_react.Component);
-	
-	;
 	
 	var mapStoreToProps = function mapStoreToProps(store) {
 	  return {
@@ -57245,8 +57214,6 @@
 	  return TuningBar;
 	}(_react.Component);
 	
-	;
-	
 	var mapStoreToProps = function mapStoreToProps(store) {
 	  return {
 	    tuningSelection: store.fretboardState.tuning
@@ -57354,22 +57321,30 @@
 	
 	        if (_this2.props.type === "chord") {
 	          _this2.props.highlighted.map(function (highlighted_note) {
-	            if (note === highlighted_note) key_class_mod = "highlighted";
+	            if (note === highlighted_note) {
+	              key_class_mod = "highlighted";
+	            }
 	          });
 	
 	          _this2.props.difference.map(function (difference_note) {
-	            if (note === difference_note) key_class_mod = "difference";
+	            if (note === difference_note) {
+	              key_class_mod = "difference";
+	            }
 	          });
 	        } else if (_this2.props.type === "scale") {
 	          if (_this2.props.selectedScaleNotes !== undefined || _this2.props.selectedScaleNotes !== null) {
 	
 	            if (_this2.props.selectedScaleNotes === "") {
 	              _this2.props.selectedScaleNotes.split(",").map(function (highlighted_note) {
-	                if (note === highlighted_note) key_class_mod = "scale";
+	                if (note === highlighted_note) {
+	                  key_class_mod = "scale";
+	                }
 	              });
 	            } else {
 	              _this2.props.selectedScaleNotes.map(function (highlighted_note) {
-	                if (note === highlighted_note) key_class_mod = "scale";
+	                if (note === highlighted_note) {
+	                  key_class_mod = "scale";
+	                }
 	              });
 	            }
 	          }
@@ -57477,7 +57452,9 @@
 	  _createClass(Key, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      if (this.props.note.indexOf("#") >= 0) this.setState({ note_class_modifier: " sharp" });
+	      if (this.props.note.indexOf("#") >= 0) {
+	        this.setState({ note_class_modifier: " sharp" });
+	      }
 	    }
 	  }, {
 	    key: '_handleKeyClick',
@@ -57494,7 +57471,6 @@
 	        selected: true
 	      }, function () {
 	        _store2.default.dispatch((0, _actions.addNote)(_this2.props.note));
-	        console.log("Adding ", _this2.props.note);
 	      });
 	    }
 	  }, {
@@ -57506,22 +57482,30 @@
 	        selected: false
 	      }, function () {
 	        _store2.default.dispatch((0, _actions.deleteNote)(_this3.props.note));
-	        console.log("Deleting ", _this3.props.note);
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var id = this.props.id;
+	      var _props = this.props,
+	          id = _props.id,
+	          key_class_mod = _props.key_class_mod,
+	          note = _props.note,
+	          showLaptopKey = _props.showLaptopKey,
+	          keyboard_note = _props.keyboard_note;
+	      var note_class_modifier = this.state.note_class_modifier;
 	
+	
+	      var keyName = showLaptopKey ? keyboard_note : note;
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { id: id, className: 'keyboard__key' + this.state.note_class_modifier + ' ' + this.props.key_class_mod + ' ' + this.props.note.charAt(0) },
+	        { id: id,
+	          className: 'keyboard__key\n        ' + note_class_modifier + ' ' + key_class_mod + ' ' + note.charAt(0) },
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'key__name' },
-	          this.props.showLaptopKey ? this.props.keyboard_note : this.props.note
+	          keyName
 	        )
 	      );
 	    }
@@ -60483,11 +60467,16 @@
 	    value: function changeScale(e) {
 	      var _this2 = this;
 	
+	      var _state = this.state,
+	          selectedNotes = _state.selectedNotes,
+	          selectedScale = _state.selectedScale;
+	
+	
 	      this.setState({
 	        selectedScale: e.value.replace(" ", "")
 	      }, function () {
 	
-	        var split = _this2.state.selectedScale.split("-");
+	        var split = selectedScale.split("-");
 	        var rootName = split[0];
 	        var modeName = split[1].replace(" ", "");
 	
@@ -60498,7 +60487,7 @@
 	        _this2.setState({
 	          selectedNotes: selectedNotes[0].notes
 	        }, function () {
-	          _store2.default.dispatch(chordbankAction.setSelectedScale(_this2.state.selectedNotes, _this2.state.selectedScale));
+	          _store2.default.dispatch(chordbankAction.setSelectedScale(selectedNotes, selectedScale));
 	        });
 	      });
 	    }
@@ -60545,8 +60534,6 @@
 	
 	  return ScaleSelect;
 	}(_react.Component);
-	
-	;
 	
 	var mapStoreToProps = function mapStoreToProps(store) {
 	  return {
@@ -60627,8 +60614,9 @@
 	        case 'gplus':
 	          href = 'https://plus.google.com/share?url=' + location.href;
 	          break;
+	
 	        default:
-	          console.log('no network');
+	          return null;
 	      }
 	
 	      window.open(href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=253,width=600');
@@ -60960,6 +60948,8 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var classVideoVisible = this.state.classVideoVisible;
+	
 	
 	      var howToUse = _react2.default.createElement(_reactPlayer2.default, {
 	        url: "https://www.youtube.com/watch?v=Wcg4J60LyPI",
@@ -61034,13 +61024,13 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'modal__curtain ' + this.state.classVideoVisible,
+	          { className: 'modal__curtain ' + classVideoVisible,
 	            onClick: this._hideHowToUse.bind(this) },
 	          ' '
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'howToUse__video-container ' + this.state.classVideoVisible },
+	          { className: 'howToUse__video-container ' + classVideoVisible },
 	          _react2.default.createElement(
 	            'p',
 	            { onClick: this._hideHowToUse.bind(this) },
@@ -65117,7 +65107,6 @@
 	  _createClass(Footer, [{
 	    key: '_handleClick',
 	    value: function _handleClick(type) {
-	      console.log('click', type);
 	
 	      var url = "";
 	
