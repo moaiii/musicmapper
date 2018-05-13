@@ -25,7 +25,7 @@ deploy:
   region: eu-west-1
   on: *2
 script:
+  - npm run lint
   - zip -r latest *
   - mkdir -p dpl_cd_upload
-  - npm run lint
   - mv latest.zip dpl_cd_upload/latest.zip
