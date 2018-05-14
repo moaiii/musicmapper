@@ -9,7 +9,7 @@ Built using React, Node, AWS lambda and other goodies.
 ## Deploy
 This ueses a travis-ci deployment pipeline. Run `git push origin master` and if all unit and integration tests pass the app will be automatically deployed.
 
-##Tests
+## Tests
 Tests use the Jest and Pupeteer frameworks and are broken into 3 sections.
 
 1. Reducers
