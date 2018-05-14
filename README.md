@@ -1,4 +1,4 @@
-# my musicmapper
+# Frets to Keys
 
 Map your fretboard notes and chords to their corresponding keyboard equivelent. 
 Built using React, Node, AWS lambda and other goodies. 
@@ -19,5 +19,7 @@ Tests use the Jest and Pupeteer frameworks and are broken into 3 sections.
 3. Integration
 `npm run test:integration` or `npm run test:integration:watch`
 
+## Live URL
+[http://ec2-54-77-155-243.eu-west-1.compute.amazonaws.com:4444]
 
 ~moaiii
