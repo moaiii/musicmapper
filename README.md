@@ -18,8 +18,10 @@ Tests use the Jest and Pupeteer frameworks and are broken into 3 sections.
 `npm run test:api` or `npm run test:api:watch`
 3. Integration
 `npm run test:integration` or `npm run test:integration:watch`
+4. Run all
+`npm run test` or `npm run test:watch`
 
 ## Live URL
-[http://ec2-54-77-155-243.eu-west-1.compute.amazonaws.com:4444]
+http://ec2-54-77-155-243.eu-west-1.compute.amazonaws.com:4444
 
 ~moaiii
