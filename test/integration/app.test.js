@@ -34,12 +34,12 @@ test('The tuner dropdown has options', async () => {
 
 
 test('Adding and deleting active notes', async () => {
-  // add three notes 
+  // add three notes
   await page.click('#fret-0-0');
   await page.click('#fret-1-0');
   await page.click('#fret-2-0');
-  
-  // delete one 
+
+  // delete one
   await page.click('#fret-2-0');
 
   // get active notes count
@@ -51,14 +51,14 @@ test('Adding and deleting active notes', async () => {
 
 
 test('Returning matching chords', async () => {
-  // add two notes 
+  // add two notes
   await page.click('#fret-0-0'); // E
   await page.click('#fret-1-0'); // A
   await page.click('#fret-2-0'); // D
-  
+
   // turn on exact chord matches
   await page.click('.chords__match-toggle div');
-  
+
   // get active notes count
   let chord_match_count = await page
     .$eval('.chords__list', el => el.childElementCount);
@@ -68,7 +68,7 @@ test('Returning matching chords', async () => {
 
 
 test('Selecting a chord and adding notes to the difference array', async () => {
-  // add two notes 
+  // add two notes
   await page.click('#fret-0-0'); // E
   await page.click('#fret-1-0'); // A
 
@@ -88,7 +88,7 @@ test('Selecting a chord and adding notes to the difference array', async () => {
 
 
 test('Clearing all data and selections', async () => {
-  // add two notes 
+  // add two notes
   await page.click('#fret-0-0'); // E
   await page.click('#fret-1-0'); // A
   // select 3rd chord match
@@ -98,17 +98,17 @@ test('Clearing all data and selections', async () => {
 
   let difference_notes_count = await page
     .$eval('.chordbank__difference-notes', el => el.childElementCount);
-  
+
   let chord_match_count = await page
     .$eval('.chords__list', el => el.childElementCount);
-   
+
   let chordbank_active_notes_count = await page
     .$eval('.chordbank__active-notes', el => el.childElementCount);
 
   let selected_chord_name = await page
     .$eval('.chordbank__selected-chord p', el => el.innerHTML);
 
-  expect(difference_notes_count).toEqual(0);    
+  expect(difference_notes_count).toEqual(0);
   expect(chord_match_count).toEqual(0);
   expect(chordbank_active_notes_count).toEqual(0);
   expect(selected_chord_name).toEqual('');
@@ -130,16 +130,16 @@ test('Laptop keyboard notes', async () => {
 
 
 test('Scale select dropdown has no value until chord is selected', async () => {
-  // add two notes 
+  // add two notes
   await page.click('#fret-0-0'); // E
   await page.click('#fret-1-0'); // A
-  
+
   // open scale select dropdown
   await page.click('.scales-selector .Dropdown-root');
 
   // get chord count
   let dropdown_selection_count = await page
-    .$eval('.scales-selector .Dropdown-root .Dropdown-menu', 
+    .$eval('.scales-selector .Dropdown-root .Dropdown-menu',
       el => el.childElementCount);
 
   expect(dropdown_selection_count).toBeLessThanOrEqual(1);
@@ -153,7 +153,7 @@ test('Scale select dropdown has no value until chord is selected', async () => {
 
   // get chord count (again)
   let dropdown_selection_count_two = await page
-    .$eval('.scales-selector .Dropdown-root .Dropdown-menu', 
+    .$eval('.scales-selector .Dropdown-root .Dropdown-menu',
       el => el.childElementCount);
 
   expect(dropdown_selection_count_two).toBeGreaterThan(10);

@@ -26,9 +26,11 @@ class TuningBar extends Component {
     this.setState({
       tooltipIsOn: !this.state.tooltipIsOn
     }, () => {
-      this.state.tooltipIsOn 
-        ? store.dispatch(generalAction.tooltipOn()) 
-        : store.dispatch(generalAction.tooltipOff());
+      if(this.state.tooltipIsOn) {
+        store.dispatch(generalAction.tooltipOn());
+      } else {
+        store.dispatch(generalAction.tooltipOff());
+      }
     });
   }
 
@@ -39,7 +41,7 @@ class TuningBar extends Component {
         activeLabel={'ON'}
         value={this.state.tooltipIsOn || false}
         onToggle={this.toggleTooltip} />;
-        
+
     return (
       <div className="controls__container">
         <div className="fretboard__header">
@@ -48,9 +50,9 @@ class TuningBar extends Component {
             <Tuning/>
             <div className="tuning__notes-container">
               {this.props.tuningSelection
-                .map((note: string, index: number) =>
-                  <h4 
-                    key={`tuning-note-${index}`} 
+                .map((note, index) =>
+                  <h4
+                    key={`tuning-note-${index}`}
                     className="tuning__note">
                     {note}
                   </h4>

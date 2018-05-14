@@ -6,8 +6,8 @@ describe('ChordBank', () => {
   // console.log(ChordBank);
   // const ChordBank = shallow(<ChordBank />);
 
-  it('renders correctly', () => { 
-    // expect(ChordBank).toMatchSnapshot(); 
+  it('renders correctly', () => {
+    // expect(ChordBank).toMatchSnapshot();
     expect();
   });
 });

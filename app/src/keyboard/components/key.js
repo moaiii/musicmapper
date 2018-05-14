@@ -14,12 +14,18 @@ class Key extends Component {
   }
 
   componentDidMount() {
-    if(this.props.note.indexOf("#") >= 0)
-    {this.setState({note_class_modifier: " sharp"});}
+    if(this.props.note.indexOf("#") >= 0) {
+      this.setState({note_class_modifier: " sharp"});
+    }
   }
 
   _handleKeyClick() {
-    !this.state.selected ? this._addNote() : this._deleteNote();
+    if(!this.state.selected) {
+      this._addNote();
+    } else {
+      this._deleteNote();
+    }
+
     store.dispatch(populateChordPossibilities());
   }
 
@@ -46,7 +52,7 @@ class Key extends Component {
     let keyName = showLaptopKey ? keyboard_note : note;
 
     return (
-      <div id={id} 
+      <div id={id}
         className={`keyboard__key
         ${note_class_modifier} ${key_class_mod} ${note.charAt(0)}`}>
         <p className="key__name">{keyName}</p>

@@ -49,14 +49,13 @@ export default function Utility() {
       }
 
       return notes;
-    },
-
-
-    renderScale: (intervals) => {
-      let test = [1, 2, 2, 1, 2, 1]; // 0, 1, 3, 5, 6, 8, 9,
-      let indices = intervals.map((int, array, index) => {
-        // if(index ==== 0 )
-      });
     }
+
+    // renderScale: (intervals) => {
+    //   let test = [1, 2, 2, 1, 2, 1]; // 0, 1, 3, 5, 6, 8, 9,
+    //   let indices = intervals.map((int, array, index) => {
+    //     // if(index ==== 0 )
+    //   });
+    // }
   };
 }

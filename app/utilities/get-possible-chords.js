@@ -13,7 +13,7 @@ export function get_possible_chords(activeNotes) {
 
 export function get_exact_chords(activeNotes) {
   return chords_data.filter(chord => {
-    return _.difference(chord.notes, activeNotes).length === 0 && 
+    return _.difference(chord.notes, activeNotes).length === 0 &&
       _.difference(activeNotes, chord.notes).length === 0; // i.e. no difference
   });
 }

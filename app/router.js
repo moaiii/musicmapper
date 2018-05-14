@@ -4,7 +4,7 @@ import {store} from './store';
 import LayoutMain from './src/main/components/layout-main';
 
 
-export default 
+export default
 <Router history={browserHistory}>
   <Route path="/" component={LayoutMain}>
   </Route>

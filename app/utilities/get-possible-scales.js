@@ -3,8 +3,8 @@ import scales_data from '../data/scales';
 const modes = ["Lydian", "Ionian", "Mixolydian", "Dorian", "Aeolian", "Phrygian", "Locrian"];
 
 export function get_possible_scales(chordName) {
-  let rootNote = chordName.charAt(1) === "#" 
-    ? chordName.substring(0, 2) 
+  let rootNote = chordName.charAt(1) === "#"
+    ? chordName.substring(0, 2)
     : chordName.substring(0, 1);
 
 

@@ -38,7 +38,7 @@ class Header extends Component {
       classVideoVisible: "isVisible"
     });
   }
-  
+
   _hideHowToUse() {
     this.setState({
       showHowToUse: false,
@@ -74,9 +74,11 @@ class Header extends Component {
     this.setState({
       tooltipIsOn: !this.state.tooltipIsOn
     }, () => {
-      this.state.tooltipIsOn ? 
-        store.dispatch(generalAction.tooltipOn()) :
+      if(this.state.tooltipIsOn) {
+        store.dispatch(generalAction.tooltipOn());
+      } else {
         store.dispatch(generalAction.tooltipOff());
+      }
     });
   }
 
@@ -84,11 +86,11 @@ class Header extends Component {
     const {classVideoVisible} = this.state;
 
     let howToUse =
-      <ReactPlayer 
+      <ReactPlayer
         url={"https://www.youtube.com/watch?v=Wcg4J60LyPI"}
         playing={this.state.showHowToUse}
       />;
-      // <Modal 
+      // <Modal
       //   {...HowToUseText}
       //   isVisible = {this.state.showHowToUse}
       //   onReject = {this._hideHowToUse}
@@ -96,7 +98,7 @@ class Header extends Component {
 
     let temp_hide = {
       display: 'none'
-    };    
+    };
 
     let toggle =
       <ToggleButton
@@ -123,7 +125,7 @@ class Header extends Component {
               Tooltips
               {toggle}
             </li>
-            <li className="nav__item --how-to-use" 
+            <li className="nav__item --how-to-use"
               onClick={this._showHowToUse.bind(this)}>
               How to use
               <FaQuestion />

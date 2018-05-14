@@ -10,7 +10,7 @@ import FaVolumeUp from 'react-icons/lib/fa/volume-up';
 import ReactTooltip from 'react-tooltip';
 
 
-//@flow 
+//@flow
 type Props = {
   audioEnabled: boolean
 };
@@ -108,18 +108,18 @@ class AudioController extends Component<Props, State> {
 
         <div className="icon__container icon__container--audio-control"
           onClick={this._handleClick.bind(this)}>
-          {this.props.audioEnabled ? 
+          {this.props.audioEnabled ?
             <FaVolumeUp className="icon volume"/> :
             <FaVolumeOff className="icon volume"/>}
         </div>
 
-        <ReactTooltip 
-          id='tooltip__audio-control' 
-          place="bottom" 
-          type="success" 
+        <ReactTooltip
+          id='tooltip__audio-control'
+          place="bottom"
+          type="success"
           effect="solid"
           disable={!this.props.tooltipIsOn}>
-          <p>Turn on if you want to hear</p> 
+          <p>Turn on if you want to hear</p>
           <p>the tone of each fret you select</p>
         </ReactTooltip>
       </div>

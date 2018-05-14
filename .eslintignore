@@ -2,3 +2,5 @@ public/*
 conf/*
 node_modules/*
 coverage/*
+server.js
+webpack.config.js

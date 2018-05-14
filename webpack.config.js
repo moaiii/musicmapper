@@ -22,9 +22,9 @@ module.exports = {
         test: path.join(__dirname, 'app'),
         loader: 'babel-loader'
       },
-      { 
-        test: /\.node$/, 
-        loader: 'node' 
+      {
+        test: /\.node$/,
+        loader: 'node'
       }
     ]
   },

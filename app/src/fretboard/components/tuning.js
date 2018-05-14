@@ -67,32 +67,32 @@ class Tuning extends Component {
 
     let all_tunings = tunings.map(tuning => tuning.name);
 
-    let tunings_dropdown = 
+    let tunings_dropdown =
       <Dropdown options = {all_tunings}
         onChange = {this._showConfirmationModal.bind(this)}
         value = {this.state.newTuning}
         placeholder = "Select a tuning" />;
 
-    let tunings_modal = 
-      <Modal 
+    let tunings_modal =
+      <Modal
         {...TuningChangeText}
         isVisible = {this.state.showConfirmationModal}
         onReject = {this._onRejectHandler}
         onConfirm = {this._onConfirmHandler} />;
-        
+
     return (
       <div className="tuning-selector"
         data-tip data-for='tooltip__tuning-selector'>
         {tunings_dropdown}
         {tunings_modal}
 
-        <ReactTooltip 
-          id='tooltip__tuning-selector' 
-          place="bottom" 
-          type="success" 
+        <ReactTooltip
+          id='tooltip__tuning-selector'
+          place="bottom"
+          type="success"
           effect="solid"
           disable={!this.props.tooltipIsOn}>
-          <p>Start here - Pick from a wide range of common tunings</p> 
+          <p>Start here - Pick from a wide range of common tunings</p>
           <p>This will overwrite any fret data you have already input</p>
         </ReactTooltip>
       </div>

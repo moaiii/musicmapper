@@ -30,16 +30,16 @@ class ScaleSelect extends Component {
   changeScale(e) {
     const {selectedNotes, selectedScale} = this.state;
 
-    this.setState({ 
+    this.setState({
       selectedScale: e.value.replace(" ", "")
     }, () => {
 
       let split = selectedScale.split("-");
       let rootName = split[0];
       let modeName = split[1].replace(" ", "");
-  
+
       let selectedNotes = this.props.allPossibleScales
-        .filter(scale => 
+        .filter(scale =>
           scale.root === rootName && scale.mode === modeName);
 
       this.setState({
@@ -56,26 +56,26 @@ class ScaleSelect extends Component {
     let scale_options = this.state.allScales
       .map(scale => `${scale.root} - ${scale.mode}`);
 
-    let scaleSelectDropdown = 
-      <Dropdown 
+    let scaleSelectDropdown =
+      <Dropdown
         options = {scale_options}
         onChange = {this.changeScale.bind(this)}
         value = {this.state.selectedScale}
         placeholder = "Select a scale" />;
 
-        
+
     return (
       <div className="scales-selector"
         data-tip data-for='tooltip__scales-selector'>
         {scaleSelectDropdown}
 
-        <ReactTooltip 
-          id='tooltip__scales-selector' 
-          place="top" 
-          type="success" 
+        <ReactTooltip
+          id='tooltip__scales-selector'
+          place="top"
+          type="success"
           effect="solid"
           disable={!this.props.tooltipIsOn}>
-          <p>Here you can see all possible scales</p> 
+          <p>Here you can see all possible scales</p>
           <p>associated with your selected chord.</p>
         </ReactTooltip>
       </div>

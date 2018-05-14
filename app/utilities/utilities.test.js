@@ -1,15 +1,14 @@
 import {get_exact_chords, get_all_possible_chords} from './get-possible-chords';
-import {get_mode_scales, get_possible_scales, get_all_possible_scales} from './get-possible-scales';import React from 'react';
+import {get_mode_scales, get_possible_scales, get_all_possible_scales} from './get-possible-scales';
 import Utility from './utility';
-import scales_data from '../data/scales';
 
 describe('utility: get chords', () => {
   describe('retrieving an exact chord', () => {
     it('should return one correct chord', () => {
-      expect(get_exact_chords(['E','B'])[0])
+      expect(get_exact_chords(['E', 'B'])[0])
         .toHaveProperty('name', 'E5');
 
-      expect(get_exact_chords(['E','B']))
+      expect(get_exact_chords(['E', 'B']))
         .toHaveLength(1);
     });
 
@@ -18,17 +17,17 @@ describe('utility: get chords', () => {
         .toHaveLength(0);
     });
   });
-  
+
   describe('retrieving all possible chords', () => {
     it('should return several chords', () => {
-      expect(get_all_possible_chords(['E','B','A','C','F']))
+      expect(get_all_possible_chords(['E', 'B', 'A', 'C', 'F']))
         .toHaveLength(3);
 
-      expect(get_all_possible_chords(['E','B','A','C','F']))
+      expect(get_all_possible_chords(['E', 'B', 'A', 'C', 'F']))
         .toContainEqual({
-          'difference': ['G', 'D'], 
-          'name': 'G13', 
-          'notes': ['G', 'B', 'D', 'F', 'A', 'C', 'E'], 
+          'difference': ['G', 'D'],
+          'name': 'G13',
+          'notes': ['G', 'B', 'D', 'F', 'A', 'C', 'E'],
           'type': 'thirteenths'
         });
     });

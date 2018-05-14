@@ -46,42 +46,42 @@ class Footer extends Component {
 
   render() {
 
-    let iconStyle = { 
-      width: 15, 
-      height: 15, 
-      display: 'inline-block' 
+    let iconStyle = {
+      width: 15,
+      height: 15,
+      display: 'inline-block'
     };
 
     return (
       <div className="footer">
         <div className="contact__container">
-          <div className="icon__container" 
+          <div className="icon__container"
             onClick={this._handleClick.bind(this, "twitter")}>
             <FaTwitter
               className="icon"
               style={iconStyle}/>
           </div>
-          <div className="icon__container" 
+          <div className="icon__container"
             onClick={this._handleClick.bind(this, "soundcloud")}>
             <FaSoundcloud
               className="icon"
               style={iconStyle}/>
           </div>
-          <div className="icon__container" 
+          <div className="icon__container"
             onClick={this._handleClick.bind(this, "youtube")}>
             <FaYoutube
               className="icon"
               style={iconStyle}
             />
           </div>
-          <div className="icon__container" 
+          <div className="icon__container"
             onClick={this._handleClick.bind(this, "instagram")}>
             <FaInstagram
               className="icon"
               style={iconStyle}
             />
           </div>
-          <div className="icon__container" 
+          <div className="icon__container"
             onClick={this._handleClick.bind(this, "facebook")}>
             <FaFacebook
               className="icon"

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import React, {Component} from 'react';
+import {Component} from 'react';
 import store from '../../../store';
 import {clearAllNotes} from '../../chordbank/actions';
 import {clearSelection} from '../../keyboard/actions';
@@ -43,7 +43,7 @@ export class ChordBank extends Component {
     this.setState({showError: false});
   }
 
-  
+
   _clearNotes() {
     store.dispatch(clearAllNotes());
     store.dispatch(clearSelection());
@@ -52,15 +52,15 @@ export class ChordBank extends Component {
 
 
   /**
-   * @param {event} e 
+   * @param {event} e
    */
   _downloadMidi(e) {
     this._showDownloading();
-    
-    let midi_type = e.currentTarget.getAttribute('data-download'); 
-    
+
+    let midi_type = e.currentTarget.getAttribute('data-download');
+
     if(midi_type === "scales") {
-      
+
       let scales_name = `${this.props.selectedChord}-modes`;
       let scale_notes = {notes: JSON.stringify(this.props.modeScales[0])};
 
@@ -76,13 +76,13 @@ export class ChordBank extends Component {
 
     } else {
       // console.error("Error cannot send data for file download!");
-    } 
-  } 
+    }
+  }
 
   /**
-   * @param {string} notes 
-   * @param {string} name 
-   * @param {string} midi_type 
+   * @param {string} notes
+   * @param {string} name
+   * @param {string} midi_type
    */
   callMidiApi(notes, name, midi_type) {
     midiApi.generateMidi(notes, name, midi_type)
@@ -94,7 +94,7 @@ export class ChordBank extends Component {
         if (downloadLink !== undefined) {
           this.setState({
             downloadLink: downloadLink
-  
+
           }, () => {
             window.open(this.state.downloadLink);
           });
@@ -123,7 +123,7 @@ export class ChordBank extends Component {
           onReject = {this._hideError.bind(this)}
           onConfirm = {this._hideError.bind(this)} />;
 
-        
+
     return(
       <div className="chordbank">
         {progressDownloadModal}
@@ -162,11 +162,11 @@ export class ChordBank extends Component {
               </p>
             )}
           </div>
-          
-          <ReactTooltip 
-            id='tooltip__difference' 
+
+          <ReactTooltip
+            id='tooltip__difference'
             place="right" type="success" effect="solid" disable={!this.props.tooltipIsOn}>
-            <p>This shows the notes in your selected chord which are</p> 
+            <p>This shows the notes in your selected chord which are</p>
             <p>missing from the frets you selected, they will show on the</p>
             <p>keyboard in yellow</p>
           </ReactTooltip>

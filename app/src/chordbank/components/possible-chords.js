@@ -97,25 +97,25 @@ class PossibleChords extends Component {
           {this.props.isShowingExactChordMatches ? exactChords : possibleChords}
         </div>
 
-        <ReactTooltip 
-          id='tooltip__chords__list' 
-          place="left" 
-          type="success" 
-          effect="solid" 
+        <ReactTooltip
+          id='tooltip__chords__list'
+          place="left"
+          type="success"
+          effect="solid"
           disable={!this.props.tooltipIsOn}>
-          <p>All chords containing the notes you 
-            have selected on the fretboard</p> 
-          <p>will show here - select one to show 
+          <p>All chords containing the notes you
+            have selected on the fretboard</p>
+          <p>will show here - select one to show
             its shape in the keyboard</p>
         </ReactTooltip>
 
-        <ReactTooltip 
-          id='tooltip__match-toggle' 
-          place="left" 
-          type="success" 
-          effect="solid" 
+        <ReactTooltip
+          id='tooltip__match-toggle'
+          place="left"
+          type="success"
+          effect="solid"
           disable={!this.props.tooltipIsOn}>
-          <p>Show only the chords that match the exact notes you select</p> 
+          <p>Show only the chords that match the exact notes you select</p>
         </ReactTooltip>
       </div>
     );

@@ -16,18 +16,18 @@ describe('Fretboard reducer', () => {
 
   describe('calculating notes', () => {
     let initialState = {
-      tuning: ['E','A','D','G','B','E'],
+      tuning: ['E', 'A', 'D', 'G', 'B', 'E'],
       fretboardNotes: [],
       audioEnabled: false
     };
 
     it('should return a 6 x 23 matrix (2d array)', () => {
-      // testing a 2d array workaround 
+      // testing a 2d array workaround
       for(let i=0; i<6; i++) {
         // we have a full note
         expect(reducer(initialState, actions.calculateFretboardNotes())['fretboardNotes'][i])
           .toHaveLength(23);
-        // the 12th fret note is the same as the root open note (1 octave) 
+        // the 12th fret note is the same as the root open note (1 octave)
         expect(reducer(initialState, actions.calculateFretboardNotes())['fretboardNotes'][i][12]['note'])
           .toEqual(initialState.tuning[i]);
       }
@@ -44,15 +44,15 @@ describe('Fretboard reducer', () => {
   describe('deleting a note from the fretboard', () => {
     it('sets its \'selected\' value in the matrix to false', () => {
       let stateWithTuningData = reducer(undefined, actions.changeTuning('STANDARD'));
-      
-      let stateWithFretboardData = reducer(stateWithTuningData, 
+
+      let stateWithFretboardData = reducer(stateWithTuningData,
         actions.calculateFretboardNotes());
 
-      let stateWithSelectedNote = reducer(stateWithFretboardData, 
-        actions.addSelected(3,13));
+      let stateWithSelectedNote = reducer(stateWithFretboardData,
+        actions.addSelected(3, 13));
 
-      expect(reducer(stateWithSelectedNote, 
-        actions.deleteSelected(3,13))['fretboardNotes'][3][13].selected)
+      expect(reducer(stateWithSelectedNote,
+        actions.deleteSelected(3, 13))['fretboardNotes'][3][13].selected)
         .toEqual(false);
     });
   });
@@ -60,15 +60,15 @@ describe('Fretboard reducer', () => {
   describe('selecting a note on the fretboard', () => {
     it('sets its \'selected\' value in the matrix to true', () => {
       let stateWithTuningData = reducer(undefined, actions.changeTuning('STANDARD'));
-      
-      let stateWithFretboardData = reducer(stateWithTuningData, 
+
+      let stateWithFretboardData = reducer(stateWithTuningData,
         actions.calculateFretboardNotes());
 
       // truth checks
-      expect(reducer(stateWithFretboardData, actions.addSelected(0,0))['fretboardNotes'][0][0].selected)
+      expect(reducer(stateWithFretboardData, actions.addSelected(0, 0))['fretboardNotes'][0][0].selected)
         .toEqual(true);
       // false checks
-      expect(reducer(stateWithFretboardData, actions.addSelected(3,0))['fretboardNotes'][3][12].selected)
+      expect(reducer(stateWithFretboardData, actions.addSelected(3, 0))['fretboardNotes'][3][12].selected)
         .toEqual(false);
     });
 
@@ -77,12 +77,12 @@ describe('Fretboard reducer', () => {
 
   describe('deleting all selected notes in the fretboard', () => {
     let stateWithTuningData = reducer(undefined, actions.changeTuning('STANDARD'));
-    
-    let stateWithFretboardData = reducer(stateWithTuningData, 
+
+    let stateWithFretboardData = reducer(stateWithTuningData,
       actions.calculateFretboardNotes());
-    
-    let stateWithSelectedNote = reducer(stateWithFretboardData, 
-      actions.addSelected(0,12));
+
+    let stateWithSelectedNote = reducer(stateWithFretboardData,
+      actions.addSelected(0, 12));
 
     it('should return an matrix of 6 x 23', () => {
       for(let i=0; i<6; i++) {

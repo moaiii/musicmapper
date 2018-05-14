@@ -8,7 +8,7 @@ class String extends Component {
   constructor() {
     super();
   }
-  
+
   render() {
     const {stringIndex, notes, guide, stringNumber, handleClick} = this.props;
 
@@ -39,7 +39,6 @@ class String extends Component {
 String.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.object),
   id: PropTypes.number,
-  guide: PropTypes.bool,
   string_index: PropTypes.number,
   guide: PropTypes.bool
 };

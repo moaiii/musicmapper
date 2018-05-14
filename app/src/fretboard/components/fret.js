@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import store from '../../../store';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
 class Fret extends Component {
 
@@ -9,7 +7,7 @@ class Fret extends Component {
     super();
   }
 
-  handleClick = () => { 
+  handleClick = () => {
     this.props.handleClick();
   }
 
@@ -37,7 +35,12 @@ class Fret extends Component {
 
 Fret.propTypes = {
   note: PropTypes.object,
-  handleFretClick: PropTypes.func
+  handleFretClick: PropTypes.func,
+  isRoot: PropTypes.bool,
+  guide: PropTypes.bool,
+  fretIndex: PropTypes.number,
+  number: PropTypes.number,
+  handleClick: PropTypes.func
 };
 
 export default Fret;

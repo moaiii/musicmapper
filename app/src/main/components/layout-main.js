@@ -44,55 +44,55 @@ class LayoutMain extends Component {
 
   render() {
 
-    let ModalWarning = <Modal 
+    let ModalWarning = <Modal
       {...MobileWarningText}
       isVisible = {this.state.showConfirmationModal}
       onReject = {this._onRejectHandler}
       onConfirm = {this._onConfirmHandler} />;
 
-    let mobileLandscapeNotification = 
+    let mobileLandscapeNotification =
       <div className="app__mobile-landscape-notification">
         <h1>Please orientate your device</h1>
         <p>This app is viewed best in landscape mode</p>
       </div>;
 
-    let downloadMidi = 
+    let downloadMidi =
       <div className="main__downloadmidi">
         <h1 className="choice__title">Download Midi</h1>
         <DownloadMidi />
       </div>;
 
-    let chordchoice = 
+    let chordchoice =
       <div className="main__choice">
         <h1 className="choice__title">Choice</h1>
         <ChordBank />
       </div>;
 
-    let chordoptions = 
+    let chordoptions =
       <div className="main__options">
         <h1 className="options__title">Options</h1>
         <PossibleChords />
       </div>;
 
-    let chordkeyboard = 
+    let chordkeyboard =
       <div className="keyboards__chord">
         <h2>Chord</h2>
         <Keyboard type="chord"/>
       </div>;
 
-    let scalekeyboard = 
+    let scalekeyboard =
       <div className="keyboards__scale">
         <h2>Scale</h2>
         <Keyboard type="scale"/>
       </div>;
 
-    let fretboard = 
+    let fretboard =
       <div className="fretboard__container">
         <h1>Fretboard</h1>
         <Fretboard />
       </div>;
 
-    let keyboardcontrols = 
+    let keyboardcontrols =
       <div className="keyboard__controller">
         <h1 className="keyboard__title">Keyboard</h1>
         <LaptopCheck />

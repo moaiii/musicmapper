@@ -27,11 +27,15 @@ class Keyboard extends Component {
 
       if(this.props.type === "chord") {
         this.props.highlighted.map(highlighted_note => {
-          if(note === highlighted_note) {key_class_mod = "highlighted";}
+          if(note === highlighted_note) {
+            key_class_mod = "highlighted";
+          }
         });
-  
+
         this.props.difference.map(difference_note => {
-          if(note === difference_note) {key_class_mod = "difference";}
+          if(note === difference_note) {
+            key_class_mod = "difference";
+          }
         });
 
       } else if (this.props.type === "scale") {
@@ -42,12 +46,16 @@ class Keyboard extends Component {
             this.props.selectedScaleNotes
               .split(",")
               .map(highlighted_note => {
-                if(note === highlighted_note) {key_class_mod = "scale";}
+                if(note === highlighted_note) {
+                  key_class_mod = "scale";
+                }
               });
           } else {
             this.props.selectedScaleNotes
               .map(highlighted_note => {
-                if(note === highlighted_note) {key_class_mod = "scale";}
+                if(note === highlighted_note) {
+                  key_class_mod = "scale";
+                }
               });
           }
         }
@@ -64,15 +72,15 @@ class Keyboard extends Component {
           key_class_mod={key_class_mod} />);
     });
 
-    let tooltip__keyboard = 
-      <ReactTooltip 
-        id='tooltip__keyboard' 
-        place="top" 
-        type="success" 
+    let tooltip__keyboard =
+      <ReactTooltip
+        id='tooltip__keyboard'
+        place="top"
+        type="success"
         effect="solid"
         disable={!this.props.tooltipIsOn}>
-        <p>The notes of your selected chord from the 
-          right hand panel will show here.</p> 
+        <p>The notes of your selected chord from the
+          right hand panel will show here.</p>
         <p>Any missing notes from your fret inputs will show in yellow.</p>
       </ReactTooltip>;
 

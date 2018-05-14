@@ -52,5 +52,5 @@ app.get('*', function(req, res, next) {
 });
 
 var server = app.listen(4444, '0.0.0.0', function(){
-  // console.log('Server running on port: ' + server.address().port);
+  console.log('Server running on port: ' + server.address().port);
 });

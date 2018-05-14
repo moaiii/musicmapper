@@ -13,20 +13,20 @@ describe('Keyboard reducer', () => {
 
   describe('highlighting the selected', () => {
     let payload = {
-      notes: ['a','b','c'],
-      difference: ['d','e','f']
+      notes: ['a', 'b', 'c'],
+      difference: ['d', 'e', 'f']
     };
 
     it('sets the notes in the array', () => {
       expect(reducer(undefined, actions.highlightSelection(payload)))
-        .toHaveProperty('highlightedNotes', ['a','b','c']);
+        .toHaveProperty('highlightedNotes', ['a', 'b', 'c']);
       expect(reducer(undefined, actions.highlightSelection(payload)))
-        .not.toHaveProperty('highlightedNotes', ['d','e','f']);
+        .not.toHaveProperty('highlightedNotes', ['d', 'e', 'f']);
 
       expect(reducer(undefined, actions.highlightSelection(payload)))
-        .toHaveProperty('differenceNotes', ['d','e','f']);
+        .toHaveProperty('differenceNotes', ['d', 'e', 'f']);
       expect(reducer(undefined, actions.highlightSelection(payload)))
-        .not.toHaveProperty('differenceNotes', ['a','b','c']);
+        .not.toHaveProperty('differenceNotes', ['a', 'b', 'c']);
     });
   });
 

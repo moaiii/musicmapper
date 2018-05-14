@@ -35,13 +35,13 @@ class LaptopChecked extends Component {
           value={ this.state.disabled || false }
           onToggle={this._toggleLaptopKeyboardKeys.bind(this)} />
 
-        <ReactTooltip 
-          id='tooltip__laptop-notes' 
-          place="top" 
-          type="success" 
+        <ReactTooltip
+          id='tooltip__laptop-notes'
+          place="top"
+          type="success"
           effect="solid"
           disable={!this.props.tooltipIsOn}>
-          <p>Show the keyboard as it appears on your laptop </p> 
+          <p>Show the keyboard as it appears on your laptop </p>
           <p>for quick use in your DAW</p>
         </ReactTooltip>
       </div>
