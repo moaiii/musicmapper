@@ -1,6 +1,5 @@
 // Functional modules
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 
 // Child modules
 import FaYoutube from 'react-icons/lib/fa/youtube';
@@ -9,14 +8,13 @@ import FaTwitter from 'react-icons/lib/fa/twitter';
 import FaInstagram from 'react-icons/lib/fa/instagram';
 import FaSoundcloud from 'react-icons/lib/fa/soundcloud';
 
-
 class Footer extends Component {
 
-  constructor() {
+  constructor () {
     super();
   }
 
-  _handleClick(type) {
+  _handleClick (type) {
 
     let url = "";
 
@@ -44,7 +42,7 @@ class Footer extends Component {
     win.focus();
   }
 
-  render() {
+  render () {
 
     let iconStyle = {
       width: 15,

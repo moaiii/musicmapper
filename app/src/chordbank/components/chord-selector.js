@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
-
+import PropTypes from 'prop-types';
 
 class ChordSelector extends Component {
 
-  constructor() {
+  constructor () {
     super();
 
     this.state = {
@@ -12,18 +12,19 @@ class ChordSelector extends Component {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount () {}
 
-  _onChordChange(e) {
+  _onChordChange (e) {
     this.setState({
       selectedOption: e.target.value
     });
   }
 
-  render() {
+  render () {
+    const {chordSelectors} = this.props;
 
-    let radioButtons = this.props.chordSelectors.map((selector, index) =>
-      <div className="radio">
+    let radioButtons = chordSelectors.map((selector, index) =>
+      <div className="radio" key={`chord-select-${index}`}>
         <label>
           <input type="radio"
             value={`option${index}`}
@@ -43,6 +44,10 @@ class ChordSelector extends Component {
     );
   }
 }
+
+ChordSelector.propTypes = {
+  chordSelectors: PropTypes.array
+};
 
 const mapStoreToProps = (store) => {
   return {

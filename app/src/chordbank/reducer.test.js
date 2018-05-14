@@ -100,18 +100,18 @@ describe('Chordbank reducer', () => {
   // action: CHORDBANK_TOGGLE_EXACT_MATCHING
   describe('setting exact chord matching mode', () => {
     expect.extend({
-      toBeOfType(received, argument) {
+      toBeOfType (received, argument) {
         if(typeof received === argument) {
           return {
             message: () => `expected ${received} to be a ${argument}`,
             pass: true
           };
-        } else {
-          return {
-            message: () => `expected ${received} to be a ${argument}`,
-            pass: false
-          };
         }
+        return {
+          message: () => `expected ${received} to be a ${argument}`,
+          pass: false
+        };
+
       }
     });
 

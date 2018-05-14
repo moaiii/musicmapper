@@ -6,20 +6,18 @@ let masterGainNode = audioContext.createGain();
 masterGainNode.connect(audioContext.destination);
 masterGainNode.gain.value = 0.2;
 
-
 /**
- *
- * @param freq {String}
- * @returns {*}
+ * @param {String} freq frequency value
+ * @param {number} octave octave
+ * @returns {*} oscillator object
  */
-export function playTone(freq, octave) {
+export function playTone (freq, octave) {
 
   let freq_value = base_freq[freq] * Math.pow(octave, 2);
 
   let osc = audioContext.createOscillator();
   osc.connect(masterGainNode);
   osc.type = "triangle";
-
   osc.frequency.value = freq_value;
 
   osc.start();

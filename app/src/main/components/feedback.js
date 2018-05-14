@@ -1,18 +1,15 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-
 
 class Footer extends Component {
 
-  constructor() {
+  constructor () {
     super();
   }
 
-  render() {
+  render () {
 
     return (
       <div className="feedback">
-        {FeedbackForm}
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Utility from '../../../utilities/utility';
 
 // child components
@@ -9,15 +10,15 @@ import ReactTooltip from 'react-tooltip';
 
 class Keyboard extends Component {
 
-  constructor() {
+  constructor () {
     super();
 
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount () {}
 
-  render() {
+  render () {
 
     let chromatic_data = Utility().getChromatic(1, "C");
 
@@ -93,6 +94,15 @@ class Keyboard extends Component {
     );
   }
 }
+
+Keyboard.propTypes = {
+  type: PropTypes.string,
+  highlighted: PropTypes.array,
+  difference: PropTypes.array,
+  selectedScaleNotes: PropTypes.array,
+  showLaptopKeys: PropTypes.bool,
+  tooltipIsOn: PropTypes.bool
+};
 
 const mapStoreToProps = (store) => {
   return {

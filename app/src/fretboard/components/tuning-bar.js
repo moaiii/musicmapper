@@ -1,18 +1,14 @@
-// functional components
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ToggleButton from 'react-toggle-button';
 import store from '../../../store';
+import PropTypes from 'prop-types';
 import * as generalAction from '../../main/actions';
-
-// child components
 import AudioController from './audio-controller';
 import Tuning from './tuning';
 
-
 class TuningBar extends Component {
-
-  constructor() {
+  constructor () {
     super();
 
     this.state = {
@@ -22,7 +18,7 @@ class TuningBar extends Component {
     this.toggleTooltip = this.toggleTooltip.bind(this);
   }
 
-  toggleTooltip() {
+  toggleTooltip () {
     this.setState({
       tooltipIsOn: !this.state.tooltipIsOn
     }, () => {
@@ -34,7 +30,7 @@ class TuningBar extends Component {
     });
   }
 
-  render() {
+  render () {
     let toggle =
       <ToggleButton
         inactiveLabel={'OFF'}
@@ -72,6 +68,10 @@ class TuningBar extends Component {
     );
   }
 }
+
+TuningBar.propTypes = {
+  tuningSelection: PropTypes.object
+};
 
 const mapStoreToProps = (store) => {
   return {

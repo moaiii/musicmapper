@@ -1,4 +1,4 @@
-export default function Utility() {
+export default function Utility () {
 
   const TOTAL_NUM_FRETS = 22;
 
@@ -26,12 +26,12 @@ export default function Utility() {
           "keyboard_chromatic": keyboard_chromatic.slice(index, index + 12)
         };
 
-      } else {
-        return {
-          "chromatic": chromatic,
-          "keyboard_chromatic": keyboard_chromatic
-        };
       }
+      return {
+        "chromatic": chromatic,
+        "keyboard_chromatic": keyboard_chromatic
+      };
+
     },
 
     renderString: (rootNote) => {

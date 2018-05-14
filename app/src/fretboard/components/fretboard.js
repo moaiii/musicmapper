@@ -1,24 +1,18 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-var _ = require('lodash');
 import store from '../../../store';
-
-import AudioController from './audio-controller';
-import {changeTuning, calculateFretboardNotes, addSelected, deleteSelected}
-  from "../../fretboard/actions";
-import {addNote, deleteNote, populateChordPossibilities}
-  from "../../chordbank/actions";
+import {addSelected, deleteSelected} from "../../fretboard/actions";
+import {addNote, deleteNote, populateChordPossibilities} from "../../chordbank/actions";
 import {playTone} from '../../../utilities/play-sound';
-
-// Child components
 import String from './string';
-import Tuning from './tuning';
 import ReactTooltip from 'react-tooltip';
 
+var _ = require('lodash');
 
 class Fretboard extends Component {
 
-  constructor() {
+  constructor () {
     super();
 
     this._handleClick = (a, b) => {
@@ -55,7 +49,7 @@ class Fretboard extends Component {
 
         // play tuning tone
         if(this.props.audioEnabled) {
-          this.playTone(this.props.fretboardNotes[a][b].note, octave);
+          playTone(this.props.fretboardNotes[a][b].note, octave);
         }
       }
 
@@ -65,7 +59,7 @@ class Fretboard extends Component {
     };
   }
 
-  render() {
+  render () {
 
     let numberGuide =
       <String
@@ -108,6 +102,12 @@ class Fretboard extends Component {
     );
   }
 }
+
+Fretboard.propTypes = {
+  fretboardNotes: PropTypes.array,
+  tooltipIsOn: PropTypes.bool,
+  audioEnabled: PropTypes.bool
+};
 
 const mapStoreToProps = (store) => {
   return {

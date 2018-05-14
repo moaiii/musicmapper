@@ -1,17 +1,14 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import store from '../../../store';
 import {toggleExactMatching, setSelectedChordName, populateAllScales} from '../actions';
 import {clearSelection, highlightSelection} from '../../keyboard/actions';
-
-// child components
 import ReactTooltip from 'react-tooltip';
 import ToggleButton from 'react-toggle-button';
 
-
 class PossibleChords extends Component {
-
-  constructor() {
+  constructor () {
     super();
 
     this.state = {
@@ -20,9 +17,7 @@ class PossibleChords extends Component {
     };
   }
 
-  componentDidMount() {}
-
-  onToggle() {
+  onToggle () {
     this.setState({
       isExactMatch: !this.state.isExactMatch
     }, () => {
@@ -30,7 +25,7 @@ class PossibleChords extends Component {
     });
   }
 
-  _handleChordSelection(e) {
+  _handleChordSelection (e) {
     store.dispatch(clearSelection());
     store.dispatch(highlightSelection({
       "notes": e.notes,
@@ -40,7 +35,7 @@ class PossibleChords extends Component {
     store.dispatch(populateAllScales());
   }
 
-  render(){
+  render () {
 
     let toggle =
       <ToggleButton
@@ -121,6 +116,14 @@ class PossibleChords extends Component {
     );
   }
 }
+
+PossibleChords.propTypes = {
+  isShowingExactChordMatches: PropTypes.bool,
+  possibleChords: PropTypes.array,
+  exactChords: PropTypes.array,
+  selected: PropTypes.string,
+  tooltipIsOn: PropTypes.bool
+};
 
 const mapStoreToProps = (store) => {
   return {

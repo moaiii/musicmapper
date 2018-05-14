@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import store from '../../../store';
 import {addNote, deleteNote, populateChordPossibilities} from '../../chordbank/actions';
 
 class Key extends Component {
 
-  constructor() {
+  constructor () {
     super();
 
     this.state = {
@@ -13,13 +14,13 @@ class Key extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount () {
     if(this.props.note.indexOf("#") >= 0) {
       this.setState({note_class_modifier: " sharp"});
     }
   }
 
-  _handleKeyClick() {
+  _handleKeyClick () {
     if(!this.state.selected) {
       this._addNote();
     } else {
@@ -29,7 +30,7 @@ class Key extends Component {
     store.dispatch(populateChordPossibilities());
   }
 
-  _addNote() {
+  _addNote () {
     this.setState({
       selected: true
     }, () => {
@@ -37,7 +38,7 @@ class Key extends Component {
     });
   }
 
-  _deleteNote() {
+  _deleteNote () {
     this.setState({
       selected: false
     }, () => {
@@ -45,7 +46,7 @@ class Key extends Component {
     });
   }
 
-  render() {
+  render () {
     const {id, key_class_mod, note, showLaptopKey, keyboard_note} = this.props;
     const {note_class_modifier} = this.state;
 
@@ -60,5 +61,13 @@ class Key extends Component {
     );
   }
 }
+
+Key.propTypes = {
+  id: PropTypes.string,
+  key_class_mod: PropTypes.string,
+  note: PropTypes.object,
+  showLaptopKey: PropTypes.bool,
+  keyboard_note: PropTypes.bool
+};
 
 export default Key;

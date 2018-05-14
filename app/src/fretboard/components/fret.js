@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Fret extends Component {
 
-  constructor() {
+  constructor () {
     super();
   }
 
@@ -11,7 +11,7 @@ class Fret extends Component {
     this.props.handleClick();
   }
 
-  render() {
+  render () {
     let {note, isRoot, guide, fretIndex, number} = this.props;
 
     let selectedModifier = note.selected ? ' selected' : '';
@@ -38,7 +38,7 @@ Fret.propTypes = {
   handleFretClick: PropTypes.func,
   isRoot: PropTypes.bool,
   guide: PropTypes.bool,
-  fretIndex: PropTypes.number,
+  fretIndex: PropTypes.string,
   number: PropTypes.number,
   handleClick: PropTypes.func
 };

@@ -3,15 +3,15 @@ import Dropdown from 'react-dropdown';
 import React, {Component} from 'react';
 import store from '../../../store';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import * as chordbankAction from "../../chordbank/actions";
 
 //child components
 import ReactTooltip from 'react-tooltip';
 
-
 class ScaleSelect extends Component {
 
-  constructor() {
+  constructor () {
     super();
 
     this.state = {
@@ -21,14 +21,14 @@ class ScaleSelect extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps (nextProps) {
     this.setState({
       allScales: nextProps.allPossibleScales
     });
   }
 
-  changeScale(e) {
-    const {selectedNotes, selectedScale} = this.state;
+  changeScale = (e) => {
+    const {selectedScale} = this.state;
 
     this.setState({
       selectedScale: e.value.replace(" ", "")
@@ -52,15 +52,19 @@ class ScaleSelect extends Component {
     });
   }
 
-  render() {
-    let scale_options = this.state.allScales
+  render () {
+    const {tooltipIsOn} = this.props;
+
+    const {allScales, selectedScale} = this.state;
+
+    let scale_options = allScales
       .map(scale => `${scale.root} - ${scale.mode}`);
 
     let scaleSelectDropdown =
       <Dropdown
         options = {scale_options}
-        onChange = {this.changeScale.bind(this)}
-        value = {this.state.selectedScale}
+        onChange = {this.changeScale}
+        value = {selectedScale}
         placeholder = "Select a scale" />;
 
 
@@ -74,7 +78,7 @@ class ScaleSelect extends Component {
           place="top"
           type="success"
           effect="solid"
-          disable={!this.props.tooltipIsOn}>
+          disable={!tooltipIsOn}>
           <p>Here you can see all possible scales</p>
           <p>associated with your selected chord.</p>
         </ReactTooltip>
@@ -82,6 +86,14 @@ class ScaleSelect extends Component {
     );
   }
 }
+
+ScaleSelect.propTypes = {
+  allPossibleScales: PropTypes.array,
+  selectedNotes: PropTypes.array,
+  selectedScale: PropTypes.array,
+  tooltipIsOn: PropTypes.bool
+};
+
 
 const mapStoreToProps = (store) => {
   return {

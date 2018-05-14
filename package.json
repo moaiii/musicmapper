@@ -1,6 +1,6 @@
 {
-  "name": "guitar-daw-helper",
-  "version": "0.0.1",
+  "name": "frets-to-keys",
+  "version": "1.0.0",
   "private": true,
   "description": "",
   "main": "bundle.js",
@@ -16,7 +16,6 @@
     "file-loader": "^0.8.5",
     "forever": "^0.15.3",
     "imports-loader": "^0.6.5",
-    "jest": "^22.4.3",
     "less": "^2.6.1",
     "less-loader": "^2.2.3",
     "lodash": "^4.17.4",
@@ -34,7 +33,6 @@
     "react-toggle-button": "^2.2.0",
     "react-tooltip": "^3.5.0",
     "redux": "^3.5.2",
-    "sass": "^1.3.1",
     "style-loader": "^0.13.1"
   },
   "devDependencies": {
@@ -62,6 +60,7 @@
     "flow-bin": "^0.54.1",
     "flow-status-webpack-plugin": "^0.1.7",
     "fs": "0.0.1-security",
+    "jest": "^22.4.3",    
     "jest-cli": "^22.4.3",
     "jsmidgen": "^0.1.5",
     "json-loader": "^0.5.7",
@@ -80,8 +79,10 @@
     "react-test-renderer": "^16.3.2",
     "redux-devtools": "^3.2.0",
     "redux-logger": "^3.0.6",
+    "sass": "^1.3.1",    
     "sass-loader": "^3.2.0",
     "smooth-scroll": "^11.1.0",
+    "stylelint": "^9.2.0",
     "webpack": "^1.13.0"
   },
   "jest": {
@@ -115,6 +116,6 @@
     "test:integration": "jest ./test/integration/app.test.js",
     "test:integration:watch": "jest ./test/integration/app.test.js --watch"
   },
-  "author": "Christopher Melville",
+  "author": "Christopher Melville (moaiii)",
   "license": "Private"
 }

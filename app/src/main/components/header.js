@@ -1,13 +1,10 @@
 // functional components
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import ReactSVG from 'react-svg';
-import {HowToUseText} from '../../../data/modal-text';
 import store from '../../../store';
 import * as generalAction from '../actions';
 
 // child components
-import Modal from './modal';
 import FaQuestion from 'react-icons/lib/fa/question';
 import Share from './share';
 import ToggleButton from 'react-toggle-button';
@@ -16,7 +13,7 @@ import ReactPlayer from 'react-player';
 
 class Header extends Component {
 
-  constructor() {
+  constructor () {
     super();
 
     this.state = {
@@ -32,45 +29,45 @@ class Header extends Component {
     this.toggleTooltip = this.toggleTooltip.bind(this);
   }
 
-  _showHowToUse() {
+  _showHowToUse () {
     this.setState({
       showHowToUse: true,
       classVideoVisible: "isVisible"
     });
   }
 
-  _hideHowToUse() {
+  _hideHowToUse () {
     this.setState({
       showHowToUse: false,
       classVideoVisible: ""
     });
   }
 
-  _showLogin() {
+  _showLogin () {
     this.setState({
       showLogin: true
     });
   }
 
-  _hideLogin() {
+  _hideLogin () {
     this.setState({
       showLogin: false
     });
   }
 
-  _showRegister() {
+  _showRegister () {
     this.setState({
       showRegister: true
     });
   }
 
-  _hideRegister() {
+  _hideRegister () {
     this.setState({
       showRegister: false
     });
   }
 
-  toggleTooltip() {
+  toggleTooltip () {
     this.setState({
       tooltipIsOn: !this.state.tooltipIsOn
     }, () => {
@@ -82,7 +79,7 @@ class Header extends Component {
     });
   }
 
-  render() {
+  render () {
     const {classVideoVisible} = this.state;
 
     let howToUse =
@@ -90,11 +87,6 @@ class Header extends Component {
         url={"https://www.youtube.com/watch?v=Wcg4J60LyPI"}
         playing={this.state.showHowToUse}
       />;
-      // <Modal
-      //   {...HowToUseText}
-      //   isVisible = {this.state.showHowToUse}
-      //   onReject = {this._hideHowToUse}
-      //   onConfirm = {this._hideHowToUse} />
 
     let temp_hide = {
       display: 'none'

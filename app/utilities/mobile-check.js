@@ -1,4 +1,4 @@
-export function mobileCheck() {
+export function mobileCheck () {
 
   // check for window resize
 

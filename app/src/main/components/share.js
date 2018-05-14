@@ -6,7 +6,7 @@ import FaLinkedin from 'react-icons/lib/fa/linkedin';
 
 class Share extends Component {
 
-  constructor() {
+  constructor () {
     super();
   }
 
@@ -52,7 +52,7 @@ class Share extends Component {
     );
   };
 
-  render() {
+  render () {
 
     let iconStyle = {
       width: 15,

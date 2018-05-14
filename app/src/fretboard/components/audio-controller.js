@@ -1,28 +1,15 @@
 import store from '../../../store';
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
-import ReactSVG from 'react-svg';
+import PropTypes from 'prop-types';
 import {toggleAudio} from '../actions';
-
-// child components
 import FaVolumeOff from 'react-icons/lib/fa/volume-off';
 import FaVolumeUp from 'react-icons/lib/fa/volume-up';
 import ReactTooltip from 'react-tooltip';
 
+class AudioController extends Component {
 
-//@flow
-type Props = {
-  audioEnabled: boolean
-};
-
-type State = {
-  volume: number,
-  isMuted: boolean
-};
-
-class AudioController extends Component<Props, State> {
-
-  constructor() {
+  constructor () {
     super();
 
     this.state = {
@@ -31,13 +18,14 @@ class AudioController extends Component<Props, State> {
     };
   }
 
-  _handleClick() {
+  _handleClick () {
     store.dispatch(toggleAudio());
   }
 
   /**
    * Update volume
    * @param {Number} sliderValue between 0 - 100
+   * @returns {void}
    * * */
   _updateSlider = (sliderValue) => {
     this.setState({
@@ -49,6 +37,7 @@ class AudioController extends Component<Props, State> {
    * Intermediate function on mouse up on slider
    * to release volume update to the player api
    * @private
+   * @returns {void}
    * * */
   _updateVolume = () => {
     if(this.state.volume === 0) {
@@ -58,11 +47,11 @@ class AudioController extends Component<Props, State> {
     this._sendFullStatus();
   };
 
-
   /**
    * On mouse down (start) check if it was currently muted
    * If so, un-mute
    * @private
+   * @returns {void}
    * * */
   _checkWasMuted = () => {
     if(this.state.isMuted) {
@@ -78,27 +67,26 @@ class AudioController extends Component<Props, State> {
    * Intermediate function to set volume to zero
    * Stores previous volume level to allow toggle functionality
    * @private
+   * @returns {void}
    * * */
   _handleMute = () => {
     if(!this.state.isMuted) {
-      this.state.previousVolume = this.state.volume;
       this._updateSlider(0);
       this.setState({
+        previousVolume: this.state.volume,
         isMuted: true
       });
-
     } else {
       this.setState({
         isMuted: false,
         volume: this.state.previousVolume
       });
-
     }
 
     this._sendFullStatus();
   };
 
-  render(){
+  render () {
     return(
       <div className="audio-controller"
         data-tip data-for='tooltip__audio-control'>
@@ -126,6 +114,11 @@ class AudioController extends Component<Props, State> {
     );
   }
 }
+
+AudioController.propTypes = {
+  audioEnabled: PropTypes.bool,
+  tooltipIsOn: PropTypes.bool
+};
 
 const mapStoreToProps = (store) => {
   return {

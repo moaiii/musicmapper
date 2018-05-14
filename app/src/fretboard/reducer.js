@@ -13,7 +13,7 @@ const initalState = {
 const fretboardReducer = (state = initalState, action) => {
   switch (action.type) {
 
-  case types.FRETBOARD_CHANGE_TUNING:
+  case types.FRETBOARD_CHANGE_TUNING: {
     //lookup tuning by name
     let tuning_list = tunings;
     let notes = [];
@@ -28,10 +28,9 @@ const fretboardReducer = (state = initalState, action) => {
     return Object.assign({}, state, {
       tuning: notes
     });
+  }
 
-
-  case types.FRETBOARD_CALCULATE_NOTES:
-
+  case types.FRETBOARD_CALCULATE_NOTES: {
     let utility = Utility();
     let fretboard_notes = state.tuning
       .map((note) => utility.renderString(note));
@@ -39,31 +38,29 @@ const fretboardReducer = (state = initalState, action) => {
     return Object.assign({}, state, {
       fretboardNotes: fretboard_notes
     });
+  }
 
-
-  case types.FRETBOARD_TOGGLE_AUDIO:
+  case types.FRETBOARD_TOGGLE_AUDIO: {
     return Object.assign({}, state, {
       audioEnabled: !state.audioEnabled
     });
+  }
 
-
-  case types.FRETBOARD_ADD_SELECTED:
-
+  case types.FRETBOARD_ADD_SELECTED: {
+    let si = action.payload.string_index;
+    let fi = action.payload.fret_index;
     let newFretboardNotesAdd = _.cloneDeep(state.fretboardNotes);
 
-    newFretboardNotesAdd[action.payload.string_index][action.payload.fret_index]
-      .selected = true;
+    newFretboardNotesAdd[si][fi].selected = true;
 
     return Object.assign({}, state, {
       fretboardNotes: newFretboardNotesAdd
     });
+  }
 
-
-  case types.FRETBOARD_DELETE_SELECTED:
-
+  case types.FRETBOARD_DELETE_SELECTED: {
     let si = action.payload.string_index;
     let fi = action.payload.fret_index;
-
     let newFretboardNotesDelete = _.cloneDeep(state.fretboardNotes);
 
     newFretboardNotesDelete[si][fi].selected = false;
@@ -71,13 +68,12 @@ const fretboardReducer = (state = initalState, action) => {
     return Object.assign({}, state, {
       fretboardNotes: newFretboardNotesDelete
     });
+  }
 
 
-  case types.FRETBOARD_DELETE_ALL_SELECTED:
-
+  case types.FRETBOARD_DELETE_ALL_SELECTED: {
     let NUM_STRINGS = 6;
     let NUM_FRETS = 23;
-
     let newFretboardNotesDeleteAll = _.cloneDeep(state.fretboardNotes);
 
     for(let i = 0; i < NUM_STRINGS; i++) {
@@ -89,6 +85,7 @@ const fretboardReducer = (state = initalState, action) => {
     return Object.assign({}, state, {
       fretboardNotes: newFretboardNotesDeleteAll
     });
+  }
 
   default:
     return state;

@@ -1,7 +1,7 @@
 import chords_data from '../data/chords';
 var _ = require('lodash');
 
-export function get_possible_chords(activeNotes) {
+export function get_possible_chords (activeNotes) {
   let possible_chords = get_all_possible_chords(activeNotes);
   let exact_chords = get_exact_chords(activeNotes);
 
@@ -11,14 +11,14 @@ export function get_possible_chords(activeNotes) {
   };
 }
 
-export function get_exact_chords(activeNotes) {
+export function get_exact_chords (activeNotes) {
   return chords_data.filter(chord => {
     return _.difference(chord.notes, activeNotes).length === 0 &&
       _.difference(activeNotes, chord.notes).length === 0; // i.e. no difference
   });
 }
 
-export function get_all_possible_chords(activeNotes) {
+export function get_all_possible_chords (activeNotes) {
   return chords_data.filter(chord => {
     if(_.difference(activeNotes, chord.notes).length === 0) {
       let match = chord;

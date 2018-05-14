@@ -1,11 +1,10 @@
 // functional componenets
 import ReactTooltip from 'react-tooltip';
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Dropdown from 'react-dropdown';
 import {connect} from 'react-redux';
 import store from '../../../store';
-
-//child components
 import {TuningChangeText} from '../../../data/modal-text';
 import {deleteAllSelected, changeTuning, calculateFretboardNotes} from "../../fretboard/actions";
 import {clearAllNotes} from '../../chordbank/actions';
@@ -16,7 +15,7 @@ import Modal from '../../main/components/modal';
 
 class Tuning extends Component {
 
-  constructor() {
+  constructor () {
     super();
 
     this.state = {
@@ -29,12 +28,7 @@ class Tuning extends Component {
     this._onRejectHandler = this._onRejectHandler.bind(this);
   }
 
-  /**
-   * Initialise
-   */
-  componentDidMount() {}
-
-  changeTuning() {
+  changeTuning () {
     store.dispatch(changeTuning(this.state.newTuning));
     store.dispatch(calculateFretboardNotes());
     store.dispatch(clearAllNotes()); // chord bank
@@ -43,14 +37,14 @@ class Tuning extends Component {
 
   }
 
-  _showConfirmationModal(e: SyntheticEvent<>) {
+  _showConfirmationModal (e) {
     this.setState({
       showConfirmationModal: true,
       newTuning: e.value
     });
   }
 
-  _onConfirmHandler() {
+  _onConfirmHandler () {
     let self = this;
     this.setState({
       showConfirmationModal: false
@@ -59,11 +53,11 @@ class Tuning extends Component {
     });
   }
 
-  _onRejectHandler() {
+  _onRejectHandler () {
     this.setState({showConfirmationModal: false});
   }
 
-  render() {
+  render () {
 
     let all_tunings = tunings.map(tuning => tuning.name);
 
@@ -100,10 +94,14 @@ class Tuning extends Component {
   }
 }
 
+Tuning.propTypes = {
+  tooltipIsOn: PropTypes.bool
+};
+
 const mapStoreToProps = (store) => {
   return {
     tooltipIsOn: store.generalState.tooltipIsOn
   };
 };
 
-export default Tuning;
+export default connect(mapStoreToProps)(Tuning);

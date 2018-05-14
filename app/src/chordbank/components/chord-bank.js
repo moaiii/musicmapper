@@ -1,23 +1,22 @@
 import {connect} from 'react-redux';
-import {Component} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import store from '../../../store';
 import {clearAllNotes} from '../../chordbank/actions';
 import {clearSelection} from '../../keyboard/actions';
 import {deleteAllSelected} from '../../fretboard/actions';
-import * as midiApi  from '../api';
+import * as midiApi from '../api';
 import {ProgressDownloadingText, ErrorDownloadingText} from '../../../data/modal-text';
 import _ from 'lodash';
 
 //child components
-import PossibleChords from './possible-chords';
-import FaDownload from 'react-icons/lib/fa/download';
 import FaBan from 'react-icons/lib/fa/ban';
 import Modal from '../../main/components/modal';
 import ReactTooltip from 'react-tooltip';
 
 export class ChordBank extends Component {
 
-  constructor() {
+  constructor () {
     super();
 
     this.state = {
@@ -27,47 +26,44 @@ export class ChordBank extends Component {
     };
   }
 
-  _showDownloading() {
+  _showDownloading () {
     this.setState({showDownloading: true});
   }
 
-  _hideDownloading() {
+  _hideDownloading () {
     this.setState({showDownloading: false});
   }
 
-  _showError() {
+  _showError () {
     this.setState({showError: true});
   }
 
-  _hideError() {
+  _hideError () {
     this.setState({showError: false});
   }
 
-
-  _clearNotes() {
+  _clearNotes () {
     store.dispatch(clearAllNotes());
     store.dispatch(clearSelection());
     store.dispatch(deleteAllSelected());
   }
 
-
   /**
-   * @param {event} e
+   * @param {event} e click event
+   * @returns {void}
    */
-  _downloadMidi(e) {
+  _downloadMidi (e) {
     this._showDownloading();
 
     let midi_type = e.currentTarget.getAttribute('data-download');
 
     if(midi_type === "scales") {
-
       let scales_name = `${this.props.selectedChord}-modes`;
       let scale_notes = {notes: JSON.stringify(this.props.modeScales[0])};
 
       this.callMidiApi(scale_notes, scales_name, midi_type);
 
     } else if (midi_type === "chord") {
-
       let chord_name = this.props.selectedChord;
       let chord_notes = JSON
         .stringify(_.concat(this.props.notes, this.props.differenceNotes));
@@ -80,11 +76,12 @@ export class ChordBank extends Component {
   }
 
   /**
-   * @param {string} notes
-   * @param {string} name
-   * @param {string} midi_type
+   * @param {string} notes notes array
+   * @param {string} name name
+   * @param {string} midi_type type: chord or scales
+   * @returns {void}
    */
-  callMidiApi(notes, name, midi_type) {
+  callMidiApi (notes, name, midi_type) {
     midiApi.generateMidi(notes, name, midi_type)
       .then((response) => {
         this._hideDownloading();
@@ -94,7 +91,6 @@ export class ChordBank extends Component {
         if (downloadLink !== undefined) {
           this.setState({
             downloadLink: downloadLink
-
           }, () => {
             window.open(this.state.downloadLink);
           });
@@ -102,13 +98,12 @@ export class ChordBank extends Component {
       })
       .catch((error) => {
         this._hideDownloading();
-        this._showError();
+        this._showError(error);
         // console.log('Error in chord bank: ', error);
       });
   }
 
-
-  render() {
+  render () {
     let progressDownloadModal =
       <Modal
         {...ProgressDownloadingText}
@@ -117,12 +112,11 @@ export class ChordBank extends Component {
         onConfirm = {this._hideDownloading.bind(this)} />;
 
     let errorDownloadModal =
-        <Modal
-          {...ErrorDownloadingText}
-          isVisible = {this.state.showError}
-          onReject = {this._hideError.bind(this)}
-          onConfirm = {this._hideError.bind(this)} />;
-
+      <Modal
+        {...ErrorDownloadingText}
+        isVisible = {this.state.showError}
+        onReject = {this._hideError.bind(this)}
+        onConfirm = {this._hideError.bind(this)} />;
 
     return(
       <div className="chordbank">
@@ -185,6 +179,14 @@ export class ChordBank extends Component {
     );
   }
 }
+
+ChordBank.propTypes = {
+  tooltipIsOn: PropTypes.bool,
+  differenceNotes: PropTypes.array,
+  notes: PropTypes.array,
+  modeScales: PropTypes.array,
+  selectedChord: PropTypes.string
+};
 
 const mapStoreToProps = (store) => {
   return {

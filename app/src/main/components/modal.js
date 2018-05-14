@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 class Modal extends Component {
 
-  constructor() {
+  constructor () {
     super();
 
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount () {}
 
-  render() {
+  render () {
     const {isVisible, onReject, title,
       message, onConfirm, confirmText,
       hideRejectButton, rejectText} = this.props;

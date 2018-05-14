@@ -36,18 +36,18 @@ describe('utility: get chords', () => {
 
 describe('utility: get scales', () => {
   describe('retrieving the 7 mode scales', () => {
-    it('should return an array of 7 objects',  () => {
+    it('should return an array of 7 objects', () => {
       expect(get_mode_scales('E'))
         .toHaveLength(7);
     });
   });
   describe('retrieving all scales', () => {
-    it(`should return an array of ${29} objects`,  () => {
+    it(`should return an array of ${29} objects`, () => {
       expect(get_all_possible_scales('E'))
         .toHaveLength(29 + 7);
     });
 
-    it(`should not return anything when given Z`,  () => {
+    it(`should not return anything when given Z`, () => {
       expect(get_all_possible_scales('Z'))
         .toHaveLength(0);
     });

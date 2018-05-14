@@ -1,19 +1,14 @@
 import React, {Component} from 'react';
-
 import store from '../../../store';
-import {MobileWarningText} from '../../../data/modal-text';
 import {changeTuning, calculateFretboardNotes} from '../../fretboard/actions';
 import ChordBank from '../../chordbank/components/chord-bank';
 import PossibleChords from '../../chordbank/components/possible-chords';
 import DownloadMidi from '../../chordbank/components/download-midi';
-import ChordSelector from '../../chordbank/components/chord-selector';
 import Fretboard from '../../fretboard/components/fretboard';
 import TuningBar from '../../fretboard/components/tuning-bar';
 import Keyboard from '../../keyboard/components/keyboard';
 import LaptopCheck from '../../keyboard/components/laptop-check';
 import ScaleSelect from '../../keyboard/components/scale-select';
-import Modal from './modal';
-import Share from './share';
 import Header from './header';
 import Footer from './footer';
 import '../../../../stylesheets/main.scss';
@@ -21,7 +16,7 @@ import '../../../../stylesheets/main.scss';
 
 class LayoutMain extends Component {
 
-  constructor() {
+  constructor () {
     super();
 
     this.state = {
@@ -33,22 +28,17 @@ class LayoutMain extends Component {
     this._onRejectHandler = this._onRejectHandler.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     store.dispatch(changeTuning("STANDARD"));
     store.dispatch(calculateFretboardNotes());
   }
 
-  _onConfirmHandler() {}
+  _onConfirmHandler () {}
 
-  _onRejectHandler() {}
+  _onRejectHandler () {}
 
-  render() {
+  render () {
 
-    let ModalWarning = <Modal
-      {...MobileWarningText}
-      isVisible = {this.state.showConfirmationModal}
-      onReject = {this._onRejectHandler}
-      onConfirm = {this._onConfirmHandler} />;
 
     let mobileLandscapeNotification =
       <div className="app__mobile-landscape-notification">

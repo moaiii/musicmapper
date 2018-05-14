@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
-import Checkbox from 'rc-checkbox';
 import store from '../../../store';
+import PropTypes from 'prop-types';
 import {toggleLaptopKeyboardKeys} from '../../keyboard/actions';
 
 // child components
@@ -10,7 +10,7 @@ import ReactTooltip from 'react-tooltip';
 
 class LaptopChecked extends Component {
 
-  constructor() {
+  constructor () {
     super();
 
     this.state = {
@@ -18,7 +18,7 @@ class LaptopChecked extends Component {
     };
   }
 
-  _toggleLaptopKeyboardKeys() {
+  _toggleLaptopKeyboardKeys () {
     this.setState({
       disabled: !this.state.disabled
     }, () => {
@@ -26,7 +26,7 @@ class LaptopChecked extends Component {
     });
   }
 
-  render() {
+  render () {
     return (
       <div className="laptop-check__container"
         data-tip data-for='tooltip__laptop-notes'>
@@ -48,6 +48,10 @@ class LaptopChecked extends Component {
     );
   }
 }
+
+LaptopChecked.propTypes = {
+  tooltipIsOn: PropTypes.bool
+};
 
 const mapStoreToProps = (store) => {
   return {

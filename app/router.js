@@ -1,6 +1,5 @@
 import React from 'react';
-import {Router, Route, browserHistory, IndexRoute, Redirect} from 'react-router';
-import {store} from './store';
+import {Router, Route, browserHistory} from 'react-router';
 import LayoutMain from './src/main/components/layout-main';
 
 

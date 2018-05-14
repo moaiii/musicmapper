@@ -1,24 +1,19 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import store from '../../../store';
+import PropTypes from 'prop-types';
 import {clearAllNotes} from '../actions';
 import {clearSelection} from '../../keyboard/actions';
 import {deleteAllSelected} from '../../fretboard/actions';
 import * as midiApi from '../api';
 import {ProgressDownloadingText, ErrorDownloadingText} from '../../../data/modal-text';
 import _ from 'lodash';
-
-//child components
-import PossibleChords from './possible-chords';
 import FaDownload from 'react-icons/lib/fa/download';
-import FaBan from 'react-icons/lib/fa/ban';
 import Modal from '../../main/components/modal';
 import ReactTooltip from 'react-tooltip';
 
-
 class DownloadMidi extends Component {
-
-  constructor() {
+  constructor () {
     super();
 
     this.state = {
@@ -28,37 +23,36 @@ class DownloadMidi extends Component {
     };
   }
 
-  _showDownloading() {
+  _showDownloading () {
     this.setState({showDownloading: true});
   }
 
-  _hideDownloading() {
+  _hideDownloading () {
     this.setState({showDownloading: false});
   }
 
-  _showError() {
+  _showError () {
     this.setState({showError: true});
   }
 
-  _hideError() {
+  _hideError () {
     this.setState({showError: false});
   }
 
-
-  _clearNotes() {
+  _clearNotes () {
     store.dispatch(clearAllNotes());
     store.dispatch(clearSelection());
     store.dispatch(deleteAllSelected());
   }
 
-
   /**
    * Function to handle with click from the Download CHORD or Download SCALE
    * button - all params feed through same function dealt with differently in
    * AWS lambda function on the server side
-   * @param {event} e
+   * @param {event} e click event
+   * @return {void}
    */
-  _downloadMidi(e) {
+  _downloadMidi (e) {
     // show the UI user feedback modal to show the download is being preped
     this._showDownloading();
     // Differentiate between scales or chords
@@ -82,10 +76,10 @@ class DownloadMidi extends Component {
     } else if (midi_type === "chord") {
       // catch any blank spaces and replace with nothing i.e. delete
       let chord_name = this.props.selectedChord.replace(" ", "");
-      // Turn the concatenated array to a string for sending to the AWS endpoint
+      // Turn the concatenated array to a string for network sending
       let chord_notes = JSON
         .stringify(_.concat(this.props.notes, this.props.differenceNotes));
-      // send the data to the API gateway end point for file download
+      // send
       this.callMidiApi(chord_notes, chord_name, midi_type);
 
     // ERROR
@@ -94,17 +88,17 @@ class DownloadMidi extends Component {
     }
   }
 
-
   /**
    * Call the AWS API gateway end point and pass the params which were
    * satitised in the previous function. Using promises the response will be
    * handled and the file opened in a new window. The users browsers settings
    * may prevent this from happenening.
-   * @param {string} notes
-   * @param {string} name
-   * @param {string} midi_type
+   * @param {string} notes chromatic notes array as string
+   * @param {string} name name
+   * @param {string} midi_type type: chord or scales
+   * @returns {void}
    */
-  callMidiApi(notes, name, midi_type) {
+  callMidiApi (notes, name, midi_type) {
     // call the api funciton which hits the endpoint
     midiApi.generateMidi(notes, name, midi_type)
       .then((response) => {
@@ -125,13 +119,12 @@ class DownloadMidi extends Component {
       })
       .catch((error) => {
         this._hideDownloading();
-        this._showError();
+        this._showError(error);
         // console.log('Error in chord bank: ', error);
       });
   }
 
-
-  render() {
+  render () {
     let progressDownloadModal =
       <Modal
         {...ProgressDownloadingText}
@@ -140,18 +133,16 @@ class DownloadMidi extends Component {
         onConfirm = {this._hideDownloading.bind(this)} />;
 
     let errorDownloadModal =
-        <Modal
-          {...ErrorDownloadingText}
-          isVisible = {this.state.showError}
-          onReject = {this._hideError.bind(this)}
-          onConfirm = {this._hideError.bind(this)} />;
-
+      <Modal
+        {...ErrorDownloadingText}
+        isVisible = {this.state.showError}
+        onReject = {this._hideError.bind(this)}
+        onConfirm = {this._hideError.bind(this)} />;
 
     return(
       <div className="chordbank">
         {progressDownloadModal}
         {errorDownloadModal}
-
         <div className="button-bar">
           <div className="button-bar --downloads"
             data-tip data-for='tooltip__download-chord'>
@@ -174,7 +165,6 @@ class DownloadMidi extends Component {
               <p>MIDI Scales</p>
             </button>
           </div>
-
         </div>
 
         <ReactTooltip
@@ -194,6 +184,15 @@ class DownloadMidi extends Component {
     );
   }
 }
+
+DownloadMidi.propTypes = {
+  notes: PropTypes.array,
+  selectedChord: PropTypes.string,
+  selectedScale: PropTypes.string,
+  modeScales: PropTypes.array,
+  differenceNotes: PropTypes.array,
+  tooltipIsOn: PropTypes.bool
+};
 
 const mapStoreToProps = (store) => {
   return {
