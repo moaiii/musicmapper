@@ -70,7 +70,7 @@ class TuningBar extends Component {
 }
 
 TuningBar.propTypes = {
-  tuningSelection: PropTypes.object
+  tuningSelection: PropTypes.array
 };
 
 const mapStoreToProps = (store) => {

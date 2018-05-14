@@ -55063,7 +55063,7 @@
 	DownloadMidi.propTypes = {
 	  notes: _propTypes2.default.array,
 	  selectedChord: _propTypes2.default.string,
-	  selectedScale: _propTypes2.default.string,
+	  selectedScale: _propTypes2.default.object,
 	  modeScales: _propTypes2.default.array,
 	  differenceNotes: _propTypes2.default.array,
 	  tooltipIsOn: _propTypes2.default.bool
@@ -57155,7 +57155,7 @@
 	}(_react.Component);
 	
 	TuningBar.propTypes = {
-	  tuningSelection: _propTypes2.default.object
+	  tuningSelection: _propTypes2.default.array
 	};
 	
 	var mapStoreToProps = function mapStoreToProps(store) {
@@ -57344,7 +57344,7 @@
 	  type: _propTypes2.default.string,
 	  highlighted: _propTypes2.default.array,
 	  difference: _propTypes2.default.array,
-	  selectedScaleNotes: _propTypes2.default.array,
+	  selectedScaleNotes: _propTypes2.default.string,
 	  showLaptopKeys: _propTypes2.default.bool,
 	  tooltipIsOn: _propTypes2.default.bool
 	};
@@ -57483,9 +57483,9 @@
 	Key.propTypes = {
 	  id: _propTypes2.default.string,
 	  key_class_mod: _propTypes2.default.string,
-	  note: _propTypes2.default.object,
+	  note: _propTypes2.default.string,
 	  showLaptopKey: _propTypes2.default.bool,
-	  keyboard_note: _propTypes2.default.bool
+	  keyboard_note: _propTypes2.default.string
 	};
 	
 	exports.default = Key;

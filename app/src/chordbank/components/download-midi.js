@@ -188,7 +188,7 @@ class DownloadMidi extends Component {
 DownloadMidi.propTypes = {
   notes: PropTypes.array,
   selectedChord: PropTypes.string,
-  selectedScale: PropTypes.string,
+  selectedScale: PropTypes.object,
   modeScales: PropTypes.array,
   differenceNotes: PropTypes.array,
   tooltipIsOn: PropTypes.bool

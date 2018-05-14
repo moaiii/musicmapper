@@ -99,7 +99,7 @@ Keyboard.propTypes = {
   type: PropTypes.string,
   highlighted: PropTypes.array,
   difference: PropTypes.array,
-  selectedScaleNotes: PropTypes.array,
+  selectedScaleNotes: PropTypes.string,
   showLaptopKeys: PropTypes.bool,
   tooltipIsOn: PropTypes.bool
 };

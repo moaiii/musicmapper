@@ -65,9 +65,9 @@ class Key extends Component {
 Key.propTypes = {
   id: PropTypes.string,
   key_class_mod: PropTypes.string,
-  note: PropTypes.object,
+  note: PropTypes.string,
   showLaptopKey: PropTypes.bool,
-  keyboard_note: PropTypes.bool
+  keyboard_note: PropTypes.string
 };
 
 export default Key;
