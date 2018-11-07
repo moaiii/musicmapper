@@ -22,6 +22,11 @@ Tests use the Jest and Pupeteer frameworks and are broken into 3 sections.
 `npm run test` or `npm run test:watch`
 
 ## Live URL
-http://ec2-54-77-155-243.eu-west-1.compute.amazonaws.com:4444
+[Frets to Keys Live link hosted on EC2](http://ec2-54-77-155-243.eu-west-1.compute.amazonaws.com:4444)
+
+# Link to AWS Lambda functions
+When downloading MIDI chords, the app calls an AWS lambda service which spins up midi file, saves it to an S3 bucket and sends the client the uri. Once received the browser downloads the midi chord from the s3 bucket. 
+
+[Lambda/ S3 midi generator](https://github.com/moaiii/midi-generator)
 
 ~moaiii
