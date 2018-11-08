@@ -1,4 +1,4 @@
-# Frets to Keys
+# Frets to Keys 🎸🎹
 
 Map your fretboard notes and chords to their corresponding keyboard equivelent. 
 Built using React, Node, AWS lambda and other goodies. 
